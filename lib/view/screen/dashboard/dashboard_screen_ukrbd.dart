@@ -26,15 +26,6 @@ class _DashBoardScreenUkrbdState extends State<DashBoardScreenUkrbd> {
   @override
   void initState() {
     super.initState();
-    // singleVendor = Provider.of<SplashProvider>(context, listen: false).configModel.businessMode == "single";
-
-    // _screens = [
-    //   HomePageUkrbd(),
-    //   singleVendor?OrderScreen(isBacButtonExist: false): InboxScreen(isBackButtonExist: false) ,
-    //   singleVendor? NotificationScreen(isBacButtonExist: false): OrderScreen(isBacButtonExist: false),
-    //   singleVendor? MoreScreen(): NotificationScreen(isBacButtonExist: false),
-    //   singleVendor?SizedBox(): MoreScreen(),
-    // ];
 
     _screens = [
       HomePageUkrbd(),

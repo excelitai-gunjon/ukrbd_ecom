@@ -561,7 +561,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                   GestureDetector(
                     onTap: (){
 
-                      Navigator.of(context).push(MaterialPageRoute(builder: (_)=> CheckoutUkrbd()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_)=> CheckoutUkrbd(cartSubTotal: cartProviderUkrbd.subTotal.toString(),)));
 
                     },
                     child: Container(

@@ -16,8 +16,8 @@ class ProductWidgetUkrbd extends StatelessWidget {
     // String ratting = productModel.rating != null && productModel.rating.length != 0? productModel.rating[0].average : "0";
     String ratting =  "5";
     final size= MediaQuery.of(context).size;
-    final double offers =productModel.discount.isNotEmpty?int.tryParse(productModel.discount)/int.tryParse(productModel.salesPrice)*100:0.0;
-    final int befor_discount=productModel.discount.isNotEmpty?int.tryParse(productModel.salesPrice)-int.tryParse(productModel.discount):int.tryParse(productModel.salesPrice);
+    // final double offers =productModel.discount.isNotEmpty?int.tryParse(productModel.discount)/int.tryParse(productModel.salesPrice)*100:0.0;
+    // final int befor_discount=productModel.discount.isNotEmpty?int.tryParse(productModel.salesPrice)-int.tryParse(productModel.discount):int.tryParse(productModel.salesPrice);
 
 
     //
@@ -52,7 +52,7 @@ class ProductWidgetUkrbd extends StatelessWidget {
         ),
         child: Stack(children: [
           Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
             // Product Image
             Container(
@@ -97,24 +97,24 @@ class ProductWidgetUkrbd extends StatelessWidget {
                           overflow: TextOverflow.ellipsis),
                       SizedBox(height: Dimensions.PADDING_SIZE_EXTRA_SMALL),
 
-                      Row(mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            RatingBar(
-                              rating: double.parse(ratting),
-                              size: 18,
-                            ),
-
-
-                            // Text('(${productModel.reviewCount.toString() ?? 0})',
-                            //     style: robotoRegular.copyWith(
-                            //       fontSize: Dimensions.FONT_SIZE_SMALL,
-                            //     )),
-
-                            Text('4',
-                                style: robotoRegular.copyWith(
-                                  fontSize: Dimensions.FONT_SIZE_SMALL,
-                                )),
-                          ]),
+                      // Row(mainAxisAlignment: MainAxisAlignment.start,
+                      //     children: [
+                      //       RatingBar(
+                      //         rating: double.parse(ratting),
+                      //         size: 18,
+                      //       ),
+                      //
+                      //
+                      //       // Text('(${productModel.reviewCount.toString() ?? 0})',
+                      //       //     style: robotoRegular.copyWith(
+                      //       //       fontSize: Dimensions.FONT_SIZE_SMALL,
+                      //       //     )),
+                      //
+                      //       Text('4',
+                      //           style: robotoRegular.copyWith(
+                      //             fontSize: Dimensions.FONT_SIZE_SMALL,
+                      //           )),
+                      //     ]),
 
 
 

@@ -47,7 +47,7 @@ class SplashRepo {
     sharedPreferences.setBool(AppConstants.INTRO, false);
   }
 
-  bool showIntro() {
+  bool showIntro(){
     return sharedPreferences.getBool(AppConstants.INTRO);
   }
 

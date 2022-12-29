@@ -27,17 +27,28 @@ class HomePageUkrbd extends StatefulWidget {
 }
 
 class _HomePageUkrbdState extends State<HomePageUkrbd> {
+
+
+
+
+
   final ScrollController _scrollController = ScrollController();
 
-  Future<void> _loadData(BuildContext context, bool reload){
-    Provider.of<BannerProviderUkrbd>(context, listen: false).getBannerList(reload, context);
-    // Provider.of<BannerProvider>(context, listen: false).getFooterBannerList(context);
-    // Provider.of<BannerProvider>(context, listen: false).getMainSectionBanner(context);
+  Future<void> _loadData(BuildContext context, bool reload)async{
+
+    await Provider.of<BannerProviderUkrbd>(context, listen: false).getBannerList(reload, context);
+
     Provider.of<CategoryProviderUkrbd>(context, listen: false).getCategoryList(reload, context);
-    // Provider.of<ProductProvider>(context, listen: false).getLatestProductList(1, context, reload: reload);
-    // Provider.of<ProductProvider>(context, listen: false).getFeaturedProductList('1', context, reload: reload);
-    // Provider.of<ProductProvider>(context, listen: false).getLProductList('1', context, reload: reload);
-    // Provider.of<ProductProvider>(context, listen: false).getRecommendedProduct(context);
+
+    print("......................... load home page data .........................");
+    print("......................... load home page data .........................");
+    print("......................... load home page data .........................");
+    print("......................... load home page data .........................");
+    print("......................... load home page data .........................");
+    print("......................... load home page data .........................");
+    print("......................... load home page data .........................");
+    print("......................... load home page data .........................");
+
   }
 
   void passData(int index, String title) {
@@ -53,7 +64,7 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
     // singleVendor = Provider.of<SplashProvider>(context, listen: false).configModel.businessMode == "single";
     // Provider.of<FlashDealProvider>(context, listen: false).getMegaDealList(true, context, true);
 
-    _loadData(context, true);
+    _loadData(context, false);
 
     // if(Provider.of<AuthProvider>(context, listen: false).isLoggedIn()) {
     //   Provider.of<CartProvider>(context, listen: false).uploadToServer(context);
@@ -78,7 +89,7 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
           backgroundColor: Theme.of(context).primaryColor,
           onRefresh: () async {
             await _loadData(context, true);
-            await Provider.of<FlashDealProvider>(context, listen: false).getMegaDealList(true, context, false);
+            // await Provider.of<FlashDealProvider>(context, listen: false).getMegaDealList(true, context, false);
             return true;
           },
           child: Stack(
@@ -127,6 +138,7 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                               // ),
                               //   child: Icon(Icons.search, color: Theme.of(context).cardColor, size: Dimensions.ICON_SIZE_SMALL),
                               // ),
+
                             ]),
                           ),
                         ),
@@ -158,8 +170,7 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                             alignment: Alignment.centerLeft,
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_EXTRA_SMALL,vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-                              child: Text("jvcdshg"),
-                            //  child: Text(getTranslated('CATEGORY', context), style: titleHeader),
+                             child: Text(getTranslated('CATEGORY', context), style: titleHeader),
                               // TitleRow(title: getTranslated('CATEGORY', context),
                               //     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AllCategoryScreen()))),
                             ),

@@ -18,7 +18,8 @@ import 'package:provider/provider.dart';
 // import 'package:ecom_ukrbd/view/screen/checkout/DeliveryDetails.dart';
 
 class CheckoutUkrbd extends StatefulWidget {
-  const CheckoutUkrbd({Key key}) : super(key: key);
+  String cartSubTotal;
+   CheckoutUkrbd({Key key,this.cartSubTotal}) : super(key: key);
 
   @override
   State<CheckoutUkrbd> createState() => _CheckoutUkrbdState();
@@ -194,7 +195,9 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
 
     return Scaffold(
         appBar: AppBar(
-              leading: Icon(Icons.arrow_back_ios_new_outlined, color: Colors.black,),
+              leading: InkWell(onTap: (){
+                Navigator.of(context).pop();
+              },child: Icon(Icons.arrow_back_ios_new_outlined, color: Colors.black,)),
               title: const Text("Checkout",
               style: TextStyle(
                 color: Colors.black
@@ -333,7 +336,7 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text("CART SUBTOTAL",style: TextStyle(color: Colors.black45),),
-                      Text("\$ 3434.46",style: TextStyle(color: Colors.black45),),
+                      Text("\$ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
                     ],
                   ),
                   Divider(),
@@ -351,7 +354,7 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Text("Order Total",style: TextStyle(color: Colors.black45),),
-                      Text("\$ 3434.46",style: TextStyle(color: Colors.black45),),
+                      Text("\$ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
                     ],
                   ),
                   Container(

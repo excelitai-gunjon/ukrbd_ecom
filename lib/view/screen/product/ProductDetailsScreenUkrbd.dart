@@ -48,8 +48,8 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
   Widget build(BuildContext context) {
 
     final size= MediaQuery.of(context).size;
-    final double offers =widget.productModel.discount.isNotEmpty?int.tryParse(widget.productModel.discount)/int.tryParse(widget.productModel.salesPrice)*100:0.0;
-    final int befor_discount=widget.productModel.discount.isNotEmpty?int.tryParse(widget.productModel.salesPrice)-int.tryParse(widget.productModel.discount):int.tryParse(widget.productModel.salesPrice);
+    // final double offers =widget.productModel.discount.isNotEmpty?int.tryParse(widget.productModel.discount)/int.tryParse(widget.productModel.salesPrice)*100:0.0;
+    // final int befor_discount=widget.productModel.discount.isNotEmpty?int.tryParse(widget.productModel.salesPrice)-int.tryParse(widget.productModel.discount):int.tryParse(widget.productModel.salesPrice);
     return Scaffold(
 
       backgroundColor: ColorResources.getHomeBg(context),
@@ -133,14 +133,14 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: "৳${widget.productModel.salesPrice??0.0}" ,
+                        text: "৳${widget.productModel.price??0.0}  " ,
                         style: TextStyle(
                           fontSize: MediaQuery.of(context).size.width*(20/360),
                           fontWeight: FontWeight.normal,
                         ),
                       ),
                       TextSpan(
-                        text: '৳${befor_discount}',
+                        text: widget.productModel.offerPrice!=null?'৳${widget.productModel.offerPrice}':"",
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                           color: Colors.red,
@@ -153,80 +153,80 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                 SizedBox(
                   width: MediaQuery.of(context).size.width*(20/360),
                 ),
-                Text.rich(
-                  TextSpan(
-                    text: 'Flat ${offers.toStringAsFixed(2)}% OFF ',
-                    style: TextStyle(
-                      fontWeight: FontWeight.normal,
-                      color: Colors.green,
-                    ),
-                  ),
-                ),
+                // Text.rich(
+                //   TextSpan(
+                //     text: 'Flat ${offers.toStringAsFixed(2)}% OFF ',
+                //     style: TextStyle(
+                //       fontWeight: FontWeight.normal,
+                //       color: Colors.green,
+                //     ),
+                //   ),
+                // ),
               ],
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              children: [
-                Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(
-                        text: '5.0 ',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                SizedBox(
-                  width: 10,
-                ),
-                //stars
-                Row(
-                  children: [
-                    Icon(
-                      Icons.star_rate_sharp,
-                      color: Colors.green,
-                    ),
-                    Icon(
-                      Icons.star_rate_sharp,
-                      color: Colors.green,
-                    ),
-                    Icon(
-                      Icons.star_rate_sharp,
-                      color: Colors.green,
-                    ),
-                    Icon(
-                      Icons.star_border,
-                      color: Colors.green,
-                    ),
-                    Icon(
-                      Icons.star_border,
-                      color: Colors.green,
-                    ),
-                  ],
-                ),
-
-                SizedBox(
-                  width: size.width*(20/360),
-                ),
-
-                Text.rich(
-                  TextSpan(
-                    text: '| 0 Ratings',
-                    style: TextStyle(
-                      fontWeight: FontWeight.normal,
-                      color: Colors.black38,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            // SizedBox(
+            //   height: 20,
+            // ),
+            // Row(
+            //   children: [
+            //     Text.rich(
+            //       TextSpan(
+            //         children: [
+            //           TextSpan(
+            //             text: '5.0 ',
+            //             style: TextStyle(
+            //               fontSize: 15,
+            //               fontWeight: FontWeight.normal,
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //
+            //     SizedBox(
+            //       width: 10,
+            //     ),
+            //     //stars
+            //     Row(
+            //       children: [
+            //         Icon(
+            //           Icons.star_rate_sharp,
+            //           color: Colors.green,
+            //         ),
+            //         Icon(
+            //           Icons.star_rate_sharp,
+            //           color: Colors.green,
+            //         ),
+            //         Icon(
+            //           Icons.star_rate_sharp,
+            //           color: Colors.green,
+            //         ),
+            //         Icon(
+            //           Icons.star_border,
+            //           color: Colors.green,
+            //         ),
+            //         Icon(
+            //           Icons.star_border,
+            //           color: Colors.green,
+            //         ),
+            //       ],
+            //     ),
+            //
+            //     SizedBox(
+            //       width: size.width*(20/360),
+            //     ),
+            //
+            //     Text.rich(
+            //       TextSpan(
+            //         text: '| 0 Ratings',
+            //         style: TextStyle(
+            //           fontWeight: FontWeight.normal,
+            //           color: Colors.black38,
+            //         ),
+            //       ),
+            //     ),
+            //   ],
+            // ),
 
             SizedBox(height: 20,),
 
@@ -410,22 +410,41 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
 
             Text("Description",style: TextStyle(fontSize: size.width*(24/360),fontWeight: FontWeight.bold,color: Colors.black87),),
 
+            // Text(widget.productModel.description),
             Container(
               width: size.width,
               child: Html(
                 data: widget.productModel.description,
-                // padding: EdgeInsets.all(8.0),
-                // onLinkTap: (url) {
-                //   print("Opening $url...");
+                // tagsList: Html.tags..addAll(["bird", "flutter"]),
+                // style: {
+                //   "table": Style(
+                //     backgroundColor: Color.fromARGB(0x50, 0xee, 0xee, 0xee),
+                //   ),
+                //   "tr": Style(
+                //     border: Border(bottom: BorderSide(color: Colors.grey)),
+                //   ),
+                //   "th": Style(
+                //     padding: EdgeInsets.all(6),
+                //     backgroundColor: Colors.grey,
+                //   ),
+                //   "td": Style(
+                //     padding: EdgeInsets.all(6),
+                //     alignment: Alignment.topLeft,
+                //   ),
+                //   'h5': Style(maxLines: 2, textOverflow: TextOverflow.ellipsis),
                 // },
-                // customRender: (node, children) {
-                //   if (node is dom.Element) {
-                //     switch (node.localName) {
-                //       case "custom_tag": // using this, you can handle custom tags in your HTML
-                //         return Column(children: children);
-                //     }
-                //   }
-                // },
+              //   padding: EdgeInsets.all(8.0),
+              //   onLinkTap: (url) {
+              //     print("Opening $url...");
+              //   },
+              //   customRender: (node, children) {
+              //     if (node is dom.Element) {
+              //       switch (node.localName) {
+              //         case "custom_tag": // using this, you can handle custom tags in your HTML
+              //           return Column(children: children);
+              //       }
+              //     }
+              //   },
               ),
             )
             //     TabBar(

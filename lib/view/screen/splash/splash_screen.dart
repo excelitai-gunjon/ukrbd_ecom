@@ -65,16 +65,23 @@ class _SplashScreenState extends State<SplashScreen> {
 
 
 
-  void _route() {
+  void _route() async{
+
     // await Provider.of<BannerProviderUkrbd>(context, listen: false).getBannerList(true, context);
-    Provider.of<SplashProvider>(context, listen: false).initConfig(context).then((bool isSuccess) {
+    Provider.of<SplashProvider>(context, listen: false).initConfig(context).then((bool isSuccess) async{
+
+      // await Provider.of<BannerProviderUkrbd>(context, listen: false).getBannerList(true, context).then((value) {
+      //   return value;
+      // });
+
+
 
       print(".........................Initial Configuration.......................");
 
       //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => DashBoardScreen()));
       if(isSuccess) {
         Provider.of<SplashProvider>(context, listen: false).initSharedPrefData();
-        Timer(Duration(seconds: 1), () {
+        Timer(Duration(seconds: 1), (){
           if(Provider.of<SplashProvider>(context, listen: false).configModel.maintenanceMode) {
             Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => MaintenanceScreen()));
           }else {
@@ -90,7 +97,7 @@ class _SplashScreenState extends State<SplashScreen> {
               }else {
                 if (!Provider.of<AuthProvider>(context, listen: false).isLoading) {
 
-                  Provider.of<CartProvider>(context, listen: false).getCartData();
+                  // Provider.of<CartProvider>(context, listen: false).getCartData();
 
                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => DashBoardScreenUkrbd()),
                           (route) => false);

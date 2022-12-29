@@ -12,51 +12,15 @@ import 'package:ecom_ukrbd/view/screen/product/brand_and_category_product_screen
 import 'package:ecom_ukrbd/view/screen/product/product_details_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
-class BannersViewUkrbd extends StatelessWidget {
+class BannersViewUkrbd extends StatefulWidget {
 
-  _clickBannerRedirect(BuildContext context, int id, Product product,  String type){
+  @override
+  State<BannersViewUkrbd> createState() => _BannersViewUkrbdState();
+}
 
-    final cIndex =  Provider.of<CategoryProviderUkrbd>(context, listen: false).categoryList.indexWhere((element) => element.id == id);
-    final bIndex =  Provider.of<BrandProvider>(context, listen: false).brandList.indexWhere((element) => element.id == id);
-    final tIndex =  Provider.of<TopSellerProvider>(context, listen: false).topSellerList.indexWhere((element) => element.id == id);
+class _BannersViewUkrbdState extends State<BannersViewUkrbd> {
 
 
-    if(type == 'category'){
-      if(Provider.of<CategoryProviderUkrbd>(context, listen: false).categoryList[cIndex].category != null){
-        Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreen(
-          isBrand: false,
-          id: id.toString(),
-          name: '${Provider.of<CategoryProviderUkrbd>(context, listen: false).categoryList[cIndex].category}',
-        )));
-      }
-    }
-    else if(type == 'product'){
-      if(product != null) {
-        Navigator.push(context, MaterialPageRoute(builder: (_) => ProductDetails(
-          productId: product.id,slug: product.slug,
-        )));
-      }
-
-    }else if(type == 'brand'){
-      if(Provider.of<BrandProvider>(context, listen: false).brandList[bIndex].name != null){
-        Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreen(
-          isBrand: true,
-          id: id.toString(),
-          name: '${Provider.of<BrandProvider>(context, listen: false).brandList[bIndex].name}',
-        )));
-      }
-
-    }
-    // else if( type == 'shop'){
-    //   if(Provider.of<TopSellerProvider>(context, listen: false).topSellerList[tIndex].name != null){
-    //     Navigator.push(context, MaterialPageRoute(builder: (_) => TopSellerProductScreen(
-    //       topSellerId: id,
-    //       topSeller: Provider.of<TopSellerProvider>(context,listen: false).topSellerList[tIndex],
-    //     )));
-    //   }
-    //
-    // }
-  }
   final CarouselController _controller = CarouselController();
 
   @override
@@ -66,44 +30,30 @@ class BannersViewUkrbd extends StatelessWidget {
 
       children: [
 
+        //'https://ukrbd.com/images/slider_images/${bannerImage}'
+
         Consumer<BannerProviderUkrbd>(
+          builder: (context, bannerProvider, child) {
 
-          builder: (context, bannerProviderUkrbd, child) {
-
-            //List<String> bannerList=BannerModelClass().bannerList;
             double _width = MediaQuery.of(context).size.width;
             return Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
               width: _width,
-              height: _width * 0.295,
-              child: bannerProviderUkrbd.mainBannerList != null ? bannerProviderUkrbd.mainBannerList.length != 0 ? Stack(
+              height: _width * 0.4,
+              child: bannerProvider.mainBannerList != null ? bannerProvider.mainBannerList.length != 0 ? Stack(
                 fit: StackFit.expand,
                 children: [
                   CarouselSlider.builder(
-                    carouselController: _controller,
                     options: CarouselOptions(
-                      autoPlay: true,
-                      //enlargeCenterPage: true,
-                      aspectRatio: 2.0,
-                      // onPageChanged: (index, reason) {
-                      //   setState(() {
-                      //     _current = index;
-                      //   });
-                      // }
                       viewportFraction: 1,
+                      autoPlay: true,
+                      enlargeCenterPage: true,
                       disableCenter: true,
                       onPageChanged: (index, reason) {
-                        Provider.of<BannerProviderUkrbd>(context, listen: false).setCurrentIndex(index);
+                        Provider.of<BannerProvider>(context, listen: false).setCurrentIndex(index);
                       },
-
                     ),
-                    // itemCount: bannerProvider.mainBannerList.length == 0 ? 1 : bannerProvider.mainBannerList.length,
-                    itemCount: bannerProviderUkrbd.mainBannerList.length,
+                    itemCount: bannerProvider.mainBannerList.length == 0 ? 1 : bannerProvider.mainBannerList.length,
                     itemBuilder: (context, index, _) {
-                      String bannerImage=bannerProviderUkrbd.mainBannerList[index].image;
-
-                      // print('${Provider.of<SplashProvider>(context,listen: false).baseUrls.bannerImageUrl}'
-                      //           '/${bannerProvider.mainBannerList[index].photo}');
 
                       return InkWell(
                         onTap: () {
@@ -114,14 +64,12 @@ class BannersViewUkrbd extends StatelessWidget {
                           //     bannerProvider.mainBannerList[index].resourceType);
                         },
                         child: Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(5),
-                            child:
-                            // Image.asset(bannerImage,fit: BoxFit.cover,),
-                            FadeInImage.assetNetwork(
+                            borderRadius: BorderRadius.circular(10),
+                            child: FadeInImage.assetNetwork(
                               placeholder: Images.placeholder, fit: BoxFit.cover,
-                              image: 'https://ukrbd.com/images/slider_images/${bannerImage}',
+                              image: 'https://ukrbd.com/images/slider_images/${bannerProvider.mainBannerList[index].image}',
                               imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder_3x1, fit: BoxFit.cover),
                             ),
                           ),
@@ -136,11 +84,11 @@ class BannersViewUkrbd extends StatelessWidget {
                     right: 0,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: bannerProviderUkrbd.mainBannerList.map((banner) {
-                        int index = bannerProviderUkrbd.mainBannerList.indexOf(banner);
+                      children: bannerProvider.mainBannerList.map((banner) {
+                        int index = bannerProvider.mainBannerList.indexOf(banner);
                         return TabPageSelectorIndicator(
-                          backgroundColor: index == bannerProviderUkrbd.currentIndex ? Theme.of(context).primaryColor : Colors.grey,
-                          borderColor: index == bannerProviderUkrbd.currentIndex ? Theme.of(context).primaryColor : Colors.grey,
+                          backgroundColor: index == bannerProvider.currentIndex ? Theme.of(context).primaryColor : Colors.grey,
+                          borderColor: index == bannerProvider.currentIndex ? Theme.of(context).primaryColor : Colors.grey,
                           size: 10,
                         );
                       }).toList(),
@@ -150,12 +98,11 @@ class BannersViewUkrbd extends StatelessWidget {
               ) : Center(child: Text('No banner available')) : Shimmer.fromColors(
                 baseColor: Colors.grey[300],
                 highlightColor: Colors.grey[100],
-                enabled: bannerProviderUkrbd.mainBannerList == null,
+                enabled: bannerProvider.mainBannerList == null,
                 child: Container(margin: EdgeInsets.symmetric(horizontal: 10), decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: ColorResources.WHITE,
-                )
-                ),
+                )),
               ),
             );
           },
@@ -165,8 +112,6 @@ class BannersViewUkrbd extends StatelessWidget {
       ],
     );
   }
-
-
 }
 
 // class BannerModelClass{
