@@ -137,7 +137,7 @@ class AuthRepo {
   Future<ApiResponse> checkEmail(String email, String temporaryToken) async {
     try {
       Response response = await dioClient.post(AppConstants.CHECK_EMAIL_URI, data: {"email": email, "temporary_token" : temporaryToken});
-        return ApiResponse.withSuccess(response);
+      return ApiResponse.withSuccess(response);
     } catch (e) {
       return ApiResponse.withError(ApiErrorHandler.getMessage(e));
     }

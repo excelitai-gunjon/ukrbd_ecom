@@ -1,13 +1,11 @@
 import 'package:country_code_picker/country_code.dart';
-import 'package:ecom_ukrbd/data/model/body/register_model_ukrbd.dart';
-import 'package:ecom_ukrbd/provider/auth_provider_ukrbd.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/body/register_model.dart';
-
+import 'package:ecom_ukrbd/data/model/body/register_model_ukrbd.dart';
 import 'package:ecom_ukrbd/helper/email_checker.dart';
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/auth_provider.dart';
-
+import 'package:ecom_ukrbd/provider/auth_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/provider/profile_provider.dart';
 import 'package:ecom_ukrbd/provider/splash_provider.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
@@ -16,7 +14,6 @@ import 'package:ecom_ukrbd/utill/dimensions.dart';
 import 'package:ecom_ukrbd/view/basewidget/button/custom_button.dart';
 import 'package:ecom_ukrbd/view/basewidget/textfield/custom_password_textfield.dart';
 import 'package:ecom_ukrbd/view/basewidget/textfield/custom_textfield.dart';
-
 import 'package:ecom_ukrbd/view/screen/auth/widget/social_login_widget.dart';
 import 'package:ecom_ukrbd/view/screen/dashboard/dashboard_screen.dart';
 import 'package:provider/provider.dart';
@@ -111,49 +108,51 @@ class _SignUpWidgetUkrbdState extends State<SignUpWidgetUkrbd> {
         register.mobile = _phoneNumber;
         register.password = _passwordController.text;
         register.confirmPassword = _passwordController.text;
-        await Provider.of<AuthProviderUkrbd>(context, listen: false).registration(register, route,context);
+
+
+        await Provider.of<AuthProviderUkrbd>(context, listen: false).registration(register: register,context: context);
       }
     } else {
       isEmailVerified = false;
     }
   }
 
-  route(bool isRoute, String token, String tempToken, String errorMessage) async {
-    String _phone = _countryDialCode+_phoneController.text.trim();
-    if (isRoute) {
-      if(Provider.of<SplashProvider>(context,listen: false).configModel.emailVerification){
-        Provider.of<AuthProvider>(context, listen: false).checkEmail(_emailController.text.toString(), tempToken).then((value) async {
-          if (value.isSuccess) {
-            Provider.of<AuthProvider>(context, listen: false).updateEmail(_emailController.text.toString());
-            //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => VerificationScreen(tempToken,'',_emailController.text.toString())), (route) => false);
-
-          }
-        });
-      }else if(Provider.of<SplashProvider>(context,listen: false).configModel.phoneVerification){
-        Provider.of<AuthProvider>(context, listen: false).checkPhone(_phone,tempToken).then((value) async {
-          if (value.isSuccess) {
-            Provider.of<AuthProvider>(context, listen: false).updatePhone(_phone);
-            //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => VerificationScreen(tempToken,_phone,'')), (route) => false);
-
-          }
-        });
-      }else{
-        await Provider.of<ProfileProvider>(context, listen: false).getUserInfo(context);
-        //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => DashBoardScreen()), (route) => false);
-        _emailController.clear();
-        _passwordController.clear();
-        _firstNameController.clear();
-        _lastNameController.clear();
-        _phoneController.clear();
-        _confirmPasswordController.clear();
-      }
-
-
-    }
-    else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(errorMessage), backgroundColor: Colors.red));
-    }
-  }
+  // route(bool isRoute, String token, String tempToken, String errorMessage) async {
+  //   String _phone = _countryDialCode+_phoneController.text.trim();
+  //   if (isRoute) {
+  //     if(Provider.of<SplashProvider>(context,listen: false).configModel.emailVerification){
+  //     //   Provider.of<AuthProviderUk>(context, listen: false).checkEmail(_emailController.text.toString(), tempToken).then((value) async {
+  //     //     if (value.isSuccess) {
+  //     //       Provider.of<AuthProvider>(context, listen: false).updateEmail(_emailController.text.toString());
+  //     //       //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => VerificationScreen(tempToken,'',_emailController.text.toString())), (route) => false);
+  //     //
+  //     //     }
+  //     //   });
+  //     // }else if(Provider.of<SplashProvider>(context,listen: false).configModel.phoneVerification){
+  //     //   Provider.of<AuthProvider>(context, listen: false).checkPhone(_phone,tempToken).then((value) async {
+  //     //     if (value.isSuccess) {
+  //     //       Provider.of<AuthProvider>(context, listen: false).updatePhone(_phone);
+  //     //       //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => VerificationScreen(tempToken,_phone,'')), (route) => false);
+  //     //
+  //     //     }
+  //     //   });
+  //     }else{
+  //       await Provider.of<ProfileProvider>(context, listen: false).getUserInfo(context);
+  //       //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => DashBoardScreen()), (route) => false);
+  //       _emailController.clear();
+  //       _passwordController.clear();
+  //       _firstNameController.clear();
+  //       _lastNameController.clear();
+  //       _phoneController.clear();
+  //       _confirmPasswordController.clear();
+  //     }
+  //
+  //
+  //   }
+  //   else {
+  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(errorMessage), backgroundColor: Colors.red));
+  //   }
+  // }
 
   String _countryDialCode = "+880";
   @override
@@ -234,18 +233,18 @@ class _SignUpWidgetUkrbdState extends State<SignUpWidgetUkrbd> {
                 margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT,
                     right: Dimensions.MARGIN_SIZE_DEFAULT, top: Dimensions.MARGIN_SIZE_SMALL),
                 child: Row(children: [
-                  CodePickerWidget(
-                    onChanged: (CountryCode countryCode) {
-                      _countryDialCode = countryCode.dialCode;
-                    },
-                    initialSelection: _countryDialCode,
-                    favorite: [_countryDialCode],
-                    showDropDownButton: true,
-                    padding: EdgeInsets.zero,
-                    showFlagMain: true,
-                    textStyle: TextStyle(color: Theme.of(context).textTheme.headline1.color),
-
-                  ),
+                  // CodePickerWidget(
+                  //   onChanged: (CountryCode countryCode) {
+                  //     _countryDialCode = countryCode.dialCode;
+                  //   },
+                  //   initialSelection: _countryDialCode,
+                  //   favorite: [_countryDialCode],
+                  //   showDropDownButton: true,
+                  //   padding: EdgeInsets.zero,
+                  //   showFlagMain: true,
+                  //   textStyle: TextStyle(color: Theme.of(context).textTheme.headline1.color),
+                  //
+                  // ),
 
 
 
@@ -298,7 +297,7 @@ class _SignUpWidgetUkrbdState extends State<SignUpWidgetUkrbd> {
         Container(
           margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_LARGE, right: Dimensions.MARGIN_SIZE_LARGE,
               bottom: Dimensions.MARGIN_SIZE_LARGE, top: Dimensions.MARGIN_SIZE_LARGE),
-          child: Provider.of<AuthProvider>(context).isLoading
+          child: Provider.of<AuthProviderUkrbd>(context).isLoading
               ? Center(
             child: CircularProgressIndicator(
               valueColor: new AlwaysStoppedAnimation<Color>(
@@ -312,7 +311,7 @@ class _SignUpWidgetUkrbdState extends State<SignUpWidgetUkrbd> {
         // SocialLoginWidget(),
 
         // for skip for now
-        Provider.of<AuthProvider>(context).isLoading ? SizedBox() :
+        Provider.of<AuthProviderUkrbd>(context).isLoading ? SizedBox() :
         Center(
             child: Row(mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,

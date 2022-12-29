@@ -59,6 +59,7 @@ class _CategoryWiseProductViewWidgetState extends State<CategoryWiseProductViewW
                         Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreenUkrbd(
                           isBrand: false,
                           id: widget.id,
+
                           name: widget.title,
                           isSubcategory: false,
                           isHome: true,
@@ -79,7 +80,8 @@ class _CategoryWiseProductViewWidgetState extends State<CategoryWiseProductViewW
               children: [
                 // categoryWiseProductList.length!=0?
                 Container(
-                  height: MediaQuery.of(context).size.width/1.45,
+
+               height: MediaQuery.of(context).size.width/1.20,
                   child: FutureBuilder(
                     future: Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, widget.id),
                     builder: ((context, snapshot) {
@@ -88,9 +90,10 @@ class _CategoryWiseProductViewWidgetState extends State<CategoryWiseProductViewW
 
                         return ListView.builder(
                             scrollDirection: Axis.horizontal,
-                            itemCount: list.length,
+                            itemCount: (list.length) ,
+                            //itemCount: (list.length) -1,
                             itemBuilder: (ctx,index){
-                              return Container(width: (MediaQuery.of(context).size.width/2.06)-20,
+                              return Container(width: (MediaQuery.of(context).size.width/2.06)-10,
                                   child: ProductWidgetUkrbd(productModel: list[index]));
                             }
                         );

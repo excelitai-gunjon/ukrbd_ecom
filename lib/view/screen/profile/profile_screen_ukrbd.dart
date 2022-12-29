@@ -40,7 +40,7 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: !isLogedIn?Stack(
+      body: isLogedIn?Stack(
         children: [
 
           Align(

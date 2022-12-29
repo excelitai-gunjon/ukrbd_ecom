@@ -9,7 +9,6 @@ import 'package:ecom_ukrbd/provider/top_seller_provider.dart';
 import 'package:ecom_ukrbd/utill/images.dart';
 import 'package:ecom_ukrbd/view/screen/product/brand_and_category_product_screen.dart';
 import 'package:ecom_ukrbd/view/screen/product/product_details_screen.dart';
-import 'package:ecom_ukrbd/view/screen/topSeller/top_seller_product_screen.dart';
 import 'package:provider/provider.dart';
 class MainSectionBannersView extends StatelessWidget {
   final int index;

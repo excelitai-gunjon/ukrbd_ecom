@@ -29,7 +29,10 @@ class CategoryWiseProductProviderUkrbd with ChangeNotifier{
   Future<List<Data>> getCategoryWiseProductListForHomePage(bool reload, BuildContext context,String categoryId) async {
     List<Data> catProductList;
       ApiResponse apiResponse = await categoryWiseProductRepoUkrbd.getCategoryWiseProductList(categoryId);
-      if (apiResponse.response != null && apiResponse.response.statusCode == 200) {
+
+      if (apiResponse.response!= null && apiResponse.response.statusCode == 200)
+
+      {
         // apiResponse.response.data.forEach((category) => _categoryList.add(Category.fromJson(category)));
         CategoryWiseProduct productModelList = CategoryWiseProduct.fromJson(apiResponse.response.data);
         catProductList=productModelList.products.data.cast<Data>();

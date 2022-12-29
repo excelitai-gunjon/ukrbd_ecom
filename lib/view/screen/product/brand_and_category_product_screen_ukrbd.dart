@@ -74,7 +74,9 @@ class _BrandAndCategoryProductScreenUkrbdState
                     Consumer<CategoryWiseProductProviderUkrbd>(builder:
                         (context, categoryWiseProductProviderUkrbd, child) {
                       return CustomAppBar(
-                        title: widget.name,
+
+
+                       title: widget.name,
                         onBackPressed: () {
                           if(!widget.isHome){
                             categoryWiseProductProviderUkrbd.clear();
@@ -120,13 +122,18 @@ class _BrandAndCategoryProductScreenUkrbdState
                                     horizontal: Dimensions.PADDING_SIZE_SMALL),
                                 physics: BouncingScrollPhysics(),
                                 crossAxisCount: 2,
-                                itemCount: categoryWiseProductsList.length,
+                                itemCount: (categoryWiseProductsList.length) ,
+                             //   itemCount: (categoryWiseProductsList.length) -1,
+
                                 shrinkWrap: true,
                                 staggeredTileBuilder: (int index) =>
                                     StaggeredTile.fit(1),
                                 itemBuilder: (BuildContext context, int index) {
-                                  print("print product");
-                                  return ProductWidgetUkrbd(
+                               //   print("print product");
+
+
+                                  return
+                                    ProductWidgetUkrbd(
                                       productModel: categoryWiseProductsList[index]);
                                   // return null;
                                 },

@@ -16,6 +16,10 @@ class CategoryWiseProductRepoUkrbd {
     try {
       final response = await dioClient.get(
           AppConstants.CATEGORIE_WISE_PRODUCT_UKRBD+id);
+
+
+      // print(">>>>>>>>>>> kkr  api response" );
+      // print(response.data);
       return ApiResponse.withSuccess(response);
     } catch (e) {
       return ApiResponse.withError(ApiErrorHandler.getMessage(e));

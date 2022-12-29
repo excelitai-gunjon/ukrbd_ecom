@@ -133,7 +133,7 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: "৳${widget.productModel.salesPrice??0.0}",
+                        text: "৳${widget.productModel.salesPrice??0.0}" ,
                         style: TextStyle(
                           fontSize: MediaQuery.of(context).size.width*(20/360),
                           fontWeight: FontWeight.normal,

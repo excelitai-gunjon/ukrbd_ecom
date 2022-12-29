@@ -33,6 +33,13 @@ class BannerProviderUkrbd extends ChangeNotifier {
 
         BannerModelUkrbd bannerModelUkrbd=BannerModelUkrbd.fromJson(apiResponse.response.data);
         _mainBannerList=bannerModelUkrbd.sliders;
+
+
+        print(".............._mainBannerList.length...................");
+        print(_mainBannerList.length);
+
+
+
         _currentIndex = 0;
         notifyListeners();
       } else {

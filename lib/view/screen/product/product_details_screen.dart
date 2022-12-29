@@ -22,7 +22,6 @@ import 'package:ecom_ukrbd/view/screen/product/widget/product_title_view.dart';
 import 'package:ecom_ukrbd/view/screen/product/widget/related_product_view.dart';
 import 'package:ecom_ukrbd/view/screen/product/widget/review_widget.dart';
 import 'package:ecom_ukrbd/view/screen/product/widget/youtube_video_widget.dart';
-import 'package:ecom_ukrbd/view/screen/wishlist/wishlist_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'faq_and_review_screen.dart';

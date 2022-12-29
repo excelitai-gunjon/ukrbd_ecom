@@ -20,15 +20,30 @@ class ProductWidgetUkrbd extends StatelessWidget {
     final int befor_discount=productModel.discount.isNotEmpty?int.tryParse(productModel.salesPrice)-int.tryParse(productModel.discount):int.tryParse(productModel.salesPrice);
 
 
+    //
+    //
+    // print(">>>>>>>>>>>>check<<<<<<<<<<");
+    // print(">>>>>>>>>>>>check<<<<<<<<<<");
+    //
+    //
+    // print(productModel.toJson());
+
+
+
+
     return InkWell(
       onTap: () {
         Navigator.push(context, PageRouteBuilder(
           transitionDuration: Duration(milliseconds: 1000),
           pageBuilder: (context, anim1, anim2) => ProductDetailsScreenUkrbd(productModel: productModel,),
+
+
         ));
+
+       // print("https://ukrbd.com/images/products/${productModel.productimages[0].image}");
       },
       child: Container(
-        height: MediaQuery.of(context).size.width/1.5,
+       // height: MediaQuery.of(context).size.width/1.3,
         margin: EdgeInsets.all(5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -41,7 +56,7 @@ class ProductWidgetUkrbd extends StatelessWidget {
               children: [
             // Product Image
             Container(
-              height: MediaQuery.of(context).size.width/2.3,
+           //   height: MediaQuery.of(context).size.width/2.3,
               decoration: BoxDecoration(
                 color: ColorResources.getIconBg(context),
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
@@ -50,11 +65,18 @@ class ProductWidgetUkrbd extends StatelessWidget {
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
                 child: FadeInImage.assetNetwork(
                   placeholder: Images.placeholder, fit: BoxFit.contain,
-                  height: MediaQuery.of(context).size.width/2.45,
+              //   height: MediaQuery.of(context).size.width/2.45,
+
                   // image: '${Provider.of<SplashProvider>(context, listen: false).baseUrls.productThumbnailUrl}/${productModel.thumbnail}',
                   image: "https://ukrbd.com/images/products/${productModel.productimages[0].image}",
                   imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder_1x1,
-                      fit: BoxFit.contain,height: MediaQuery.of(context).size.width/2.45),
+                      fit: BoxFit.contain,
+
+                      // height: MediaQuery.of(context).size.width/2.45,
+
+                  ),
+
+
                 ),
               ),
             ),
@@ -107,14 +129,17 @@ class ProductWidgetUkrbd extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: "৳${productModel.salesPrice??0.0}",
+
+                         // text: '৳${befor_discount}',
+                         text: "৳${productModel.price??0.0}  ",
                           style: TextStyle(
                             fontSize: MediaQuery.of(context).size.width*(15/360),
                             fontWeight: FontWeight.normal,
                           ),
                         ),
                         TextSpan(
-                          text: ' ৳${befor_discount}',
+                          text: "৳${productModel.offerPrice??0.0}",
+                          //text: ' ৳${befor_discount}',
                           style: TextStyle(
                             fontWeight: FontWeight.normal,
                             color: Colors.red,
@@ -138,33 +163,33 @@ class ProductWidgetUkrbd extends StatelessWidget {
 
           // Off
 
-          int.tryParse(productModel.discount) > 0 ?
-          Positioned(top: 0, left: 0, child: Container(
-            height: 20,
-            padding: EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-            decoration: BoxDecoration(
-              color: ColorResources.getPrimary(context),
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
-            ),
-
-
-            // child: Center(
-            //   child: Text(PriceConverter.percentageCalculation(context, int.tryParse(productModel.discount??"0.0").toDouble(),
-            //       // int.tryParse(productModel.offerPrice).toDouble(), productModel.discountType),
-            //       int.tryParse(productModel.offerPrice??"0.0").toDouble(), "percentage"),
-            //     style: robotoRegular.copyWith(color: Theme.of(context).highlightColor,
-            //         fontSize: Dimensions.FONT_SIZE_SMALL),
-            //   ),
-            // ),
-              child: Center(
-                child: Text(
-                          "${offers.toStringAsFixed(2)}% off",
-                  style: robotoRegular.copyWith(color: Theme.of(context).highlightColor,
-                      fontSize: Dimensions.FONT_SIZE_SMALL),
-                ),
-              )
-          ),
-          ) : SizedBox.shrink(),
+          // int.tryParse(productModel.discount) > 0 ?
+          // Positioned(top: 0, left: 0, child: Container(
+          //   height: 20,
+          //   padding: EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+          //   decoration: BoxDecoration(
+          //     color: ColorResources.getPrimary(context),
+          //     borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
+          //   ),
+          //
+          //
+          //   // child: Center(
+          //   //   child: Text(PriceConverter.percentageCalculation(context, int.tryParse(productModel.discount??"0.0").toDouble(),
+          //   //       // int.tryParse(productModel.offerPrice).toDouble(), productModel.discountType),
+          //   //       int.tryParse(productModel.offerPrice??"0.0").toDouble(), "percentage"),
+          //   //     style: robotoRegular.copyWith(color: Theme.of(context).highlightColor,
+          //   //         fontSize: Dimensions.FONT_SIZE_SMALL),
+          //   //   ),
+          //   // ),
+          //     child: Center(
+          //       child: Text(
+          //                 "${offers.toStringAsFixed(2)}% off",
+          //         style: robotoRegular.copyWith(color: Theme.of(context).highlightColor,
+          //             fontSize: Dimensions.FONT_SIZE_SMALL),
+          //       ),
+          //     )
+          // ),
+          // ) : SizedBox.shrink(),
 
         ]),
       ),

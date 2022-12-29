@@ -1,12 +1,13 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-// import 'package:firebase_messaging/firebase_messaging.dart';
+
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/datasource/remote/dio/dio_client.dart';
 import 'package:ecom_ukrbd/data/datasource/remote/dio/ukrbd_dio_client.dart';
 import 'package:ecom_ukrbd/data/datasource/remote/exception/api_error_handler.dart';
 import 'package:ecom_ukrbd/data/model/body/login_model.dart';
+import 'package:ecom_ukrbd/data/model/body/merchant_register_model.dart';
 import 'package:ecom_ukrbd/data/model/body/register_model.dart';
 import 'package:ecom_ukrbd/data/model/body/register_model_ukrbd.dart';
 import 'package:ecom_ukrbd/data/model/response/base/api_response.dart';
@@ -47,6 +48,19 @@ class AuthRepoUkrbd {
     }
   }
 
+  Future<ApiResponse> merchantRegistration(MerchantRegisterModel register) async {
+    try {
+      Response response = await dioClient.post(
+        AppConstants.MERCHANT_REGISTER_UKRBD,
+        data: register.toJson(),
+        // queryParameters: register.toJson(),
+      );
+      return ApiResponse.withSuccess(response);
+    } catch (e) {
+      return ApiResponse.withError(ApiErrorHandler.getMessage(e));
+    }
+  }
+
   Future<ApiResponse> login(LoginModel loginBody) async {
     try {
       Response response = await dioClient.post(
@@ -59,33 +73,33 @@ class AuthRepoUkrbd {
     }
   }
 
-  Future<ApiResponse> updateToken() async {
-    try {
-      String _deviceToken = await _getDeviceToken();
-      // FirebaseMessaging.instance.subscribeToTopic(AppConstants.TOPIC);
-      Response response = await dioClient.post(
-        AppConstants.TOKEN_URI,
-        data: {"_method": "put", "cm_firebase_token": _deviceToken},
-      );
-      return ApiResponse.withSuccess(response);
-    } catch (e) {
-      return ApiResponse.withError(ApiErrorHandler.getMessage(e));
-    }
-  }
+  // Future<ApiResponse> updateToken() async {
+  //   try {
+  //     String _deviceToken = await _getDeviceToken();
+  //     FirebaseMessaging.instance.subscribeToTopic(AppConstants.TOPIC);
+  //     Response response = await dioClient.post(
+  //       AppConstants.TOKEN_URI,
+  //       data: {"_method": "put", "cm_firebase_token": _deviceToken},
+  //     );
+  //     return ApiResponse.withSuccess(response);
+  //   } catch (e) {
+  //     return ApiResponse.withError(ApiErrorHandler.getMessage(e));
+  //   }
+  // }
 
-  Future<String> _getDeviceToken() async {
-    String _deviceToken;
-    if(Platform.isIOS) {
-      // _deviceToken = await FirebaseMessaging.instance.getAPNSToken();
-    }else {
-      // _deviceToken = await FirebaseMessaging.instance.getToken();
-    }
-
-    if (_deviceToken != null) {
-      print('--------Device Token---------- '+_deviceToken);
-    }
-    return _deviceToken;
-  }
+  // Future<String> _getDeviceToken() async {
+  //   String _deviceToken;
+  //   if(Platform.isIOS) {
+  //     _deviceToken = await FirebaseMessaging.instance.getAPNSToken();
+  //   }else {
+  //     _deviceToken = await FirebaseMessaging.instance.getToken();
+  //   }
+  //
+  //   if (_deviceToken != null) {
+  //     print('--------Device Token---------- '+_deviceToken);
+  //   }
+  //   return _deviceToken;
+  // }
 
   // for  user token
   Future<void> saveUserToken(String token) async {
@@ -127,14 +141,14 @@ class AuthRepoUkrbd {
     return sharedPreferences.containsKey(AppConstants.TOKEN);
   }
 
-  Future<bool> clearSharedData() async {
-    //sharedPreferences.remove(AppConstants.CART_LIST);
-    sharedPreferences.remove(AppConstants.CURRENCY);
-    sharedPreferences.remove(AppConstants.TOKEN);
-    sharedPreferences.remove(AppConstants.USER);
-    // FirebaseMessaging.instance.unsubscribeFromTopic(AppConstants.TOPIC);
-    return true;
-  }
+  // Future<bool> clearSharedData() async {
+  //   //sharedPreferences.remove(AppConstants.CART_LIST);
+  //   sharedPreferences.remove(AppConstants.CURRENCY);
+  //   sharedPreferences.remove(AppConstants.TOKEN);
+  //   sharedPreferences.remove(AppConstants.USER);
+  //   FirebaseMessaging.instance.unsubscribeFromTopic(AppConstants.TOPIC);
+  //   return true;
+  // }
 
   // for verify Email
   Future<ApiResponse> checkEmail(String email, String temporaryToken) async {

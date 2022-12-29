@@ -65,6 +65,10 @@ class DioClientUkrbd {
         cancelToken: cancelToken,
         onReceiveProgress: onReceiveProgress,
       );
+    //   print(">>>>>>>>>>>   api response  print   >>>>>>>>>" );
+    //
+    // print(response.data);
+
       return response;
     } on SocketException catch (e) {
       throw SocketException(e.toString());

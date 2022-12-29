@@ -133,19 +133,33 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                       ),
                     ),
                   ),
-
+                  //  child:Column(
+                  //   children: [
+                  //     BannersViewUkrbd(),
+                  //   ],
+                  // )
                   SliverToBoxAdapter(
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(Dimensions.HOME_PAGE_PADDING,
                           Dimensions.PADDING_SIZE_SMALL, Dimensions.PADDING_SIZE_DEFAULT, Dimensions.PADDING_SIZE_SMALL  ),
-                      child: Column(
+
+
+                      //  child:Column(
+                      //   children: [
+                      //     BannersViewUkrbd(),
+                      //   ],
+                      // )
+
+///
+                      child:      Column(
                         children: [
                           BannersViewUkrbd(),
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_EXTRA_SMALL,vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-                              child: Text(getTranslated('CATEGORY', context), style: titleHeader),
+                              child: Text("jvcdshg"),
+                            //  child: Text(getTranslated('CATEGORY', context), style: titleHeader),
                               // TitleRow(title: getTranslated('CATEGORY', context),
                               //     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AllCategoryScreen()))),
                             ),
