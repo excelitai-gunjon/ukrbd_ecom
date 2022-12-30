@@ -11,11 +11,13 @@ import 'package:ecom_ukrbd/view/basewidget/product_widget_ukrbd.dart';
 import 'package:ecom_ukrbd/view/screen/product/brand_and_category_product_screen_ukrbd.dart';
 import 'package:provider/provider.dart';
 
+
 class CategoryWiseProductViewWidget extends StatefulWidget {
-  String id;
+  List<Data> categoryWiseProductList;
   String title;
+  String id;
   bool reload;
-  CategoryWiseProductViewWidget({Key key,this.id,this.title,this.reload}) : super(key: key);
+  CategoryWiseProductViewWidget({Key key,this.id,this.categoryWiseProductList,this.title,this.reload}) : super(key: key);
 
   @override
   State<CategoryWiseProductViewWidget> createState() => _CategoryWiseProductViewWidgetState();
@@ -23,7 +25,7 @@ class CategoryWiseProductViewWidget extends StatefulWidget {
 
 class _CategoryWiseProductViewWidgetState extends State<CategoryWiseProductViewWidget> {
 
-  List<Data> categoryWiseProductList=[];
+  // List<Data> categoryWiseProductList=[];
 
   @override
   void initState() {
@@ -49,28 +51,17 @@ class _CategoryWiseProductViewWidgetState extends State<CategoryWiseProductViewW
           padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL,vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
           child: Padding(
             padding: const EdgeInsets.only(bottom: Dimensions.PADDING_SIZE_SMALL),
-            child: FutureBuilder(
-              future: Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, widget.id),
-              builder: ((context, snapshot) {
-                if(snapshot.hasData){
-                  List<Data> list=snapshot.data;
-                  return CustomTitleRow(title: getTranslated(widget.title, context),
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreenUkrbd(
-                          isBrand: false,
-                          id: widget.id,
-
-                          name: widget.title,
-                          isSubcategory: false,
-                          isHome: true,
-                          productsList: list,
-                        )));
-                      });
-                }else{
-                  return SizedBox.shrink();
-                }
-              }),
-            ),
+            child: widget.categoryWiseProductList.length!=0?CustomTitleRow(title: getTranslated(widget.title, context),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreenUkrbd(
+                    isBrand: false,
+                    id: widget.id,
+                    name: widget.title,
+                    isSubcategory: false,
+                    isHome: true,
+                    productsList: widget.categoryWiseProductList,
+                  )));
+                }):SizedBox.shrink(),
           ),
         ),
 

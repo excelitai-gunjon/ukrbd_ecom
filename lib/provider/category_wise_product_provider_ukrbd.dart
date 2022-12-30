@@ -26,20 +26,135 @@ class CategoryWiseProductProviderUkrbd with ChangeNotifier{
   List<Data> get categoryWiseProductList => _categoryWiseProductList;
   int get categorySelectedIndex => _categorySelectedIndex;
 
-  Future<List<Data>> getCategoryWiseProductListForHomePage(bool reload, BuildContext context,String categoryId) async {
+
+
+
+  // CategoryWiseProductViewWidget(id: "76",title: "Men's Fashion",),
+  List<Data> mensFashionList=[];
+  // CategoryWiseProductViewWidget(id: "80",title: "Ladies Fashion",),
+  List<Data> ladiesFashionList=[];
+  // CategoryWiseProductViewWidget(id: "55",title: "Computer & IT",),
+  List<Data> computerAndItList=[];
+  // CategoryWiseProductViewWidget(id: "71",title: "Mobile",),
+  List<Data> mobileList=[];
+  // CategoryWiseProductViewWidget(id: "78",title: "Fragrances",),
+  List<Data> fragrancesListList=[];
+  // CategoryWiseProductViewWidget(id: "75",title: "Networking",),
+  List<Data> networkingList=[];
+  // CategoryWiseProductViewWidget(id: "79",title: "kids Fashion",),
+  List<Data> kidsFashionList=[];
+  // CategoryWiseProductViewWidget(id: "74",title: "Health & Herbs",),
+  List<Data> healthAndHerdsList=[];
+  // CategoryWiseProductViewWidget(id: "52",title: "Stationery & Office",),
+  List<Data> stationaryAndOfficeList=[];
+  // CategoryWiseProductViewWidget(id: "56",title: "Electrical & Lighting",),
+  List<Data> electricalAndLightingList=[];
+  // CategoryWiseProductViewWidget(id: "58",title: "Electronics & Appliances",),
+  List<Data> electronicsAndAppliancesList=[];
+  // CategoryWiseProductViewWidget(id: "63",title: "Robotics and Artificial Intelligence",),
+  List<Data> roboticsAndArtificialIntelligenceList=[];
+  // CategoryWiseProductViewWidget(id: "65",title: "Lab Equipment",),
+  List<Data> labEquipmentList=[];
+  // CategoryWiseProductViewWidget(id: "66",title: "Furniture",),
+  List<Data> furnitureList=[];
+  // CategoryWiseProductViewWidget(id: "69",title: "Software Service & Solution",),
+  List<Data> softwareServiceAndSolutionList=[];
+  // CategoryWiseProductViewWidget(id: "81",title: "Comforter",),
+  List<Data> comforterList=[];
+  // CategoryWiseProductViewWidget(id: "82",title: "Winter Collection",),
+  List<Data> winterCollectionList=[];
+
+
+  Future<void> getCategoryWiseProductListForHomePage(bool reload, BuildContext context,String categoryId) async {
     List<Data> catProductList;
       ApiResponse apiResponse = await categoryWiseProductRepoUkrbd.getCategoryWiseProductList(categoryId);
 
-      if (apiResponse.response!= null && apiResponse.response.statusCode == 200)
+      print(apiResponse.response);
+      print(apiResponse.response);
+      print(apiResponse.response);
+      print(apiResponse.response);
+      print(apiResponse.response);
+      print(apiResponse.response);
+      print(apiResponse.response);
 
-      {
+      if (apiResponse.response!= null && apiResponse.response.statusCode == 200) {
         // apiResponse.response.data.forEach((category) => _categoryList.add(Category.fromJson(category)));
         CategoryWiseProduct productModelList = CategoryWiseProduct.fromJson(apiResponse.response.data);
         catProductList=productModelList.products.data.cast<Data>();
+
+        if(categoryId=="76"){
+          mensFashionList=catProductList;
+          notifyListeners();
+        }
+        if(categoryId=="80"){
+          ladiesFashionList=catProductList;
+          notifyListeners();
+        }
+        if(categoryId=="55"){
+          computerAndItList=catProductList;
+          notifyListeners();
+        }
+        if(categoryId=="71"){
+          mobileList=catProductList;
+          notifyListeners();
+        }
+
+        if(categoryId=="78"){
+          fragrancesListList=catProductList;
+          notifyListeners();
+        }
+        if(categoryId=="75"){
+          networkingList=catProductList;
+          notifyListeners();
+        }
+        if(categoryId=="79"){
+          kidsFashionList=catProductList;
+          notifyListeners();
+        }
+        if(categoryId=="74"){
+          healthAndHerdsList=catProductList;
+          notifyListeners();
+        }
+        if(categoryId=="52"){
+          stationaryAndOfficeList=catProductList;
+          notifyListeners();
+        }
+
+        if(categoryId=="58"){
+          electronicsAndAppliancesList=catProductList;
+          notifyListeners();
+        }
+        if(categoryId=="63"){
+          roboticsAndArtificialIntelligenceList=catProductList;
+          notifyListeners();
+        }
+        if(categoryId=="65"){
+          labEquipmentList=catProductList;
+          notifyListeners();
+        }
+        if(categoryId=="66"){
+          furnitureList=catProductList;
+          notifyListeners();
+        }
+        if(categoryId=="69"){
+          softwareServiceAndSolutionList=catProductList;
+          notifyListeners();
+        }
+        if(categoryId=="81"){
+          comforterList=catProductList;
+          notifyListeners();
+        }
+        if(categoryId=="82"){
+          winterCollectionList=catProductList;
+          notifyListeners();
+        }
+
       } else {
         ApiChecker.checkApi(context, apiResponse);
       }
-      return catProductList;
+
+      notifyListeners();
+      // return catProductList;
   }
 
   Future<void> getCategoryWiseProductList(bool reload, BuildContext context,String categoryId) async {

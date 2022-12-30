@@ -49,7 +49,7 @@ class Products {
   int lastPage;
   String lastPageUrl;
   List<Links> links;
-  String nextPageUrl;
+  dynamic nextPageUrl;
   String path;
   int perPage;
   dynamic prevPageUrl;

@@ -10,7 +10,7 @@ class Productimages {
     image = json['image'];
   }
   int id;
-  String productsId;
+  int productsId;
   String image;
 
   Map<String, dynamic> toJson() {

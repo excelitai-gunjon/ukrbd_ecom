@@ -83,17 +83,17 @@ class Data {
   dynamic offerPrice;
   dynamic salesPrice;
   String productStatus;
-  String discount;
+  int discount;
   dynamic warranty;
   dynamic guarantee;
   String brand;
   dynamic tags;
-  String countSale;
-  String status;
+  int countSale;
+  int status;
   dynamic stock;
   dynamic category;
-  String categoriesId;
-  String subcategoriesId;
+  int categoriesId;
+  int subcategoriesId;
   dynamic galleriesId;
   String description;
   dynamic priority;
@@ -146,26 +146,4 @@ class Data {
     return map;
   }
 
-}
-
-class ProductImageModel {
-  int id;
-  String productsId;
-  String image;
-
-  ProductImageModel({this.id, this.productsId, this.image});
-
-  ProductImageModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    productsId = json['products_id'];
-    image = json['image'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['products_id'] = this.productsId;
-    data['image'] = this.image;
-    return data;
-  }
 }

@@ -1,3 +1,4 @@
+import 'package:ecom_ukrbd/provider/category_wise_product_provider_ukrbd.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/banner_provider_ukrbd.dart';
@@ -38,7 +39,24 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
 
     await Provider.of<BannerProviderUkrbd>(context, listen: false).getBannerList(reload, context);
 
-    Provider.of<CategoryProviderUkrbd>(context, listen: false).getCategoryList(reload, context);
+    await Provider.of<CategoryProviderUkrbd>(context, listen: false).getCategoryList(reload, context);
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "82");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "81");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "66");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "65");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "63");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "58");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "56");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "52");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "59");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "74");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "79");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "75");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "78");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "80");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "76");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "55");
+    await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "71");
 
     print("......................... load home page data .........................");
     print("......................... load home page data .........................");
@@ -188,124 +206,176 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          CategoryWiseProductViewWidget(id: "76",title: "Men's Fashion",),
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.mensFashionList,id: "76",title: "Men's Fashion",);
+                            },
+                          ),
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          CategoryWiseProductViewWidget(id: "80",title: "Ladies Fashion",),
+                          // CategoryWiseProductViewWidget(id: "80",title: "Ladies Fashion",),
+
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.ladiesFashionList,id: "80",title: "Ladies Fashion",);
+                            },
+                          ),
+                          SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
+
+                          // CategoryWiseProductViewWidget(id: "55",title: "Computer & IT",),
+
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.computerAndItList,id: "55",title: "Computer & IT",);
+                            },
+                          ),
+                          SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
+
+                          // CategoryWiseProductViewWidget(id: "71",title: "Mobile",),
+
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.mobileList,id: "71",title: "Mobile",);
+                            },
+                          ),
+                          SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
+
+                          // CategoryWiseProductViewWidget(id: "78",title: "Fragrances",),
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.fragrancesListList,id: "78",title: "Fragrances",);
+                            },
+                          ),
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          CategoryWiseProductViewWidget(id: "55",title: "Computer & IT",),
+                          // CategoryWiseProductViewWidget(id: "75",title: "Networking",),
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.networkingList,id: "75",title: "Networking",);
+                            },
+                          ),
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          CategoryWiseProductViewWidget(id: "71",title: "Mobile",),
+                          // CategoryWiseProductViewWidget(id: "79",title: "kids Fashion",),
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.kidsFashionList,id: "79",title: "kids Fashion",);
+                            },
+                          ),
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          CategoryWiseProductViewWidget(id: "78",title: "Fragrances",),
+                          // CategoryWiseProductViewWidget(id: "74",title: "Health & Herbs",),
+
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.healthAndHerdsList,id: "74",title: "Health & Herbs",);
+                            },
+                          ),
+
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          CategoryWiseProductViewWidget(id: "75",title: "Networking",),
+                          // CategoryWiseProductViewWidget(id: "52",title: "Stationery & Office",),
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.stationaryAndOfficeList,id: "52",title: "Stationery & Office",);
+                            },
+                          ),
+
+
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          CategoryWiseProductViewWidget(id: "79",title: "kids Fashion",),
+                          // CategoryWiseProductViewWidget(id: "56",title: "Electrical & Lighting",),
+
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.electricalAndLightingList,id: "56",title: "Electrical & Lighting",);
+                            },
+                          ),
+
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          CategoryWiseProductViewWidget(id: "74",title: "Health & Herbs",),
+                          // CategoryWiseProductViewWidget(id: "58",title: "Electronics & Appliances",),
+
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.electronicsAndAppliancesList,id: "58",title: "Electronics & Appliances",);
+                            },
+                          ),
+
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          CategoryWiseProductViewWidget(id: "52",title: "Stationery & Office",),
+                          // CategoryWiseProductViewWidget(id: "63",title: "Robotics and Artificial Intelligence",),
+
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.roboticsAndArtificialIntelligenceList,id: "63",title: "Robotics and Artificial Intelligence",);
+                            },
+                          ),
+
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          CategoryWiseProductViewWidget(id: "56",title: "Electrical & Lighting",),
+                          // CategoryWiseProductViewWidget(id: "65",title: "Lab Equipment",),
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.labEquipmentList,id: "65",title: "Lab Equipment",);
+                            },
+                          ),
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          CategoryWiseProductViewWidget(id: "58",title: "Electronics & Appliances",),
+                          // CategoryWiseProductViewWidget(id: "66",title: "Furniture",),
+
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.furnitureList,id: "66",title: "Furniture",);
+                            },
+                          ),
+
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          CategoryWiseProductViewWidget(id: "63",title: "Robotics and Artificial Intelligence",),
+                          // CategoryWiseProductViewWidget(id: "69",title: "Software Service & Solution",),
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.softwareServiceAndSolutionList,id: "69",title: "Software Service & Solution",);
+                            },
+                          ),
+
+
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          CategoryWiseProductViewWidget(id: "65",title: "Lab Equipment",),
+                          // CategoryWiseProductViewWidget(id: "81",title: "Comforter",),
+
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.comforterList,id: "81",title: "Comforter",);
+                            },
+                          ),
+
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          CategoryWiseProductViewWidget(id: "66",title: "Furniture",),
+                          // CategoryWiseProductViewWidget(id: "82",title: "Winter Collection",),
+
+                          Consumer<CategoryWiseProductProviderUkrbd>(
+                            builder: (context,categoryWiseProductProviderUkrbd,child){
+                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.winterCollectionList,id: "82",title: "Winter Collection",);
+                            },
+                          ),
+
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          CategoryWiseProductViewWidget(id: "69",title: "Software Service & Solution",),
-
-                          SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
-                          CategoryWiseProductViewWidget(id: "81",title: "Comforter",),
-
-                          SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
-                          CategoryWiseProductViewWidget(id: "82",title: "Winter Collection",),
-
-                          SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
-                          // Padding(
-                          //   padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
-                          //   child: MensFashionProductView(scrollController: _scrollController, isHome: true,),
-                          // ),
-
-
-
-
-
-
-                          // Featured Deal
-                          // Consumer<FeaturedDealProvider>(
-                          //   builder: (context, featuredDealProvider, child) {
-                          //     return featuredDealProvider.featuredDealProductList != null && featuredDealProvider.featuredDealProductList.length >0 ?
-                          //     Padding(padding: const EdgeInsets.only(bottom: Dimensions.PADDING_SIZE_SMALL),
-                          //       child: TitleRow(title: getTranslated('featured_deals', context),
-                          //           onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => FeaturedDealScreen()));}),
-                          //     ) : SizedBox.shrink();},),
-                          //
-                          // Consumer<FeaturedDealProvider>(
-                          //   builder: (context, featuredDealProvider, child) {
-                          //     return featuredDealProvider.featuredDealProductList != null && featuredDealProvider.featuredDealProductList.length >0 ?
-                          //    Container(height: featuredDealProvider.featuredDealProductList.length> 4 ? 120 * 4.0 : 120 * (double.parse(featuredDealProvider.featuredDealProductList.length.toString())),
-                          //         child: Padding(
-                          //           padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
-                          //           child: FeaturedDealsView(),
-                          //         )) : SizedBox.shrink();},),
-
-
-
-
-                          // Padding(
-                          //   padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
-                          //   child: RecommendedProductView(),
-                          // ),
-
-
-
-
-
-                          //footer banner
-                          // Consumer<BannerProvider>(builder: (context, footerBannerProvider, child){
-                          //   return footerBannerProvider.mainSectionBannerList != null &&
-                          //       footerBannerProvider.mainSectionBannerList.length > 0?
-                          //   Padding(
-                          //     padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
-                          //     child: MainSectionBannersView(index: 0,),
-                          //   ):SizedBox();
-                          //
-                          // }),
                           Padding(
                             padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
                             child: Padding(
