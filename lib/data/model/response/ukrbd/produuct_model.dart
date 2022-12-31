@@ -73,36 +73,36 @@ class Data {
       });
     }
   }
-  int id;
+  dynamic id;
   dynamic productImage;
-  String productName;
-  String productCode;
-  String purchasePrice;
-  String price;
-  String offerPrice;
-  String salesPrice;
-  String productStatus;
-  String discount;
-  String warranty;
-  String guarantee;
-  String brand;
+  dynamic productName;
+  dynamic productCode;
+  dynamic purchasePrice;
+  dynamic price;
+  dynamic offerPrice;
+  dynamic salesPrice;
+  dynamic productStatus;
+  dynamic discount;
+  dynamic warranty;
+  dynamic guarantee;
+  dynamic brand;
   dynamic tags;
-  String countSale;
-  String status;
+  dynamic countSale;
+  dynamic status;
   dynamic stock;
   dynamic category;
-  String categoriesId;
-  String subcategoriesId;
+  dynamic categoriesId;
+  dynamic subcategoriesId;
   dynamic galleriesId;
-  String description;
+  dynamic description;
   dynamic priority;
   dynamic moushopsId;
   dynamic divisionsId;
   dynamic districtsId;
   dynamic locationsId;
   dynamic isDeleted;
-  String createdAt;
-  String updatedAt;
+  dynamic createdAt;
+  dynamic updatedAt;
   dynamic deletedAt;
   List<Productimages> productimages;
 
@@ -159,9 +159,9 @@ class Productimages {
     productsId = json['products_id'];
     image = json['image'];
   }
-  int id;
-  String productsId;
-  String image;
+  dynamic id;
+  dynamic productsId;
+  dynamic image;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

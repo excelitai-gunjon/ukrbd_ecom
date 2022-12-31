@@ -57,13 +57,52 @@ class CartProviderUkrbd with ChangeNotifier{
   }
 
 
-  void addToCart(Data productModel,int count){
+  void addToCart(Data productModel,int count,BuildContext context){
 
     _subTotal= int.tryParse(productModel.salesPrice)*count+_subTotal;
     _totalItem=_totalItem+count;
+    _cartList.contains(productModel)?
+
+    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    //   content: const Text('Already Added!',   style: TextStyle(
+    //     color: Colors.black87,
+    //   ),),
+    //   backgroundColor:   Theme.of(context).primaryColor,
+    //   elevation: 3.0,
+    //   duration: Duration(seconds: 1),
+    //   behavior: SnackBarBehavior.floating,
+    //   shape: RoundedRectangleBorder(
+    //       borderRadius: BorderRadius.all(Radius.circular(5))),
+    //   // action: SnackBarAction(
+    //   //   label: 'dismiss',
+    //   //   onPressed: () {},
+    //   // ),
+    // )):_cartList.add(productModel);
+
+    SizedBox():_cartList.add(productModel);
+
+
+
     List<String> carts = [];
-    _cartList.add(productModel);
+    // _cartList.add(productModel);
     _itemCound.add(count);
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    content: const Text('Product Added!',   style: TextStyle(
+    color: Colors.black87,
+    ),),
+    backgroundColor:   Theme.of(context).primaryColor,
+    elevation: 3.0,
+    duration: Duration(seconds: 1),
+    behavior: SnackBarBehavior.floating,
+    shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(5))),
+    // action: SnackBarAction(
+    //   label: 'dismiss',
+    //   onPressed: () {},
+    // ),
+    ));
+
 
     // _cartList.forEach((cartModel) => carts.add(jsonEncode(cartModel)) );
     // sharedPreferences.setStringList(AppConstants.CART_LIST, carts);

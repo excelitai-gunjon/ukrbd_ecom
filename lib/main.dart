@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:ecom_ukrbd/provider/auth_provider_ukrbd.dart';
+import 'package:ecom_ukrbd/view/screen/home/home_screens_ukrbd.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -143,7 +144,8 @@ class MyApp extends StatelessWidget {
       supportedLocales: _locals,
       // home: orderId == null ? SplashScreen() : OrderDetailsScreen(orderModel: null,
       //   orderId: orderId, orderType: 'default_type',isNotification: true),
-      home: SplashScreen(),
+   //   home: HomePageUkrbd(),
+    home: SplashScreen(),
     );
   }
 }

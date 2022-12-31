@@ -27,7 +27,8 @@ class AllCategoryScreenUkrbd extends StatelessWidget {
       body: Column(
         children: [
 
-          CustomAppBar(title: getTranslated('CATEGORY', context)),
+
+        CustomAppBar(title: getTranslated('CATEGORY', context)),
 
           Expanded(child: Consumer<CategoryProviderUkrbd>(
             builder: (context, categoryProvider, child) {
@@ -83,7 +84,7 @@ class AllCategoryScreenUkrbd extends StatelessWidget {
                           title: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(getTranslated('all', context), style: titilliumSemiBold, maxLines: 2, overflow: TextOverflow.ellipsis),
+                              Expanded(child: Text(getTranslated('all', context), style: titilliumSemiBold, maxLines: 2, overflow: TextOverflow.ellipsis)),
                               Container(height: MediaQuery.of(context).size.width*.11,width: 1,color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,)
                             ],
                           ),
@@ -134,7 +135,8 @@ class AllCategoryScreenUkrbd extends StatelessWidget {
                           title: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(_subCategory.subCategory, style: titilliumSemiBold, maxLines: 2, overflow: TextOverflow.ellipsis),
+
+                           Expanded(child: Text(_subCategory.subCategory, style: titilliumSemiBold, maxLines: 2, overflow: TextOverflow.ellipsis)),
                               Container(height: MediaQuery.of(context).size.width*.11,width: 1,color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,)
                             ],
                           ),

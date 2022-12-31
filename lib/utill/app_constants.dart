@@ -4,11 +4,15 @@ class AppConstants {
   static const String APP_NAME = 'Ukrbd';
   static const String APP_VERSION = '12.0';
   static const String BASE_URL = 'https://6valley.6amtech.com';
+
+
+
   /// for ukrbd
   static const String UKRBD_BASE_URL = 'http://ukrbd.com';
   static const String REGISTER_UKRBD = '/api/customer/register';
   static const String MERCHANT_REGISTER_UKRBD = '/api/merchandiser/register';
 
+  // static const String BASE_URL = 'http://ukrbd.com';
 
   static const String USER_ID = 'userId';
   static const String NAME = 'name';

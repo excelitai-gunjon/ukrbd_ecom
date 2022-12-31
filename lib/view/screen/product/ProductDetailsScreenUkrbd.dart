@@ -292,6 +292,7 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                 Container(
                   height: size.width*(35/360),
                   width: size.width*(75/360),
+                //  width: size.width*(75/360),
                   color: Theme.of(context).primaryColor,
                   child: Stack(
                     clipBehavior: Clip.none,
@@ -376,9 +377,21 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                   builder: (context,cartProviderUkrbd,child){
                     return InkWell(
                       onTap: (){
+
+
+
+
                         if(_counter>0){
-                          cartProviderUkrbd.addToCart(widget.productModel,_counter);
+
+
+
+
+
+                          cartProviderUkrbd.addToCart(widget.productModel,_counter,context);
+
+
                           Navigator.of(context).push(MaterialPageRoute(builder: (context) => CartScreenUkrbd()));
+
                         }
                       },
                       child: ClipRRect(

@@ -21,14 +21,14 @@ class Subcategories {
     updatedAt = json['updated_at'];
     deletedAt = json['deleted_at'];
   }
-  int id;
-  String categoriesId;
-  String subCategory;
-  String userId;
+  dynamic id;
+  dynamic categoriesId;
+  dynamic subCategory;
+  dynamic userId;
   dynamic status;
   dynamic priority;
-  String createdAt;
-  String updatedAt;
+  dynamic createdAt;
+  dynamic updatedAt;
   dynamic deletedAt;
 
   Map<String, dynamic> toJson() {

@@ -28,14 +28,14 @@ class Categories {
       });
     }
   }
-  int id;
-  String category;
-  String image;
-  String priority;
-  String status;
+  dynamic  id;
+  dynamic  category;
+  dynamic  image;
+  dynamic  priority;
+  dynamic  status;
   dynamic isDeleted;
-  String createdAt;
-  String updatedAt;
+  dynamic  createdAt;
+  dynamic  updatedAt;
   List<Subcategories> subcategories;
 
   Map<String, dynamic> toJson() {

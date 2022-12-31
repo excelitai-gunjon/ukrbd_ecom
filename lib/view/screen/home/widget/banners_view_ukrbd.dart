@@ -49,7 +49,7 @@ class _BannersViewUkrbdState extends State<BannersViewUkrbd> {
                       enlargeCenterPage: true,
                       disableCenter: true,
                       onPageChanged: (index, reason) {
-                        Provider.of<BannerProvider>(context, listen: false).setCurrentIndex(index);
+                        Provider.of<BannerProviderUkrbd>(context, listen: false).setCurrentIndex(index);
                       },
                     ),
                     itemCount: bannerProvider.mainBannerList.length == 0 ? 1 : bannerProvider.mainBannerList.length,

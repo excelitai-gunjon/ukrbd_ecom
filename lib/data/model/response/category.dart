@@ -1,23 +1,23 @@
 class Category {
-  int _id;
-  String _name;
-  String _slug;
-  String _icon;
-  int _parentId;
-  int _position;
-  String _createdAt;
-  String _updatedAt;
+  dynamic _id;
+  dynamic  _name;
+  dynamic  _slug;
+  dynamic  _icon;
+  dynamic _parentId;
+  dynamic _position;
+  dynamic  _createdAt;
+  dynamic  _updatedAt;
   List<SubCategory> _subCategories;
 
   Category(
-      {int id,
-        String name,
-        String slug,
-        String icon,
-        int parentId,
-        int position,
-        String createdAt,
-        String updatedAt,
+      {dynamic id,
+        dynamic  name,
+        dynamic  slug,
+        dynamic  icon,
+        dynamic parentId,
+        dynamic position,
+        dynamic  createdAt,
+        dynamic  updatedAt,
         List<SubCategory> subCategories}) {
     this._id = id;
     this._name = name;
@@ -30,17 +30,17 @@ class Category {
     this._subCategories = subCategories;
   }
 
-  int get id => _id;
-  String get name => _name;
-  String get slug => _slug;
-  String get icon => _icon;
-  int get parentId => _parentId;
-  int get position => _position;
-  String get createdAt => _createdAt;
-  String get updatedAt => _updatedAt;
+  dynamic get id => _id;
+  dynamic  get name => _name;
+  dynamic  get slug => _slug;
+  dynamic  get icon => _icon;
+  dynamic get parentId => _parentId;
+  dynamic get position => _position;
+  dynamic  get createdAt => _createdAt;
+  dynamic  get updatedAt => _updatedAt;
   List<SubCategory> get subCategories => _subCategories;
 
-  Category.fromJson(Map<String, dynamic> json) {
+  Category.fromJson(Map<String, dynamic > json) {
     _id = json['id'];
     _name = json['name'];
     _slug = json['slug'];
@@ -57,8 +57,8 @@ class Category {
     }
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String, dynamic > toJson() {
+    final Map<String, dynamic > data = new Map<String, dynamic >();
     data['id'] = this._id;
     data['name'] = this._name;
     data['slug'] = this._slug;
@@ -75,25 +75,25 @@ class Category {
 }
 
 class SubCategory {
-  int _id;
-  String _name;
-  String _slug;
-  String _icon;
-  int _parentId;
-  int _position;
-  String _createdAt;
-  String _updatedAt;
+  dynamic _id;
+  dynamic  _name;
+  dynamic  _slug;
+  dynamic  _icon;
+  dynamic _parentId;
+  dynamic _position;
+  dynamic  _createdAt;
+  dynamic  _updatedAt;
   List<SubSubCategory> _subSubCategories;
 
   SubCategory(
-      {int id,
-        String name,
-        String slug,
-        String icon,
-        int parentId,
-        int position,
-        String createdAt,
-        String updatedAt,
+      {dynamic id,
+        dynamic  name,
+        dynamic  slug,
+        dynamic  icon,
+        dynamic parentId,
+        dynamic position,
+        dynamic  createdAt,
+        dynamic  updatedAt,
         List<SubSubCategory> subSubCategories}) {
     this._id = id;
     this._name = name;
@@ -106,17 +106,17 @@ class SubCategory {
     this._subSubCategories = subSubCategories;
   }
 
-  int get id => _id;
-  String get name => _name;
-  String get slug => _slug;
-  String get icon => _icon;
-  int get parentId => _parentId;
-  int get position => _position;
-  String get createdAt => _createdAt;
-  String get updatedAt => _updatedAt;
+  dynamic get id => _id;
+  dynamic  get name => _name;
+  dynamic  get slug => _slug;
+  dynamic  get icon => _icon;
+  dynamic get parentId => _parentId;
+  dynamic get position => _position;
+  dynamic  get createdAt => _createdAt;
+  dynamic  get updatedAt => _updatedAt;
   List<SubSubCategory> get subSubCategories => _subSubCategories;
 
-  SubCategory.fromJson(Map<String, dynamic> json) {
+  SubCategory.fromJson(Map<String, dynamic > json) {
     _id = json['id'];
     _name = json['name'];
     _slug = json['slug'];
@@ -133,8 +133,8 @@ class SubCategory {
     }
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String, dynamic > toJson() {
+    final Map<String, dynamic > data = new Map<String, dynamic >();
     data['id'] = this._id;
     data['name'] = this._name;
     data['slug'] = this._slug;
@@ -151,24 +151,24 @@ class SubCategory {
 }
 
 class SubSubCategory {
-  int _id;
-  String _name;
-  String _slug;
-  String _icon;
-  int _parentId;
-  int _position;
-  String _createdAt;
-  String _updatedAt;
+  dynamic _id;
+  dynamic  _name;
+  dynamic  _slug;
+  dynamic  _icon;
+  dynamic _parentId;
+  dynamic _position;
+  dynamic  _createdAt;
+  dynamic  _updatedAt;
 
   SubSubCategory(
-      {int id,
-        String name,
-        String slug,
-        String icon,
-        int parentId,
-        int position,
-        String createdAt,
-        String updatedAt}) {
+      {dynamic id,
+        dynamic  name,
+        dynamic  slug,
+        dynamic  icon,
+        dynamic parentId,
+        dynamic position,
+        dynamic  createdAt,
+        dynamic  updatedAt}) {
     this._id = id;
     this._name = name;
     this._slug = slug;
@@ -179,16 +179,16 @@ class SubSubCategory {
     this._updatedAt = updatedAt;
   }
 
-  int get id => _id;
-  String get name => _name;
-  String get slug => _slug;
-  String get icon => _icon;
-  int get parentId => _parentId;
-  int get position => _position;
-  String get createdAt => _createdAt;
-  String get updatedAt => _updatedAt;
+  dynamic get id => _id;
+  dynamic  get name => _name;
+  dynamic  get slug => _slug;
+  dynamic  get icon => _icon;
+  dynamic get parentId => _parentId;
+  dynamic get position => _position;
+  dynamic  get createdAt => _createdAt;
+  dynamic  get updatedAt => _updatedAt;
 
-  SubSubCategory.fromJson(Map<String, dynamic> json) {
+  SubSubCategory.fromJson(Map<String, dynamic > json) {
     _id = json['id'];
     _name = json['name'];
     _slug = json['slug'];
@@ -199,8 +199,8 @@ class SubSubCategory {
     _updatedAt = json['updated_at'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<String, dynamic > toJson() {
+    final Map<String, dynamic > data = new Map<String, dynamic >();
     data['id'] = this._id;
     data['name'] = this._name;
     data['slug'] = this._slug;
