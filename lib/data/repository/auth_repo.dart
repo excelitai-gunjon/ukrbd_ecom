@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:ecom_ukrbd/data/datasource/remote/dio/ukrbd_dio_client.dart';
 // import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/datasource/remote/dio/dio_client.dart';
@@ -13,7 +14,7 @@ import 'package:ecom_ukrbd/utill/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthRepo {
-  final DioClient dioClient;
+  final DioClientUkrbd dioClient;
   final SharedPreferences sharedPreferences;
   AuthRepo({@required this.dioClient, @required this.sharedPreferences});
 

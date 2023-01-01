@@ -17,6 +17,7 @@ import 'package:ecom_ukrbd/view/screen/onboarding/onboarding_screen.dart';
 import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
+  static const String routeName = "/splashscreen";
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }

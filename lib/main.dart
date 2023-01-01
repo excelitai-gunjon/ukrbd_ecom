@@ -1,5 +1,16 @@
 import 'dart:io';
 import 'package:ecom_ukrbd/provider/auth_provider_ukrbd.dart';
+import 'package:ecom_ukrbd/provider/bottom_navigation_bar_provider.dart';
+import 'package:ecom_ukrbd/view/screen/cart/cart_screen_ukrbd.dart';
+import 'package:ecom_ukrbd/view/screen/checkout/checkout_screen_ukrbd.dart';
+import 'package:ecom_ukrbd/view/screen/dashboard/dashboard.dart';
+import 'package:ecom_ukrbd/view/screen/dashboard/dashboard_screen_ukrbd.dart';
+import 'package:ecom_ukrbd/view/screen/home/home_screens_ukrbd.dart';
+import 'package:ecom_ukrbd/view/screen/order/order_screen_ukrbd.dart';
+import 'package:ecom_ukrbd/view/screen/product/ProductDetailsScreenUkrbd.dart';
+import 'package:ecom_ukrbd/view/screen/product/brand_and_category_product_screen_ukrbd.dart';
+import 'package:ecom_ukrbd/view/screen/profile/profile_screen_ukrbd.dart';
+import 'package:ecom_ukrbd/view/screen/search/search_screen.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -80,6 +91,9 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (context) => di.sl<SubCategoryWiseProductProviderUkrbd>()),
       ChangeNotifierProvider(create: (context) => di.sl<CartProviderUkrbd>()),
       ChangeNotifierProvider(create: (context) => di.sl<BannerProviderUkrbd>()),
+      ChangeNotifierProvider(create: (context) => di.sl<BottomNavigationBarProvider>()),
+
+
       ChangeNotifierProvider(create: (context) => di.sl<AuthProviderUkrbd>()),
 
       ///
@@ -140,10 +154,32 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
         FallbackLocalizationDelegate()
       ],
+
+     //initialRoute:DashBoard.routeName,
+   //  initialRoute:DashBoardScreenUkrbd.routeName,
+     initialRoute:SplashScreen.routeName,
+
+
+
+     // initialRoute: authProvider.getUserToken().isEmpty?LoginScreen.routeName:LandingPage.routeName,
+
+      ///
+      routes: {
+        SplashScreen.routeName:(context)=>SplashScreen(),
+     //   DashBoard.routeName: (context) => DashBoard(),
+        DashBoardScreenUkrbd.routeName: (context) => DashBoardScreenUkrbd(),
+        SearchScreen.routeName: (context) => SearchScreen(),
+        BrandAndCategoryProductScreenUkrbd.routeName: (context) => BrandAndCategoryProductScreenUkrbd(),
+        ProductDetailsScreenUkrbd.routeName: (context) => ProductDetailsScreenUkrbd(),
+        CartScreenUkrbd.routeName: (context) => CartScreenUkrbd(),
+        CheckoutUkrbd.routeName: (context) => CheckoutUkrbd(),
+
+
+      },
       supportedLocales: _locals,
       // home: orderId == null ? SplashScreen() : OrderDetailsScreen(orderModel: null,
       //   orderId: orderId, orderType: 'default_type',isNotification: true),
-      home: SplashScreen(),
+    // home: SplashScreen(),
     );
   }
 }

@@ -10,7 +10,7 @@ class Links {
     active = json['active'];
   }
   dynamic url;
-  String label;
+  dynamic label;
   bool active;
 
   Map<String, dynamic> toJson() {

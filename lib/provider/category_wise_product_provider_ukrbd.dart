@@ -80,6 +80,7 @@ class CategoryWiseProductProviderUkrbd with ChangeNotifier{
       if (apiResponse.response!= null && apiResponse.response.statusCode == 200) {
         // apiResponse.response.data.forEach((category) => _categoryList.add(Category.fromJson(category)));
         CategoryWiseProduct productModelList = CategoryWiseProduct.fromJson(apiResponse.response.data);
+
         catProductList=productModelList.products.data.cast<Data>();
 
         if(categoryId=="76"){

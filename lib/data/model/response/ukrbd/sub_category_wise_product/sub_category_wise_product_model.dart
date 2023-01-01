@@ -3,6 +3,8 @@
 
 import 'package:ecom_ukrbd/data/model/response/ukrbd/produuct_model.dart';
 
+
+
 class SubCategoryWiseProductModel {
   SubCategoryWiseProductModel({
       this.products,});
@@ -65,19 +67,19 @@ class Products {
     to = json['to'];
     total = json['total'];
   }
-  int currentPage;
+  dynamic   currentPage;
   List<Data> data;
-  String firstPageUrl;
-  int from;
-  int lastPage;
-  String lastPageUrl;
+  dynamic   firstPageUrl;
+  dynamic   from;
+  dynamic   lastPage;
+  dynamic   lastPageUrl;
   List<Links> links;
   dynamic nextPageUrl;
-  String path;
-  int perPage;
+  dynamic   path;
+  dynamic   perPage;
   dynamic prevPageUrl;
-  int to;
-  int total;
+  dynamic   to;
+  dynamic   total;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -179,36 +181,36 @@ class Products {
 //       });
 //     }
 //   }
-//   int id;
+//   dynamic   id;
 //   dynamic productImage;
-//   String productName;
-//   String productCode;
-//   String purchasePrice;
-//   String price;
-//   String offerPrice;
-//   String salesPrice;
-//   String productStatus;
-//   String discount;
-//   String warranty;
-//   String guarantee;
-//   String brand;
+//   dynamic   productName;
+//   dynamic   productCode;
+//   dynamic   purchasePrice;
+//   dynamic   price;
+//   dynamic   offerPrice;
+//   dynamic   salesPrice;
+//   dynamic   productStatus;
+//   dynamic   discount;
+//   dynamic   warranty;
+//   dynamic   guarantee;
+//   dynamic   brand;
 //   dynamic tags;
-//   String countSale;
-//   String status;
+//   dynamic   countSale;
+//   dynamic   status;
 //   dynamic stock;
 //   dynamic category;
-//   String categoriesId;
-//   String subcategoriesId;
+//   dynamic   categoriesId;
+//   dynamic   subcategoriesId;
 //   dynamic galleriesId;
-//   String description;
+//   dynamic   description;
 //   dynamic priority;
 //   dynamic moushopsId;
 //   dynamic divisionsId;
 //   dynamic districtsId;
 //   dynamic locationsId;
 //   dynamic isDeleted;
-//   String createdAt;
-//   String updatedAt;
+//   dynamic   createdAt;
+//   dynamic   updatedAt;
 //   dynamic deletedAt;
 //   List<Productimages> productimages;
 //
@@ -263,9 +265,9 @@ class Products {
 //     productsId = json['products_id'];
 //     image = json['image'];
 //   }
-//   int id;
-//   String productsId;
-//   String image;
+//   dynamic   id;
+//   dynamic   productsId;
+//   dynamic   image;
 //
 //   Map<String, dynamic> toJson() {
 //     final map = <String, dynamic>{};
@@ -288,7 +290,7 @@ class Links {
     active = json['active'];
   }
   dynamic url;
-  String label;
+  dynamic   label;
   bool active;
 
   Map<String, dynamic> toJson() {

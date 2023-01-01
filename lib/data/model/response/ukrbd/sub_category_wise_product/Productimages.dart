@@ -9,9 +9,9 @@ class Productimages {
     productsId = json['products_id'];
     image = json['image'];
   }
-  int id;
-  String productsId;
-  String image;
+  dynamic  id;
+  dynamic  productsId;
+  dynamic  image;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

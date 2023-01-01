@@ -15,9 +15,13 @@ import 'package:ecom_ukrbd/view/basewidget/textfield/custom_textfield.dart';
 import 'package:ecom_ukrbd/view/screen/auth/widget/code_picker_widget.dart';
 import 'package:ecom_ukrbd/view/screen/checkout/widget/DeliveryDetails.dart';
 import 'package:provider/provider.dart';
+
+import '../../../provider/bottom_navigation_bar_provider.dart';
 // import 'package:ecom_ukrbd/view/screen/checkout/DeliveryDetails.dart';
 
 class CheckoutUkrbd extends StatefulWidget {
+  static const String routeName = "/checkoutUkrbd";
+
   String cartSubTotal;
    CheckoutUkrbd({Key key,this.cartSubTotal}) : super(key: key);
 
@@ -193,209 +197,222 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-        appBar: AppBar(
+    return Consumer<BottomNavigationBarProvider>(
+        builder: (context, bottomNavigationBarProvider, child){
+
+          return Scaffold(
+            bottomNavigationBar:
+            bottomNavigationBarProvider.bottomNavigationBar(context, false),
+
+            appBar: AppBar(
               leading: InkWell(onTap: (){
                 Navigator.of(context).pop();
               },child: Icon(Icons.arrow_back_ios_new_outlined, color: Colors.black,)),
               title: const Text("Checkout",
-              style: TextStyle(
-                color: Colors.black
-              ),),
+                style: TextStyle(
+                    color: Colors.black
+                ),),
               backgroundColor: Colors.white70,
 
             ),
-      body: Column(
-        // padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_SMALL),
-        children: [
-          // SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
-          //           Text("BILLING DETAILS",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            body: Column(
+              // padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_SMALL),
+              children: [
+                // SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+                //           Text("BILLING DETAILS",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
 
-          SizedBox(
-            height: MediaQuery.of(context).size.width*(360/360),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
-                  Padding(
-                    padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT),
-                    child: Text("BILLING DETAILS",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                  ),
-
-                  // for first and last name
-                  // Container(
-                  //   margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT),
-                  //   child: Row(
-                  //     children: [
-                  //       Expanded(child: CustomTextField(
-                  //         hintText: getTranslated('FIRST_NAME', context),
-                  //         textInputType: TextInputType.name,
-                  //         focusNode: _fNameFocus,
-                  //         nextNode: _lNameFocus,
-                  //         isPhoneNumber: false,
-                  //         capitalization: TextCapitalization.words,
-                  //         controller: _firstNameController,)),
-                  //       SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT),
-                  //
-                  //
-                  //       Expanded(child: CustomTextField(
-                  //         hintText: getTranslated('LAST_NAME', context),
-                  //         focusNode: _lNameFocus,
-                  //         nextNode: _emailFocus,
-                  //         capitalization: TextCapitalization.words,
-                  //         controller: _lastNameController,)),
-                  //     ],
-                  //   ),
-                  // ),
-
-
-                  Container(
-                    margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT,
-                        top: Dimensions.MARGIN_SIZE_SMALL),
-                    child: CustomTextField(
-                      hintText:'Full Name' ,//getTranslated('ENTER_YOUR_EMAIL', context),
-                      focusNode: _fNameFocus,
-                      nextNode: _addressFocus,
-                      textInputType: TextInputType.name,
-                      capitalization: TextCapitalization.words,
-                      controller: _firstNameController,
-                    ),
-                  ),
-
-                  Container(
-                    margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT,
-                        top: Dimensions.MARGIN_SIZE_SMALL),
-                    child: CustomTextField(
-                      hintText: 'address',//getTranslated('ENTER_YOUR_EMAIL', context),
-                      focusNode: _addressFocus,
-                      nextNode: _emailFocus,
-                      textInputType: TextInputType.emailAddress,
-                      controller: _addressController,
-                    ),
-                  ),
-
-                  Container(
-                    margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT,
-                        top: Dimensions.MARGIN_SIZE_SMALL),
-                    child: CustomTextField(
-                      hintText: getTranslated('ENTER_YOUR_EMAIL', context),
-                      focusNode: _emailFocus,
-                      nextNode: _phoneFocus,
-                      textInputType: TextInputType.emailAddress,
-                      controller: _emailController,
-                    ),
-                  ),
-
-                  Container(
-                    margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT,
-                        top: Dimensions.MARGIN_SIZE_SMALL),
-                    child: CustomTextField(
-                      hintText: 'Mobile',//getTranslated('ENTER_YOUR_EMAIL', context),
-                      focusNode: _phoneFocus,
-                      nextNode: _referenceFocus,
-                      textInputType: TextInputType.emailAddress,
-                      controller: _phoneController,
-                    ),
-                  ),
-
-                  Container(
-                    margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT,
-                        top: Dimensions.MARGIN_SIZE_SMALL),
-                    child: CustomTextField(
-                      hintText: 'Reference id?',//getTranslated('ENTER_YOUR_EMAIL', context),
-                      focusNode: _referenceFocus,
-                      nextNode: _referenceFocus,
-                      textInputType: TextInputType.emailAddress,
-                      controller: _referenceController,
-                    ),
-                  ),
-
-                ],
-              ),
-            ),
-          ),
-
-
-
-          Expanded(
-            child: Container(
-              padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT,vertical: Dimensions.PADDING_SIZE_DEFAULT),
-
-              color: Colors.grey.shade200,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text("YOUR ORDER",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text("CART SUBTOTAL",style: TextStyle(color: Colors.black45),),
-                      Text("\$ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
-                    ],
-                  ),
-                  Divider(),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text("PROFIT",style: TextStyle(color: Colors.black45),),
-                      Text("\$ 0.0",style: TextStyle(color: Colors.black45),),
-                    ],
-                  ),
-                  Divider(),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text("Order Total",style: TextStyle(color: Colors.black45),),
-                      Text("\$ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
-                    ],
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_LARGE, right: Dimensions.MARGIN_SIZE_LARGE,
-                        bottom: Dimensions.MARGIN_SIZE_LARGE, top: Dimensions.MARGIN_SIZE_LARGE),
-                    child: Provider.of<AuthProvider>(context).isLoading
-                        ? Center(
-                      child: CircularProgressIndicator(
-                        valueColor: new AlwaysStoppedAnimation<Color>(
-                          Theme.of(context).primaryColor,
+                SizedBox(
+                  height: MediaQuery.of(context).size.width*(360/360),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+                        Padding(
+                          padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT),
+                          child: Text("BILLING DETAILS",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                         ),
-                      ),
-                    )
-                        : CustomButton(onTap: addUser,
-                        buttonText:'PLACE ORDER',// getTranslated('SIGN_UP', context)
+
+                        // for first and last name
+                        // Container(
+                        //   margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT),
+                        //   child: Row(
+                        //     children: [
+                        //       Expanded(child: CustomTextField(
+                        //         hintText: getTranslated('FIRST_NAME', context),
+                        //         textInputType: TextInputType.name,
+                        //         focusNode: _fNameFocus,
+                        //         nextNode: _lNameFocus,
+                        //         isPhoneNumber: false,
+                        //         capitalization: TextCapitalization.words,
+                        //         controller: _firstNameController,)),
+                        //       SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT),
+                        //
+                        //
+                        //       Expanded(child: CustomTextField(
+                        //         hintText: getTranslated('LAST_NAME', context),
+                        //         focusNode: _lNameFocus,
+                        //         nextNode: _emailFocus,
+                        //         capitalization: TextCapitalization.words,
+                        //         controller: _lastNameController,)),
+                        //     ],
+                        //   ),
+                        // ),
+
+
+                        Container(
+                          margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT,
+                              top: Dimensions.MARGIN_SIZE_SMALL),
+                          child: CustomTextField(
+                            hintText:'Full Name' ,//getTranslated('ENTER_YOUR_EMAIL', context),
+                            focusNode: _fNameFocus,
+                            nextNode: _addressFocus,
+                            textInputType: TextInputType.name,
+                            capitalization: TextCapitalization.words,
+                            controller: _firstNameController,
+                          ),
+                        ),
+
+                        Container(
+                          margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT,
+                              top: Dimensions.MARGIN_SIZE_SMALL),
+                          child: CustomTextField(
+                            hintText: 'address',//getTranslated('ENTER_YOUR_EMAIL', context),
+                            focusNode: _addressFocus,
+                            nextNode: _emailFocus,
+                            textInputType: TextInputType.emailAddress,
+                            controller: _addressController,
+                          ),
+                        ),
+
+                        Container(
+                          margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT,
+                              top: Dimensions.MARGIN_SIZE_SMALL),
+                          child: CustomTextField(
+                            hintText: getTranslated('ENTER_YOUR_EMAIL', context),
+                            focusNode: _emailFocus,
+                            nextNode: _phoneFocus,
+                            textInputType: TextInputType.emailAddress,
+                            controller: _emailController,
+                          ),
+                        ),
+
+                        Container(
+                          margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT,
+                              top: Dimensions.MARGIN_SIZE_SMALL),
+                          child: CustomTextField(
+                            hintText: 'Mobile',//getTranslated('ENTER_YOUR_EMAIL', context),
+                            focusNode: _phoneFocus,
+                            nextNode: _referenceFocus,
+                            textInputType: TextInputType.emailAddress,
+                            controller: _phoneController,
+                          ),
+                        ),
+
+                        Container(
+                          margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT,
+                              top: Dimensions.MARGIN_SIZE_SMALL),
+                          child: CustomTextField(
+                            hintText: 'Reference id?',//getTranslated('ENTER_YOUR_EMAIL', context),
+                            focusNode: _referenceFocus,
+                            nextNode: _referenceFocus,
+                            textInputType: TextInputType.emailAddress,
+                            controller: _referenceController,
+                          ),
+                        ),
+
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+
+
+
+                Expanded(
+                  child: Container(
+                    padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT,vertical: Dimensions.PADDING_SIZE_DEFAULT),
+
+                    color: Colors.grey.shade200,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text("YOUR ORDER",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text("CART SUBTOTAL",style: TextStyle(color: Colors.black45),),
+                            Text("\$ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
+                          ],
+                        ),
+                        Divider(),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text("PROFIT",style: TextStyle(color: Colors.black45),),
+                            Text("\$ 0.0",style: TextStyle(color: Colors.black45),),
+                          ],
+                        ),
+                        Divider(),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text("Order Total",style: TextStyle(color: Colors.black45),),
+                            Text("\$ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
+                          ],
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_LARGE, right: Dimensions.MARGIN_SIZE_LARGE,
+                              bottom: Dimensions.MARGIN_SIZE_LARGE, top: Dimensions.MARGIN_SIZE_LARGE),
+                          child: Provider.of<AuthProvider>(context).isLoading
+                              ? Center(
+                            child: CircularProgressIndicator(
+                              valueColor: new AlwaysStoppedAnimation<Color>(
+                                Theme.of(context).primaryColor,
+                              ),
+                            ),
+                          )
+                              : CustomButton(onTap: addUser,
+                            buttonText:'PLACE ORDER',// getTranslated('SIGN_UP', context)
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                // SocialLoginWidget(),
+
+                // for skip for now
+                // Provider.of<AuthProvider>(context).isLoading ? SizedBox() :
+                // Center(
+                //     child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                //       crossAxisAlignment: CrossAxisAlignment.center,
+                //       children: [TextButton(
+                //           onPressed: () {
+                //             // return Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => DashBoardScreen()));
+                //           },
+                //           child: Text(getTranslated('SKIP_FOR_NOW', context),
+                //               style: titilliumRegular.copyWith(fontSize: Dimensions.FONT_SIZE_DEFAULT,
+                //                   color: ColorResources.getPrimary(context)))),
+                //         Icon(Icons.arrow_forward, size: 15,color: Theme.of(context).primaryColor,)
+                //       ],
+                //     )),
+              ],
             ),
-          ),
+          );
 
-          // SocialLoginWidget(),
-
-          // for skip for now
-          // Provider.of<AuthProvider>(context).isLoading ? SizedBox() :
-          // Center(
-          //     child: Row(mainAxisAlignment: MainAxisAlignment.center,
-          //       crossAxisAlignment: CrossAxisAlignment.center,
-          //       children: [TextButton(
-          //           onPressed: () {
-          //             // return Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => DashBoardScreen()));
-          //           },
-          //           child: Text(getTranslated('SKIP_FOR_NOW', context),
-          //               style: titilliumRegular.copyWith(fontSize: Dimensions.FONT_SIZE_DEFAULT,
-          //                   color: ColorResources.getPrimary(context)))),
-          //         Icon(Icons.arrow_forward, size: 15,color: Theme.of(context).primaryColor,)
-          //       ],
-          //     )),
-        ],
-      ),
+        }
     );
+
+
+
+
   }
 }

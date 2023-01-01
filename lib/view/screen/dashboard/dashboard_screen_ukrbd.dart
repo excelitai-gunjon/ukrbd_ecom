@@ -12,6 +12,7 @@ import 'package:ecom_ukrbd/view/screen/profile/profile_screen_ukrbd.dart';
 import 'package:provider/provider.dart';
 
 class DashBoardScreenUkrbd extends StatefulWidget {
+  static const String routeName = "/dashBoardScreenUkrbd";
 
   @override
   _DashBoardScreenUkrbdState createState() => _DashBoardScreenUkrbdState();

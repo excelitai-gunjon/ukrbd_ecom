@@ -27,7 +27,8 @@ class BrandAndCategoryProductScreen extends StatelessWidget {
         builder: (context, productProvider, child) {
           return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
 
-            CustomAppBar(title: name),
+         CustomAppBar(title: name),
+
 
             isBrand ? Container(height: 100,
               padding: EdgeInsets.all(Dimensions.PADDING_SIZE_LARGE),

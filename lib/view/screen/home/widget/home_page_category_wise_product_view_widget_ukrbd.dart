@@ -41,9 +41,6 @@ class _CategoryWiseProductViewWidgetState extends State<CategoryWiseProductViewW
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-
-    });
     return Column(
       children: [
         // categoryWiseProductList.length>0 ?
@@ -53,6 +50,8 @@ class _CategoryWiseProductViewWidgetState extends State<CategoryWiseProductViewW
             padding: const EdgeInsets.only(bottom: Dimensions.PADDING_SIZE_SMALL),
             child: widget.categoryWiseProductList.length!=0?CustomTitleRow(title: getTranslated(widget.title, context),
                 onTap: () {
+
+              /// All product will show for a particular category
                   Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreenUkrbd(
                     isBrand: false,
                     id: widget.id,
@@ -73,28 +72,37 @@ class _CategoryWiseProductViewWidgetState extends State<CategoryWiseProductViewW
                 Container(
 
                height: MediaQuery.of(context).size.width/1.20,
-                  child: FutureBuilder(
-                    future: Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, widget.id),
-                    builder: ((context, snapshot) {
-                      if(snapshot.hasData){
-                        List<Data> list=snapshot.data;
-
-                        return ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: (list.length) ,
-                            //itemCount: (list.length) -1,
-                            itemBuilder: (ctx,index){
-                              return Container(width: (MediaQuery.of(context).size.width/2.06)-10,
-                                  child: ProductWidgetUkrbd(productModel: list[index]));
-                            }
-                        );
-                      }else{
-                        return ProductShimmer(isHomePage: true ,isEnabled: true);
-                      }
-
-                    }
-                    ),
-                  ),
+                  child:widget.categoryWiseProductList.length>0?ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: (widget.categoryWiseProductList.length) ,
+              //itemCount: (list.length) -1,
+              itemBuilder: (ctx,index){
+                return Container(width: (MediaQuery.of(context).size.width/2.06)-10,
+                    child: ProductWidgetUkrbd(productModel: widget.categoryWiseProductList[index]));
+              }
+          ):ProductShimmer(isHomePage: true ,isEnabled: true),
+                  // FutureBuilder(
+                  //   future: Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, widget.id),
+                  //   builder: ((context, snapshot) {
+                  //     if(snapshot.hasData){
+                  //       List<Data> list=snapshot.data;
+                  //
+                  //       return ListView.builder(
+                  //           scrollDirection: Axis.horizontal,
+                  //           itemCount: (list.length) ,
+                  //           //itemCount: (list.length) -1,
+                  //           itemBuilder: (ctx,index){
+                  //             return Container(width: (MediaQuery.of(context).size.width/2.06)-10,
+                  //                 child: ProductWidgetUkrbd(productModel: list[index]));
+                  //           }
+                  //       );
+                  //     }else{
+                  //       return ProductShimmer(isHomePage: true ,isEnabled: true);
+                  //     }
+                  //
+                  //   }
+                  //   ),
+                  // ),
                 ),
               ]
           ),

@@ -34,6 +34,7 @@ import 'package:ecom_ukrbd/provider/auth_provider.dart';
 import 'package:ecom_ukrbd/provider/auth_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/provider/banner_provider.dart';
 import 'package:ecom_ukrbd/provider/banner_provider_ukrbd.dart';
+import 'package:ecom_ukrbd/provider/bottom_navigation_bar_provider.dart';
 import 'package:ecom_ukrbd/provider/brand_provider.dart';
 import 'package:ecom_ukrbd/provider/cart_provider.dart';
 import 'package:ecom_ukrbd/provider/cart_provider_ukrbd.dart';
@@ -87,6 +88,8 @@ Future<void> init() async {
   sl.registerLazySingleton(() => CategoryWiseProductRepoUkrbd(dioClient: sl()));
   sl.registerLazySingleton(() => SubCategoryWiseProductRepoUkrbd(dioClient: sl()));
   sl.registerLazySingleton(() => BannerRepoUkrbd(dioClient: sl()));
+
+
   sl.registerLazySingleton(() => AuthRepoUkrbd(dioClient: sl(),sharedPreferences: sl()));
 
 
@@ -117,11 +120,14 @@ Future<void> init() async {
   // Provider
   // sl.registerFactory(() => CategoryProvider(categoryRepo: sl()));
   ///ukrbd  CategoryProviderUkrbd
+
   sl.registerFactory(() => CategoryProviderUkrbd(categoryRepo: sl()));
   sl.registerFactory(() => CategoryWiseProductProviderUkrbd(categoryWiseProductRepoUkrbd: sl()));
   sl.registerFactory(() => SubCategoryWiseProductProviderUkrbd(subCategoryWiseProductRepoUkrbd: sl()));
   sl.registerFactory(() => CartProviderUkrbd(sharedPreferences: sl()));
+
   sl.registerFactory(() => BannerProviderUkrbd(bannerRepoUkrbd: sl()));
+  sl.registerFactory(() => BottomNavigationBarProvider());
   sl.registerFactory(() => AuthProviderUkrbd(authRepoUkrbd: sl()));
 
   sl.registerFactory(() => HomeCategoryProductProvider(homeCategoryProductRepo: sl()));

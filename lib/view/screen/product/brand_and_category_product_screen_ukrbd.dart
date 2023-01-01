@@ -13,6 +13,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
 class BrandAndCategoryProductScreenUkrbd extends StatefulWidget {
+  static const String routeName = "/brandAndCategoryProductScreenUkrbd";
   final bool isBrand;
   final bool isHome;
   final bool isSubcategory;

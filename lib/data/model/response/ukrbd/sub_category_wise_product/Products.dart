@@ -1,7 +1,8 @@
 
-import 'package:ecom_ukrbd/data/model/response/ukrbd/category_wise_product_model/Data.dart';
 
-import 'Data.dart';
+
+
+import '../produuct_model.dart';
 import 'Links.dart';
 
 class Products {
@@ -45,19 +46,19 @@ class Products {
     to = json['to'];
     total = json['total'];
   }
-  int currentPage;
+  dynamic   currentPage;
   List<Data> data;
-  String firstPageUrl;
-  int from;
-  int lastPage;
-  String lastPageUrl;
+  dynamic  firstPageUrl;
+  dynamic   from;
+  dynamic   lastPage;
+  dynamic  lastPageUrl;
   List<Links> links;
   dynamic nextPageUrl;
-  String path;
-  int perPage;
+  dynamic  path;
+  dynamic   perPage;
   dynamic prevPageUrl;
-  int to;
-  int total;
+  dynamic   to;
+  dynamic   total;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

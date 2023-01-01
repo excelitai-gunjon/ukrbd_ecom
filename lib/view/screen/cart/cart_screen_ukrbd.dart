@@ -10,6 +10,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class CartScreenUkrbd extends StatefulWidget {
+  static const String routeName = "/cartScreenUkrbd";
+
   const CartScreenUkrbd({Key key}) : super(key: key);
 
   @override
@@ -607,5 +609,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
       ),
     );
   }
+
+
 }
 
