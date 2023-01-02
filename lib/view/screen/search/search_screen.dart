@@ -32,7 +32,7 @@ class SearchScreen extends StatelessWidget {
 
 
               backgroundColor: ColorResources.getIconBg(context),
-              resizeToAvoidBottomInset: true,
+             resizeToAvoidBottomInset: true,
               body: Column(
                 children: [
                   // SizedBox(height: 50,),

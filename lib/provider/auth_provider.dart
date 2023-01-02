@@ -136,12 +136,19 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future login(LoginModel loginBody, Function callback) async {
+  Future login(LoginModel loginBody, Function callback,BuildContext context) async {
     _isLoading = true;
     notifyListeners();
     ApiResponse apiResponse = await authRepo.login(loginBody);
     _isLoading = false;
-    if (apiResponse.response != null && apiResponse.response.statusCode == 200) {
+
+
+    print("login apiResponse/>>>>>>>>>>>>>");
+    print(apiResponse.response.statusCode);
+
+
+
+    if (apiResponse.response != null && apiResponse.response.statusCode == 201) {
       Map map = apiResponse.response.data;
       String temporaryToken = '';
       String token = '';
@@ -150,6 +157,20 @@ class AuthProvider with ChangeNotifier {
 
       try{
         message = map["message"];
+
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          elevation: 6.0,
+          margin: EdgeInsets.all(20),
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.green,
+
+          content: Text(
+            "$message",
+            style: TextStyle(color: Colors.white),
+          ),
+        ));
+
+
 
       }catch(e){
 
@@ -160,20 +181,20 @@ class AuthProvider with ChangeNotifier {
       }catch(e){
 
       }
-      try{
-        temporaryToken = map["temporary_token"];
-
-      }catch(e){
-
-      }
+      // try{
+      //   temporaryToken = map["temporary_token"];
+      //
+      // }catch(e){
+      //
+      // }
 
       if(token != null && token.isNotEmpty){
         authRepo.saveUserToken(token);
         await authRepo.updateToken();
       }
 
-      callback(true, token, temporaryToken, message);
-      notifyListeners();
+      // callback(true, token, temporaryToken, message);
+      // notifyListeners();
     } else {
       String errorMessage;
       if (apiResponse.error is String) {
@@ -187,6 +208,7 @@ class AuthProvider with ChangeNotifier {
       callback(false, '', '' , errorMessage);
       notifyListeners();
     }
+    return apiResponse.response.statusCode;
   }
 
   Future<void> updateToken(BuildContext context) async {

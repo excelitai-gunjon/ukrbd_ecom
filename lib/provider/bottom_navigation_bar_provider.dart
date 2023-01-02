@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../localization/language_constrants.dart';
 import '../utill/images.dart';
 import '../view/screen/cart/cart_screen_ukrbd.dart';
+import '../view/screen/dashboard/dashboard.dart';
 import '../view/screen/dashboard/dashboard_screen_ukrbd.dart';
 import '../view/screen/home/home_screens_ukrbd.dart';
 import '../view/screen/order/order_screen_ukrbd.dart';
@@ -61,54 +62,56 @@ class BottomNavigationBarProvider extends ChangeNotifier {
     );
   }
 
-  Widget bottomNavigationBar(BuildContext context,bool isLanding) {
-    return BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        clipBehavior: Clip.antiAlias,
-        notchMargin: 4,
-        child: BottomNavigationBar(
+  Widget bottomNavigationBar(BuildContext context,bool isDashBoardScreen) {
+    return BottomNavigationBar(
+      //elevation: 9,
+     // backgroundColor: ,
+      showSelectedLabels:true,
+      showUnselectedLabels: true,
+      currentIndex: _selectedIndex,
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: Theme.of(context).primaryColor,
+      unselectedItemColor: Theme.of(context).textTheme.bodyText1.color,
+      onTap: (index){
+        _onItemTapped(index,isDashBoardScreen,context);
+      },
 
-          items:  <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Image.asset(
-              Images.home_image,
-              height: 25, width: 25,
-            ),
-            label: getTranslated('home', context),
+      items:   [
+      BottomNavigationBarItem(
+        icon: Image.asset(
+          Images.home_image,
+          height: 25, width: 25,
+        ),
+        label: getTranslated('home', context),
+      ),
+
+        BottomNavigationBarItem(
+          icon: Image.asset(
+            Images.shopping_image,
+            height: 25, width: 25,
           ),
-
-            BottomNavigationBarItem(
-              icon: Image.asset(
-                Images.shopping_image,
-                height: 25, width: 25,
-              ),
-              label: getTranslated('orders', context),
-            ),
-            BottomNavigationBarItem(
-              icon: Image.asset(
-                Images.profile_icon_image,
-                height: 25, width: 25,
-              ),
-              label: getTranslated('PROFILE', context),
-            ),
-            BottomNavigationBarItem(
-              icon: Image.asset(
-                Images.cart_image,
-                height: 25, width: 25,
-              ),
-              label: getTranslated('CART', context),
-            ),
+          label: getTranslated('orders', context),
+        ),
+        BottomNavigationBarItem(
+          icon: Image.asset(
+            Images.profile_icon_image,
+            height: 25, width: 25,
+          ),
+          label: getTranslated('PROFILE', context),
+        ),
+        BottomNavigationBarItem(
+          icon: Image.asset(
+            Images.cart_image,
+            height: 25, width: 25,
+          ),
+          label: getTranslated('CART', context),
+        ),
 
 
 
-          ],
-          currentIndex: _selectedIndex,
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: Theme.of(context).primaryColor,
-          onTap: (index){
-            _onItemTapped(index,isLanding,context);
-          },
-        ));
+      ],
+     
+    );
   }
 
   Widget getWidget(int index) {
@@ -138,11 +141,13 @@ class BottomNavigationBarProvider extends ChangeNotifier {
     }
   }
 
-  void _onItemTapped(int index, bool isDashBoardScreenUkrbd,BuildContext context) {
+  void _onItemTapped(int index, bool isDashBoardScreen,BuildContext context) {
     _selectedIndex = index;
     notifyListeners();
-    if(!isDashBoardScreenUkrbd){
-      Navigator.pushReplacementNamed(context, DashBoardScreenUkrbd.routeName);
+    if(!isDashBoardScreen){
+
+
+  Navigator.pushReplacementNamed(context, DashBoard.routeName);
     }
 
     //tap=false;

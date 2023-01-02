@@ -46,7 +46,11 @@ class _DashBoardState extends State<DashBoard> {
     //   ProfileScreenUkrbd(),
     //   CartScreenUkrbd(),
     // ];
-    NetworkInfo.checkConnectivity(context);
+
+
+   // NetworkInfo.checkConnectivity(context);
+
+
   }
 
   @override

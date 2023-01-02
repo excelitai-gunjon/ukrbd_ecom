@@ -166,8 +166,8 @@ class MyApp extends StatelessWidget {
       ///
       routes: {
         SplashScreen.routeName:(context)=>SplashScreen(),
-     //   DashBoard.routeName: (context) => DashBoard(),
-        DashBoardScreenUkrbd.routeName: (context) => DashBoardScreenUkrbd(),
+        DashBoard.routeName: (context) => DashBoard(),
+        //DashBoardScreenUkrbd.routeName: (context) => DashBoardScreenUkrbd(),
         SearchScreen.routeName: (context) => SearchScreen(),
         BrandAndCategoryProductScreenUkrbd.routeName: (context) => BrandAndCategoryProductScreenUkrbd(),
         ProductDetailsScreenUkrbd.routeName: (context) => ProductDetailsScreenUkrbd(),

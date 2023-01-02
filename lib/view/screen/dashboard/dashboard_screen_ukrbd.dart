@@ -72,6 +72,8 @@ class _DashBoardScreenUkrbdState extends State<DashBoardScreenUkrbd> {
               print("index index index :-------------- ${index}");
               _setPage(index);
             },
+
+
           ),
         ),
         body: PageView.builder(

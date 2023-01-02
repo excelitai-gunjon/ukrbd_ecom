@@ -154,6 +154,7 @@ class AuthProviderUkrbd with ChangeNotifier {
     ApiResponse apiResponse = await authRepoUkrbd.merchantRegistration(register);
     _isLoading = false;
     if (apiResponse.response != null && apiResponse.response.statusCode == 201) {
+      _isLoading = false;
       //Map map = apiResponse.response.data;
       print(apiResponse.response.data.toString());
       print(apiResponse.response.data.toString());
@@ -197,6 +198,7 @@ class AuthProviderUkrbd with ChangeNotifier {
       // callback(true, token, temporaryToken, message);
       notifyListeners();
     }else if (apiResponse.response != null && apiResponse.response.statusCode == 200) {
+      _isLoading = false;
       //Map map = apiResponse.response.data;
       print(apiResponse.response.data.toString());
       print(apiResponse.response.data.toString());
@@ -240,6 +242,7 @@ class AuthProviderUkrbd with ChangeNotifier {
       // callback(true, token, temporaryToken, message);
       notifyListeners();
     }else if (apiResponse.response != null && apiResponse.response.statusCode == 403) {
+      _isLoading = false;
       //Map map = apiResponse.response.data;
       print(apiResponse.response.data.toString());
       print(apiResponse.response.data.toString());
@@ -283,6 +286,7 @@ class AuthProviderUkrbd with ChangeNotifier {
       // callback(true, token, temporaryToken, message);
       notifyListeners();
     } else {
+      _isLoading = false;
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(apiResponse.error.data.toString()),
         backgroundColor: Colors.red,

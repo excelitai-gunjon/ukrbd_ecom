@@ -10,9 +10,10 @@ import 'package:ecom_ukrbd/view/basewidget/textfield/custom_textfield.dart';
 
 
 class ProfileScreenUkrbd extends StatefulWidget {
+  bool isLogedIn=false;
 
 
-  const ProfileScreenUkrbd({Key key}) : super(key: key);
+   ProfileScreenUkrbd({this.isLogedIn=false,Key key}) : super(key: key);
 
   @override
   _ProfileScreenUkrbdState createState() => _ProfileScreenUkrbdState();
@@ -22,7 +23,7 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
 
   TabController _tabController;
 
-  bool isLogedIn=false;
+
 
   @override
   void initState() {
@@ -42,7 +43,7 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: isLogedIn?
+      body: widget.isLogedIn?
 
       Stack(
         children: [
@@ -163,6 +164,7 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                     height: 20,
                   ),
                   IconButton(onPressed: (){
+                    Navigator.pop(context);
 
                   }, icon: Icon(Icons.arrow_back,color: Colors.white,),
                   ),

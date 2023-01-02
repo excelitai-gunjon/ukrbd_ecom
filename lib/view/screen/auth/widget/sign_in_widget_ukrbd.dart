@@ -17,6 +17,7 @@ import 'package:ecom_ukrbd/view/screen/auth/widget/social_login_widget.dart';
 import 'package:ecom_ukrbd/view/screen/dashboard/dashboard_screen.dart';
 import 'package:provider/provider.dart';
 
+import '../../profile/profile_screen_ukrbd.dart';
 import 'otp_verification_screen.dart';
 
 class SignInWidgetUkrbd extends StatefulWidget {
@@ -77,7 +78,11 @@ class _SignInWidgetUkrbdState extends State<SignInWidgetUkrbd> {
 
         loginBody.email = _email;
         loginBody.password = _password;
-        await Provider.of<AuthProvider>(context, listen: false).login(loginBody, route);
+        //await Provider.of<AuthProvider>(context,listen: false).login(_loginModel, (){},context)
+
+        await Provider.of<AuthProvider>(context, listen: false).login(loginBody, route,context).then((value) {
+          value==201?Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileScreenUkrbd(isLogedIn: true,))):null;
+        });
       }
     }
   }
