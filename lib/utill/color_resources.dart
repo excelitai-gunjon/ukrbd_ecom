@@ -90,6 +90,7 @@ class ColorResources {
 
 
   static const Color BLACK = Color(0xff000000);
+  static const Color BOTTOMNAVIGATIONBARITEMCOLOR = Color(0xff7f949f);
   static const Color WHITE = Color(0xffFFFFFF);
   static const Color LIGHT_SKY_BLUE = Color(0xff8DBFF6);
   static const Color HARLEQUIN = Color(0xff3FCC01);

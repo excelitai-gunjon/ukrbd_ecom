@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../localization/language_constrants.dart';
+import '../utill/color_resources.dart';
 import '../utill/images.dart';
 import '../view/screen/cart/cart_screen_ukrbd.dart';
 import '../view/screen/dashboard/dashboard.dart';
@@ -80,6 +81,7 @@ class BottomNavigationBarProvider extends ChangeNotifier {
       BottomNavigationBarItem(
         icon: Image.asset(
           Images.home_image,
+          color: ColorResources.BOTTOMNAVIGATIONBARITEMCOLOR,
           height: 25, width: 25,
         ),
         label: getTranslated('home', context),
@@ -88,6 +90,7 @@ class BottomNavigationBarProvider extends ChangeNotifier {
         BottomNavigationBarItem(
           icon: Image.asset(
             Images.shopping_image,
+            color: ColorResources.BOTTOMNAVIGATIONBARITEMCOLOR,
             height: 25, width: 25,
           ),
           label: getTranslated('orders', context),
@@ -95,6 +98,8 @@ class BottomNavigationBarProvider extends ChangeNotifier {
         BottomNavigationBarItem(
           icon: Image.asset(
             Images.profile_icon_image,
+            color: ColorResources.BOTTOMNAVIGATIONBARITEMCOLOR,
+
             height: 25, width: 25,
           ),
           label: getTranslated('PROFILE', context),
@@ -102,6 +107,7 @@ class BottomNavigationBarProvider extends ChangeNotifier {
         BottomNavigationBarItem(
           icon: Image.asset(
             Images.cart_image,
+            color: ColorResources.BOTTOMNAVIGATIONBARITEMCOLOR,
             height: 25, width: 25,
           ),
           label: getTranslated('CART', context),

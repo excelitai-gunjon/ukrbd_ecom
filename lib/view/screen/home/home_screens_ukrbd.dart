@@ -294,14 +294,14 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
 
                           // CategoryWiseProductViewWidget(id: "56",title: "Electrical & Lighting",),
 
-                          Consumer<CategoryWiseProductProviderUkrbd>(
-                            builder: (context,categoryWiseProductProviderUkrbd,child){
-                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.electricalAndLightingList,id: "56",title: "Electrical & Lighting",);
-                            },
-                          ),
+                          // Consumer<CategoryWiseProductProviderUkrbd>(
+                          //   builder: (context,categoryWiseProductProviderUkrbd,child){
+                          //     return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.electricalAndLightingList,id: "56",title: "Electrical & Lighting",);
+                          //   },
+                          // ),
 
 
-                          SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
+                          // SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
                           // CategoryWiseProductViewWidget(id: "58",title: "Electronics & Appliances",),
 
@@ -343,30 +343,33 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                           ),
 
 
+                          // SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
+                          //
+                          // // CategoryWiseProductViewWidget(id: "69",title: "Software Service & Solution",),
+                          // Consumer<CategoryWiseProductProviderUkrbd>(
+                          //   builder: (context,categoryWiseProductProviderUkrbd,child){
+                          //     return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.softwareServiceAndSolutionList,id: "69",title: "Software Service & Solution",);
+                          //   },
+                          // ),
+                          //
+                          //
+                          //
+                          // SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
+                          //
+                          // // CategoryWiseProductViewWidget(id: "81",title: "Comforter",),
+                          //
+                          // Consumer<CategoryWiseProductProviderUkrbd>(
+                          //   builder: (context,categoryWiseProductProviderUkrbd,child){
+                          //     return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.comforterList,id: "81",title: "Comforter",);
+                          //   },
+                          // ),
+
+
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          // CategoryWiseProductViewWidget(id: "69",title: "Software Service & Solution",),
-                          Consumer<CategoryWiseProductProviderUkrbd>(
-                            builder: (context,categoryWiseProductProviderUkrbd,child){
-                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.softwareServiceAndSolutionList,id: "69",title: "Software Service & Solution",);
-                            },
-                          ),
 
 
-
-                          SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
-                          // CategoryWiseProductViewWidget(id: "81",title: "Comforter",),
-
-                          Consumer<CategoryWiseProductProviderUkrbd>(
-                            builder: (context,categoryWiseProductProviderUkrbd,child){
-                              return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.comforterList,id: "81",title: "Comforter",);
-                            },
-                          ),
-
-
-                          SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
+///
                           // CategoryWiseProductViewWidget(id: "82",title: "Winter Collection",),
 
                           Consumer<CategoryWiseProductProviderUkrbd>(

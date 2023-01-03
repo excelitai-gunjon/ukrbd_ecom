@@ -65,7 +65,7 @@ class DioClientUkrbd {
         cancelToken: cancelToken,
         onReceiveProgress: onReceiveProgress,
       );
-      print(">>>>>>>>>>>   api response  print   >>>>>>>>>" );
+   print(">>>>>>>>>>>   api response  print   >>>>>>>>>" );
 
     print(response.data);
 
