@@ -1,16 +1,14 @@
 import 'dart:async';
 import 'package:connectivity/connectivity.dart';
+import 'package:ecom_ukrbd/provider/category_wise_product_provider_ukrbd.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/auth_provider.dart';
-import 'package:ecom_ukrbd/provider/banner_provider_ukrbd.dart';
-import 'package:ecom_ukrbd/provider/cart_provider.dart';
 import 'package:ecom_ukrbd/provider/profile_provider.dart';
 import 'package:ecom_ukrbd/provider/splash_provider.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/images.dart';
 import 'package:ecom_ukrbd/view/basewidget/no_internet_screen.dart';
-import 'package:ecom_ukrbd/view/screen/dashboard/dashboard_screen.dart';
 import 'package:ecom_ukrbd/view/screen/dashboard/dashboard_screen_ukrbd.dart';
 import 'package:ecom_ukrbd/view/screen/maintenance/maintenance_screen.dart';
 import 'package:ecom_ukrbd/view/screen/onboarding/onboarding_screen.dart';
@@ -75,6 +73,25 @@ class _SplashScreenState extends State<SplashScreen> {
       //   return value;
       // });
 
+
+     // await Provider.of<CategoryProviderUkrbd>(context, listen: false).getCategoryList(true, context);
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "82");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "81");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "66");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "65");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "63");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "58");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "56");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "52");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "59");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "74");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "79");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "75");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "78");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "80");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "76");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "55");
+      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "71");
 
 
       print(".........................Initial Configuration.......................");

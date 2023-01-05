@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/auth_provider.dart';
 import 'package:ecom_ukrbd/provider/profile_provider.dart';
@@ -9,14 +8,14 @@ import 'package:ecom_ukrbd/utill/custom_themes.dart';
 import 'package:ecom_ukrbd/utill/dimensions.dart';
 import 'package:ecom_ukrbd/utill/images.dart';
 import 'package:ecom_ukrbd/view/screen/auth/widget/merchant_registration_form_widget_ukrbd.dart';
-import 'package:ecom_ukrbd/view/screen/auth/widget/sign_in_widget.dart';
 import 'package:ecom_ukrbd/view/screen/auth/widget/sign_in_widget_ukrbd.dart';
-import 'package:ecom_ukrbd/view/screen/auth/widget/sign_up_widget.dart';
 import 'package:ecom_ukrbd/view/screen/auth/widget/sign_up_widget_ukrbd.dart';
 import 'package:provider/provider.dart';
 
 class AuthScreenUkrbd extends StatelessWidget{
+
   final int initialPage;
+
   AuthScreenUkrbd({this.initialPage = 0});
 
   @override

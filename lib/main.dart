@@ -173,8 +173,6 @@ class MyApp extends StatelessWidget {
         ProductDetailsScreenUkrbd.routeName: (context) => ProductDetailsScreenUkrbd(),
         CartScreenUkrbd.routeName: (context) => CartScreenUkrbd(),
         CheckoutUkrbd.routeName: (context) => CheckoutUkrbd(),
-
-
       },
       supportedLocales: _locals,
       // home: orderId == null ? SplashScreen() : OrderDetailsScreen(orderModel: null,
