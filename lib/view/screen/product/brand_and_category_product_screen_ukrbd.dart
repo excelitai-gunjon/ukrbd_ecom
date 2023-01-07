@@ -1,3 +1,4 @@
+import 'package:ecom_ukrbd/provider/bottom_navigation_bar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/response/ukrbd/produuct_model.dart';
 import 'package:ecom_ukrbd/provider/category_wise_product_provider_ukrbd.dart';
@@ -66,92 +67,100 @@ class _BrandAndCategoryProductScreenUkrbdState
                 Navigator.of(context).pop();
               }
             },
-            child: Scaffold(
-              backgroundColor: ColorResources.getIconBg(context),
-              body: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
+            child: Consumer<BottomNavigationBarProvider>(
+              builder: (context,bottomNavigationBarProvider,child){
+                return Scaffold(
+                  bottomNavigationBar:
+                  bottomNavigationBarProvider.bottomNavigationBar(context, false),
 
-                    Consumer<CategoryWiseProductProviderUkrbd>(builder:
-                        (context, categoryWiseProductProviderUkrbd, child) {
-                      return CustomAppBar(
+                  backgroundColor: ColorResources.getHomeBg(context),
+                  resizeToAvoidBottomInset: false,
+
+                  // backgroundColor: ColorResources.getIconBg(context),
+                  body: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+
+                        Consumer<CategoryWiseProductProviderUkrbd>(builder:
+                            (context, categoryWiseProductProviderUkrbd, child) {
+                          return CustomAppBar(
+                            title: widget.name,
+                            onBackPressed: () {
+                              if(!widget.isHome){
+                                categoryWiseProductProviderUkrbd.clear();
+                                Navigator.of(context).pop();
+                              }else{
+                                Navigator.of(context).pop();
+                              }
+                            },
+                          );
+                        }),
+
+                        // widget.isBrand ? Container(height: 100,
+                        //   padding: EdgeInsets.all(Dimensions.PADDING_SIZE_LARGE),
+                        //   margin: EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
+                        //   color: Theme.of(context).highlightColor,
+                        //   child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                        //     FadeInImage.assetNetwork(
+                        //       placeholder: Images.placeholder, width: 80, height: 80, fit: BoxFit.cover,
+                        //       image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls.brandImageUrl}/${widget.image}',
+                        //       imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, width: 80, height: 80, fit: BoxFit.cover),
+                        //     ),
+                        //     SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
+                        //
+                        //
+                        //     Text(widget.name, style: titilliumSemiBold.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE)),
+                        //   ]),
+                        // ) : SizedBox.shrink(),
+
+                        SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+
+                        // Products
+                        // productProvider.brandOrCategoryProductList.length > 0 ? Expanded(
+                        Consumer<CategoryWiseProductProviderUkrbd>(builder:
+                            (context, categoryWiseProductProviderUkrbd, child) {
+                          print(
+                              "product list :::::::::::::::");
+
+                          List<Data> categoryWiseProductsList=widget.isHome?widget.productsList:categoryWiseProductProviderUkrbd.categoryWiseProductList;
+                          return categoryWiseProductsList.length > 0
+                              ? Expanded(
+                            child: StaggeredGridView.countBuilder(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: Dimensions.PADDING_SIZE_SMALL),
+                              physics: BouncingScrollPhysics(),
+                              crossAxisCount: 2,
+                              itemCount: (categoryWiseProductsList.length) ,
+                              //   itemCount: (categoryWiseProductsList.length) -1,
+
+                              shrinkWrap: true,
+                              staggeredTileBuilder: (int index) =>
+                                  StaggeredTile.fit(1),
+                              itemBuilder: (BuildContext context, int index) {
+                                //   print("print product");
 
 
-                       title: widget.name,
-                        onBackPressed: () {
-                          if(!widget.isHome){
-                            categoryWiseProductProviderUkrbd.clear();
-                            Navigator.of(context).pop();
-                          }else{
-                            Navigator.of(context).pop();
-                          }
-                        },
-                      );
-                    }),
-
-                    // widget.isBrand ? Container(height: 100,
-                    //   padding: EdgeInsets.all(Dimensions.PADDING_SIZE_LARGE),
-                    //   margin: EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
-                    //   color: Theme.of(context).highlightColor,
-                    //   child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                    //     FadeInImage.assetNetwork(
-                    //       placeholder: Images.placeholder, width: 80, height: 80, fit: BoxFit.cover,
-                    //       image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls.brandImageUrl}/${widget.image}',
-                    //       imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, width: 80, height: 80, fit: BoxFit.cover),
-                    //     ),
-                    //     SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
-                    //
-                    //
-                    //     Text(widget.name, style: titilliumSemiBold.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE)),
-                    //   ]),
-                    // ) : SizedBox.shrink(),
-
-                    SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
-
-                    // Products
-                    // productProvider.brandOrCategoryProductList.length > 0 ? Expanded(
-                    Consumer<CategoryWiseProductProviderUkrbd>(builder:
-                        (context, categoryWiseProductProviderUkrbd, child) {
-                      print(
-                          "product list :::::::::::::::");
-
-                      List<Data> categoryWiseProductsList=widget.isHome?widget.productsList:categoryWiseProductProviderUkrbd.categoryWiseProductList;
-                      return categoryWiseProductsList.length > 0
-                          ? Expanded(
-                              child: StaggeredGridView.countBuilder(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: Dimensions.PADDING_SIZE_SMALL),
-                                physics: BouncingScrollPhysics(),
-                                crossAxisCount: 2,
-                                itemCount: (categoryWiseProductsList.length) ,
-                             //   itemCount: (categoryWiseProductsList.length) -1,
-
-                                shrinkWrap: true,
-                                staggeredTileBuilder: (int index) =>
-                                    StaggeredTile.fit(1),
-                                itemBuilder: (BuildContext context, int index) {
-                               //   print("print product");
-
-
-                                  return
-                                    ProductWidgetUkrbd(
+                                return
+                                  ProductWidgetUkrbd(
                                       productModel: categoryWiseProductsList[index]);
-                                  // return null;
-                                },
-                              ),
-                            )
-                          :
+                                // return null;
+                              },
+                            ),
+                          )
+                              :
 
                           // Expanded(child: Center(child: productProvider.hasData ?
                           Expanded(
                               child: Center(
-                              child: categoryWiseProductsList.length == 0
-                                  ? ProductShimmer(isHomePage: false, isEnabled: categoryWiseProductsList.length == 0)
-                                  : NoInternetOrDataScreen(isNoInternet: false),
-                            )
+                                child: categoryWiseProductsList.length == 0
+                                    ? ProductShimmer(isHomePage: false, isEnabled: categoryWiseProductsList.length == 0)
+                                    : NoInternetOrDataScreen(isNoInternet: false),
+                              )
                           );
-                    }),
-                  ]),
+                        }),
+                      ]),
+                );
+              },
             ),
           )
         : WillPopScope(
@@ -165,98 +174,107 @@ class _BrandAndCategoryProductScreenUkrbdState
                 Navigator.of(context).pop();
               }
             },
-            child: Scaffold(
-              backgroundColor: ColorResources.getIconBg(context),
-              body: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    // CustomAppBar(title: widget.name,onBackPressed: (){
-                    //
-                    // },),
-                    Consumer<SubCategoryWiseProductProviderUkrbd>(builder:
-                        (context, subCategoryWiseProductProviderUkrbd, child) {
-                      return CustomAppBar(
-                        title: widget.name,
-                        onBackPressed: () {
-                          if(!widget.isHome){
-                            subCategoryWiseProductProviderUkrbd.clear();
-                            Navigator.of(context).pop();
-                          }else{
-                            Navigator.of(context).pop();
-                          }
-                        },
-                      );
-                    }),
+            child: Consumer<BottomNavigationBarProvider>(
+              builder: (context,bottomNavigationBarProvider,child){
+                return Scaffold(
+                  bottomNavigationBar:
+                  bottomNavigationBarProvider.bottomNavigationBar(context, false),
 
-                    // widget.isBrand ? Container(height: 100,
-                    //   padding: EdgeInsets.all(Dimensions.PADDING_SIZE_LARGE),
-                    //   margin: EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
-                    //   color: Theme.of(context).highlightColor,
-                    //   child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                    //     FadeInImage.assetNetwork(
-                    //       placeholder: Images.placeholder, width: 80, height: 80, fit: BoxFit.cover,
-                    //       image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls.brandImageUrl}/${widget.image}',
-                    //       imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, width: 80, height: 80, fit: BoxFit.cover),
-                    //     ),
-                    //     SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
-                    //
-                    //
-                    //     Text(widget.name, style: titilliumSemiBold.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE)),
-                    //   ]),
-                    // ) : SizedBox.shrink(),
+                  // backgroundColor: ColorResources.getHomeBg(context),
+                  resizeToAvoidBottomInset: false,
+                  backgroundColor: ColorResources.getIconBg(context),
+                  body: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        // CustomAppBar(title: widget.name,onBackPressed: (){
+                        //
+                        // },),
+                        Consumer<SubCategoryWiseProductProviderUkrbd>(builder:
+                            (context, subCategoryWiseProductProviderUkrbd, child) {
+                          return CustomAppBar(
+                            title: widget.name,
+                            onBackPressed: () {
+                              if(!widget.isHome){
+                                subCategoryWiseProductProviderUkrbd.clear();
+                                Navigator.of(context).pop();
+                              }else{
+                                Navigator.of(context).pop();
+                              }
+                            },
+                          );
+                        }),
 
-                    SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+                        // widget.isBrand ? Container(height: 100,
+                        //   padding: EdgeInsets.all(Dimensions.PADDING_SIZE_LARGE),
+                        //   margin: EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
+                        //   color: Theme.of(context).highlightColor,
+                        //   child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                        //     FadeInImage.assetNetwork(
+                        //       placeholder: Images.placeholder, width: 80, height: 80, fit: BoxFit.cover,
+                        //       image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls.brandImageUrl}/${widget.image}',
+                        //       imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, width: 80, height: 80, fit: BoxFit.cover),
+                        //     ),
+                        //     SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
+                        //
+                        //
+                        //     Text(widget.name, style: titilliumSemiBold.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE)),
+                        //   ]),
+                        // ) : SizedBox.shrink(),
 
-                    // Products
-                    // productProvider.brandOrCategoryProductList.length > 0 ? Expanded(
-                    Consumer<SubCategoryWiseProductProviderUkrbd>(builder:
-                        (context, subCategoryWiseProductProviderUkrbd, child) {
-                      print(
-                          "product list :::::::::::::::${subCategoryWiseProductProviderUkrbd.subCategoryWiseProductList.length}");
-                      return subCategoryWiseProductProviderUkrbd
-                                  .subCategoryWiseProductList.length >
+                        SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+
+                        // Products
+                        // productProvider.brandOrCategoryProductList.length > 0 ? Expanded(
+                        Consumer<SubCategoryWiseProductProviderUkrbd>(builder:
+                            (context, subCategoryWiseProductProviderUkrbd, child) {
+                          print(
+                              "product list :::::::::::::::${subCategoryWiseProductProviderUkrbd.subCategoryWiseProductList.length}");
+                          return subCategoryWiseProductProviderUkrbd
+                              .subCategoryWiseProductList.length >
                               0
-                          ? Expanded(
-                              child: StaggeredGridView.countBuilder(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: Dimensions.PADDING_SIZE_SMALL),
-                                physics: BouncingScrollPhysics(),
-                                crossAxisCount: 2,
-                                itemCount: subCategoryWiseProductProviderUkrbd
-                                    .subCategoryWiseProductList.length,
-                                shrinkWrap: true,
-                                staggeredTileBuilder: (int index) =>
-                                    StaggeredTile.fit(1),
-                                itemBuilder: (BuildContext context, int index) {
-                                  print("print product");
-                                  return ProductWidgetUkrbd(
-                                      productModel:
-                                          subCategoryWiseProductProviderUkrbd
-                                                  .subCategoryWiseProductList[
-                                              index]);
-                                  // return null;
-                                },
-                              ),
-                            )
-                          :
+                              ? Expanded(
+                            child: StaggeredGridView.countBuilder(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: Dimensions.PADDING_SIZE_SMALL),
+                              physics: BouncingScrollPhysics(),
+                              crossAxisCount: 2,
+                              itemCount: subCategoryWiseProductProviderUkrbd
+                                  .subCategoryWiseProductList.length,
+                              shrinkWrap: true,
+                              staggeredTileBuilder: (int index) =>
+                                  StaggeredTile.fit(1),
+                              itemBuilder: (BuildContext context, int index) {
+                                print("print product");
+                                return ProductWidgetUkrbd(
+                                    productModel:
+                                    subCategoryWiseProductProviderUkrbd
+                                        .subCategoryWiseProductList[
+                                    index]);
+                                // return null;
+                              },
+                            ),
+                          )
+                              :
 
                           // Expanded(child: Center(child: productProvider.hasData ?
                           Expanded(
                               child: Center(
-                              child: subCategoryWiseProductProviderUkrbd
-                                          .subCategoryWiseProductList.length ==
-                                      0
-                                  ? ProductShimmer(
-                                      isHomePage: false,
-                                      isEnabled:
-                                          Provider.of<ProductProvider>(context)
-                                                  .brandOrCategoryProductList
-                                                  .length ==
-                                              0)
-                                  : NoInternetOrDataScreen(isNoInternet: false),
-                            ));
-                    }),
-                  ]),
+                                child: subCategoryWiseProductProviderUkrbd
+                                    .subCategoryWiseProductList.length ==
+                                    0
+                                    ? ProductShimmer(
+                                    isHomePage: false,
+                                    isEnabled:
+                                    Provider.of<ProductProvider>(context)
+                                        .brandOrCategoryProductList
+                                        .length ==
+                                        0)
+                                    : NoInternetOrDataScreen(isNoInternet: false),
+                              ));
+                        }),
+                      ]),
+                );
+              },
             ),
           );
   }

@@ -60,12 +60,12 @@ class ProfileProviderUkrbd extends ChangeNotifier {
   }
 
 
-  Future<int> updateUserProfile(User updateUserModel, File file, String token) async {
+  Future<int> updateUserProfile(User updateUserModel, File file, String token,BuildContext context) async {
     _isLoading = true;
     //ApiResponse apiResponse;
 
     ResponseModel responseModel;
-    final statusCode = await profileRepo.updateProfile(updateUserModel, file, token);
+    final statusCode = await profileRepo.updateProfile(updateUserModel, file, token,context);
     _isLoading = false;
     if (statusCode == 201) {
       _isLoading = false;
@@ -75,6 +75,7 @@ class ProfileProviderUkrbd extends ChangeNotifier {
       //
       // responseModel = ResponseModel(message, true);
       // print(message);
+
       notifyListeners();
       return statusCode;
     } else {

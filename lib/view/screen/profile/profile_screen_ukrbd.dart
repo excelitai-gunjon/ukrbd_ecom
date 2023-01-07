@@ -284,6 +284,7 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                                   controller: _mobileController,
                                   focusNode: _mobileFocus,
                                   nextNode: _addressFocus,
+                                  textInputType: TextInputType.phone,
                                 ),
                                 // Text('Image',style: TextStyle(color: Colors.black45,fontSize: 18),),
                                 // CustomTextField(
@@ -314,6 +315,15 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                                       ),
                                       onPressed: ()async{
 
+                                        // if(_nameController.text.isEmpty){
+                                        //   _nameController.text=nameHint;
+                                        // }
+                                        // if(_mobileController.text.isEmpty){
+                                        //   _mobileController.text=mobileHint;
+                                        // }
+                                        // if(_addressController.text.isEmpty){
+                                        //   _addressController.text=addressHint;
+                                        // }
                                         final token=authProviderUkrbd.getUserToken();
 
                                         User _user=User();
@@ -324,7 +334,7 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
 
                                         print(_user.toJson().toString());
 
-                                        await profileProviderUkrbd.updateUserProfile(_user, null, token).then((value) {
+                                        await profileProviderUkrbd.updateUserProfile(_user, null, token,context).then((value) {
                                           if(value==201){
                                             _load(context, true);
                                           }

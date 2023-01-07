@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -28,7 +29,7 @@ class ProfileRepoUkrbd {
     }
   }
 
-  Future<int> updateProfile(User userInfoModel, File file, String token) async {
+  Future<int> updateProfile(User userInfoModel, File file, String token,BuildContext context) async {
     // try {
     //   Response response = await dioClient.post(
     //     AppConstants.PROFILE_UPDATE_URI,
@@ -62,10 +63,22 @@ class ProfileRepoUkrbd {
     if (response.statusCode == 201) {
       // _load(context, true);
       //print(await response.stream.bytesToString());
+      final data= await response.stream.bytesToString();
+
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(jsonDecode(data)["message"]),
+        backgroundColor: Colors.teal,
+      ));
       return response.statusCode;
     }
     else {
-      print(response.reasonPhrase);
+      final data= await response.stream.bytesToString();
+
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(data),
+        backgroundColor: Colors.teal,
+      ));
+      //print(response.reasonPhrase);
       return response.statusCode;
     }
 

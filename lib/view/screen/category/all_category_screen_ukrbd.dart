@@ -1,4 +1,5 @@
 
+import 'package:ecom_ukrbd/provider/bottom_navigation_bar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/response/Subcategories.dart';
 import 'package:ecom_ukrbd/data/model/response/categories_ukrbd.dart';
@@ -22,144 +23,156 @@ class AllCategoryScreenUkrbd extends StatelessWidget {
   Widget build(BuildContext context) {
 
 
-    return Scaffold(
-      backgroundColor: ColorResources.getIconBg(context),
-      body: Column(
-        children: [
+    return Consumer<BottomNavigationBarProvider>(
+      builder: (context,bottomNavigationBarProvider,child){
+        return Scaffold(
+          backgroundColor: ColorResources.getIconBg(context),
 
-          CustomAppBar(title: getTranslated('CATEGORY', context)),
+          bottomNavigationBar:
+          bottomNavigationBarProvider.bottomNavigationBar(context, false),
 
-          Expanded(child: Consumer<CategoryProviderUkrbd>(
-            builder: (context, categoryProvider, child) {
-              return categoryProvider.categoryList.length != 0 ? Row(children: [
+          // backgroundColor: ColorResources.getHomeBg(context),
+          resizeToAvoidBottomInset: false,
+          body: Column(
+            children: [
 
-                Container(
-                  width: 100,
-                  margin: EdgeInsets.only(top: 0),
-                  height: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,//,
-                    // boxShadow: [BoxShadow(color: Colors.grey[Provider.of<ThemeProvider>(context).darkTheme ? 700 : 200],
-                    //     spreadRadius: 1, blurRadius: 1)],
-                  ),
-                  child: ListView.builder(
-                    physics: BouncingScrollPhysics(),
-                    itemCount: categoryProvider.categoryList.length,
-                    padding: EdgeInsets.only(top: 0.0,left: 0.0,bottom: 0.0),
-                    itemBuilder: (context, index) {
-                      Categories _category = categoryProvider.categoryList[index];
-                      return InkWell(
-                        onTap: () => Provider.of<CategoryProviderUkrbd>(context, listen: false).changeSelectedIndex(index),
-                        child: CategoryItem(
-                          title: _category.category,
-                          icon: _category.image,
-                          isSelected: categoryProvider.categorySelectedIndex == index,
-                        ),
-                      );
+              CustomAppBar(title: getTranslated('CATEGORY', context)),
 
-                    },
-                  ),
-                ),
+              Expanded(child: Consumer<CategoryProviderUkrbd>(
+                builder: (context, categoryProvider, child) {
+                  return categoryProvider.categoryList.length != 0 ? Row(children: [
 
-                Expanded(child: ListView.builder(
-                  padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
-                  itemCount: categoryProvider.categoryList[categoryProvider.categorySelectedIndex].subcategories.length+1,
-                  itemBuilder: (context, index) {
+                    Container(
+                      width: 100,
+                      margin: EdgeInsets.only(top: 0),
+                      height: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,//,
+                        // boxShadow: [BoxShadow(color: Colors.grey[Provider.of<ThemeProvider>(context).darkTheme ? 700 : 200],
+                        //     spreadRadius: 1, blurRadius: 1)],
+                      ),
+                      child: ListView.builder(
+                        physics: BouncingScrollPhysics(),
+                        itemCount: categoryProvider.categoryList.length,
+                        padding: EdgeInsets.only(top: 0.0,left: 0.0,bottom: 0.0),
+                        itemBuilder: (context, index) {
+                          Categories _category = categoryProvider.categoryList[index];
+                          print(_category.image);
+                          return InkWell(
+                            onTap: () => Provider.of<CategoryProviderUkrbd>(context, listen: false).changeSelectedIndex(index),
+                            child: CategoryItem(
+                              title: _category.category,
+                              icon: _category.image,
+                              isSelected: categoryProvider.categorySelectedIndex == index,
+                            ),
+                          );
 
-                    Subcategories _subCategory;
-                    if(index != 0) {
-                      _subCategory = categoryProvider.categoryList[categoryProvider.categorySelectedIndex].subcategories[index-1];
-                    }
-                    if(index == 0) {
-                      return Ink(
-                        decoration: BoxDecoration(
+                        },
+                      ),
+                    ),
+
+                    Expanded(child: ListView.builder(
+                      padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+                      itemCount: categoryProvider.categoryList[categoryProvider.categorySelectedIndex].subcategories.length+1,
+                      itemBuilder: (context, index) {
+
+                        Subcategories _subCategory;
+                        if(index != 0) {
+                          _subCategory = categoryProvider.categoryList[categoryProvider.categorySelectedIndex].subcategories[index-1];
+                        }
+                        if(index == 0) {
+                          return Ink(
+                            decoration: BoxDecoration(
+                                color: ColorResources.getIconBg(context),//Theme.of(context).highlightColor,//
+                                border: Border(
+                                  top: BorderSide(color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,),
+                                  bottom: BorderSide(color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,),
+                                )
+                            ),
+                            child: ListTile(
+                              title: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(child: Text(getTranslated('all', context), style: titilliumSemiBold, maxLines: 2, overflow: TextOverflow.ellipsis)),
+                                  Container(height: MediaQuery.of(context).size.width*.11,width: 1,color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,)
+                                ],
+                              ),
+                              trailing: Icon(Icons.navigate_next),
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreenUkrbd(
+                                  isBrand: false,
+                                  id: categoryProvider.categoryList[categoryProvider.categorySelectedIndex].id.toString(),
+                                  name: categoryProvider.categoryList[categoryProvider.categorySelectedIndex].category,
+                                  isSubcategory: false,
+                                  isHome: false,
+                                )));
+                              },
+                            ),
+                          );
+                        }
+                        // else if (_subCategory.subSubCategories.length != 0) {
+                        //   return Ink(
+                        //     decoration: BoxDecoration(
+                        //         color: ColorResources.getIconBg(context),//Theme.of(context).highlightColor,//
+                        //         border: Border(
+                        //           top: BorderSide(color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,),
+                        //           bottom: BorderSide(color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,),
+                        //         )
+                        //     ),
+                        //     child: Theme(
+                        //       data: Provider.of<ThemeProvider>(context).darkTheme ? ThemeData.dark() : ThemeData.light(),
+                        //       child: ExpansionTile(
+                        //         key: Key('${Provider.of<CategoryProvider>(context).categorySelectedIndex}$index'),
+                        //         // title: Text(_subCategory.name, style: titilliumSemiBold.copyWith(color: Theme.of(context).textTheme.bodyText1.color), maxLines: 2, overflow: TextOverflow.ellipsis),
+                        //         title: Row(
+                        //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //           children: [
+                        //             Text(_subCategory.name, style: titilliumSemiBold.copyWith(color: Theme.of(context).textTheme.bodyText1.color), maxLines: 2, overflow: TextOverflow.ellipsis),
+                        //             Container(height: MediaQuery.of(context).size.width*.11,width: 1,color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,)
+                        //           ],
+                        //         ),
+                        //         children: _getSubSubCategories(context, _subCategory),
+                        //       ),
+                        //     ),
+                        //   );
+                        // }
+                        else {
+                          return Ink(
                             color: ColorResources.getIconBg(context),//Theme.of(context).highlightColor,//
-                            border: Border(
-                              top: BorderSide(color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,),
-                              bottom: BorderSide(color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,),
-                            )
-                        ),
-                        child: ListTile(
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(child: Text(getTranslated('all', context), style: titilliumSemiBold, maxLines: 2, overflow: TextOverflow.ellipsis)),
-                              Container(height: MediaQuery.of(context).size.width*.11,width: 1,color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,)
-                            ],
-                          ),
-                          trailing: Icon(Icons.navigate_next),
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreenUkrbd(
-                              isBrand: false,
-                              id: categoryProvider.categoryList[categoryProvider.categorySelectedIndex].id.toString(),
-                              name: categoryProvider.categoryList[categoryProvider.categorySelectedIndex].category,
-                              isSubcategory: false,
-                              isHome: false,
-                            )));
-                          },
-                        ),
-                      );
-                    }
-                    // else if (_subCategory.subSubCategories.length != 0) {
-                    //   return Ink(
-                    //     decoration: BoxDecoration(
-                    //         color: ColorResources.getIconBg(context),//Theme.of(context).highlightColor,//
-                    //         border: Border(
-                    //           top: BorderSide(color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,),
-                    //           bottom: BorderSide(color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,),
-                    //         )
-                    //     ),
-                    //     child: Theme(
-                    //       data: Provider.of<ThemeProvider>(context).darkTheme ? ThemeData.dark() : ThemeData.light(),
-                    //       child: ExpansionTile(
-                    //         key: Key('${Provider.of<CategoryProvider>(context).categorySelectedIndex}$index'),
-                    //         // title: Text(_subCategory.name, style: titilliumSemiBold.copyWith(color: Theme.of(context).textTheme.bodyText1.color), maxLines: 2, overflow: TextOverflow.ellipsis),
-                    //         title: Row(
-                    //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //           children: [
-                    //             Text(_subCategory.name, style: titilliumSemiBold.copyWith(color: Theme.of(context).textTheme.bodyText1.color), maxLines: 2, overflow: TextOverflow.ellipsis),
-                    //             Container(height: MediaQuery.of(context).size.width*.11,width: 1,color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,)
-                    //           ],
-                    //         ),
-                    //         children: _getSubSubCategories(context, _subCategory),
-                    //       ),
-                    //     ),
-                    //   );
-                    // }
-                    else {
-                      return Ink(
-                        color: ColorResources.getIconBg(context),//Theme.of(context).highlightColor,//
-                        child: ListTile(
-                          // title: Text(_subCategory.name, style: titilliumSemiBold, maxLines: 2, overflow: TextOverflow.ellipsis),
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(child: Text(_subCategory.subCategory, style: titilliumSemiBold, maxLines: 2, overflow: TextOverflow.ellipsis)),
-                              Container(height: MediaQuery.of(context).size.width*.11,width: 1,color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,)
-                            ],
-                          ),
-                          trailing: Icon(Icons.navigate_next, color: Theme.of(context).textTheme.bodyText1.color),
-                          onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreenUkrbd(
-                              isBrand: false,
-                              id: _subCategory.id.toString(),
-                              name: _subCategory.subCategory,
-                              isSubcategory: true,
-                              isHome: false,
-                            )));
-                          },
-                        ),
-                      );
-                    }
+                            child: ListTile(
+                              // title: Text(_subCategory.name, style: titilliumSemiBold, maxLines: 2, overflow: TextOverflow.ellipsis),
+                              title: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(child: Text(_subCategory.subCategory, style: titilliumSemiBold, maxLines: 2, overflow: TextOverflow.ellipsis)),
+                                  Container(height: MediaQuery.of(context).size.width*.11,width: 1,color: Provider.of<ThemeProvider>(context).darkTheme?Theme.of(context).highlightColor:Colors.grey.shade300,)
+                                ],
+                              ),
+                              trailing: Icon(Icons.navigate_next, color: Theme.of(context).textTheme.bodyText1.color),
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreenUkrbd(
+                                  isBrand: false,
+                                  id: _subCategory.id.toString(),
+                                  name: _subCategory.subCategory,
+                                  isSubcategory: true,
+                                  isHome: false,
+                                )));
+                              },
+                            ),
+                          );
+                        }
 
-                  },
-                )),
+                      },
+                    )),
 
-              ]) : Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor)));
-            },
-          )),
-        ],
-      ),
+                  ]) : Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor)));
+                },
+              )),
+            ],
+          ),
+        );
+      },
+
     );
   }
 
@@ -252,7 +265,7 @@ class CategoryItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               child: FadeInImage.assetNetwork(
                 placeholder: Images.placeholder, fit: BoxFit.cover,
-                image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls.categoryImageUrl}/$icon',
+                image: '$icon',
                 imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, fit: BoxFit.cover),
               ),
             ),
