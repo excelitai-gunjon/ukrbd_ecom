@@ -96,7 +96,8 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
         String nameHint;
         String mobileHint;
         String addressHint;
-        if(!profileProviderUkrbd.isLoading){
+
+        if(!profileProviderUkrbd.isLoading && authProviderUkrbd.getUserToken().length>0){
           nameHint=profileProviderUkrbd.user.customerName??'';
           mobileHint=profileProviderUkrbd.user.customerMobile??'';
           addressHint=profileProviderUkrbd.user.customerAddress??'';
@@ -238,7 +239,8 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                               Tab(
                                 child: Column(
                                   children: [
-                                    Text("৳ ${profileProviderUkrbd.user.amount}"),
+                                    profileProviderUkrbd.isLoading==false?Text("৳ ${profileProviderUkrbd.user.amount??""}",style: TextStyle(color: Colors.white),):Shimmer.fromColors(child: Text(""), baseColor: Colors.grey, highlightColor: Colors.black38),
+                                    // Text("৳ ${profileProviderUkrbd.user.amount??0}"),
                                     Text("Withdraw",style: TextStyle(fontSize: 10),),
                                   ],
                                 ),
@@ -628,10 +630,10 @@ class _WithDrawState extends State<WithDraw> {
                   var request =await http.MultipartRequest('POST', Uri.parse('https://ukrbd.com/api/withdraw'));
                   request.fields.addAll({
                     'mobile': _phoneController.text.trim(),
-                    'amount': profileProviderUkrbd.user.amount.toString(),
+                    'amount': "${profileProviderUkrbd.user.amount??0}",
                     'payment_type': selectedpayment,
-                    'customerId': profileProviderUkrbd.user.userId.toString(),
-                    'customer_address': profileProviderUkrbd.user.customerAddress.toString(),
+                    'customerId': "${profileProviderUkrbd.user.userId??""}",
+                    'customer_address': "${profileProviderUkrbd.user.customerAddress??""}",
                   });
 
                   request.headers.addAll(headers);
