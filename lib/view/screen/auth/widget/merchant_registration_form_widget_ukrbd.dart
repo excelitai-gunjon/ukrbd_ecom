@@ -41,6 +41,11 @@ class _MerchantSignUpWidgetUkrbdState extends State<MerchantSignUpWidgetUkrbd> {
   TextEditingController _confirmPasswordController = TextEditingController();
   GlobalKey<FormState> _formKey;
 
+
+
+
+
+
   FocusNode _fullNameFocus = FocusNode();
   FocusNode _lNameFocus = FocusNode();
   FocusNode _emailFocus = FocusNode();
@@ -87,6 +92,10 @@ class _MerchantSignUpWidgetUkrbdState extends State<MerchantSignUpWidgetUkrbd> {
   String selectedValue;
   // String selectedpayment;
 
+
+
+
+
   List<DropdownMenuItem<String>> _addDividersAfterItems(List<String> items) {
     List<DropdownMenuItem<String>> _menuItems = [];
     for (var item in items) {
@@ -115,6 +124,12 @@ class _MerchantSignUpWidgetUkrbdState extends State<MerchantSignUpWidgetUkrbd> {
     }
     return _menuItems;
   }
+
+
+
+
+
+
 
   List<double> _getCustomItemsHeights() {
     List<double> _itemsHeights = [];

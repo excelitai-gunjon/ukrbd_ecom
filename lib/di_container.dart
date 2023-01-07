@@ -21,6 +21,7 @@ import 'package:ecom_ukrbd/data/repository/product_details_repo.dart';
 import 'package:ecom_ukrbd/data/repository/order_repo.dart';
 import 'package:ecom_ukrbd/data/repository/product_repo.dart';
 import 'package:ecom_ukrbd/data/repository/profile_repo.dart';
+import 'package:ecom_ukrbd/data/repository/profile_repo_ukrbd.dart';
 import 'package:ecom_ukrbd/data/repository/search_repo.dart';
 import 'package:ecom_ukrbd/data/repository/seller_repo.dart';
 import 'package:ecom_ukrbd/data/repository/splash_repo.dart';
@@ -55,6 +56,7 @@ import 'package:ecom_ukrbd/provider/product_details_provider.dart';
 import 'package:ecom_ukrbd/provider/order_provider.dart';
 import 'package:ecom_ukrbd/provider/product_provider.dart';
 import 'package:ecom_ukrbd/provider/profile_provider.dart';
+import 'package:ecom_ukrbd/provider/profile_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/provider/search_provider.dart';
 import 'package:ecom_ukrbd/provider/seller_provider.dart';
 import 'package:ecom_ukrbd/provider/splash_provider.dart';
@@ -88,8 +90,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => CategoryWiseProductRepoUkrbd(dioClient: sl()));
   sl.registerLazySingleton(() => SubCategoryWiseProductRepoUkrbd(dioClient: sl()));
   sl.registerLazySingleton(() => BannerRepoUkrbd(dioClient: sl()));
-
-
+  sl.registerLazySingleton(() => ProfileRepoUkrbd(dioClient: sl(),sharedPreferences: sl()));
   sl.registerLazySingleton(() => AuthRepoUkrbd(dioClient: sl(),sharedPreferences: sl()));
 
 
@@ -125,10 +126,11 @@ Future<void> init() async {
   sl.registerFactory(() => CategoryWiseProductProviderUkrbd(categoryWiseProductRepoUkrbd: sl()));
   sl.registerFactory(() => SubCategoryWiseProductProviderUkrbd(subCategoryWiseProductRepoUkrbd: sl()));
   sl.registerFactory(() => CartProviderUkrbd(sharedPreferences: sl()));
-
   sl.registerFactory(() => BannerProviderUkrbd(bannerRepoUkrbd: sl()));
   sl.registerFactory(() => BottomNavigationBarProvider());
   sl.registerFactory(() => AuthProviderUkrbd(authRepoUkrbd: sl()));
+  sl.registerFactory(() => ProfileProviderUkrbd(profileRepo: sl()));
+
 
   sl.registerFactory(() => HomeCategoryProductProvider(homeCategoryProductRepo: sl()));
   sl.registerFactory(() => TopSellerProvider(topSellerRepo: sl()));

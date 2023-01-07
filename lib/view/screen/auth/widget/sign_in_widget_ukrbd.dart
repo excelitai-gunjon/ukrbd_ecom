@@ -1,3 +1,4 @@
+import 'package:ecom_ukrbd/provider/bottom_navigation_bar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/body/login_model.dart';
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
@@ -80,8 +81,15 @@ class _SignInWidgetUkrbdState extends State<SignInWidgetUkrbd> {
         loginBody.password = _password;
         //await Provider.of<AuthProvider>(context,listen: false).login(_loginModel, (){},context)
 
-        await Provider.of<AuthProvider>(context, listen: false).login(loginBody, route,context).then((value) {
-          value==201?Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileScreenUkrbd(isLogedIn: true,))):null;
+        await Provider.of<AuthProvider>(context, listen: false).login(loginBody, route,context).then((value) async{
+          // value==201?
+          // Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileScreenUkrbd(isLogedIn: true,)))
+          //     :null;
+          if(value==201){
+            await Provider.of<BottomNavigationBarProvider>(context, listen: false).onItemTapped(2, false, context);
+          }else{
+            null;
+          }
         });
       }
     }

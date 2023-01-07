@@ -98,6 +98,8 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
   @override
   Widget build(BuildContext context) {
 
+    final size= MediaQuery.of(context).size;
+
 
     List<String> types =[getTranslated('new_arrival', context),getTranslated('top_product', context), getTranslated('best_selling', context),  getTranslated('discounted_product', context)];
     return Scaffold(
@@ -114,9 +116,53 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
           },
           child: Stack(
             children: [
+
+
               CustomScrollView(
                 controller: _scrollController,
                 slivers: [
+
+                  SliverAppBar(
+                    floating: true,
+                    elevation: 0,
+                    centerTitle: true,
+                    automaticallyImplyLeading: false,
+                    backgroundColor: Theme.of(context).highlightColor,
+
+                    title: Padding(
+                      padding:  EdgeInsets.only(top: size.width*(8/360)),
+                      child: Image.asset(Images.logo_with_name_image, height: size.width*(45/360),width: size.width*(200/360),fit: BoxFit.contain,),
+                    ),
+                    actions: [
+                      // Padding(
+                      //   padding: const EdgeInsets.only(right: 12.0),
+                      //   child: IconButton(
+                      //     onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (_) => CartScreen()));
+                      //     },
+                      //     icon: Stack(clipBehavior: Clip.none, children: [
+                      //       Image.asset(
+                      //         Images.cart_arrow_down_image,
+                      //         height: Dimensions.ICON_SIZE_DEFAULT,
+                      //         width: Dimensions.ICON_SIZE_DEFAULT,
+                      //         color: ColorResources.getPrimary(context),
+                      //       ),
+                      //       Positioned(top: -4, right: -4,
+                      //         child: Consumer<CartProvider>(builder: (context, cart, child) {
+                      //           return CircleAvatar(radius: 7, backgroundColor: ColorResources.RED,
+                      //             child: Text(cart.cartList.length.toString(),
+                      //                 style: titilliumSemiBold.copyWith(color: ColorResources.WHITE, fontSize: Dimensions.FONT_SIZE_EXTRA_SMALL,
+                      //                 )),
+                      //           );
+                      //         }),
+                      //       ),
+                      //     ]),
+                      //   ),
+                      // ),
+
+
+                    ],
+                  ),
+
                   SliverPersistentHeader(
                     pinned: true,
                     delegate: SliverDelegate(
@@ -183,7 +229,7 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                       // )
 
 ///
-                      child:      Column(
+                      child: Column(
                         children: [
                           BannersViewUkrbd(),
                           Align(
@@ -207,6 +253,29 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                           ),
 
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
+
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: MediaQuery.of(context).size.width/3,
+                                decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(5))),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                                  child: FadeInImage.assetNetwork(
+                                    placeholder: Images.placeholder, fit: BoxFit.cover,
+                                    image: 'http://ukrbd.com/images/website/banner3.jpg',
+                                    height: 200,
+                                    width: size.width,
+                                    imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, fit: BoxFit.contain),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          // SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
                           Consumer<CategoryWiseProductProviderUkrbd>(
                             builder: (context,categoryWiseProductProviderUkrbd,child){

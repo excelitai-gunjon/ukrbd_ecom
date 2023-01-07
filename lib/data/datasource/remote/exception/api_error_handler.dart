@@ -26,18 +26,28 @@ class ApiErrorHandler {
               switch (error.response.statusCode) {
                 case 404:
                 case 500:
+                case 403:
+                errorDescription = error.response.data;
+                break;
                 case 503:
                   errorDescription = error.response.statusMessage;
                   break;
                 default:
-                  ErrorResponse errorResponse =
-                  ErrorResponse.fromJson(error.response.data);
-                  if (errorResponse.errors != null &&
-                      errorResponse.errors.length > 0)
-                    errorDescription = errorResponse;
-                  else
-                    errorDescription =
-                    "Failed to load data - status code: ${error.response.statusCode}";
+
+                  if(error.response.data is String){
+                    errorDescription=error.response.data;
+                  }else{
+                    ErrorResponse errorResponse =
+                    ErrorResponse.fromJson(error.response.data);
+                    if (errorResponse.errors != null &&
+                        errorResponse.errors.length > 0)
+                      errorDescription = errorResponse;
+                    else
+                      errorDescription =
+                      "Failed to load data - status code: ${error.response.statusCode}";
+
+                  }
+
               }
               break;
             case DioErrorType.sendTimeout:

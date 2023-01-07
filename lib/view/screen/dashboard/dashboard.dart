@@ -65,7 +65,6 @@ class _DashBoardState extends State<DashBoard> {
 
               if(bottomNavigationBarProvider.selectedIndex!=0 ){
                 bottomNavigationBarProvider.updateSelectedIndex();
-
               }
 
               else{

@@ -25,21 +25,21 @@ class ProductDetailsScreenUkrbd extends StatefulWidget {
 class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> with SingleTickerProviderStateMixin{
 
   int _selectedIndex=0;
-  int _counter=0;
+  int _counter=1;
 
-  TabController _tabController;
+  //TabController _tabController;
 
   @override
   void initState() {
     // TODO: implement initState
 
     _load(context);
-    _tabController = TabController(length: 3, vsync: this);
+    //_tabController = TabController(length: 3, vsync: this);
     super.initState();
   }
 
-  _load(BuildContext context){
-    Provider.of<CartProviderUkrbd>(context,listen: false).getCartList();
+  _load(BuildContext context)async{
+    await Provider.of<CartProviderUkrbd>(context,listen: false).getCartList();
   }
 
   @override

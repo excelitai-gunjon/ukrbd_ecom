@@ -66,7 +66,9 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                 (Dimensions.FONT_SIZE_SMALL / 360)),
                       ),
                       InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            cartProviderUkrbd.deleteCart();
+                          },
                           child: Icon(
                             Icons.delete,
                             size: size.width *
@@ -138,11 +140,17 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Icon(
-                                Icons.check_box,
-                                size: size.width *
-                                    (Dimensions.ICON_SIZE_DEFAULT / 360),
-                                color: Theme.of(context).primaryColor,
+                              InkWell(
+                                onTap: (){
+                                  cartProviderUkrbd
+                                      .deleteOneCartItem(index, product);
+                                },
+                                child: Icon(
+                                  Icons.check_box,
+                                  size: size.width *
+                                      (Dimensions.ICON_SIZE_DEFAULT / 360),
+                                  color: Theme.of(context).primaryColor,
+                                ),
                               ),
                               SizedBox(
                                 width: size.width * (25 / 360),
@@ -352,7 +360,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                   //style: DefaultTextStyle.of(context).style,
                                   children: [
                                     TextSpan(
-                                      text: '\$ ',
+                                      text: '৳ ',
                                       style: TextStyle(
                                           color: Colors.deepOrangeAccent,
                                           fontSize: size.width *
@@ -390,7 +398,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                   //style: DefaultTextStyle.of(context).style,
                                   children: <TextSpan>[
                                     TextSpan(
-                                      text: '\$ ',
+                                      text: ' ৳ ',
                                       style: TextStyle(
                                           color: Colors.deepOrangeAccent,
                                           fontSize: size.width *
@@ -428,7 +436,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                   //style: DefaultTextStyle.of(context).style,
                                   children: <TextSpan>[
                                     TextSpan(
-                                      text: '\$ ',
+                                      text: '৳ ',
                                       style: TextStyle(
                                           color: Colors.deepOrangeAccent,
                                           fontSize: size.width *
@@ -526,72 +534,72 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                 },
               ),
 
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: size.width * (16 / 360),
-                    vertical: size.width * (8 / 360)),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Icon(
-                      FontAwesomeIcons.boxArchive,
-                      size: size.width * (Dimensions.ICON_SIZE_DEFAULT / 360),
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    SizedBox(
-                      width: size.width * (10 / 360),
-                    ),
-                    Text("Select a promo code",
-                        style: TextStyle(
-                            fontSize:
-                                size.width * (Dimensions.FONT_SIZE_LARGE / 360),
-                            color: Theme.of(context).primaryColor)),
-                  ],
-                ),
-              ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(
+              //       horizontal: size.width * (16 / 360),
+              //       vertical: size.width * (8 / 360)),
+              //   child: Row(
+              //     mainAxisSize: MainAxisSize.max,
+              //     crossAxisAlignment: CrossAxisAlignment.center,
+              //     mainAxisAlignment: MainAxisAlignment.start,
+              //     children: [
+              //       Icon(
+              //         FontAwesomeIcons.boxArchive,
+              //         size: size.width * (Dimensions.ICON_SIZE_DEFAULT / 360),
+              //         color: Theme.of(context).primaryColor,
+              //       ),
+              //       SizedBox(
+              //         width: size.width * (10 / 360),
+              //       ),
+              //       Text("Select a promo code",
+              //           style: TextStyle(
+              //               fontSize:
+              //                   size.width * (Dimensions.FONT_SIZE_LARGE / 360),
+              //               color: Theme.of(context).primaryColor)),
+              //     ],
+              //   ),
+              // ),
 
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: size.width * (16 / 360),
-                    vertical: size.width * (8 / 360)),
-                child: Text("ADDITIONAL COMMENTS",
-                    style: TextStyle(
-                        fontSize:
-                            size.width * (Dimensions.FONT_SIZE_LARGE / 360),
-                        color: Colors.grey)),
-              ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(
+              //       horizontal: size.width * (16 / 360),
+              //       vertical: size.width * (8 / 360)),
+              //   child: Text("ADDITIONAL COMMENTS",
+              //       style: TextStyle(
+              //           fontSize:
+              //               size.width * (Dimensions.FONT_SIZE_LARGE / 360),
+              //           color: Colors.grey)),
+              // ),
 
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: size.width * (16 / 360),
-                    vertical: size.width * (8 / 360)),
-                child: TextFormField(
-                  //style: TextFormField,
-                  decoration: InputDecoration(
-                    fillColor: Colors.grey.shade200,
-                    hoverColor: Colors.grey.shade200,
-                    focusColor: Colors.grey.shade200,
-                    focusedBorder: OutlineInputBorder(
-                      //<-- SEE HERE
-                      borderSide:
-                          BorderSide(width: 3, color: Colors.grey.shade200),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      //<-- SEE HERE
-                      borderSide:
-                          BorderSide(width: 3, color: Colors.grey.shade200),
-                    ),
-                    // fillColor: Colors.white,
-                    filled: true,
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(25.0),
-                    ),
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(
+              //       horizontal: size.width * (16 / 360),
+              //       vertical: size.width * (8 / 360)),
+              //   child: TextFormField(
+              //     //style: TextFormField,
+              //     decoration: InputDecoration(
+              //       fillColor: Colors.grey.shade200,
+              //       hoverColor: Colors.grey.shade200,
+              //       focusColor: Colors.grey.shade200,
+              //       focusedBorder: OutlineInputBorder(
+              //         //<-- SEE HERE
+              //         borderSide:
+              //             BorderSide(width: 3, color: Colors.grey.shade200),
+              //       ),
+              //       enabledBorder: OutlineInputBorder(
+              //         //<-- SEE HERE
+              //         borderSide:
+              //             BorderSide(width: 3, color: Colors.grey.shade200),
+              //       ),
+              //       // fillColor: Colors.white,
+              //       filled: true,
+              //       border: OutlineInputBorder(
+              //         borderSide: const BorderSide(color: Colors.white),
+              //         borderRadius: BorderRadius.circular(25.0),
+              //       ),
+              //     ),
+              //   ),
+              // ),
 
               // SizedBox(height: size.width*(80/360),),
               //
@@ -690,33 +698,33 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                 children: [
                                   TextSpan(
                                     text:
-                                        'By selecting Checkout, I agree to the\n',
+                                        'Continue Shopping ',
                                     style: TextStyle(
                                         color: Colors.black54,
                                         fontSize: size.width *
                                             (Dimensions.FONT_SIZE_SMALL / 360)),
                                   ),
-                                  TextSpan(
-                                    text: 'Terms of Service',
-                                    style: TextStyle(
-                                        color: Colors.red,
-                                        fontSize: size.width *
-                                            (Dimensions.FONT_SIZE_SMALL / 360)),
-                                  ),
-                                  TextSpan(
-                                    text: ' and ',
-                                    style: TextStyle(
-                                        color: Colors.black54,
-                                        fontSize: size.width *
-                                            (Dimensions.FONT_SIZE_SMALL / 360)),
-                                  ),
-                                  TextSpan(
-                                    text: 'Privacy Policy',
-                                    style: TextStyle(
-                                        color: Colors.red,
-                                        fontSize: size.width *
-                                            (Dimensions.FONT_SIZE_SMALL / 360)),
-                                  ),
+                                  // TextSpan(
+                                  //   text: 'Terms of Service',
+                                  //   style: TextStyle(
+                                  //       color: Colors.red,
+                                  //       fontSize: size.width *
+                                  //           (Dimensions.FONT_SIZE_SMALL / 360)),
+                                  // ),
+                                  // TextSpan(
+                                  //   text: ' and ',
+                                  //   style: TextStyle(
+                                  //       color: Colors.black54,
+                                  //       fontSize: size.width *
+                                  //           (Dimensions.FONT_SIZE_SMALL / 360)),
+                                  // ),
+                                  // TextSpan(
+                                  //   text: 'Privacy Policy',
+                                  //   style: TextStyle(
+                                  //       color: Colors.red,
+                                  //       fontSize: size.width *
+                                  //           (Dimensions.FONT_SIZE_SMALL / 360)),
+                                  // ),
                                 ],
                               ),
                             ),
@@ -767,7 +775,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                       children: <TextSpan>[
                                         TextSpan(
                                           text:
-                                              ' ${cartProviderUkrbd.subTotal} ${cartProviderUkrbd.totalItem}',
+                                              ' ৳ ${cartProviderUkrbd.subTotal}',
                                           style: TextStyle(
                                               color: Colors.black54,
                                               fontSize: size.width *
@@ -775,7 +783,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                                       360)),
                                         ),
                                         TextSpan(
-                                          text: 'items',
+                                          text: '  items ${cartProviderUkrbd.totalItem}',
                                           style: TextStyle(
                                               color: Colors.black54,
                                               fontSize: size.width *

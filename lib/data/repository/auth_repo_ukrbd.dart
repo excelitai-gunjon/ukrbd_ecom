@@ -73,6 +73,19 @@ class AuthRepoUkrbd {
     }
   }
 
+  Future<ApiResponse> logout() async {
+
+    try {
+      Response response = await dioClient.post(
+        AppConstants.LOGOUT_URI,
+      );
+      await removeUserToken();
+      return ApiResponse.withSuccess(response);
+    } catch (e) {
+      return ApiResponse.withError(ApiErrorHandler.getMessage(e));
+    }
+  }
+
   // Future<ApiResponse> updateToken() async {
   //   try {
   //     String _deviceToken = await _getDeviceToken();
@@ -112,7 +125,16 @@ class AuthRepoUkrbd {
     }
   }
 
-  String getUserToken() {
+  Future<void> removeUserToken()async{
+    dioClient.updateHeader("", null);
+    try {
+      await sharedPreferences.clear();
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  String getUserToken(){
     return sharedPreferences.getString(AppConstants.TOKEN) ?? "";
   }
 

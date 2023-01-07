@@ -30,8 +30,8 @@ class DioClientUkrbd {
       ..options.receiveTimeout = 30000
       ..httpClientAdapter
       ..options.headers = {
-        'Content-Type': 'application/json; charset=UTF-8',
-        'Authorization': 'Bearer $token',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${token}'
         //AppConstants.LANG_KEY : countryCode == 'US'? 'en':countryCode.toLowerCase(),
 
       };
@@ -45,9 +45,9 @@ class DioClientUkrbd {
     this.countryCode = countryCode;
     print('===Country code====>$countryCode');
     dio.options.headers = {
-      'Content-Type': 'application/json; charset=UTF-8',
-      'Authorization': 'Bearer $token',
-      AppConstants.LANG_KEY: countryCode == 'US'? 'en':countryCode.toLowerCase(),
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ${token}'
+      // AppConstants.LANG_KEY: countryCode == 'US'? 'en':countryCode.toLowerCase(),
     };
   }
 

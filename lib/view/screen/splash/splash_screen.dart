@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
         isNotConnected ? SizedBox() : ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: isNotConnected ? Colors.red : Colors.green,
-          duration: Duration(seconds: isNotConnected ? 6000 : 0),
+          duration: Duration(seconds: isNotConnected ? 3000 : 0),
           content: Text(
             isNotConnected ? getTranslated('no_connection', context) : getTranslated('connected', context),
             textAlign: TextAlign.center,
@@ -145,28 +145,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         width: 250.0),
         ),
       )
-      // Stack(
-      //   clipBehavior: Clip.none, children: [
-      //     Container(
-      //       width: MediaQuery.of(context).size.width,
-      //       height: MediaQuery.of(context).size.height,
-      //       color: Provider.of<ThemeProvider>(context).darkTheme ? Colors.black : ColorResources.getPrimary(context),
-      //       child: CustomPaint(
-      //         painter: SplashPainter(),
-      //       ),
-      //     ),
-      //     Center(
-      //       child: Column(
-      //         mainAxisSize: MainAxisSize.min,
-      //         children: [
-      //           Image.asset(Images.logo_with_name_image, height: 250.0, fit: BoxFit.scaleDown,
-      //             // width: 250.0, color: Theme.of(context).cardColor,),
-      //             width: 250.0),
-      //         ],
-      //       ),
-      //     ),
-      //   ],
-      // )
+
           : NoInternetOrDataScreen(isNoInternet: true, child: SplashScreen()),
     );
   }

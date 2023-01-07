@@ -1,3 +1,6 @@
+import 'package:ecom_ukrbd/provider/bottom_navigation_bar_provider.dart';
+import 'package:ecom_ukrbd/provider/cart_provider_ukrbd.dart';
+import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/helper/network_info.dart';
 import 'package:ecom_ukrbd/provider/splash_provider.dart';
@@ -41,54 +44,89 @@ class _DashBoardScreenUkrbdState extends State<DashBoardScreenUkrbd> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        if(_pageIndex != 0) {
-          _setPage(0);
-          return false;
-        }else {
-          return true;
-        }
-      },
-      child: Scaffold(
-        key: _scaffoldKey,
-        bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                color: Colors.grey.shade400,
-                blurRadius: 5,
-              ),
-            ],
-          ),
-          child: BottomNavigationBar(
-            selectedItemColor: Theme.of(context).primaryColor,
-            unselectedItemColor: Theme.of(context).textTheme.bodyText1.color,
-            showUnselectedLabels: true,
-            currentIndex: _pageIndex,
-            type: BottomNavigationBarType.fixed,
-            items: _getBottomWidget(true),
-            onTap: (int index) {
-              print("index index index :-------------- ${index}");
-              _setPage(index);
-            },
-
-
-          ),
-        ),
-        body: PageView.builder(
-          controller: _pageController,
-          itemCount: _screens.length,
-          physics: NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index){
-            return _screens[index];
+    return Consumer<BottomNavigationBarProvider>(
+      builder: (context,bottomNavigationBarProvider,child){
+        return WillPopScope(
+          onWillPop: () async {
+            if(_pageIndex != 0) {
+              _setPage(0);
+              return false;
+            }else {
+              return true;
+            }
           },
-        ),
-      ),
+          child: Scaffold(
+            key: _scaffoldKey,
+            bottomNavigationBar: bottomNavigationBarProvider.bottomNavigationBar(context, true),
+
+            backgroundColor: ColorResources.getHomeBg(context),
+            resizeToAvoidBottomInset: false,
+            // bottomNavigationBar: Container(
+            //   decoration: BoxDecoration(
+            //     boxShadow: <BoxShadow>[
+            //       BoxShadow(
+            //         color: Colors.grey.shade400,
+            //         blurRadius: 5,
+            //       ),
+            //     ],
+            //   ),
+            //   child: BottomNavigationBar(
+            //     selectedItemColor: Theme.of(context).primaryColor,
+            //     unselectedItemColor: Theme.of(context).textTheme.bodyText1.color,
+            //     showUnselectedLabels: true,
+            //     currentIndex: _pageIndex,
+            //     type: BottomNavigationBarType.fixed,
+            //     items: _getBottomWidget(true),
+            //     onTap: (int index) {
+            //       print("index index index :-------------- ${index}");
+            //       _setPage(index);
+            //     },
+            //
+            //
+            //   ),
+            // ),
+            body: bottomNavigationBarProvider.getWidget(bottomNavigationBarProvider.selectedIndex),
+          ),
+        );
+      },
     );
   }
 
   BottomNavigationBarItem _barItem(String icon, String label, int index) {
+    if(index==3){
+      return BottomNavigationBarItem(
+        icon: Consumer<CartProviderUkrbd>(
+          builder: (context,cartProviderUkrbd,child){
+            return Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Image.asset(icon, color: index == _pageIndex ?
+                Theme.of(context).primaryColor : Theme.of(context).textTheme.bodyText1.color.withOpacity(0.5),
+                  height: 25, width: 25,
+                ),
+                Positioned(
+                  top: -7.5,
+                    right: -7.5,
+                    child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                    height: 15,
+                    width: 15,
+                    color: Colors.red,
+                    child: Center(
+                      child: Text("${cartProviderUkrbd.totalItem}",style: TextStyle(
+                        color: Colors.white,fontSize: 10
+                      ),),
+                    ),
+                  ),
+                ))
+              ],
+            );
+          },
+        ),
+        label: label,
+      );
+    }
     return BottomNavigationBarItem(
       icon: Image.asset(icon, color: index == _pageIndex ?
       Theme.of(context).primaryColor : Theme.of(context).textTheme.bodyText1.color.withOpacity(0.5),

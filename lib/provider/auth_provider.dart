@@ -144,11 +144,13 @@ class AuthProvider with ChangeNotifier {
 
 
     print("login apiResponse/>>>>>>>>>>>>>");
-    print(apiResponse.response.statusCode);
+    //print(apiResponse.response.statusCode);
 
 
 
     if (apiResponse.response != null && apiResponse.response.statusCode == 201) {
+      _isLoading = false;
+
       Map map = apiResponse.response.data;
       String temporaryToken = '';
       String token = '';
@@ -196,6 +198,7 @@ class AuthProvider with ChangeNotifier {
       // callback(true, token, temporaryToken, message);
       // notifyListeners();
     } else {
+      _isLoading = false;
       String errorMessage;
       if (apiResponse.error is String) {
         print(apiResponse.error.toString());

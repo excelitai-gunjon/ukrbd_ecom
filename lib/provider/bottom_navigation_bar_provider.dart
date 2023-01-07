@@ -1,5 +1,7 @@
 
+import 'package:ecom_ukrbd/provider/cart_provider_ukrbd.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../localization/language_constrants.dart';
 import '../utill/color_resources.dart';
@@ -56,7 +58,7 @@ class BottomNavigationBarProvider extends ChangeNotifier {
           ),
         ),
         onPressed: () {
-          _onItemTapped(1, islanding, context);
+          onItemTapped(1, islanding, context);
 
         },
       ),
@@ -74,7 +76,7 @@ class BottomNavigationBarProvider extends ChangeNotifier {
       selectedItemColor: Theme.of(context).primaryColor,
       unselectedItemColor: Theme.of(context).textTheme.bodyText1.color,
       onTap: (index){
-        _onItemTapped(index,isDashBoardScreen,context);
+        onItemTapped(index,isDashBoardScreen,context);
       },
 
       items:   [
@@ -105,10 +107,36 @@ class BottomNavigationBarProvider extends ChangeNotifier {
           label: getTranslated('PROFILE', context),
         ),
         BottomNavigationBarItem(
-          icon: Image.asset(
-            Images.cart_image,
-            color: ColorResources.BOTTOMNAVIGATIONBARITEMCOLOR,
-            height: 25, width: 25,
+          icon: Consumer<CartProviderUkrbd>(
+            builder: (context,cartProviderUkrbd,child){
+              return Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Image.asset(
+                    Images.cart_image,
+                    color: ColorResources.BOTTOMNAVIGATIONBARITEMCOLOR,
+
+                    height: 25, width: 25,
+                  ),
+                  Positioned(
+                      top: -7.5,
+                      right: -7.5,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          height: 15,
+                          width: 15,
+                          color: Colors.red,
+                          child: Center(
+                            child: Text("${cartProviderUkrbd.totalItem}",style: TextStyle(
+                                color: Colors.white,fontSize: 10
+                            ),),
+                          ),
+                        ),
+                      ))
+                ],
+              );
+            },
           ),
           label: getTranslated('CART', context),
         ),
@@ -119,6 +147,8 @@ class BottomNavigationBarProvider extends ChangeNotifier {
      
     );
   }
+
+
 
   Widget getWidget(int index) {
     if (index == 0 ) {
@@ -147,15 +177,12 @@ class BottomNavigationBarProvider extends ChangeNotifier {
     }
   }
 
-  void _onItemTapped(int index, bool isDashBoardScreen,BuildContext context) {
+  void onItemTapped(int index, bool isDashBoardScreen,BuildContext context) {
     _selectedIndex = index;
     notifyListeners();
     if(!isDashBoardScreen){
-
-
-  Navigator.pushReplacementNamed(context, DashBoard.routeName);
+      Navigator.pushReplacementNamed(context, DashBoard.routeName);
     }
-
     //tap=false;
   }
 

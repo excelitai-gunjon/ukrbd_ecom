@@ -44,6 +44,14 @@ class CartProviderUkrbd with ChangeNotifier{
   void deleteCartItem(Data productData){
     _totalItem=_totalItem-1;
     _subTotal= _subTotal-int.tryParse(productData.salesPrice);
+    // Data productModelData =_cartList.;
+    _cartList.removeWhere((element) => element==productData);
+    notifyListeners();
+  }
+
+  void deleteOneCartItem(int index,Data productData){
+    _totalItem=_totalItem-_itemCound[index];
+    _subTotal= _subTotal-_itemCound[index]*int.tryParse(productData.salesPrice);
     _cartList.removeWhere((element) => element==productData);
     notifyListeners();
   }

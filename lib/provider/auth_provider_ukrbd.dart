@@ -3,13 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/body/login_model.dart';
 import 'package:ecom_ukrbd/data/model/body/merchant_register_model.dart';
-import 'package:ecom_ukrbd/data/model/body/register_model.dart';
 import 'package:ecom_ukrbd/data/model/body/register_model_ukrbd.dart';
 import 'package:ecom_ukrbd/data/model/response/base/api_response.dart';
 import 'package:ecom_ukrbd/data/model/response/base/error_response.dart';
 import 'package:ecom_ukrbd/data/model/response/response_model.dart';
 import 'package:ecom_ukrbd/data/repository/auth_repo_ukrbd.dart';
-import 'package:ecom_ukrbd/helper/api_checker.dart';
 
 class AuthProviderUkrbd with ChangeNotifier {
   final AuthRepoUkrbd authRepoUkrbd;
@@ -59,29 +57,7 @@ class AuthProviderUkrbd with ChangeNotifier {
       String temporaryToken = '';
       String token = '';
       String message = '';
-      // try{
-      //   message = map["message"];
-      //
-      // }catch(e){
-      //
-      // }
-      // try{
-      //   token = map["token"];
-      //
-      // }catch(e){
-      //
-      // }
-      // try{
-      //   temporaryToken = map["temporary_token"];
-      //
-      // }catch(e){
-      //
-      // }
-      // if(token != null && token.isNotEmpty){
-      //   authRepoUkrbd.saveUserToken(token);
-      //   await authRepoUkrbd.updateToken();
-      // }
-      // callback(true, token, temporaryToken, message);
+
       notifyListeners();
     }else if (apiResponse.response != null && apiResponse.response.statusCode == 200) {
       //Map map = apiResponse.response.data;
@@ -96,35 +72,13 @@ class AuthProviderUkrbd with ChangeNotifier {
 
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(apiResponse.response.data.toString()),
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.red,
       ));
 
       String temporaryToken = '';
       String token = '';
       String message = '';
-      // try{
-      //   message = map["message"];
-      //
-      // }catch(e){
-      //
-      // }
-      // try{
-      //   token = map["token"];
-      //
-      // }catch(e){
-      //
-      // }
-      // try{
-      //   temporaryToken = map["temporary_token"];
-      //
-      // }catch(e){
-      //
-      // }
-      // if(token != null && token.isNotEmpty){
-      //   authRepoUkrbd.saveUserToken(token);
-      //   await authRepoUkrbd.updateToken();
-      // }
-      // callback(true, token, temporaryToken, message);
+
       notifyListeners();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -132,16 +86,6 @@ class AuthProviderUkrbd with ChangeNotifier {
         backgroundColor: Colors.red,
       ));
 
-      // String errorMessage;
-      // if (apiResponse.error is String) {
-      //   print(apiResponse.error.toString());
-      //   errorMessage = apiResponse.error.toString();
-      // } else {
-      //   ErrorResponse errorResponse = apiResponse.error;
-      //   print(errorResponse.errors[0].message);
-      //   errorMessage = errorResponse.errors[0].message;
-      // }
-      // callback(false, '', '', errorMessage);
       notifyListeners();
     }
     notifyListeners();
@@ -153,6 +97,31 @@ class AuthProviderUkrbd with ChangeNotifier {
     notifyListeners();
     ApiResponse apiResponse = await authRepoUkrbd.merchantRegistration(register);
     _isLoading = false;
+
+
+
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+    // print(apiResponse.response.statusCode );
+
+
+
     if (apiResponse.response != null && apiResponse.response.statusCode == 201) {
       _isLoading = false;
       //Map map = apiResponse.response.data;
@@ -173,29 +142,7 @@ class AuthProviderUkrbd with ChangeNotifier {
       String temporaryToken = '';
       String token = '';
       String message = '';
-      // try{
-      //   message = map["message"];
-      //
-      // }catch(e){
-      //
-      // }
-      // try{
-      //   token = map["token"];
-      //
-      // }catch(e){
-      //
-      // }
-      // try{
-      //   temporaryToken = map["temporary_token"];
-      //
-      // }catch(e){
-      //
-      // }
-      // if(token != null && token.isNotEmpty){
-      //   authRepoUkrbd.saveUserToken(token);
-      //   await authRepoUkrbd.updateToken();
-      // }
-      // callback(true, token, temporaryToken, message);
+
       notifyListeners();
     }else if (apiResponse.response != null && apiResponse.response.statusCode == 200) {
       _isLoading = false;
@@ -217,30 +164,11 @@ class AuthProviderUkrbd with ChangeNotifier {
       String temporaryToken = '';
       String token = '';
       String message = '';
-      // try{
-      //   message = map["message"];
-      //
-      // }catch(e){
-      //
-      // }
-      // try{
-      //   token = map["token"];
-      //
-      // }catch(e){
-      //
-      // }
-      // try{
-      //   temporaryToken = map["temporary_token"];
-      //
-      // }catch(e){
-      //
-      // }
-      // if(token != null && token.isNotEmpty){
-      //   authRepoUkrbd.saveUserToken(token);
-      //   await authRepoUkrbd.updateToken();
-      // }
-      // callback(true, token, temporaryToken, message);
+
+
+
       notifyListeners();
+
     }else if (apiResponse.response != null && apiResponse.response.statusCode == 403) {
       _isLoading = false;
       //Map map = apiResponse.response.data;
@@ -261,47 +189,33 @@ class AuthProviderUkrbd with ChangeNotifier {
       String temporaryToken = '';
       String token = '';
       String message = '';
-      // try{
-      //   message = map["message"];
-      //
-      // }catch(e){
-      //
-      // }
-      // try{
-      //   token = map["token"];
-      //
-      // }catch(e){
-      //
-      // }
-      // try{
-      //   temporaryToken = map["temporary_token"];
-      //
-      // }catch(e){
-      //
-      // }
-      // if(token != null && token.isNotEmpty){
-      //   authRepoUkrbd.saveUserToken(token);
-      //   await authRepoUkrbd.updateToken();
-      // }
-      // callback(true, token, temporaryToken, message);
-      notifyListeners();
-    } else {
-      _isLoading = false;
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(apiResponse.error.data.toString()),
-        backgroundColor: Colors.red,
-      ));
 
-      // String errorMessage;
-      // if (apiResponse.error is String) {
-      //   print(apiResponse.error.toString());
-      //   errorMessage = apiResponse.error.toString();
-      // } else {
-      //   ErrorResponse errorResponse = apiResponse.error;
-      //   print(errorResponse.errors[0].message);
-      //   errorMessage = errorResponse.errors[0].message;
-      // }
-      // callback(false, '', '', errorMessage);
+
+
+      notifyListeners();
+
+    }
+    else {
+      _isLoading = false;
+
+      String errorMessage;
+      if (apiResponse.error is String) {
+        print(apiResponse.error.toString());
+        errorMessage = apiResponse.error.toString();
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(errorMessage),
+          backgroundColor: Colors.red,
+        ));
+      } else {
+        ErrorResponse errorResponse = apiResponse.error;
+        print(errorResponse.errors[0].message);
+        errorMessage = errorResponse.errors[0].message;
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(errorMessage),
+          backgroundColor: Colors.red,
+        ));
+      }
+
       notifyListeners();
     }
   }
@@ -311,12 +225,13 @@ class AuthProviderUkrbd with ChangeNotifier {
     notifyListeners();
   }
 
-  Future login(LoginModel loginBody, Function callback) async {
+  Future login({LoginModel loginBody, Function callback, BuildContext context}) async {
     _isLoading = true;
     notifyListeners();
     ApiResponse apiResponse = await authRepoUkrbd.login(loginBody);
     _isLoading = false;
     if (apiResponse.response != null && apiResponse.response.statusCode == 200) {
+      _isLoading=false;
       Map map = apiResponse.response.data;
       String temporaryToken = '';
       String token = '';
@@ -347,20 +262,73 @@ class AuthProviderUkrbd with ChangeNotifier {
         // await authRepoUkrbd.updateToken();
       }
 
-      callback(true, token, temporaryToken, message);
+      //callback(true, token, temporaryToken, message);
       notifyListeners();
     } else {
+      _isLoading=false;
       String errorMessage;
       if (apiResponse.error is String) {
         print(apiResponse.error.toString());
         errorMessage = apiResponse.error.toString();
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(errorMessage),
+          backgroundColor: Colors.red,
+        ));
       } else {
         ErrorResponse errorResponse = apiResponse.error;
         print(errorResponse.errors[0].message);
         errorMessage = errorResponse.errors[0].message;
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(errorMessage),
+          backgroundColor: Colors.red,
+        ));
       }
-      callback(false, '', '' , errorMessage);
+      // callback(false, '', '' , errorMessage);
       notifyListeners();
+    }
+  }
+
+  Future<void> logOut(BuildContext context)async{
+
+    ApiResponse apiResponse;
+
+    _isLoading=true;
+    apiResponse= await authRepoUkrbd.logout();
+    _isLoading=false;
+    if(apiResponse.response!=null&&apiResponse.response.statusCode==200){
+
+      _isLoading=false;
+
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(apiResponse.response.data.toString()),
+        backgroundColor: Colors.teal,
+      ));
+
+      notifyListeners();
+
+
+    }else{
+      _isLoading=false;
+      String errorMessage;
+      if (apiResponse.error is String) {
+        print(apiResponse.error.toString());
+        errorMessage = apiResponse.error.toString();
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(errorMessage),
+          backgroundColor: Colors.red,
+        ));
+      } else {
+        ErrorResponse errorResponse = apiResponse.error;
+        print(errorResponse.errors[0].message);
+        errorMessage = errorResponse.errors[0].message;
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(errorMessage),
+          backgroundColor: Colors.red,
+        ));
+      }
+      //callback(false, '', '' , errorMessage);
+      notifyListeners();
+
     }
   }
 

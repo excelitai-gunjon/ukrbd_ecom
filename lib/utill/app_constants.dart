@@ -8,6 +8,8 @@ class AppConstants {
   static const String UKRBD_BASE_URL = 'http://ukrbd.com';
   static const String REGISTER_UKRBD = '/api/customer/register';
   static const String MERCHANT_REGISTER_UKRBD = '/api/merchandiser/register';
+  static const String PROFILE_URI = '/api/profile';
+  static const String PROFILE_UPDATE_URI = '/api/update/profile';
 
 
   static const String USER_ID = 'userId';
@@ -24,6 +26,7 @@ class AppConstants {
   static const String REGISTRATION_URI = '/api/v1/auth/register';
   // static const String LOGIN_URI = '/api/v1/auth/login';
   static const String LOGIN_URI = '/api/login';
+  static const String LOGOUT_URI = '/api/logout';
   static const String LATEST_PRODUCTS_URI = '/api/v1/products/latest?limit=10&&offset=';
   static const String NEW_ARRIVAL_PRODUCTS_URI = '/api/v1/products/latest?limit=10&&offset=';
   static const String TOP_PRODUCTS_URI = '/api/v1/products/top-rated?limit=10&&offset=';

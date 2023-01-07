@@ -332,7 +332,7 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
 
                 Expanded(
                   child: Container(
-                    padding:  EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_DEFAULT,vertical: Dimensions.PADDING_SIZE_DEFAULT),
+                    padding:  EdgeInsets.symmetric(horizontal: 32,vertical: Dimensions.PADDING_SIZE_DEFAULT),
 
                     color: Colors.grey.shade200,
                     child: Column(
@@ -343,28 +343,28 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
                         Text("YOUR ORDER",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                         Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("CART SUBTOTAL",style: TextStyle(color: Colors.black45),),
-                            Text("\$ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
+                            Text("৳ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
                           ],
                         ),
                         Divider(),
                         Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("PROFIT",style: TextStyle(color: Colors.black45),),
-                            Text("\$ 0.0",style: TextStyle(color: Colors.black45),),
+                            Text("৳ 0.0",style: TextStyle(color: Colors.black45),),
                           ],
                         ),
                         Divider(),
                         Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("Order Total",style: TextStyle(color: Colors.black45),),
-                            Text("\$ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
+                            Text("৳ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
                           ],
                         ),
                         Container(
