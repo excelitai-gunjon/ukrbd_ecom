@@ -14,7 +14,7 @@ import 'package:ecom_ukrbd/view/screen/maintenance/maintenance_screen.dart';
 import 'package:ecom_ukrbd/view/screen/onboarding/onboarding_screen.dart';
 import 'package:provider/provider.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends StatefulWidget{
   static const String routeName = "/splashscreen";
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -72,8 +72,6 @@ class _SplashScreenState extends State<SplashScreen> {
       // await Provider.of<BannerProviderUkrbd>(context, listen: false).getBannerList(true, context).then((value) {
       //   return value;
       // });
-
-
      // await Provider.of<CategoryProviderUkrbd>(context, listen: false).getCategoryList(true, context);
       await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "82");
       await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "81");
@@ -114,9 +112,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 )));
               }else {
                 if (!Provider.of<AuthProvider>(context, listen: false).isLoading) {
-
                   // Provider.of<CartProvider>(context, listen: false).getCartData();
-
                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => DashBoardScreenUkrbd()),
                           (route) => false);
                 }
@@ -133,7 +129,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _globalKey,
-      body: Provider.of<SplashProvider>(context).hasConnection ?
+      body: Provider.of<SplashProvider>(context).hasConnection?
       Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -141,12 +137,10 @@ class _SplashScreenState extends State<SplashScreen> {
         child:
         Center(
           child: Image.asset(Images.logo_with_name_image, height: 250.0, fit: BoxFit.scaleDown,
-                        // width: 250.0, color: Theme.of(context).cardColor,),
+              // width: 250.0, color: Theme.of(context).cardColor,),
                         width: 250.0),
         ),
-      )
-
-          : NoInternetOrDataScreen(isNoInternet: true, child: SplashScreen()),
+      ):NoInternetOrDataScreen(isNoInternet: true, child: SplashScreen()),
     );
   }
 

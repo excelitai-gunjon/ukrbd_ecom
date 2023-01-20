@@ -9,18 +9,18 @@ class ApiErrorHandler {
         if (error is DioError) {
           switch (error.type) {
             case DioErrorType.cancel:
-              errorDescription = "Request to API server was cancelled";
+              errorDescription = "Request to server was cancelled";
               break;
             case DioErrorType.connectTimeout:
-              errorDescription = "Connection timeout with API server";
+              errorDescription = "Connection timeout with server";
               break;
             case DioErrorType.other:
               errorDescription =
-              "Connection to API server failed due to internet connection";
+              "Connection to server failed due to internet connection";
               break;
             case DioErrorType.receiveTimeout:
               errorDescription =
-              "Receive timeout in connection with API server";
+              "Receive timeout in connection with server";
               break;
             case DioErrorType.response:
               switch (error.response.statusCode) {
@@ -55,7 +55,7 @@ class ApiErrorHandler {
               break;
           }
         } else {
-          errorDescription = "Unexpected error occured";
+          errorDescription = "Unexpected error occurred";
         }
       } on FormatException catch (e) {
         errorDescription = e.toString();

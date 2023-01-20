@@ -13,35 +13,35 @@ class CartProviderUkrbd with ChangeNotifier{
 
   CartProviderUkrbd({this.sharedPreferences});
 
-  List<Data> _cartList=[];
+  List<Products> _cartList=[];
   List<int> _itemCound=[];
   int _totalItem=0;
   int _subTotal=0;
 
 
 
-  List<Data> get cartList=>_cartList;
+  List<Products> get cartList=>_cartList;
   List<int> get itemCount=>_itemCound;
   int get subTotal => _subTotal;
   int get totalItem => _totalItem;
 
 
 
-  void plus(int index,Data productData){
+  void plus(int index,Products productData){
     _itemCound[index]++;
     _totalItem=_totalItem+1;
     _subTotal= int.tryParse(productData.salesPrice)+_subTotal;
     notifyListeners();
   }
 
-  void minus(int index,Data productData){
+  void minus(int index,Products productData){
     _itemCound[index]--;
     _totalItem=_totalItem-1;
     _subTotal= _subTotal-int.tryParse(productData.salesPrice);
     notifyListeners();
   }
 
-  void deleteCartItem(Data productData){
+  void deleteCartItem(Products productData){
     _totalItem=_totalItem-1;
     _subTotal= _subTotal-int.tryParse(productData.salesPrice);
     // Data productModelData =_cartList.;
@@ -49,7 +49,7 @@ class CartProviderUkrbd with ChangeNotifier{
     notifyListeners();
   }
 
-  void deleteOneCartItem(int index,Data productData){
+  void deleteOneCartItem(int index,Products productData){
     _totalItem=_totalItem-_itemCound[index];
     _subTotal= _subTotal-_itemCound[index]*int.tryParse(productData.salesPrice);
     _cartList.removeWhere((element) => element==productData);
@@ -65,7 +65,7 @@ class CartProviderUkrbd with ChangeNotifier{
   }
 
 
-  void addToCart(Data productModel,int count,BuildContext context){
+  void addToCart(Products productModel,int count,BuildContext context){
 
     _subTotal= int.tryParse(productModel.salesPrice)*count+_subTotal;
     _totalItem=_totalItem+count;
@@ -117,10 +117,10 @@ class CartProviderUkrbd with ChangeNotifier{
     notifyListeners();
   }
 
-  List<Data> getCartList() {
+  List<Products> getCartList() {
     List<String> carts = sharedPreferences.getStringList(AppConstants.CART_LIST);
-    List<Data> cartList = [];
-    carts.forEach((cart) => cartList.add(Data.fromJson(jsonDecode(cart))) );
+    List<Products> cartList = [];
+    carts.forEach((cart) => cartList.add(Products.fromJson(jsonDecode(cart))) );
     notifyListeners();
     return cartList;
   }

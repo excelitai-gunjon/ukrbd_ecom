@@ -17,11 +17,11 @@ class SubCategoryWiseProductProviderUkrbd with ChangeNotifier{
   SubCategoryWiseProductProviderUkrbd({@required this.subCategoryWiseProductRepoUkrbd});
 
   int _categorySelectedIndex;
-  List<Data> _subCategoryWiseProductList=[];
+  List<Products> _subCategoryWiseProductList=[];
   SubCategoryWiseProductModel _subCategoryWiseProduct;
   SubCategoryWiseProductModel get subCategoryWiseProduct=>_subCategoryWiseProduct;
 
-  List<Data> get subCategoryWiseProductList => _subCategoryWiseProductList;
+  List<Products> get subCategoryWiseProductList => _subCategoryWiseProductList;
   int get categorySelectedIndex => _categorySelectedIndex;
 
   Future<void> getSubCategoryWiseProductList(bool reload, BuildContext context,String categoryId) async {
@@ -32,7 +32,7 @@ class SubCategoryWiseProductProviderUkrbd with ChangeNotifier{
         _subCategoryWiseProductList.clear();
         // apiResponse.response.data.forEach((category) => _categoryList.add(Category.fromJson(category)));
         _subCategoryWiseProduct = SubCategoryWiseProductModel.fromJson(apiResponse.response.data);
-        _subCategoryWiseProductList=_subCategoryWiseProduct.products.data.cast<Data>();
+        _subCategoryWiseProductList=_subCategoryWiseProduct.products;
         _categorySelectedIndex = 0;
       } else {
         ApiChecker.checkApi(context, apiResponse);

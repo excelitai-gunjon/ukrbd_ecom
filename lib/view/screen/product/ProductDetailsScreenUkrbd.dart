@@ -1,10 +1,10 @@
+import 'package:ecom_ukrbd/provider/product_details_provider_ukrbd.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/response/ukrbd/produuct_model.dart';
 import 'package:ecom_ukrbd/provider/cart_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/dimensions.dart';
 import 'package:ecom_ukrbd/utill/images.dart';
-import 'package:ecom_ukrbd/view/screen/cart/cart_screen_ukrbd.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:html/dom.dart' as dom;
@@ -15,8 +15,8 @@ import '../../../provider/bottom_navigation_bar_provider.dart';
 class ProductDetailsScreenUkrbd extends StatefulWidget {
   static const String routeName = "/productDetailsScreenUkrbd";
 
-  final Data productModel;
-  ProductDetailsScreenUkrbd({Key key,this.productModel}) : super(key: key);
+  final String productId;
+  ProductDetailsScreenUkrbd({Key key,this.productId}) : super(key: key);
 
   @override
   State<ProductDetailsScreenUkrbd> createState() => _ProductDetailsScreenUkrbdState();
@@ -27,19 +27,24 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
   int _selectedIndex=0;
   int _counter=1;
 
+  Products products;
+
   //TabController _tabController;
 
   @override
   void initState() {
     // TODO: implement initState
 
-    _load(context);
-    //_tabController = TabController(length: 3, vsync: this);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _load(context,true,widget.productId);
+    });
     super.initState();
+
   }
 
-  _load(BuildContext context)async{
+  _load(BuildContext context,bool reload,String productId)async{
     await Provider.of<CartProviderUkrbd>(context,listen: false).getCartList();
+    await Provider.of<ProductDetailsProviderUkrbd>(context,listen: false).getProductDetails(reload, context, productId);
   }
 
   @override
@@ -52,11 +57,16 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
   Widget build(BuildContext context) {
 
     final size= MediaQuery.of(context).size;
-    // final double offers =widget.productModel.discount.isNotEmpty?int.tryParse(widget.productModel.discount)/int.tryParse(widget.productModel.salesPrice)*100:0.0;
-    // final int befor_discount=widget.productModel.discount.isNotEmpty?int.tryParse(widget.productModel.salesPrice)-int.tryParse(widget.productModel.discount):int.tryParse(widget.productModel.salesPrice);
+    // final double offers =productModel.discount.isNotEmpty?int.tryParse(productModel.discount)/int.tryParse(productModel.salesPrice)*100:0.0;
+    // final int befor_discount=productModel.discount.isNotEmpty?int.tryParse(productModel.salesPrice)-int.tryParse(productModel.discount):int.tryParse(productModel.salesPrice);
 
-    return Consumer<BottomNavigationBarProvider>(
-        builder: (context, bottomNavigationBarProvider, child){
+    return Consumer2<BottomNavigationBarProvider,ProductDetailsProviderUkrbd>(
+        builder: (context, bottomNavigationBarProvider,productDetailsProviderUkrbd, child){
+
+          Products productModel;
+          if(productDetailsProviderUkrbd.productDetails!=null){
+            productModel=productDetailsProviderUkrbd.productDetails.products;
+          }
 
           return Scaffold(
             bottomNavigationBar:
@@ -70,7 +80,7 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
               elevation: 0.5,
               title: Text("Product Details"),
             ),
-            body: Padding(
+            body: productModel!=null?Padding(
               padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*(15/360)),
               child: ListView(
                 children: [
@@ -80,7 +90,7 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                       placeholder: Images.placeholder, fit: BoxFit.contain,
                       height: MediaQuery.of(context).size.width*(300/360),width: MediaQuery.of(context).size.width*(300/360),
                       // image: '${Provider.of<SplashProvider>(context, listen: false).baseUrls.productThumbnailUrl}/${productModel.thumbnail}',
-                      image: widget.productModel.productimages.isNotEmpty?"https://ukrbd.com/images/products/${widget.productModel.productimages[_selectedIndex].image}":"https://siparekraf.kamparkab.go.id/assets/images/no-image.png",
+                      image: productModel.productimages.isNotEmpty?"https://ukrbd.com/images/products/${productModel.productimages[_selectedIndex].image}":"https://siparekraf.kamparkab.go.id/assets/images/no-image.png",
                       imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder_1x1,
                         fit: BoxFit.contain,height: MediaQuery.of(context).size.width*(300/360),width: MediaQuery.of(context).size.width*(300/360),),
                     ),
@@ -95,7 +105,7 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                     children: [
                       Expanded(
                         child: Text(
-                          widget.productModel.productName??"",
+                          productModel.productName??"",
                           overflow: TextOverflow.clip,
                           style: TextStyle(
                               fontSize: MediaQuery.of(context).size.width*(20/360), fontWeight: FontWeight.normal),
@@ -143,14 +153,14 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                         TextSpan(
                           children: [
                             TextSpan(
-                              text: "৳${widget.productModel.price??0.0}  " ,
+                              text: "৳${productModel.price??0.0}  " ,
                               style: TextStyle(
                                 fontSize: MediaQuery.of(context).size.width*(20/360),
                                 fontWeight: FontWeight.normal,
                               ),
                             ),
                             TextSpan(
-                              text: widget.productModel.offerPrice!=null?'৳${widget.productModel.offerPrice}':"",
+                              text: productModel.offerPrice!=null?'৳${productModel.offerPrice}':"",
                               style: TextStyle(
                                 fontWeight: FontWeight.normal,
                                 color: Colors.red,
@@ -247,7 +257,7 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                     width: MediaQuery.of(context).size.width,
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: widget.productModel.productimages.length,
+                        itemCount: productModel.productimages.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding:  EdgeInsets.symmetric(horizontal: 5),
@@ -279,7 +289,7 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                                       placeholder: Images.placeholder, fit: BoxFit.cover,
                                       height: MediaQuery.of(context).size.width*(70/360),width: MediaQuery.of(context).size.width*(70/360),
                                       // image: '${Provider.of<SplashProvider>(context, listen: false).baseUrls.productThumbnailUrl}/${productModel.thumbnail}',
-                                      image: "https://ukrbd.com/images/products/${widget.productModel.productimages[index].image}",
+                                      image: "https://ukrbd.com/images/products/${productModel.productimages[index].image}",
                                       imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder_1x1,
                                         fit: BoxFit.cover,height: MediaQuery.of(context).size.width*(70/360),width: MediaQuery.of(context).size.width*(70/360),),
                                     ),
@@ -397,7 +407,7 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
 
 
 
-                                cartProviderUkrbd.addToCart(widget.productModel,_counter,context);
+                                cartProviderUkrbd.addToCart(productModel,_counter,context);
 
 
                                 //   Navigator.of(context).push(MaterialPageRoute(builder: (context) => CartScreenUkrbd()));
@@ -433,11 +443,11 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
 
                   Text("Description",style: TextStyle(fontSize: size.width*(24/360),fontWeight: FontWeight.bold,color: Colors.black87),),
 
-                  // Text(widget.productModel.description),
+                  // Text(productModel.description),
                   Container(
                     width: size.width,
                     child: Html(
-                      data: widget.productModel.description,
+                      data: productModel.description,
                       // tagsList: Html.tags..addAll(["bird", "flutter"]),
                       // style: {
                       //   "table": Style(
@@ -534,7 +544,7 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                   //     ]),
                 ],
               ),
-            ),
+            ):Center(child: CircularProgressIndicator(),),
           );
 
         }

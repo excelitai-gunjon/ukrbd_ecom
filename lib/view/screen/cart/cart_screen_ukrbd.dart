@@ -121,7 +121,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                       shrinkWrap: true,
                       itemCount: cartProviderUkrbd.cartList.length,
                       itemBuilder: (context, index) {
-                        Data product = cartProviderUkrbd.cartList[index];
+                        Products product = cartProviderUkrbd.cartList[index];
                         int itemCount = cartProviderUkrbd.itemCount[index];
                         return Container(
                           padding: EdgeInsets.symmetric(

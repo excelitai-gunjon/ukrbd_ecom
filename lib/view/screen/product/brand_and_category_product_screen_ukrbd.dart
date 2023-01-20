@@ -13,6 +13,8 @@ import 'package:ecom_ukrbd/view/basewidget/product_widget_ukrbd.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
+import '../../../data/model/response/ukrbd/category_wise_product_model/category_wise_product.dart';
+
 class BrandAndCategoryProductScreenUkrbd extends StatefulWidget {
   static const String routeName = "/brandAndCategoryProductScreenUkrbd";
   final bool isBrand;
@@ -21,7 +23,7 @@ class BrandAndCategoryProductScreenUkrbd extends StatefulWidget {
   final String id;
   final String name;
   final String image;
-  final List<Data> productsList;
+  final List<Products> productsList;
   BrandAndCategoryProductScreenUkrbd(
       {@required this.isBrand,
       @required this.id,
@@ -122,7 +124,7 @@ class _BrandAndCategoryProductScreenUkrbdState
                           print(
                               "product list :::::::::::::::");
 
-                          List<Data> categoryWiseProductsList=widget.isHome?widget.productsList:categoryWiseProductProviderUkrbd.categoryWiseProductList;
+                          List<Products> categoryWiseProductsList=widget.isHome?widget.productsList:categoryWiseProductProviderUkrbd.categoryWiseProductList;
                           return categoryWiseProductsList.length > 0
                               ? Expanded(
                             child: StaggeredGridView.countBuilder(
@@ -246,10 +248,7 @@ class _BrandAndCategoryProductScreenUkrbdState
                               itemBuilder: (BuildContext context, int index) {
                                 print("print product");
                                 return ProductWidgetUkrbd(
-                                    productModel:
-                                    subCategoryWiseProductProviderUkrbd
-                                        .subCategoryWiseProductList[
-                                    index]);
+                                    productModel: subCategoryWiseProductProviderUkrbd.subCategoryWiseProductList[index]);
                                 // return null;
                               },
                             ),

@@ -58,7 +58,7 @@ class SplashProvider extends ChangeNotifier {
     } else {
       isSuccess = false;
       ApiChecker.checkApi(context, apiResponse);
-      if(apiResponse.error.toString() == 'Connection to API server failed due to internet connection') {
+      if(apiResponse.error.toString() == 'Connection to server failed due to internet connection') {
         _hasConnection = false;
       }
     }

@@ -7,8 +7,10 @@ import 'package:ecom_ukrbd/utill/images.dart';
 import 'package:ecom_ukrbd/view/basewidget/rating_bar.dart';
 import 'package:ecom_ukrbd/view/screen/product/ProductDetailsScreenUkrbd.dart';
 
+import '../../data/model/response/ukrbd/category_wise_product_model/category_wise_product.dart';
+
 class ProductWidgetUkrbd extends StatelessWidget {
-  final Data productModel;
+  final Products productModel;
   ProductWidgetUkrbd({@required this.productModel});
 
   @override
@@ -16,17 +18,6 @@ class ProductWidgetUkrbd extends StatelessWidget {
     // String ratting = productModel.rating != null && productModel.rating.length != 0? productModel.rating[0].average : "0";
     String ratting =  "5";
     final size= MediaQuery.of(context).size;
-    // final double offers =productModel.discount.isNotEmpty?int.tryParse(productModel.discount)/int.tryParse(productModel.salesPrice)*100:0.0;
-    // final int befor_discount=productModel.discount.isNotEmpty?int.tryParse(productModel.salesPrice)-int.tryParse(productModel.discount):int.tryParse(productModel.salesPrice);
-
-
-    //
-    //
-    // print(">>>>>>>>>>>>check<<<<<<<<<<");
-    // print(">>>>>>>>>>>>check<<<<<<<<<<");
-    //
-    //
-    // print(productModel.toJson());
 
 
 
@@ -35,9 +26,7 @@ class ProductWidgetUkrbd extends StatelessWidget {
       onTap: () {
         Navigator.push(context, PageRouteBuilder(
           transitionDuration: Duration(milliseconds: 1000),
-          pageBuilder: (context, anim1, anim2) => ProductDetailsScreenUkrbd(productModel: productModel,),
-
-
+          pageBuilder: (context, anim1, anim2) => ProductDetailsScreenUkrbd(productId: productModel.id.toString(),),
         ));
 
        // print("https://ukrbd.com/images/products/${productModel.productimages[0].image}");

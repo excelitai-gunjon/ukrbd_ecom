@@ -1,8 +1,8 @@
 
 
+import 'package:ecom_ukrbd/data/model/response/ukrbd/category_wise_product_model/category_wise_product.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/response/base/api_response.dart';
-import 'package:ecom_ukrbd/data/model/response/ukrbd/category_wise_product_model/category_wise_product.dart';
 import 'package:ecom_ukrbd/data/model/response/ukrbd/produuct_model.dart';
 
 import 'package:ecom_ukrbd/data/repository/category_wise_product_repo.dart';
@@ -18,55 +18,55 @@ class CategoryWiseProductProviderUkrbd with ChangeNotifier{
 
   //List<Categories> _categoryList = [];
   int _categorySelectedIndex;
-  List<Data> _categoryWiseProductList=[];
+  List<Products> _categoryWiseProductList=[];
   CategoryWiseProduct _categoryWiseProduct;
 
   CategoryWiseProduct get categoryWiseProductResponse=>_categoryWiseProduct;
 
-  List<Data> get categoryWiseProductList => _categoryWiseProductList;
+  List<Products> get categoryWiseProductList => _categoryWiseProductList;
   int get categorySelectedIndex => _categorySelectedIndex;
 
 
 
 
   // CategoryWiseProductViewWidget(id: "76",title: "Men's Fashion",),
-  List<Data> mensFashionList=[];
+  List<Products> mensFashionList=[];
   // CategoryWiseProductViewWidget(id: "80",title: "Ladies Fashion",),
-  List<Data> ladiesFashionList=[];
+  List<Products> ladiesFashionList=[];
   // CategoryWiseProductViewWidget(id: "55",title: "Computer & IT",),
-  List<Data> computerAndItList=[];
+  List<Products> computerAndItList=[];
   // CategoryWiseProductViewWidget(id: "71",title: "Mobile",),
-  List<Data> mobileList=[];
+  List<Products> mobileList=[];
   // CategoryWiseProductViewWidget(id: "78",title: "Fragrances",),
-  List<Data> fragrancesListList=[];
+  List<Products> fragrancesListList=[];
   // CategoryWiseProductViewWidget(id: "75",title: "Networking",),
-  List<Data> networkingList=[];
+  List<Products> networkingList=[];
   // CategoryWiseProductViewWidget(id: "79",title: "kids Fashion",),
-  List<Data> kidsFashionList=[];
+  List<Products> kidsFashionList=[];
   // CategoryWiseProductViewWidget(id: "74",title: "Health & Herbs",),
-  List<Data> healthAndHerdsList=[];
+  List<Products> healthAndHerdsList=[];
   // CategoryWiseProductViewWidget(id: "52",title: "Stationery & Office",),
-  List<Data> stationaryAndOfficeList=[];
+  List<Products> stationaryAndOfficeList=[];
   // CategoryWiseProductViewWidget(id: "56",title: "Electrical & Lighting",),
-  List<Data> electricalAndLightingList=[];
+  List<Products> electricalAndLightingList=[];
   // CategoryWiseProductViewWidget(id: "58",title: "Electronics & Appliances",),
-  List<Data> electronicsAndAppliancesList=[];
+  List<Products> electronicsAndAppliancesList=[];
   // CategoryWiseProductViewWidget(id: "63",title: "Robotics and Artificial Intelligence",),
-  List<Data> roboticsAndArtificialIntelligenceList=[];
+  List<Products> roboticsAndArtificialIntelligenceList=[];
   // CategoryWiseProductViewWidget(id: "65",title: "Lab Equipment",),
-  List<Data> labEquipmentList=[];
+  List<Products> labEquipmentList=[];
   // CategoryWiseProductViewWidget(id: "66",title: "Furniture",),
-  List<Data> furnitureList=[];
+  List<Products> furnitureList=[];
   // CategoryWiseProductViewWidget(id: "69",title: "Software Service & Solution",),
-  List<Data> softwareServiceAndSolutionList=[];
+  List<Products> softwareServiceAndSolutionList=[];
   // CategoryWiseProductViewWidget(id: "81",title: "Comforter",),
-  List<Data> comforterList=[];
+  List<Products> comforterList=[];
   // CategoryWiseProductViewWidget(id: "82",title: "Winter Collection",),
-  List<Data> winterCollectionList=[];
+  List<Products> winterCollectionList=[];
 
 
   Future<void> getCategoryWiseProductListForHomePage(bool reload, BuildContext context,String categoryId) async {
-    List<Data> catProductList;
+    List<Products> catProductList;
       ApiResponse apiResponse = await categoryWiseProductRepoUkrbd.getCategoryWiseProductList(categoryId);
 
       print(apiResponse.response);
@@ -79,9 +79,9 @@ class CategoryWiseProductProviderUkrbd with ChangeNotifier{
 
       if (apiResponse.response!= null && apiResponse.response.statusCode == 200) {
         // apiResponse.response.data.forEach((category) => _categoryList.add(Category.fromJson(category)));
-        CategoryWiseProduct productModelList = CategoryWiseProduct.fromJson(apiResponse.response.data);
+        CategoryWiseProduct categoryWiseProduct = CategoryWiseProduct.fromJson(apiResponse.response.data);
 
-        catProductList=productModelList.products.data.cast<Data>();
+        catProductList=categoryWiseProduct.products;
 
         if(categoryId=="76"){
           mensFashionList=catProductList;
@@ -166,7 +166,7 @@ class CategoryWiseProductProviderUkrbd with ChangeNotifier{
         _categoryWiseProductList.clear();
         // apiResponse.response.data.forEach((category) => _categoryList.add(Category.fromJson(category)));
         _categoryWiseProduct = CategoryWiseProduct.fromJson(apiResponse.response.data);
-        _categoryWiseProductList=_categoryWiseProduct.products.data.cast<Data>();
+        _categoryWiseProductList=_categoryWiseProduct.products;
         _categorySelectedIndex = 0;
       } else {
         ApiChecker.checkApi(context, apiResponse);

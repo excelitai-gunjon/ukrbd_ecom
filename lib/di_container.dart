@@ -19,6 +19,7 @@ import 'package:ecom_ukrbd/data/repository/notification_repo.dart';
 import 'package:ecom_ukrbd/data/repository/onboarding_repo.dart';
 import 'package:ecom_ukrbd/data/repository/product_details_repo.dart';
 import 'package:ecom_ukrbd/data/repository/order_repo.dart';
+import 'package:ecom_ukrbd/data/repository/product_details_repo_ukrbd.dart';
 import 'package:ecom_ukrbd/data/repository/product_repo.dart';
 import 'package:ecom_ukrbd/data/repository/profile_repo.dart';
 import 'package:ecom_ukrbd/data/repository/profile_repo_ukrbd.dart';
@@ -54,6 +55,7 @@ import 'package:ecom_ukrbd/provider/notification_provider.dart';
 import 'package:ecom_ukrbd/provider/onboarding_provider.dart';
 import 'package:ecom_ukrbd/provider/product_details_provider.dart';
 import 'package:ecom_ukrbd/provider/order_provider.dart';
+import 'package:ecom_ukrbd/provider/product_details_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/provider/product_provider.dart';
 import 'package:ecom_ukrbd/provider/profile_provider.dart';
 import 'package:ecom_ukrbd/provider/profile_provider_ukrbd.dart';
@@ -92,6 +94,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => BannerRepoUkrbd(dioClient: sl()));
   sl.registerLazySingleton(() => ProfileRepoUkrbd(dioClient: sl(),sharedPreferences: sl()));
   sl.registerLazySingleton(() => AuthRepoUkrbd(dioClient: sl(),sharedPreferences: sl()));
+  sl.registerLazySingleton(() => ProductDetailsRepoUkrbd(dioClient: sl()));
 
 
   sl.registerLazySingleton(() => HomeCategoryProductRepo(dioClient: sl()));
@@ -130,6 +133,7 @@ Future<void> init() async {
   sl.registerFactory(() => BottomNavigationBarProvider());
   sl.registerFactory(() => AuthProviderUkrbd(authRepoUkrbd: sl()));
   sl.registerFactory(() => ProfileProviderUkrbd(profileRepo: sl()));
+  sl.registerFactory(() => ProductDetailsProviderUkrbd(productDetailsRepoUkrbd: sl()));
 
 
   sl.registerFactory(() => HomeCategoryProductProvider(homeCategoryProductRepo: sl()));

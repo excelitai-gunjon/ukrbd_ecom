@@ -11,16 +11,18 @@ import 'package:ecom_ukrbd/view/basewidget/product_widget_ukrbd.dart';
 import 'package:ecom_ukrbd/view/screen/product/brand_and_category_product_screen_ukrbd.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../data/model/response/ukrbd/category_wise_product_model/category_wise_product.dart';
+
 
 class CategoryWiseProductViewWidget extends StatelessWidget {
-  List<Data> categoryWiseProductList;
+  List<Products> categoryWiseProductList;
   String title;
   String id;
   bool reload;
   CategoryWiseProductViewWidget({Key key,this.id,this.categoryWiseProductList,this.title,this.reload}) : super(key: key);
 
 
-  // List<Data> categoryWiseProductList=[];
+  // List<Products> categoryWiseProductList=[];
 
 
   @override

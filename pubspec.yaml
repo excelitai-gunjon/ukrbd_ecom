@@ -93,6 +93,7 @@ flutter:
     - assets/images/
     - assets/language/
     - assets/banner/
+    - assets/category/
 
   fonts:
     - family: Ubuntu
