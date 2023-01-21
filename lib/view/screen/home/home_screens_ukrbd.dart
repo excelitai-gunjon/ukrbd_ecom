@@ -125,6 +125,7 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
 
 
               CustomScrollView(
+                physics: BouncingScrollPhysics(),
                 controller: _scrollController,
                 slivers: [
 

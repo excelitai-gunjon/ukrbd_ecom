@@ -25,9 +25,18 @@ class _CategoryWidgetUkrbdState extends State<CategoryWidgetUkrbd> {
           // height: MediaQuery.of(context).size.width/5,
           // width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-            border: Border.all(color: Theme.of(context).primaryColor.withOpacity(.2)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 1,
+                blurRadius: 1,
+                offset: Offset(1,1),
+              )
+            ],
+
+            // border: Border.all(color: Theme.of(context).primaryColor.withOpacity(.2)),
             // borderRadius: BorderRadius.circular(Dimensions.PADDING_SIZE_EXTRA_SMALL),
-            borderRadius: BorderRadius.circular(2),
+            borderRadius: BorderRadius.circular(13),
             // color: Theme.of(context).highlightColor,
             color: Color(widget.colorCode),
           ),
