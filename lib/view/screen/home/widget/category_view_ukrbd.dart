@@ -29,33 +29,36 @@ class _CategoryViewUkrbdState extends State<CategoryViewUkrbd> {
       builder: (context, categoryProvider, child) {
 
         return categoryProvider.categoryList.length != 0 ?
-        GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            childAspectRatio: (2/1.0),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.0),
+          child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 6,
+              mainAxisSpacing: 6,
+              childAspectRatio: (2/1.2),
+            ),
+            itemCount: widget.isHomePage
+                ? categoryProvider.categoryList.length > 8
+                ? 8
+                : categoryProvider.categoryList.length
+                : categoryProvider.categoryList.length,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemBuilder: (BuildContext context, int index) {
+
+              return InkWell(
+                onTap: () {
+
+                  Provider.of<CategoryProviderUkrbd>(context, listen: false).changeSelectedIndex(index);
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => AllCategoryScreenUkrbd()));
+
+                },
+                child: CategorySubcategoryWidgetUkrbd(category: categoryProvider.categoryList[index],categoryImage: CategoryImageModel.categoryImageList[index],colorCode: CategoryCardColorModel.categoryCardColorList[index],isHome: true,),
+              );
+
+            },
           ),
-          itemCount: widget.isHomePage
-              ? categoryProvider.categoryList.length > 8
-              ? 8
-              : categoryProvider.categoryList.length
-              : categoryProvider.categoryList.length,
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          itemBuilder: (BuildContext context, int index) {
-
-            return InkWell(
-              onTap: () {
-
-                Provider.of<CategoryProviderUkrbd>(context, listen: false).changeSelectedIndex(index);
-                Navigator.push(context, MaterialPageRoute(builder: (_) => AllCategoryScreenUkrbd()));
-
-              },
-              child: CategoryWidgetUkrbd(category: categoryProvider.categoryList[index],categoryImage: CategoryImageModel.categoryImageList[index],colorCode: CategoryCardColorModel.categoryCardColorList[index],),
-            );
-
-          },
         )
 
             // : CategoryShimmer();
