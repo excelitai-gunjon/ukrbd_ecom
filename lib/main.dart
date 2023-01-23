@@ -13,6 +13,7 @@ import 'package:ecom_ukrbd/view/screen/product/ProductDetailsScreenUkrbd.dart';
 import 'package:ecom_ukrbd/view/screen/product/brand_and_category_product_screen_ukrbd.dart';
 import 'package:ecom_ukrbd/view/screen/profile/profile_screen_ukrbd.dart';
 import 'package:ecom_ukrbd/view/screen/search/search_screen.dart';
+import 'package:ecom_ukrbd/view/screen/search/search_screen_ukrbd.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -162,7 +163,6 @@ class MyApp extends StatelessWidget {
      initialRoute:SplashScreen.routeName,
 
 
-
      // initialRoute: authProvider.getUserToken().isEmpty?LoginScreen.routeName:LandingPage.routeName,
 
       ///
@@ -179,7 +179,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: _locals,
       // home: orderId == null ? SplashScreen() : OrderDetailsScreen(orderModel: null,
       //   orderId: orderId, orderType: 'default_type',isNotification: true),
-    // home: SplashScreen(),
+      // home: HomePage(),
     );
   }
 }

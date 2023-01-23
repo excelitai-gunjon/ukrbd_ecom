@@ -48,7 +48,7 @@ class _CategorySubcategoryWidgetUkrbdState extends State<CategorySubcategoryWidg
       },
       child: Padding(
         padding: const EdgeInsets.all(4.0),
-        child: Column( children: [
+        child: Column(children: [
           Expanded(
             child: Container(
               // height: MediaQuery.of(context).size.width/5,
@@ -65,7 +65,7 @@ class _CategorySubcategoryWidgetUkrbdState extends State<CategorySubcategoryWidg
 
                 // border: Border.all(color: Theme.of(context).primaryColor.withOpacity(.2)),
                 // borderRadius: BorderRadius.circular(Dimensions.PADDING_SIZE_EXTRA_SMALL),
-                borderRadius: BorderRadius.circular(13),
+                borderRadius: BorderRadius.circular(10),
                 // color: Theme.of(context).highlightColor,
                 color: Color(widget.colorCode),
               ),
@@ -85,7 +85,7 @@ class _CategorySubcategoryWidgetUkrbdState extends State<CategorySubcategoryWidg
                     Align(
                       alignment: Alignment.centerRight,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(13)),
+                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(10)),
                         child: FadeInImage.assetNetwork(
                           fit: BoxFit.cover,
                           placeholder: Images.placeholder,
@@ -96,17 +96,21 @@ class _CategorySubcategoryWidgetUkrbdState extends State<CategorySubcategoryWidg
                     ),
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Container(
-                        height: MediaQuery.of(context).size.width*.4,
-                        width: MediaQuery.of(context).size.width*.18,
-                        // color: Colors.deepOrangeAccent,
-                        child: Center(
-                          child: Text(widget.subCategory==null?widget.category.category:widget.subCategory.subCategory,
-                            textAlign: TextAlign.center,
-                            maxLines: 3,
-                            overflow: TextOverflow.visible,
-                            style: titilliumRegular.copyWith(fontSize: Dimensions.FONT_SIZE_SMALL,
-                                color: ColorResources.getTextTitle(context)),
+                      child: Padding(
+                        padding:  EdgeInsets.only(left: 10.0),
+                        child: Container(
+                          height: MediaQuery.of(context).size.width*.4,
+                          width: MediaQuery.of(context).size.width*.18,
+                          // color: Colors.deepOrangeAccent,
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(widget.subCategory==null?widget.category.category:widget.subCategory.subCategory,
+                              textAlign: TextAlign.start,
+                              maxLines: 3,
+                              overflow: TextOverflow.visible,
+                              style: titilliumRegular.copyWith(fontSize: 12,
+                                  color: ColorResources.getTextTitle(context)),
+                            ),
                           ),
                         ),
                       ),

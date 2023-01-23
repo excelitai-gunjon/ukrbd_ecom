@@ -29,11 +29,10 @@ class SearchScreen extends StatelessWidget {
           return SafeArea(
             child: Scaffold(
 
-
-
               backgroundColor: ColorResources.getIconBg(context),
              resizeToAvoidBottomInset: true,
               body: Column(
+
                 children: [
                   // SizedBox(height: 50,),
                   Container(

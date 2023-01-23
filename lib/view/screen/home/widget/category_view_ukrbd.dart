@@ -34,8 +34,8 @@ class _CategoryViewUkrbdState extends State<CategoryViewUkrbd> {
           child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing: 6,
-              mainAxisSpacing: 6,
+              crossAxisSpacing: 4,
+              mainAxisSpacing: 4,
               childAspectRatio: (2/1.2),
             ),
             itemCount: widget.isHomePage

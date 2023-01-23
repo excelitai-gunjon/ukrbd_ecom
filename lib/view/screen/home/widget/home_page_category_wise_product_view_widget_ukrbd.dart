@@ -36,7 +36,6 @@ class CategoryWiseProductViewWidget extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: Dimensions.PADDING_SIZE_SMALL),
             child: categoryWiseProductList.length!=0?CustomTitleRow(title: getTranslated(title, context),
                 onTap: () {
-
               /// All product will show for a particular category
                   Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreenUkrbd(
                     isBrand: false,

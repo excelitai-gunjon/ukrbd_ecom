@@ -192,14 +192,6 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                               borderRadius: BorderRadius.circular(Dimensions.PADDING_SIZE_EXTRA_SMALL),),
                             child: Row(mainAxisAlignment : MainAxisAlignment.start, children: [
 
-                              // Container(
-                              //   width: 40,height: 40,decoration: BoxDecoration(color: Theme.of(context).primaryColor,
-                              //     borderRadius: BorderRadius.all(Radius.circular(Dimensions.PADDING_SIZE_EXTRA_SMALL))
-                              // ),
-                              //   child: Icon(Icons.search, color: Theme.of(context).cardColor, size: Dimensions.ICON_SIZE_SMALL),
-                              // ),
-                              // Icon(Icons.search, color: Theme.of(context).primaryColor, size: Dimensions.ICON_SIZE_LARGE),
-                              // Icon(Icons.search, color: ColorResources.getArrowButtonColor(context), size: Dimensions.ICON_SIZE_LARGE),
                               Icon(Icons.search, color: ColorResources.getArrowButtonColor(context), size: Dimensions.ICON_SIZE_DEFAULT),
                               Text(getTranslated('SEARCH_HINT', context),
                                 style: robotoRegular.copyWith(color: Theme.of(context).hintColor),
@@ -250,7 +242,7 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                           ),
                           SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
                           Padding(
-                            padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
+                            padding: EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
                             child: CategoryViewUkrbd(isHomePage: true),
                           ),
                           Padding(
