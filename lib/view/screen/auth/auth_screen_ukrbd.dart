@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/auth_provider.dart';
-import 'package:ecom_ukrbd/provider/profile_provider.dart';
+// import 'package:ecom_ukrbd/provider/profile_provider.dart';
 import 'package:ecom_ukrbd/provider/theme_provider.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/custom_themes.dart';
@@ -20,7 +20,7 @@ class AuthScreenUkrbd extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<ProfileProvider>(context, listen: false).initAddressTypeList(context);
+    // Provider.of<ProfileProvider>(context, listen: false).initAddressTypeList(context);
     Provider.of<AuthProvider>(context, listen: false).isRemember;
     PageController _pageController = PageController(initialPage: initialPage);
 

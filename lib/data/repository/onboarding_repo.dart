@@ -8,8 +8,8 @@ import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/utill/app_constants.dart';
 
 class OnBoardingRepo{
-  final DioClient dioClient;
-  OnBoardingRepo({@required this.dioClient});
+  // final DioClient dioClient;
+  OnBoardingRepo();
 
   Future<ApiResponse> getOnBoardingList(BuildContext context) async {
     try {

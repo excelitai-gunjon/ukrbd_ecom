@@ -26,15 +26,6 @@ class _CategorySubcategoryWidgetUkrbdState extends State<CategorySubcategoryWidg
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        // if(widget.isHome){
-        //   Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreenUkrbd(
-        //     isBrand: false,
-        //     id: widget.category.id.toString(),
-        //     name: widget.category.category,
-        //     isSubcategory: false,
-        //     isHome: true,
-        //   )));
-        // }else{
           widget.subCategory!=null?
           Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreenUkrbd(
             isBrand: false,
@@ -87,9 +78,11 @@ class _CategorySubcategoryWidgetUkrbdState extends State<CategorySubcategoryWidg
                       child: ClipRRect(
                         borderRadius: BorderRadius.only(bottomRight: Radius.circular(10)),
                         child: FadeInImage.assetNetwork(
-                          fit: BoxFit.cover,
+                          height: MediaQuery.of(context).size.width*.5,
+                          width: MediaQuery.of(context).size.width*.28,
+                          fit: BoxFit.contain,
                           placeholder: Images.placeholder,
-                          image: "assets/category/3.png",
+                          image: "https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}",
                           imageErrorBuilder: (c, o, s) => Image.asset("${widget.categoryImage}", fit: BoxFit.cover,),
                         ),
                       ),

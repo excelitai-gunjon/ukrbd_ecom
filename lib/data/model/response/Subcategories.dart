@@ -4,7 +4,8 @@ class Subcategories {
       this.categoriesId, 
       this.subCategory, 
       this.userId, 
-      this.status, 
+      this.image,
+      this.status,
       this.priority, 
       this.createdAt, 
       this.updatedAt, 
@@ -15,6 +16,7 @@ class Subcategories {
     categoriesId = json['categories_id'];
     subCategory = json['sub_category'];
     userId = json['user_id'];
+    image = json['image'];
     status = json['status'];
     priority = json['priority'];
     createdAt = json['created_at'];
@@ -26,6 +28,7 @@ class Subcategories {
   dynamic categoriesId;
   String subCategory;
   dynamic userId;
+  dynamic image;
   dynamic status;
   dynamic priority;
   String createdAt;
@@ -38,6 +41,7 @@ class Subcategories {
     map['categories_id'] = categoriesId;
     map['sub_category'] = subCategory;
     map['user_id'] = userId;
+    map['image'] = image;
     map['status'] = status;
     map['priority'] = priority;
     map['created_at'] = createdAt;

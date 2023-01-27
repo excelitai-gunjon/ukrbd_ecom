@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:connectivity/connectivity.dart';
+import 'package:ecom_ukrbd/provider/category_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/provider/category_wise_product_provider_ukrbd.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/auth_provider.dart';
-import 'package:ecom_ukrbd/provider/profile_provider.dart';
 import 'package:ecom_ukrbd/provider/splash_provider.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/images.dart';
@@ -69,19 +69,16 @@ class _SplashScreenState extends State<SplashScreen> {
     // await Provider.of<BannerProviderUkrbd>(context, listen: false).getBannerList(true, context);
     Provider.of<SplashProvider>(context, listen: false).initConfig(context).then((bool isSuccess) async{
 
-      // await Provider.of<BannerProviderUkrbd>(context, listen: false).getBannerList(true, context).then((value) {
-      //   return value;
-      // });
-     // await Provider.of<CategoryProviderUkrbd>(context, listen: false).getCategoryList(true, context);
+      await Provider.of<CategoryProviderUkrbd>(context, listen: false).getCategoryList(true, context);
       await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "82");
-      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "81");
+      // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "81");
       await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "66");
       await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "65");
       await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "63");
       await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "58");
-      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "56");
+      // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "56");
       await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "52");
-      await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "59");
+      // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "59");
       await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "74");
       await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "79");
       await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(true, context, "75");
@@ -103,7 +100,7 @@ class _SplashScreenState extends State<SplashScreen> {
           }else {
             if (Provider.of<AuthProvider>(context, listen: false).isLoggedIn()) {
               Provider.of<AuthProvider>(context, listen: false).updateToken(context);
-              Provider.of<ProfileProvider>(context, listen: false).getUserInfo(context);
+              // Provider.of<ProfileProvider>(context, listen: false).getUserInfo(context);
               Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => DashBoardScreenUkrbd()));
             } else {
               if(Provider.of<SplashProvider>(context, listen: false).showIntro()) {

@@ -4,7 +4,7 @@ import 'package:ecom_ukrbd/data/model/body/register_model.dart';
 import 'package:ecom_ukrbd/helper/email_checker.dart';
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/auth_provider.dart';
-import 'package:ecom_ukrbd/provider/profile_provider.dart';
+// import 'package:ecom_ukrbd/provider/profile_provider.dart';
 import 'package:ecom_ukrbd/provider/splash_provider.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/custom_themes.dart';
@@ -166,7 +166,7 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
           }
         });
       }else{
-        await Provider.of<ProfileProvider>(context, listen: false).getUserInfo(context);
+        // await Provider.of<ProfileProvider>(context, listen: false).getUserInfo(context);
         //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => DashBoardScreen()), (route) => false);
         _emailController.clear();
         _passwordController.clear();

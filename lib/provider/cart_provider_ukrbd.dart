@@ -30,20 +30,20 @@ class CartProviderUkrbd with ChangeNotifier{
   void plus(int index,Products productData){
     _itemCound[index]++;
     _totalItem=_totalItem+1;
-    _subTotal= int.tryParse(productData.salesPrice)+_subTotal;
+    _subTotal= int.tryParse(productData.price??"0")+_subTotal;
     notifyListeners();
   }
 
   void minus(int index,Products productData){
     _itemCound[index]--;
     _totalItem=_totalItem-1;
-    _subTotal= _subTotal-int.tryParse(productData.salesPrice);
+    _subTotal= _subTotal-int.tryParse(productData.price??"0");
     notifyListeners();
   }
 
   void deleteCartItem(Products productData){
     _totalItem=_totalItem-1;
-    _subTotal= _subTotal-int.tryParse(productData.salesPrice);
+    _subTotal= _subTotal-int.tryParse(productData.price??"0");
     // Data productModelData =_cartList.;
     _cartList.removeWhere((element) => element==productData);
     notifyListeners();
@@ -51,7 +51,7 @@ class CartProviderUkrbd with ChangeNotifier{
 
   void deleteOneCartItem(int index,Products productData){
     _totalItem=_totalItem-_itemCound[index];
-    _subTotal= _subTotal-_itemCound[index]*int.tryParse(productData.salesPrice);
+    _subTotal= _subTotal-_itemCound[index]*int.tryParse(productData.price??"0");
     _cartList.removeWhere((element) => element==productData);
     notifyListeners();
   }
@@ -67,25 +67,9 @@ class CartProviderUkrbd with ChangeNotifier{
 
   void addToCart(Products productModel,int count,BuildContext context){
 
-    _subTotal= int.tryParse(productModel.salesPrice)*count+_subTotal;
+    _subTotal= int.tryParse(productModel.price??"0")*count+_subTotal;
     _totalItem=_totalItem+count;
     _cartList.contains(productModel)?
-
-    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    //   content: const Text('Already Added!',   style: TextStyle(
-    //     color: Colors.black87,
-    //   ),),
-    //   backgroundColor:   Theme.of(context).primaryColor,
-    //   elevation: 3.0,
-    //   duration: Duration(seconds: 1),
-    //   behavior: SnackBarBehavior.floating,
-    //   shape: RoundedRectangleBorder(
-    //       borderRadius: BorderRadius.all(Radius.circular(5))),
-    //   // action: SnackBarAction(
-    //   //   label: 'dismiss',
-    //   //   onPressed: () {},
-    //   // ),
-    // )):_cartList.add(productModel);
 
     SizedBox():_cartList.add(productModel);
 

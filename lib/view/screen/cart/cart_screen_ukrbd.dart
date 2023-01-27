@@ -132,9 +132,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                           //height: size.width*(60/360),
                           width: size.width,
                           decoration: BoxDecoration(
-                              border: Border(
-                                  bottom: BorderSide(
-                                      color: Colors.grey.shade300, width: 1))),
+                              border: Border(bottom: BorderSide(color: Colors.grey.shade300, width: 1))),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -192,7 +190,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                       ),
                                       TextSpan(
                                           text:
-                                              '\nprice :${product.salesPrice}',
+                                              '\nprice :${product.price}',
                                           style: TextStyle(
                                               color: Colors.grey.shade400,
                                               fontSize: size.width *

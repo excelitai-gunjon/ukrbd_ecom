@@ -20,10 +20,12 @@ class ProductWidget extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        Navigator.push(context, PageRouteBuilder(
-          transitionDuration: Duration(milliseconds: 1000),
-          pageBuilder: (context, anim1, anim2) => ProductDetails(productId: productModel.id,slug: productModel.slug),
-        ));
+        // Navigator.push(context, PageRouteBuilder(
+        //   transitionDuration: Duration(milliseconds: 1000),
+        //   pageBuilder: (context, anim1, anim2) {
+        //     return ProductDetails(productId: productModel.id,slug: productModel.slug);
+        //   },
+        // ));
       },
       child: Container(
      height: MediaQuery.of(context).size.width/1.5,

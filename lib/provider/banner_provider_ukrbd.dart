@@ -3,7 +3,7 @@ import 'package:ecom_ukrbd/data/model/response/banner_model.dart';
 import 'package:ecom_ukrbd/data/model/response/banner_model_ukrbd.dart';
 import 'package:ecom_ukrbd/data/model/response/base/api_response.dart';
 import 'package:ecom_ukrbd/data/model/response/product_model.dart';
-import 'package:ecom_ukrbd/data/repository/banner_repo.dart';
+// import 'package:ecom_ukrbd/data/repository/banner_repo.dart';
 import 'package:ecom_ukrbd/data/repository/banner_repo_ukrbd.dart';
 import 'package:ecom_ukrbd/helper/api_checker.dart';
 

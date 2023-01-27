@@ -9,13 +9,13 @@ import 'package:ecom_ukrbd/data/model/response/base/api_response.dart';
 import 'package:ecom_ukrbd/data/model/response/base/error_response.dart';
 import 'package:ecom_ukrbd/data/model/response/response_model.dart';
 import 'package:ecom_ukrbd/data/model/response/user_info_model.dart';
-import 'package:ecom_ukrbd/data/repository/profile_repo.dart';
+// import 'package:ecom_ukrbd/data/repository/profile_repo.dart';
 import 'package:ecom_ukrbd/helper/api_checker.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
-import 'order_provider.dart';
+// import 'order_provider.dart';
 
 class ProfileProviderUkrbd extends ChangeNotifier {
   final ProfileRepoUkrbd profileRepo;

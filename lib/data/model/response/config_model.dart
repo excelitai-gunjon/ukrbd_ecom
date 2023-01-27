@@ -1,5 +1,5 @@
 class ConfigModel {
-  int _systemDefaultCurrency;
+  dynamic _systemDefaultCurrency;
   bool _digitalPayment;
   bool _cod;
   BaseUrls _baseUrls;
@@ -24,13 +24,13 @@ class ConfigModel {
   Announcement _announcement;
   String _version;
   String _businessMode;
-  int _decimalPointSetting;
+  dynamic _decimalPointSetting;
   String _inHouseSelectedShippingType;
-  int _billingAddress;
-  int _walletStatus;
-  int _loyaltyPointStatus;
-  int _loyaltyPointExchangeRate;
-  int _loyaltyPointMinimumPoint;
+  dynamic _billingAddress;
+  dynamic _walletStatus;
+  dynamic _loyaltyPointStatus;
+  dynamic _loyaltyPointExchangeRate;
+  dynamic _loyaltyPointMinimumPoint;
   String _brandSetting;
   String _digitalProductSetting;
   bool _cashOnDelivery;
@@ -39,7 +39,7 @@ class ConfigModel {
 
 
   ConfigModel(
-      {int systemDefaultCurrency,
+      {dynamic systemDefaultCurrency,
         bool digitalPayment,
         bool cod,
         BaseUrls baseUrls,
@@ -64,13 +64,13 @@ class ConfigModel {
         Announcement announcement,
         String version,
         String businessMode,
-        int decimalPointSetting,
+        dynamic decimalPointSetting,
         String inHouseSelectedShippingType,
-        int billingAddress,
-        int walletStatus,
-        int loyaltyPointStatus,
-        int loyaltyPointExchangeRate,
-        int loyaltyPointMinimumPoint,
+        dynamic billingAddress,
+        dynamic walletStatus,
+        dynamic loyaltyPointStatus,
+        dynamic loyaltyPointExchangeRate,
+        dynamic loyaltyPointMinimumPoint,
         String brandSetting,
         String digitalProductSetting,
         bool cashOnDelivery,
@@ -129,7 +129,7 @@ class ConfigModel {
 
   }
 
-  int get systemDefaultCurrency => _systemDefaultCurrency;
+  dynamic get systemDefaultCurrency => _systemDefaultCurrency;
   bool get digitalPayment => _digitalPayment;
   bool get cod => _cod;
   BaseUrls get baseUrls => _baseUrls;
@@ -154,13 +154,13 @@ class ConfigModel {
   Announcement get announcement => _announcement;
   String get version => _version;
   String get businessMode => _businessMode;
-  int get decimalPointSetting => _decimalPointSetting;
+  dynamic get decimalPointSetting => _decimalPointSetting;
   String get inHouseSelectedShippingType => _inHouseSelectedShippingType;
-  int get billingAddress => _billingAddress;
-  int get walletStatus => _walletStatus;
-  int get loyaltyPointStatus => _loyaltyPointStatus;
-  int get loyaltyPointExchangeRate => _loyaltyPointExchangeRate;
-  int get loyaltyPointMinimumPoint => _loyaltyPointMinimumPoint;
+  dynamic get billingAddress => _billingAddress;
+  dynamic get walletStatus => _walletStatus;
+  dynamic get loyaltyPointStatus => _loyaltyPointStatus;
+  dynamic get loyaltyPointExchangeRate => _loyaltyPointExchangeRate;
+  dynamic get loyaltyPointMinimumPoint => _loyaltyPointMinimumPoint;
   String get brandSetting => _brandSetting;
   String get digitalProductSetting => _digitalProductSetting;
   bool get cashOnDelivery => _cashOnDelivery;
@@ -483,20 +483,20 @@ class SocialLogin {
 }
 
 class Faq {
-  int _id;
+  dynamic _id;
   String _question;
   String _answer;
-  int _ranking;
-  int _status;
+  dynamic _ranking;
+  dynamic _status;
   String _createdAt;
   String _updatedAt;
 
   Faq(
-      {int id,
+      {dynamic id,
         String question,
         String answer,
-        int ranking,
-        int status,
+        dynamic ranking,
+        dynamic status,
         String createdAt,
         String updatedAt}) {
     this._id = id;
@@ -508,11 +508,11 @@ class Faq {
     this._updatedAt = updatedAt;
   }
 
-  int get id => _id;
+  dynamic get id => _id;
   String get question => _question;
   String get answer => _answer;
-  int get ranking => _ranking;
-  int get status => _status;
+  dynamic get ranking => _ranking;
+  dynamic get status => _status;
   String get createdAt => _createdAt;
   String get updatedAt => _updatedAt;
 
@@ -541,22 +541,22 @@ class Faq {
 }
 
 class CurrencyList {
-  int _id;
+  dynamic _id;
   String _name;
   String _symbol;
   String _code;
   double _exchangeRate;
-  int _status;
+  dynamic _status;
   String _createdAt;
   String _updatedAt;
 
   CurrencyList(
-      {int id,
+      {dynamic id,
         String name,
         String symbol,
         String code,
         double exchangeRate,
-        int status,
+        dynamic status,
         String createdAt,
         String updatedAt}) {
     this._id = id;
@@ -569,12 +569,12 @@ class CurrencyList {
     this._updatedAt = updatedAt;
   }
 
-  int get id => _id;
+  dynamic get id => _id;
   String get name => _name;
   String get symbol => _symbol;
   String get code => _code;
   double get exchangeRate => _exchangeRate;
-  int get status => _status;
+  dynamic get status => _status;
   String get createdAt => _createdAt;
   String get updatedAt => _updatedAt;
 
@@ -605,14 +605,14 @@ class CurrencyList {
 }
 
 class Colors {
-  int _id;
+  dynamic _id;
   String _name;
   String _code;
   String _createdAt;
   String _updatedAt;
 
   Colors(
-      {int id, String name, String code, String createdAt, String updatedAt}) {
+      {dynamic id, String name, String code, String createdAt, String updatedAt}) {
     this._id = id;
     this._name = name;
     this._code = code;
@@ -620,7 +620,7 @@ class Colors {
     this._updatedAt = updatedAt;
   }
 
-  int get id => _id;
+  dynamic get id => _id;
   String get name => _name;
   String get code => _code;
   String get createdAt => _createdAt;

@@ -160,7 +160,7 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                               ),
                             ),
                             TextSpan(
-                              text: productModel.offerPrice!=null?'৳${productModel.offerPrice}':"",
+                              text: productModel.offerPrice!=null?'৳${productModel.offerPrice}':"0.0",
                               style: TextStyle(
                                 fontWeight: FontWeight.normal,
                                 color: Colors.red,
@@ -173,80 +173,8 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                       SizedBox(
                         width: MediaQuery.of(context).size.width*(20/360),
                       ),
-                      // Text.rich(
-                      //   TextSpan(
-                      //     text: 'Flat ${offers.toStringAsFixed(2)}% OFF ',
-                      //     style: TextStyle(
-                      //       fontWeight: FontWeight.normal,
-                      //       color: Colors.green,
-                      //     ),
-                      //   ),
-                      // ),
                     ],
                   ),
-                  // SizedBox(
-                  //   height: 20,
-                  // ),
-                  // Row(
-                  //   children: [
-                  //     Text.rich(
-                  //       TextSpan(
-                  //         children: [
-                  //           TextSpan(
-                  //             text: '5.0 ',
-                  //             style: TextStyle(
-                  //               fontSize: 15,
-                  //               fontWeight: FontWeight.normal,
-                  //             ),
-                  //           ),
-                  //         ],
-                  //       ),
-                  //     ),
-                  //
-                  //     SizedBox(
-                  //       width: 10,
-                  //     ),
-                  //     //stars
-                  //     Row(
-                  //       children: [
-                  //         Icon(
-                  //           Icons.star_rate_sharp,
-                  //           color: Colors.green,
-                  //         ),
-                  //         Icon(
-                  //           Icons.star_rate_sharp,
-                  //           color: Colors.green,
-                  //         ),
-                  //         Icon(
-                  //           Icons.star_rate_sharp,
-                  //           color: Colors.green,
-                  //         ),
-                  //         Icon(
-                  //           Icons.star_border,
-                  //           color: Colors.green,
-                  //         ),
-                  //         Icon(
-                  //           Icons.star_border,
-                  //           color: Colors.green,
-                  //         ),
-                  //       ],
-                  //     ),
-                  //
-                  //     SizedBox(
-                  //       width: size.width*(20/360),
-                  //     ),
-                  //
-                  //     Text.rich(
-                  //       TextSpan(
-                  //         text: '| 0 Ratings',
-                  //         style: TextStyle(
-                  //           fontWeight: FontWeight.normal,
-                  //           color: Colors.black38,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
 
                   SizedBox(height: 20,),
 
@@ -397,19 +325,15 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                         builder: (context,cartProviderUkrbd,child){
                           return InkWell(
                             onTap: (){
-
-
-
-
                               if(_counter>0){
-
-
-
-
-
-                                cartProviderUkrbd.addToCart(productModel,_counter,context);
-
-
+                                if(cartProviderUkrbd.cartList.contains(productModel)){
+                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                    content: Text("Already Added to cart",style: TextStyle(color: Colors.black),),
+                                    backgroundColor: Theme.of(context).primaryColor,
+                                  ));
+                                }else{
+                                  cartProviderUkrbd.addToCart(productModel,_counter,context);
+                                }
                                 //   Navigator.of(context).push(MaterialPageRoute(builder: (context) => CartScreenUkrbd()));
 
                               }

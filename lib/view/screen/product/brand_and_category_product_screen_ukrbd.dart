@@ -2,7 +2,7 @@ import 'package:ecom_ukrbd/provider/bottom_navigation_bar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/response/ukrbd/produuct_model.dart';
 import 'package:ecom_ukrbd/provider/category_wise_product_provider_ukrbd.dart';
-import 'package:ecom_ukrbd/provider/product_provider.dart';
+// import 'package:ecom_ukrbd/provider/product_provider.dart';
 import 'package:ecom_ukrbd/provider/sub_category_wise_product_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/dimensions.dart';
@@ -263,11 +263,8 @@ class _BrandAndCategoryProductScreenUkrbdState
                                     0
                                     ? ProductShimmer(
                                     isHomePage: false,
-                                    isEnabled:
-                                    Provider.of<ProductProvider>(context)
-                                        .brandOrCategoryProductList
-                                        .length ==
-                                        0)
+                                    isEnabled:true,
+                                )
                                     : NoInternetOrDataScreen(isNoInternet: false),
                               ));
                         }),

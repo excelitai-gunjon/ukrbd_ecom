@@ -61,30 +61,6 @@ class _DashBoardScreenUkrbdState extends State<DashBoardScreenUkrbd> {
 
             backgroundColor: ColorResources.getHomeBg(context),
             resizeToAvoidBottomInset: false,
-            // bottomNavigationBar: Container(
-            //   decoration: BoxDecoration(
-            //     boxShadow: <BoxShadow>[
-            //       BoxShadow(
-            //         color: Colors.grey.shade400,
-            //         blurRadius: 5,
-            //       ),
-            //     ],
-            //   ),
-            //   child: BottomNavigationBar(
-            //     selectedItemColor: Theme.of(context).primaryColor,
-            //     unselectedItemColor: Theme.of(context).textTheme.bodyText1.color,
-            //     showUnselectedLabels: true,
-            //     currentIndex: _pageIndex,
-            //     type: BottomNavigationBarType.fixed,
-            //     items: _getBottomWidget(true),
-            //     onTap: (int index) {
-            //       print("index index index :-------------- ${index}");
-            //       _setPage(index);
-            //     },
-            //
-            //
-            //   ),
-            // ),
             body: bottomNavigationBarProvider.getWidget(bottomNavigationBarProvider.selectedIndex),
           ),
         );
@@ -152,19 +128,13 @@ class _DashBoardScreenUkrbdState extends State<DashBoardScreenUkrbd> {
     List<BottomNavigationBarItem> _list = [];
     if(!isSingleVendor){
       _list.add(_barItem(Images.home_image, getTranslated('home', context), 0));
-      // _list.add(_barItem(Images.message_image, getTranslated('inbox', context), 1));
       _list.add(_barItem(Images.shopping_image, getTranslated('orders', context), 1));
-      // _list.add(_barItem(Images.notification, getTranslated('notification', context), 3));
       _list.add(_barItem(Images.profile_icon_image, getTranslated('PROFILE', context), 2));
-      // _list.add(_barItem(Images.more_image, getTranslated('more', context), 4));
       _list.add(_barItem(Images.cart_image, getTranslated('CART', context), 3));
     }else{
       _list.add(_barItem(Images.home_image, getTranslated('home', context), 0));
-      // _list.add(_barItem(Images.message_image, getTranslated('inbox', context), 1));
       _list.add(_barItem(Images.shopping_image, getTranslated('orders', context), 1));
-      // _list.add(_barItem(Images.notification, getTranslated('notification', context), 3));
       _list.add(_barItem(Images.profile_icon_image, getTranslated('PROFILE', context), 2));
-      // _list.add(_barItem(Images.more_image, getTranslated('more', context), 4));
       _list.add(_barItem(Images.cart_image, getTranslated('CART', context), 3));
     }
 

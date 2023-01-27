@@ -246,7 +246,7 @@ class AllCategoryScreenUkrbd extends StatelessWidget {
           ],
         ),
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreen(
+          Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreenUkrbd(
             isBrand: false,
             id: subCategory.id.toString(),
             name: subCategory.name,
@@ -273,7 +273,7 @@ class AllCategoryScreenUkrbd extends StatelessWidget {
             ],
           ),
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreen(
+            Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreenUkrbd(
               isBrand: false,
               id: subCategory.subSubCategories[index].id.toString(),
               name: subCategory.subSubCategories[index].name,

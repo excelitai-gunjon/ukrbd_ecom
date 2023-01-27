@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/auth_provider.dart';
-import 'package:ecom_ukrbd/provider/cart_provider.dart';
+// import 'package:ecom_ukrbd/provider/cart_provider.dart';
 import 'package:ecom_ukrbd/provider/onboarding_provider.dart';
 import 'package:ecom_ukrbd/provider/splash_provider.dart';
 import 'package:ecom_ukrbd/provider/theme_provider.dart';
@@ -95,7 +95,7 @@ class OnBoardingScreen extends StatelessWidget {
                             //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => AuthScreen()));
                             if (!Provider.of<AuthProvider>(context, listen: false).isLoading) {
 
-                              Provider.of<CartProvider>(context, listen: false).getCartData();
+                              // Provider.of<CartProvider>(context, listen: false).getCartData();
 
                               Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => DashBoardScreenUkrbd()),
                                       (route) => false);

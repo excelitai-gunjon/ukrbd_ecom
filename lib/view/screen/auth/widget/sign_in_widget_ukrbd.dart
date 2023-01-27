@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/body/login_model.dart';
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/auth_provider.dart';
-import 'package:ecom_ukrbd/provider/cart_provider.dart';
-import 'package:ecom_ukrbd/provider/profile_provider.dart';
+// import 'package:ecom_ukrbd/provider/cart_provider.dart';
+// import 'package:ecom_ukrbd/provider/profile_provider.dart';
 import 'package:ecom_ukrbd/provider/splash_provider.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/custom_themes.dart';
@@ -114,7 +114,7 @@ class _SignInWidgetUkrbdState extends State<SignInWidgetUkrbd> {
         }
       }
       else{
-        await Provider.of<ProfileProvider>(context, listen: false).getUserInfo(context);
+        // await Provider.of<ProfileProvider>(context, listen: false).getUserInfo(context);
         // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => DashBoardScreen()), (route) => false);
       }
     } else {

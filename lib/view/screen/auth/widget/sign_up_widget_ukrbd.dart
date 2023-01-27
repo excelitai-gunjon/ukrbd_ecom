@@ -6,7 +6,7 @@ import 'package:ecom_ukrbd/helper/email_checker.dart';
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/auth_provider.dart';
 import 'package:ecom_ukrbd/provider/auth_provider_ukrbd.dart';
-import 'package:ecom_ukrbd/provider/profile_provider.dart';
+// import 'package:ecom_ukrbd/provider/profile_provider.dart';
 import 'package:ecom_ukrbd/provider/splash_provider.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/custom_themes.dart';

@@ -1,11 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/response/product_model.dart';
-import 'package:ecom_ukrbd/provider/banner_provider.dart';
+// import 'package:ecom_ukrbd/provider/banner_provider.dart';
 import 'package:ecom_ukrbd/provider/banner_provider_ukrbd.dart';
-import 'package:ecom_ukrbd/provider/brand_provider.dart';
+// import 'package:ecom_ukrbd/provider/brand_provider.dart';
 import 'package:ecom_ukrbd/provider/category_provider_ukrbd.dart';
-import 'package:ecom_ukrbd/provider/top_seller_provider.dart';
+// import 'package:ecom_ukrbd/provider/top_seller_provider.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/images.dart';
 import 'package:ecom_ukrbd/view/screen/product/brand_and_category_product_screen.dart';

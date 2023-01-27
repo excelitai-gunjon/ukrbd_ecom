@@ -38,7 +38,8 @@ class AppConstants {
   static const String PRODUCT_DETAILS_URI = '/api/v1/products/details/';
   static const String PRODUCT_REVIEW_URI = '/api/v1/products/reviews/';
   static const String SEARCH_URI = '/api/v1/products/search?name=';
-  static const String CONFIG_URI = '/api/v1/config';
+  // static const String CONFIG_URI = '/api/v1/config';
+  static const String CONFIG_URI = '/api/config';
   static const String ADD_WISH_LIST_URI = '/api/v1/customer/wish-list/add?product_id=';
   static const String REMOVE_WISH_LIST_URI = '/api/v1/customer/wish-list/remove?product_id=';
   static const String UPDATE_PROFILE_URI = '/api/v1/customer/update-profile';
