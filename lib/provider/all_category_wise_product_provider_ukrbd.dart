@@ -67,6 +67,16 @@ class AllCategoryWiseProductProviderUkrbd with ChangeNotifier{
   List<Products> comforterList=[];
   // CategoryWiseProductViewWidget(id: "82",title: "Winter Collection",),
   List<Products> winterCollectionList=[];
+  // CategoryWiseProductViewWidget(id: "59",title: "Car & VehiclesView",),
+  List<Products> carAndVehiclesList=[];
+  // CategoryWiseProductViewWidget(id: "83",title: "Grocery & Beauty",),
+  List<Products> groceryAndBeautyList=[];
+  // CategoryWiseProductViewWidget(id: "84",title: "Girls Fashion",),
+  List<Products> girlsFashionList=[];
+  // CategoryWiseProductViewWidget(id: "85",title: "Health & Beauty",),
+  List<Products> healthAndBeautyList=[];
+  // CategoryWiseProductViewWidget(id: "86",title: "Vegetables",),
+  List<Products> vegetablesList=[];
 
 
 
@@ -114,8 +124,28 @@ class AllCategoryWiseProductProviderUkrbd with ChangeNotifier{
 
 
           productList=element.products;
-          if(element.id.toString()=="76"){
+          if(element.id.toString()=="76"){//84
             mensFashionList=productList;
+            notifyListeners();
+          }
+          if(element.id.toString()=="83"){//83
+            groceryAndBeautyList=productList;
+            notifyListeners();
+          }
+          if(element.id.toString()=="84"){//84
+            girlsFashionList=productList;
+            notifyListeners();
+          }
+          if(element.id.toString()=="85"){//84
+            healthAndBeautyList=productList;
+            notifyListeners();
+          }
+          if(element.id.toString()=="86"){//84
+            vegetablesList=productList;
+            notifyListeners();
+          }
+          if(element.id.toString()=="59"){//59
+            carAndVehiclesList=productList;
             notifyListeners();
           }
           if(element.id.toString()=="56"){

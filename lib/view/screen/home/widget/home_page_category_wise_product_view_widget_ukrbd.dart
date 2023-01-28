@@ -54,7 +54,7 @@ class CategoryWiseProductViewWidget extends StatelessWidget {
                   height: MediaQuery.of(context).size.width/1.20,
                   child: categoryWiseProductList.length>0?ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: (categoryWiseProductList.length) ,
+                      itemCount: (categoryWiseProductList.length<8?categoryWiseProductList.length:8) ,
                       itemBuilder: (ctx,index){
                         return Container(width: (MediaQuery.of(context).size.width/2.06)-10,
                             child: ProductWidgetUkrbd(productModel: categoryWiseProductList[index]));

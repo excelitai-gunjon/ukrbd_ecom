@@ -160,8 +160,6 @@ class _SignUpWidgetUkrbdState extends State<SignUpWidgetUkrbd> {
     super.initState();
     Provider.of<SplashProvider>(context,listen: false).configModel;
     _countryDialCode = CountryCode.fromCountryCode(Provider.of<SplashProvider>(context, listen: false).configModel.countryCode).dialCode;
-
-
     _formKey = GlobalKey<FormState>();
   }
 
@@ -256,6 +254,9 @@ class _SignUpWidgetUkrbdState extends State<SignUpWidgetUkrbd> {
                     isPhoneNumber: true,
                     textInputAction: TextInputAction.next,
                     textInputType: TextInputType.phone,
+                    // onTap: (){
+                    //   _phoneController.text="+91";
+                    // },
 
                   )),
                 ]),

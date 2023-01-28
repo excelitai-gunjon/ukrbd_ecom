@@ -55,7 +55,7 @@ class CustomTitleRow extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width*.5,
               child: Text(
-                title,
+                title??"",
                 style: titleHeader,
                 textAlign: TextAlign.start,
                 maxLines: 1,

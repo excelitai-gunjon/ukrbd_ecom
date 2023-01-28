@@ -55,7 +55,7 @@ class ProductWidgetUkrbd extends StatelessWidget {
               //   height: MediaQuery.of(context).size.width/2.45,
 
                   // image: '${Provider.of<SplashProvider>(context, listen: false).baseUrls.productThumbnailUrl}/${productModel.thumbnail}',
-                  image: "https://ukrbd.com/images/products/${productModel.productimages[0].image}",
+                  image: "https://ukrbd.com/images/products/${productModel.productimages.length>0?productModel.productimages[0].image:""}",
                   imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder_1x1,
                       fit: BoxFit.contain,
 

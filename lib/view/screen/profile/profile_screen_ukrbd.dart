@@ -328,9 +328,9 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
 
                                         User _user=User();
 
-                                        _user..customerName=_nameController.text.trim();
-                                        _user..customerMobile=_mobileController.text.trim();
-                                        _user..customerAddress=_addressController.text.trim();
+                                        _user..customerName=_nameController.text.isNotEmpty?_nameController.text.trim():nameHint;
+                                        _user..customerMobile=_mobileController.text.isNotEmpty?_mobileController.text.trim():mobileHint;
+                                        _user..customerAddress=_addressController.text.isNotEmpty?_addressController.text.trim():addressHint;
 
                                         print(_user.toJson().toString());
 

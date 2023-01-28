@@ -244,29 +244,16 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                               ),
                               // SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                          allCategoryWiseProductProviderUkrbd.mensFashionList.length>0?
-                          CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.mensFashionList,id: "76",title: "Men's Fashion",):SizedBox(
-                            height: 90,
-                            width: double.infinity,
-                            child: Center(
-                              child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
-                            ),
-                          ),
-
-
-                          SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
-                              // CategoryWiseProductViewWidget(id: "80",title: "Ladies Fashion",),
-
-                              allCategoryWiseProductProviderUkrbd.ladiesFashionList.length>0?
-                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.ladiesFashionList,id: "80",title: "Ladies Fashion",):SizedBox(
+                              // CategoryWiseProductViewWidget(id: "52",title: "Stationery & Office",),
+                              allCategoryWiseProductProviderUkrbd.stationaryAndOfficeList.length>0?
+                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.stationaryAndOfficeList,id: "52",title: "Stationery & Office",):SizedBox(
                                 height: 90,
                                 width: double.infinity,
                                 child: Center(
                                   child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
                                 ),
                               ),
-                              SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
+                              // SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
                               // CategoryWiseProductViewWidget(id: "55",title: "Computer & IT",),
 
@@ -278,95 +265,20 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                                   child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
                                 ),
                               ),
-                              SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
-                              // CategoryWiseProductViewWidget(id: "71",title: "Mobile",),
-                              allCategoryWiseProductProviderUkrbd.mobileList.length>0?
-                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.mobileList,id: "71",title: "Mobile",):SizedBox(
-                                height: 90,
-                                width: double.infinity,
-                                child: Center(
-                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
-                                ),
-                              ),
-                              SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
-                              // CategoryWiseProductViewWidget(id: "78",title: "Fragrances",),
-                              allCategoryWiseProductProviderUkrbd.fragrancesListList.length>0?
-                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.fragrancesListList,id: "78",title: "Fragrances",):SizedBox(
-                                height: 90,
-                                width: double.infinity,
-                                child: Center(
-                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
-                                ),
-                              ),
-
-                              SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
-                              // CategoryWiseProductViewWidget(id: "75",title: "Networking",),
-                              allCategoryWiseProductProviderUkrbd.networkingList.length>0?
-                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.networkingList,id: "75",title: "Networking",):SizedBox(
-                                height: 90,
-                                width: double.infinity,
-                                child: Center(
-                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
-                                ),
-                              ),
-
-                              SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
-                              // CategoryWiseProductViewWidget(id: "79",title: "kids Fashion",),
-                              allCategoryWiseProductProviderUkrbd.kidsFashionList.length>0?
-                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.kidsFashionList,id: "79",title: "kids Fashion",):SizedBox(
-                                height: 90,
-                                width: double.infinity,
-                                child: Center(
-                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
-                                ),
-                              ),
-
-                              SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
-                              // CategoryWiseProductViewWidget(id: "74",title: "Health & Herbs",),
-
-                              allCategoryWiseProductProviderUkrbd.healthAndHerdsList.length>0?
-                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.healthAndHerdsList,id: "74",title: "Health & Herbs",):SizedBox(
-                                height: 90,
-                                width: double.infinity,
-                                child: Center(
-                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
-                                ),
-                              ),
-
-
-                              SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
-                              // CategoryWiseProductViewWidget(id: "52",title: "Stationery & Office",),
-                              allCategoryWiseProductProviderUkrbd.stationaryAndOfficeList.length>0?
-                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.stationaryAndOfficeList,id: "52",title: "Stationery & Office",):SizedBox(
-                                height: 90,
-                                width: double.infinity,
-                                child: Center(
-                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
-                                ),
-                              ),
-
-
-
-                              SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
-                              // CategoryWiseProductViewWidget(id: "56",title: "Electrical & Lighting",),
-
-                              // Consumer<CategoryWiseProductProviderUkrbd>(
-                              //   builder: (context,categoryWiseProductProviderUkrbd,child){
-                              //     return CategoryWiseProductViewWidget(categoryWiseProductList: categoryWiseProductProviderUkrbd.electricalAndLightingList,id: "56",title: "Electrical & Lighting",);
-                              //   },
-                              // ),
-
-
                               // SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
-                              // CategoryWiseProductViewWidget(id: "58",title: "Electronics & Appliances",),
+                              // CategoryWiseProductViewWidget(id: "55",title: "Computer & IT",),
+
+                              allCategoryWiseProductProviderUkrbd.electricalAndLightingList.length>0?
+                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.electricalAndLightingList,id: "56",title: "Electrical & Lighting",):SizedBox(
+                                height: 90,
+                                width: double.infinity,
+                                child: Center(
+                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
+                                ),
+                              ),
+                              // SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
+
                               allCategoryWiseProductProviderUkrbd.electronicsAndAppliancesList.length>0?
                               CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.electronicsAndAppliancesList,id: "58",title: "Electronics & Appliances",):SizedBox(
                                 height: 90,
@@ -377,7 +289,14 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                               ),
 
 
-                              SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
+                              allCategoryWiseProductProviderUkrbd.carAndVehiclesList.length>0?
+                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.carAndVehiclesList,id: "59",title: "Car & Vehicles",):SizedBox(
+                                height: 90,
+                                width: double.infinity,
+                                child: Center(
+                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
+                                ),
+                              ),
 
                               // CategoryWiseProductViewWidget(id: "63",title: "Robotics and Artificial Intelligence",),
                               allCategoryWiseProductProviderUkrbd.roboticsAndArtificialIntelligenceList.length>0?
@@ -389,9 +308,6 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                                 ),
                               ),
 
-
-                              SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
                               // CategoryWiseProductViewWidget(id: "65",title: "Lab Equipment",),
                               allCategoryWiseProductProviderUkrbd.labEquipmentList.length>0?
                               CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.labEquipmentList,id: "65",title: "Lab Equipment",):SizedBox(
@@ -402,8 +318,6 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                                 ),
                               ),
 
-                              SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
                               // CategoryWiseProductViewWidget(id: "66",title: "Furniture",),
                               allCategoryWiseProductProviderUkrbd.furnitureList.length>0?
                               CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.furnitureList,id: "66",title: "Furniture",):SizedBox(
@@ -413,9 +327,6 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                                   child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
                                 ),
                               ),
-
-
-                              SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
                               //
                               // // CategoryWiseProductViewWidget(id: "69",title: "Software Service & Solution",),
                               allCategoryWiseProductProviderUkrbd.softwareServiceAndSolutionList.length>0?
@@ -426,6 +337,126 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                                   child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
                                 ),
                               ),
+
+                              // CategoryWiseProductViewWidget(id: "71",title: "Mobile",),
+                              allCategoryWiseProductProviderUkrbd.mobileList.length>0?
+                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.mobileList,id: "71",title: "Mobile",):SizedBox(
+                                height: 90,
+                                width: double.infinity,
+                                child: Center(
+                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
+                                ),
+                              ),
+
+                              // CategoryWiseProductViewWidget(id: "74",title: "Health & Herbs",),
+                              allCategoryWiseProductProviderUkrbd.healthAndHerdsList.length>0?
+                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.healthAndHerdsList,id: "74",title: "Health & Herbs",):SizedBox(
+                                height: 90,
+                                width: double.infinity,
+                                child: Center(
+                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
+                                ),
+                              ),
+
+                              // CategoryWiseProductViewWidget(id: "75",title: "Networking",),
+                              allCategoryWiseProductProviderUkrbd.networkingList.length>0?
+                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.networkingList,id: "75",title: "Networking",):SizedBox(
+                                height: 90,
+                                width: double.infinity,
+                                child: Center(
+                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
+                                ),
+                              ),
+
+                          allCategoryWiseProductProviderUkrbd.mensFashionList.length>0?
+                          CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.mensFashionList,id: "76",title: "Men's Fashion",):SizedBox(
+                            height: 90,
+                            width: double.infinity,
+                            child: Center(
+                              child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
+                            ),
+                          ),
+
+                              // CategoryWiseProductViewWidget(id: "78",title: "Fragrances",),
+                              allCategoryWiseProductProviderUkrbd.fragrancesListList.length>0?
+                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.fragrancesListList,id: "78",title: "Fragrances",):SizedBox(
+                                height: 90,
+                                width: double.infinity,
+                                child: Center(
+                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
+                                ),
+                              ),
+
+                              // CategoryWiseProductViewWidget(id: "79",title: "kids Fashion",),
+                              allCategoryWiseProductProviderUkrbd.kidsFashionList.length>0?
+                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.kidsFashionList,id: "79",title: "kids Fashion",):SizedBox(
+                                height: 90,
+                                width: double.infinity,
+                                child: Center(
+                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
+                                ),
+                              ),
+
+                              // CategoryWiseProductViewWidget(id: "80",title: "Ladies Fashion",),
+                              allCategoryWiseProductProviderUkrbd.ladiesFashionList.length>0?
+                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.ladiesFashionList,id: "80",title: "Ladies Fashion",):SizedBox(
+                                height: 90,
+                                width: double.infinity,
+                                child: Center(
+                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
+                                ),
+                              ),
+
+                              // CategoryWiseProductViewWidget(id: "82",title: "Winter Collection",), m
+                              allCategoryWiseProductProviderUkrbd.winterCollectionList.length>0?
+                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.winterCollectionList,id: "82",title: "Winter Collection",):SizedBox(
+                                height: 90,
+                                width: double.infinity,
+                                child: Center(
+                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
+                                ),
+                              ),
+
+                              // CategoryWiseProductViewWidget(id: "82",title: "Grocery & Beauty",), m
+                              allCategoryWiseProductProviderUkrbd.groceryAndBeautyList.length>0?
+                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.groceryAndBeautyList,id: "83",title: "Grocery & Beauty",):SizedBox(
+                                height: 90,
+                                width: double.infinity,
+                                child: Center(
+                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
+                                ),
+                              ),
+
+                              // CategoryWiseProductViewWidget(id: "84",title: "Girls Fashion",),
+                              allCategoryWiseProductProviderUkrbd.girlsFashionList.length>0?
+                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.girlsFashionList,id: "83",title: "Girls Fashion",):SizedBox(
+                                height: 90,
+                                width: double.infinity,
+                                child: Center(
+                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
+                                ),
+                              ),
+
+                              // CategoryWiseProductViewWidget(id: "85",title: "Health & Beauty",),
+                              allCategoryWiseProductProviderUkrbd.healthAndBeautyList.length>0?
+                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.healthAndBeautyList,id: "85",title: "Health & Beauty",):SizedBox(
+                                height: 90,
+                                width: double.infinity,
+                                child: Center(
+                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
+                                ),
+                              ),
+
+                              // CategoryWiseProductViewWidget(id: "86",title: "Vegetables",),
+                              allCategoryWiseProductProviderUkrbd.vegetablesList.length>0?
+                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.vegetablesList,id: "86",title: "Vegetables",):SizedBox(
+                                height: 90,
+                                width: double.infinity,
+                                child: Center(
+                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
+                                ),
+                              ),
+
 
                               // SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
                               //
@@ -438,18 +469,6 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                               //     child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
                               //   ),
                               // ),
-
-                              SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-
-                              // CategoryWiseProductViewWidget(id: "82",title: "Winter Collection",), m
-                              allCategoryWiseProductProviderUkrbd.winterCollectionList.length>0?
-                              CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.winterCollectionList,id: "82",title: "Winter Collection",):SizedBox(
-                                height: 90,
-                                width: double.infinity,
-                                child: Center(
-                                  child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
-                                ),
-                              ),
 
 
                               SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),

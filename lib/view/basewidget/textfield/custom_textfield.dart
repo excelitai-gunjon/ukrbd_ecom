@@ -24,6 +24,7 @@ class CustomTextField extends StatelessWidget {
   final Color fillColor;
   final TextCapitalization capitalization;
   final bool isBorder;
+  final GestureTapCallback onTap;
 
   CustomTextField(
       {this.controller,
@@ -39,6 +40,7 @@ class CustomTextField extends StatelessWidget {
       this.capitalization = TextCapitalization.none,
       this.fillColor,
       this.isBorder = false,
+      this.onTap,
       });
 
   @override
@@ -67,6 +69,7 @@ class CustomTextField extends StatelessWidget {
         onFieldSubmitted: (v) {
           FocusScope.of(context).requestFocus(nextNode);
         },
+        onTap: onTap,
         //autovalidate: true,
         inputFormatters: [isPhoneNumber ? FilteringTextInputFormatter.digitsOnly : FilteringTextInputFormatter.singleLineFormatter],
         validator: (input){

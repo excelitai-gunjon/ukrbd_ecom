@@ -55,7 +55,7 @@ class SearchProductWidgetUkrbd extends StatelessWidget {
                 height: size.width * (50 / 360),
                 fit: BoxFit.cover,
                 image: 'https://ukrbd.com/images/products/' +
-                    productModel.productimages[0].image,
+                    "${productModel.productimages.length>0?productModel.productimages[0].image:""}",
                 imageErrorBuilder: (c, o, s) => Image.asset(
                     Images.placeholder,
                     width: size.width * (40 / 360),
