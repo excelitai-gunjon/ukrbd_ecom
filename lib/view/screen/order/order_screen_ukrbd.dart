@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/dimensions.dart';
-import 'package:ecom_ukrbd/view/screen/product/ProductDetailsScreenUkrbd.dart';
+
+import '../product/product_details_screen_ukrbd.dart';
 
 class OrderScreenUkrbd extends StatefulWidget {
 

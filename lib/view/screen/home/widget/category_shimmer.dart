@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ecom_ukrbd/provider/category_provider.dart';
 import 'package:ecom_ukrbd/provider/category_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/provider/theme_provider.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';

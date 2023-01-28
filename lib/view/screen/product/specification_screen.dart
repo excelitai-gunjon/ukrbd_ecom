@@ -19,9 +19,7 @@ class SpecificationScreen extends StatelessWidget {
 
     return Scaffold(
       body: Column(children: [
-
         CustomAppBar(title: getTranslated('specification', context)),
-
         Expanded(child: SingleChildScrollView(child: Html(data: specification,
           tagsList: Html.tags,
           customRenders: {

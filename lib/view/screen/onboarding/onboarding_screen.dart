@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/auth_provider.dart';
-// import 'package:ecom_ukrbd/provider/cart_provider.dart';
 import 'package:ecom_ukrbd/provider/onboarding_provider.dart';
 import 'package:ecom_ukrbd/provider/splash_provider.dart';
 import 'package:ecom_ukrbd/provider/theme_provider.dart';
 import 'package:ecom_ukrbd/utill/custom_themes.dart';
 import 'package:ecom_ukrbd/utill/dimensions.dart';
 import 'package:ecom_ukrbd/utill/images.dart';
-import 'package:ecom_ukrbd/view/screen/auth/auth_screen.dart';
-import 'package:ecom_ukrbd/view/screen/dashboard/dashboard_screen.dart';
 import 'package:ecom_ukrbd/view/screen/dashboard/dashboard_screen_ukrbd.dart';
 import 'package:provider/provider.dart';
 

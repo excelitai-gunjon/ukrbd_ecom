@@ -29,7 +29,6 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
 
   Products products;
 
-  //TabController _tabController;
 
   @override
   void initState() {

@@ -5,15 +5,10 @@ import 'package:ecom_ukrbd/data/model/response/Subcategories.dart';
 import 'package:ecom_ukrbd/provider/bottom_navigation_bar_provider.dart';
 import 'package:ecom_ukrbd/view/screen/home/widget/category_widget_ukrbd.dart';
 import 'package:flutter/material.dart';
-import 'package:ecom_ukrbd/data/model/response/category.dart';
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/category_provider_ukrbd.dart';
-import 'package:ecom_ukrbd/provider/theme_provider.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
-import 'package:ecom_ukrbd/utill/custom_themes.dart';
 import 'package:ecom_ukrbd/utill/dimensions.dart';
-import 'package:ecom_ukrbd/utill/images.dart';
-import 'package:ecom_ukrbd/view/screen/product/brand_and_category_product_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 

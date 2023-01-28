@@ -1,13 +1,11 @@
+import 'package:ecom_ukrbd/view/screen/product/product_details_screen_ukrbd.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/response/ukrbd/produuct_model.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/custom_themes.dart';
 import 'package:ecom_ukrbd/utill/dimensions.dart';
 import 'package:ecom_ukrbd/utill/images.dart';
-import 'package:ecom_ukrbd/view/basewidget/rating_bar.dart';
-import 'package:ecom_ukrbd/view/screen/product/ProductDetailsScreenUkrbd.dart';
 
-import '../../data/model/response/ukrbd/category_wise_product_model/category_wise_product.dart';
 
 class ProductWidgetUkrbd extends StatelessWidget {
   final Products productModel;

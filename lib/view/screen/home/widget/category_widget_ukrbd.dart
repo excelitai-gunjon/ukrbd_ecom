@@ -6,8 +6,6 @@ import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/custom_themes.dart';
 import 'package:ecom_ukrbd/utill/dimensions.dart';
 import 'package:ecom_ukrbd/utill/images.dart';
-import 'package:provider/provider.dart';
-
 import '../../../../data/model/response/categories_ukrbd.dart';
 class CategorySubcategoryWidgetUkrbd extends StatefulWidget {
   final Categories category;

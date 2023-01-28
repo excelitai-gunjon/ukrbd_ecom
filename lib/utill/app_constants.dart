@@ -17,6 +17,7 @@ class AppConstants {
   static const String CATEGORIES_URI = '/api/v1/categories';
   static const String CATEGORIES_URI_UKRBD = '/api/category';
   static const String CATEGORIE_WISE_PRODUCT_UKRBD = '/api/category/';
+  static const String ALL_CATEGORY_WISE_PRODUCT_UKRBD = '/api/categorywiseproduct';
   static const String SUB_CATEGORIE_WISE_PRODUCT_UKRBD = '/api/subcategory/';
   static const String PRODUCT_DETAILS_UKRBD = '/api/product/details/';
 

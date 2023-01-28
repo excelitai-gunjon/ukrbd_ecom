@@ -3,15 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/response/ukrbd/produuct_model.dart';
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
-import 'package:ecom_ukrbd/provider/category_wise_product_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/utill/dimensions.dart';
 import 'package:ecom_ukrbd/view/basewidget/custom_title_row.dart';
 import 'package:ecom_ukrbd/view/basewidget/product_shimmer.dart';
 import 'package:ecom_ukrbd/view/basewidget/product_widget_ukrbd.dart';
 import 'package:ecom_ukrbd/view/screen/product/brand_and_category_product_screen_ukrbd.dart';
-import 'package:provider/provider.dart';
-
-import '../../../../data/model/response/ukrbd/category_wise_product_model/category_wise_product.dart';
 
 
 class CategoryWiseProductViewWidget extends StatelessWidget {

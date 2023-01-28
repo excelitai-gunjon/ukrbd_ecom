@@ -1,18 +1,11 @@
-import 'package:ecom_ukrbd/provider/theme_provider.dart';
-import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/dimensions.dart';
 import 'package:flutter/material.dart';
-import 'package:ecom_ukrbd/provider/category_provider.dart';
 import 'package:ecom_ukrbd/provider/category_provider_ukrbd.dart';
-import 'package:ecom_ukrbd/view/screen/category/all_category_screen.dart';
 import 'package:ecom_ukrbd/view/screen/category/all_category_screen_ukrbd.dart';
-import 'package:ecom_ukrbd/view/screen/home/widget/category_widget.dart';
 import 'package:ecom_ukrbd/view/screen/home/widget/category_widget_ukrbd.dart';
-import 'package:ecom_ukrbd/view/screen/product/brand_and_category_product_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
-import 'category_shimmer.dart';
 
 class CategoryViewUkrbd extends StatefulWidget {
   final bool isHomePage;

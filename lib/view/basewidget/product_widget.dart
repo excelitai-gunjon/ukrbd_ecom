@@ -7,7 +7,6 @@ import 'package:ecom_ukrbd/utill/custom_themes.dart';
 import 'package:ecom_ukrbd/utill/dimensions.dart';
 import 'package:ecom_ukrbd/utill/images.dart';
 import 'package:ecom_ukrbd/view/basewidget/rating_bar.dart';
-import 'package:ecom_ukrbd/view/screen/product/product_details_screen.dart';
 import 'package:provider/provider.dart';
 
 class ProductWidget extends StatelessWidget {
