@@ -10,6 +10,8 @@ import 'package:ecom_ukrbd/view/screen/auth/auth_screen_ukrbd.dart';
 import 'package:provider/provider.dart';
 
 class NotLoggedInWidgetUkrbd extends StatelessWidget {
+  final bool isCheckOut;
+  NotLoggedInWidgetUkrbd({this.isCheckOut});
   @override
   Widget build(BuildContext context) {
     double _height = MediaQuery.of(context).size.height;
@@ -30,14 +32,14 @@ class NotLoggedInWidgetUkrbd extends StatelessWidget {
                 width: MediaQuery.of(context).size.width/2,
                 child: CustomButton(
                   buttonText: getTranslated('LOGIN', context),
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AuthScreenUkrbd(initialPage: 0,))),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AuthScreenUkrbd(initialPage: 0,isCheckOut: isCheckOut,))),
                 ),
               ),
             ),
             InkWell(
               onTap: () {
                 Provider.of<AuthProvider>(context, listen: false).updateSelectedIndex(1);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => AuthScreenUkrbd(initialPage: 1)));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => AuthScreenUkrbd(initialPage: 1,isCheckOut: isCheckOut,)));
               },
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: _height*0.02),

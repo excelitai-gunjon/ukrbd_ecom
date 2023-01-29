@@ -56,7 +56,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                 },
                 child: Container(
                   height: 20,
-                  width: 90,
+                  // width: 90,
                   child: Row(
                     children: [
                       Text(
@@ -454,224 +454,13 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                             ),
                           ],
                         ),
-                        // Row(
-                        //   mainAxisSize: MainAxisSize.max,
-                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //   children: [
-                        //     Text("Delivery Charge",style: TextStyle(color: Colors.black54,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-                        //     RichText(
-                        //       text: TextSpan(
-                        //         text: '',
-                        //         style: DefaultTextStyle.of(context).style,
-                        //         children:  <TextSpan>[
-                        //           TextSpan(text: '\$ ', style: TextStyle(color: Colors.black54,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-                        //           TextSpan(text: '260', style: TextStyle(color: Colors.black54,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //
-                        //   ],
-                        // ),
-                        // Row(
-                        //   mainAxisSize: MainAxisSize.max,
-                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //   children: [
-                        //     Text("VAT +SD (if Applicable)",style: TextStyle(color: Colors.black54,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-                        //     RichText(
-                        //       text: TextSpan(
-                        //         text: '',
-                        //         style: DefaultTextStyle.of(context).style,
-                        //         children:  <TextSpan>[
-                        //           TextSpan(text: '\$ ', style: TextStyle(color: Colors.black54,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-                        //           TextSpan(text: '260', style: TextStyle(color: Colors.black54,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //
-                        //   ],
-                        // ),
-                        // Row(
-                        //   mainAxisSize: MainAxisSize.max,
-                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //   children: [
-                        //     Text("Discount",style: TextStyle(color: Colors.black54,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-                        //     RichText(
-                        //       text: TextSpan(
-                        //         text: '',
-                        //         style: DefaultTextStyle.of(context).style,
-                        //         children:  <TextSpan>[
-                        //           TextSpan(text: '\$ ', style: TextStyle(color: Colors.deepOrangeAccent,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-                        //           TextSpan(text: '260', style: TextStyle(color: Colors.deepOrangeAccent,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //
-                        //   ],
-                        // ),
-                        // Row(
-                        //   mainAxisSize: MainAxisSize.max,
-                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //   children: [
-                        //     Text("Promo Discount",style: TextStyle(color: Colors.black54,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-                        //     RichText(
-                        //       text: TextSpan(
-                        //         text: '',
-                        //         style: DefaultTextStyle.of(context).style,
-                        //         children:  <TextSpan>[
-                        //           TextSpan(text: '\$ ', style: TextStyle(color: Colors.deepOrangeAccent,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-                        //           TextSpan(text: '260', style: TextStyle(color: Colors.deepOrangeAccent,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //
-                        //   ],
-                        // ),
                       ],
                     ),
                   );
                 },
               ),
-
-              // Padding(
-              //   padding: EdgeInsets.symmetric(
-              //       horizontal: size.width * (16 / 360),
-              //       vertical: size.width * (8 / 360)),
-              //   child: Row(
-              //     mainAxisSize: MainAxisSize.max,
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     mainAxisAlignment: MainAxisAlignment.start,
-              //     children: [
-              //       Icon(
-              //         FontAwesomeIcons.boxArchive,
-              //         size: size.width * (Dimensions.ICON_SIZE_DEFAULT / 360),
-              //         color: Theme.of(context).primaryColor,
-              //       ),
-              //       SizedBox(
-              //         width: size.width * (10 / 360),
-              //       ),
-              //       Text("Select a promo code",
-              //           style: TextStyle(
-              //               fontSize:
-              //                   size.width * (Dimensions.FONT_SIZE_LARGE / 360),
-              //               color: Theme.of(context).primaryColor)),
-              //     ],
-              //   ),
-              // ),
-
-              // Padding(
-              //   padding: EdgeInsets.symmetric(
-              //       horizontal: size.width * (16 / 360),
-              //       vertical: size.width * (8 / 360)),
-              //   child: Text("ADDITIONAL COMMENTS",
-              //       style: TextStyle(
-              //           fontSize:
-              //               size.width * (Dimensions.FONT_SIZE_LARGE / 360),
-              //           color: Colors.grey)),
-              // ),
-
-              // Padding(
-              //   padding: EdgeInsets.symmetric(
-              //       horizontal: size.width * (16 / 360),
-              //       vertical: size.width * (8 / 360)),
-              //   child: TextFormField(
-              //     //style: TextFormField,
-              //     decoration: InputDecoration(
-              //       fillColor: Colors.grey.shade200,
-              //       hoverColor: Colors.grey.shade200,
-              //       focusColor: Colors.grey.shade200,
-              //       focusedBorder: OutlineInputBorder(
-              //         //<-- SEE HERE
-              //         borderSide:
-              //             BorderSide(width: 3, color: Colors.grey.shade200),
-              //       ),
-              //       enabledBorder: OutlineInputBorder(
-              //         //<-- SEE HERE
-              //         borderSide:
-              //             BorderSide(width: 3, color: Colors.grey.shade200),
-              //       ),
-              //       // fillColor: Colors.white,
-              //       filled: true,
-              //       border: OutlineInputBorder(
-              //         borderSide: const BorderSide(color: Colors.white),
-              //         borderRadius: BorderRadius.circular(25.0),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-
-              // SizedBox(height: size.width*(80/360),),
-              //
-              // Container(
-              //   height: 600,
-              //   width: size.width,
-              //   color: Colors.teal,
-              // )
             ],
           ),
-          // Align(
-          //   alignment: Alignment.bottomCenter,
-          //   child: Container(
-          //     padding: EdgeInsets.symmetric(horizontal: size.width*(16/360),vertical: size.width*(5/360)),
-          //     color: Theme.of(context).primaryColor.withOpacity(.08),
-          //     height: size.width*(90/360),
-          //     child: Column(
-          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //       children: [
-          //         Center(
-          //           child: RichText(
-          //             text: TextSpan(
-          //               text: '',
-          //               style: DefaultTextStyle.of(context).style,
-          //               children:  <TextSpan>[
-          //                 TextSpan(text: 'By selecting Checkout, I agree to the\n', style: TextStyle(color: Colors.black54,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-          //                 TextSpan(text: 'Terms of Service', style: TextStyle(color: Colors.red,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-          //                 TextSpan(text: ' and ', style: TextStyle(color: Colors.black54,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-          //                 TextSpan(text: 'Privacy Policy', style: TextStyle(color: Colors.red,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-          //               ],
-          //             ),
-          //           ),
-          //         ),
-          //         GestureDetector(
-          //           onTap: (){
-          //
-          //           },
-          //           child: Container(
-          //             padding: EdgeInsets.symmetric(horizontal: size.width*(15/360)),
-          //             height: size.width*(45/360),
-          //             width: size.width,
-          //             decoration: BoxDecoration(
-          //               color: Theme.of(context).primaryColor,
-          //                 border: Border(bottom: BorderSide(color: Colors.grey.shade300,width: 1))
-          //             ),
-          //             child:Row(
-          //               mainAxisSize: MainAxisSize.max,
-          //               crossAxisAlignment: CrossAxisAlignment.center,
-          //               mainAxisAlignment: MainAxisAlignment.start,
-          //               children: [
-          //                 Image.asset(Images.cart_image,height: size.width*(18/360),width: size.width*(18/360),fit: BoxFit.cover,color: Colors.black54,),
-          //                 //Icon(Icons.cart,size: size.width*(Dimensions.ICON_SIZE_DEFAULT/360),color: Colors.white,),
-          //                 SizedBox(width: size.width*(25/360),),
-          //                 // Text("Mobile",style: TextStyle(fontSize:size.width*(Dimensions.FONT_SIZE_LARGE/360),color: Colors.white)),
-          //
-          //                 RichText(
-          //                   text: TextSpan(
-          //                     text: '',
-          //                     style: DefaultTextStyle.of(context).style,
-          //                     children:  <TextSpan>[
-          //                       TextSpan(text: ' 234.5 1', style: TextStyle(color: Colors.black54,fontSize: size.width*(Dimensions.FONT_SIZE_LARGE/360)),),
-          //                       TextSpan(text: 'items', style: TextStyle(color: Colors.black54,fontSize: size.width*(Dimensions.FONT_SIZE_SMALL/360)),),
-          //                       ],
-          //                   ),
-          //                 ),
-          //                 Expanded(child: Align(alignment: Alignment.centerRight,child: Text("Checkout",style: TextStyle(color: Colors.black54,fontSize: size.width*(Dimensions.FONT_SIZE_LARGE/360)))))
-          //               ],
-          //             ),
-          //           ),
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
@@ -702,27 +491,6 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                         fontSize: size.width *
                                             (Dimensions.FONT_SIZE_SMALL / 360)),
                                   ),
-                                  // TextSpan(
-                                  //   text: 'Terms of Service',
-                                  //   style: TextStyle(
-                                  //       color: Colors.red,
-                                  //       fontSize: size.width *
-                                  //           (Dimensions.FONT_SIZE_SMALL / 360)),
-                                  // ),
-                                  // TextSpan(
-                                  //   text: ' and ',
-                                  //   style: TextStyle(
-                                  //       color: Colors.black54,
-                                  //       fontSize: size.width *
-                                  //           (Dimensions.FONT_SIZE_SMALL / 360)),
-                                  // ),
-                                  // TextSpan(
-                                  //   text: 'Privacy Policy',
-                                  //   style: TextStyle(
-                                  //       color: Colors.red,
-                                  //       fontSize: size.width *
-                                  //           (Dimensions.FONT_SIZE_SMALL / 360)),
-                                  // ),
                                 ],
                               ),
                             ),
@@ -730,11 +498,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (_) => CheckoutUkrbd(
-                                      cartSubTotal:
-                                          cartProviderUkrbd.subTotal.toString(),
-                                    )));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (_) => CheckoutUkrbd(cartSubTotal: cartProviderUkrbd.subTotal.toString(),)));
                           },
                           child: Container(
                             padding: EdgeInsets.symmetric(

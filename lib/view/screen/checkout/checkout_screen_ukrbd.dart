@@ -1,4 +1,7 @@
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:ecom_ukrbd/provider/auth_provider_ukrbd.dart';
+import 'package:ecom_ukrbd/provider/profile_provider_ukrbd.dart';
+import 'package:ecom_ukrbd/view/basewidget/not_loggedin_widget_ukrbd.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/body/register_model.dart';
 import 'package:ecom_ukrbd/helper/email_checker.dart';
@@ -57,7 +60,7 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
   //     ),
   //   );
   // }
-  TextEditingController _firstNameController = TextEditingController();
+  TextEditingController _fullNameController = TextEditingController();
   TextEditingController _lastNameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _addressController = TextEditingController();
@@ -79,13 +82,19 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
   RegisterModel register = RegisterModel();
   bool isEmailVerified = false;
 
+  String fullName;
+  String address;
+  String email;
+  String mobile;
+  String reference;
 
-  addUser() async {
+
+  placeOrder() async {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       isEmailVerified = true;
 
-      String _firstName = _firstNameController.text.trim();
+      String _firstName = _fullNameController.text.trim();
       String _lastName = _lastNameController.text.trim();
       String _email = _emailController.text.trim();
       String _phone = _phoneController.text.trim();
@@ -134,7 +143,7 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
           backgroundColor: Colors.red,
         ));
       } else {
-        register.fName = '${_firstNameController.text}';
+        register.fName = '${_fullNameController.text}';
         register.lName = _lastNameController.text ?? " ";
         register.email = _emailController.text;
         register.phone = _phoneNumber;
@@ -170,7 +179,7 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
         //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => DashBoardScreen()), (route) => false);
         _emailController.clear();
         _passwordController.clear();
-        _firstNameController.clear();
+        _fullNameController.clear();
         _lastNameController.clear();
         _phoneController.clear();
         _confirmPasswordController.clear();
@@ -197,8 +206,16 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
   @override
   Widget build(BuildContext context) {
 
-    return Consumer<BottomNavigationBarProvider>(
-        builder: (context, bottomNavigationBarProvider, child){
+    return Consumer3<AuthProviderUkrbd,BottomNavigationBarProvider,ProfileProviderUkrbd>(
+        builder: (context,authProviderUkrbd,bottomNavigationBarProvider,profileProviderUkrbd,child){
+
+          if(profileProviderUkrbd.profileModel.user!=null){
+            fullName=_fullNameController.text;
+            address=_addressController.text;
+            email=_emailController.text;
+            mobile=_phoneController.text;
+            reference=_referenceController.text;
+          }
 
           return Scaffold(
             bottomNavigationBar:
@@ -215,14 +232,12 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
               backgroundColor: Colors.white70,
 
             ),
-            body: Column(
+            body: authProviderUkrbd.getUserToken().length>0?Column(
               // padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_SMALL),
               children: [
-                // SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
-                //           Text("BILLING DETAILS",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
 
                 SizedBox(
-                  height: MediaQuery.of(context).size.width*(360/360),
+                  // height: MediaQuery.of(context).size.width*,
                   child: Form(
                     key: _formKey,
                     child: Column(
@@ -235,43 +250,17 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
                           child: Text("BILLING DETAILS",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                         ),
 
-                        // for first and last name
-                        // Container(
-                        //   margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT),
-                        //   child: Row(
-                        //     children: [
-                        //       Expanded(child: CustomTextField(
-                        //         hintText: getTranslated('FIRST_NAME', context),
-                        //         textInputType: TextInputType.name,
-                        //         focusNode: _fNameFocus,
-                        //         nextNode: _lNameFocus,
-                        //         isPhoneNumber: false,
-                        //         capitalization: TextCapitalization.words,
-                        //         controller: _firstNameController,)),
-                        //       SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT),
-                        //
-                        //
-                        //       Expanded(child: CustomTextField(
-                        //         hintText: getTranslated('LAST_NAME', context),
-                        //         focusNode: _lNameFocus,
-                        //         nextNode: _emailFocus,
-                        //         capitalization: TextCapitalization.words,
-                        //         controller: _lastNameController,)),
-                        //     ],
-                        //   ),
-                        // ),
-
 
                         Container(
                           margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT,
                               top: Dimensions.MARGIN_SIZE_SMALL),
                           child: CustomTextField(
-                            hintText:'Full Name' ,//getTranslated('ENTER_YOUR_EMAIL', context),
+                            hintText:fullName.isNotEmpty?'Full Name':fullName ,//getTranslated('ENTER_YOUR_EMAIL', context),
                             focusNode: _fNameFocus,
                             nextNode: _addressFocus,
                             textInputType: TextInputType.name,
                             capitalization: TextCapitalization.words,
-                            controller: _firstNameController,
+                            controller: _fullNameController,
                           ),
                         ),
 
@@ -323,69 +312,137 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
                           ),
                         ),
 
-                      ],
-                    ),
-                  ),
-                ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            padding:  EdgeInsets.symmetric(horizontal: 32,vertical: Dimensions.PADDING_SIZE_DEFAULT),
 
-
-
-                Expanded(
-                  child: Container(
-                    padding:  EdgeInsets.symmetric(horizontal: 32,vertical: Dimensions.PADDING_SIZE_DEFAULT),
-
-                    color: Colors.grey.shade200,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text("YOUR ORDER",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("CART SUBTOTAL",style: TextStyle(color: Colors.black45),),
-                            Text("৳ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
-                          ],
-                        ),
-                        Divider(),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("PROFIT",style: TextStyle(color: Colors.black45),),
-                            Text("৳ 0.0",style: TextStyle(color: Colors.black45),),
-                          ],
-                        ),
-                        Divider(),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text("Order Total",style: TextStyle(color: Colors.black45),),
-                            Text("৳ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
-                          ],
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_LARGE, right: Dimensions.MARGIN_SIZE_LARGE,
-                              bottom: Dimensions.MARGIN_SIZE_LARGE, top: Dimensions.MARGIN_SIZE_LARGE),
-                          child: Provider.of<AuthProvider>(context).isLoading
-                              ? Center(
-                            child: CircularProgressIndicator(
-                              valueColor: new AlwaysStoppedAnimation<Color>(
-                                Theme.of(context).primaryColor,
-                              ),
+                            color: Colors.grey.shade200,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text("YOUR ORDER",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("CART SUBTOTAL",style: TextStyle(color: Colors.black45),),
+                                    Text("৳ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
+                                  ],
+                                ),
+                                Divider(),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("PROFIT",style: TextStyle(color: Colors.black45),),
+                                    Text("৳ 0.0",style: TextStyle(color: Colors.black45),),
+                                  ],
+                                ),
+                                Divider(),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Order Total",style: TextStyle(color: Colors.black45),),
+                                    Text("৳ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
+                                  ],
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    left: Dimensions.MARGIN_SIZE_LARGE,
+                                    right: Dimensions.MARGIN_SIZE_LARGE,
+                                    bottom: Dimensions.MARGIN_SIZE_LARGE,
+                                    top: Dimensions.MARGIN_SIZE_LARGE,
+                                  ),
+                                  child: Provider.of<AuthProvider>(context).isLoading
+                                      ? Center(
+                                    child: CircularProgressIndicator(
+                                      valueColor: new AlwaysStoppedAnimation<Color>(
+                                        Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                                  )
+                                      : CustomButton(onTap: placeOrder,
+                                    buttonText:'PLACE ORDER',// getTranslated('SIGN_UP', context)
+                                  ),
+                                ),
+                              ],
                             ),
-                          )
-                              : CustomButton(onTap: addUser,
-                            buttonText:'PLACE ORDER',// getTranslated('SIGN_UP', context)
                           ),
                         ),
+
                       ],
                     ),
                   ),
                 ),
+
+
+
+                // Expanded(
+                //   child: Container(
+                //     padding:  EdgeInsets.symmetric(horizontal: 32,vertical: Dimensions.PADDING_SIZE_DEFAULT),
+                //
+                //     color: Colors.grey.shade200,
+                //     child: SingleChildScrollView(
+                //       child: Column(
+                //         crossAxisAlignment: CrossAxisAlignment.start,
+                //         mainAxisSize: MainAxisSize.max,
+                //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //         children: [
+                //           Text("YOUR ORDER",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                //           Row(
+                //             mainAxisSize: MainAxisSize.max,
+                //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //             children: [
+                //               Text("CART SUBTOTAL",style: TextStyle(color: Colors.black45),),
+                //               Text("৳ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
+                //             ],
+                //           ),
+                //           Divider(),
+                //           Row(
+                //             mainAxisSize: MainAxisSize.max,
+                //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //             children: [
+                //               Text("PROFIT",style: TextStyle(color: Colors.black45),),
+                //               Text("৳ 0.0",style: TextStyle(color: Colors.black45),),
+                //             ],
+                //           ),
+                //           Divider(),
+                //           Row(
+                //             mainAxisSize: MainAxisSize.max,
+                //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //             children: [
+                //               Text("Order Total",style: TextStyle(color: Colors.black45),),
+                //               Text("৳ ${widget.cartSubTotal}",style: TextStyle(color: Colors.black45),),
+                //             ],
+                //           ),
+                //           Container(
+                //             margin: EdgeInsets.only(
+                //                 left: Dimensions.MARGIN_SIZE_LARGE,
+                //                 right: Dimensions.MARGIN_SIZE_LARGE,
+                //                 bottom: Dimensions.MARGIN_SIZE_LARGE,
+                //                 top: Dimensions.MARGIN_SIZE_LARGE,
+                //             ),
+                //             child: Provider.of<AuthProvider>(context).isLoading
+                //                 ? Center(
+                //                   child: CircularProgressIndicator(
+                //                   valueColor: new AlwaysStoppedAnimation<Color>(
+                //                   Theme.of(context).primaryColor,
+                //                 ),
+                //               ),
+                //             )
+                //                 : CustomButton(onTap: placeOrder,
+                //               buttonText:'PLACE ORDER',// getTranslated('SIGN_UP', context)
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ),
 
                 // SocialLoginWidget(),
 
@@ -405,7 +462,7 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
                 //       ],
                 //     )),
               ],
-            ),
+            ):NotLoggedInWidgetUkrbd(isCheckOut: true,),
           );
 
         }

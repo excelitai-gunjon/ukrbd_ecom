@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/auth_provider.dart';
-// import 'package:ecom_ukrbd/provider/profile_provider.dart';
 import 'package:ecom_ukrbd/provider/theme_provider.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/custom_themes.dart';
@@ -15,8 +14,9 @@ import 'package:provider/provider.dart';
 class AuthScreenUkrbd extends StatelessWidget{
 
   final int initialPage;
+  final bool isCheckOut;
 
-  AuthScreenUkrbd({this.initialPage = 0});
+  AuthScreenUkrbd({this.initialPage = 0,this.isCheckOut});
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +141,7 @@ class AuthScreenUkrbd extends StatelessWidget{
                         controller: _pageController,
                         itemBuilder: (context, index) {
                           if (authProvider.selectedIndex == 0) {
-                            return SignInWidgetUkrbd();
+                            return SignInWidgetUkrbd(isCheckOut: isCheckOut,);
                           }if (authProvider.selectedIndex == 1) {
                             return SignUpWidgetUkrbd();
                           } else {

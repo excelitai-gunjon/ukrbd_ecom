@@ -1,12 +1,9 @@
 import 'package:country_code_picker/country_code.dart';
 import 'package:flutter/material.dart';
-import 'package:ecom_ukrbd/data/model/body/register_model.dart';
 import 'package:ecom_ukrbd/data/model/body/register_model_ukrbd.dart';
 import 'package:ecom_ukrbd/helper/email_checker.dart';
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
-import 'package:ecom_ukrbd/provider/auth_provider.dart';
 import 'package:ecom_ukrbd/provider/auth_provider_ukrbd.dart';
-// import 'package:ecom_ukrbd/provider/profile_provider.dart';
 import 'package:ecom_ukrbd/provider/splash_provider.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/custom_themes.dart';
@@ -14,12 +11,7 @@ import 'package:ecom_ukrbd/utill/dimensions.dart';
 import 'package:ecom_ukrbd/view/basewidget/button/custom_button.dart';
 import 'package:ecom_ukrbd/view/basewidget/textfield/custom_password_textfield.dart';
 import 'package:ecom_ukrbd/view/basewidget/textfield/custom_textfield.dart';
-import 'package:ecom_ukrbd/view/screen/auth/widget/social_login_widget.dart';
-import 'package:ecom_ukrbd/view/screen/dashboard/dashboard_screen.dart';
 import 'package:provider/provider.dart';
-
-import 'code_picker_widget.dart';
-import 'otp_verification_screen.dart';
 
 class SignUpWidgetUkrbd extends StatefulWidget {
   @override
@@ -28,7 +20,6 @@ class SignUpWidgetUkrbd extends StatefulWidget {
 
 class _SignUpWidgetUkrbdState extends State<SignUpWidgetUkrbd> {
   TextEditingController _firstNameController = TextEditingController();
-  TextEditingController _lastNameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -52,7 +43,6 @@ class _SignUpWidgetUkrbdState extends State<SignUpWidgetUkrbd> {
       isEmailVerified = true;
 
       String _firstName = _firstNameController.text.trim();
-      // String _lastName = _lastNameController.text.trim();
       String _email = _emailController.text.trim();
       String _phone = _phoneController.text.trim();
       String _phoneNumber = _countryDialCode+_phoneController.text.trim();
@@ -65,12 +55,7 @@ class _SignUpWidgetUkrbdState extends State<SignUpWidgetUkrbd> {
           backgroundColor: Colors.red,
         ));
       }
-      // else if (_lastName.isEmpty) {
-      //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      //     content: Text(getTranslated('last_name_field_is_required', context)),
-      //     backgroundColor: Colors.red,
-      //   ));
-      // }
+
       else if (_email.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(getTranslated('EMAIL_MUST_BE_REQUIRED', context)),
@@ -117,42 +102,6 @@ class _SignUpWidgetUkrbdState extends State<SignUpWidgetUkrbd> {
     }
   }
 
-  // route(bool isRoute, String token, String tempToken, String errorMessage) async {
-  //   String _phone = _countryDialCode+_phoneController.text.trim();
-  //   if (isRoute) {
-  //     if(Provider.of<SplashProvider>(context,listen: false).configModel.emailVerification){
-  //     //   Provider.of<AuthProviderUk>(context, listen: false).checkEmail(_emailController.text.toString(), tempToken).then((value) async {
-  //     //     if (value.isSuccess) {
-  //     //       Provider.of<AuthProvider>(context, listen: false).updateEmail(_emailController.text.toString());
-  //     //       //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => VerificationScreen(tempToken,'',_emailController.text.toString())), (route) => false);
-  //     //
-  //     //     }
-  //     //   });
-  //     // }else if(Provider.of<SplashProvider>(context,listen: false).configModel.phoneVerification){
-  //     //   Provider.of<AuthProvider>(context, listen: false).checkPhone(_phone,tempToken).then((value) async {
-  //     //     if (value.isSuccess) {
-  //     //       Provider.of<AuthProvider>(context, listen: false).updatePhone(_phone);
-  //     //       //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => VerificationScreen(tempToken,_phone,'')), (route) => false);
-  //     //
-  //     //     }
-  //     //   });
-  //     }else{
-  //       await Provider.of<ProfileProvider>(context, listen: false).getUserInfo(context);
-  //       //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => DashBoardScreen()), (route) => false);
-  //       _emailController.clear();
-  //       _passwordController.clear();
-  //       _firstNameController.clear();
-  //       _lastNameController.clear();
-  //       _phoneController.clear();
-  //       _confirmPasswordController.clear();
-  //     }
-  //
-  //
-  //   }
-  //   else {
-  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(errorMessage), backgroundColor: Colors.red));
-  //   }
-  // }
 
   String _countryDialCode = "+880";
   @override
@@ -173,31 +122,6 @@ class _SignUpWidgetUkrbdState extends State<SignUpWidgetUkrbd> {
           key: _formKey,
           child: Column(
             children: [
-              // for first and last name
-              // Container(
-              //   margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT),
-              //   child: Row(
-              //     children: [
-              //       Expanded(child: CustomTextField(
-              //         hintText: getTranslated('FIRST_NAME', context),
-              //         textInputType: TextInputType.name,
-              //         focusNode: _fNameFocus,
-              //         nextNode: _lNameFocus,
-              //         isPhoneNumber: false,
-              //         capitalization: TextCapitalization.words,
-              //         controller: _firstNameController,)),
-              //       SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT),
-              //
-              //
-              //       Expanded(child: CustomTextField(
-              //         hintText: getTranslated('LAST_NAME', context),
-              //         focusNode: _lNameFocus,
-              //         nextNode: _emailFocus,
-              //         capitalization: TextCapitalization.words,
-              //         controller: _lastNameController,)),
-              //     ],
-              //   ),
-              // ),
 
 
               Container(
@@ -231,18 +155,6 @@ class _SignUpWidgetUkrbdState extends State<SignUpWidgetUkrbd> {
                 margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT,
                     right: Dimensions.MARGIN_SIZE_DEFAULT, top: Dimensions.MARGIN_SIZE_SMALL),
                 child: Row(children: [
-                  // CodePickerWidget(
-                  //   onChanged: (CountryCode countryCode) {
-                  //     _countryDialCode = countryCode.dialCode;
-                  //   },
-                  //   initialSelection: _countryDialCode,
-                  //   favorite: [_countryDialCode],
-                  //   showDropDownButton: true,
-                  //   padding: EdgeInsets.zero,
-                  //   showFlagMain: true,
-                  //   textStyle: TextStyle(color: Theme.of(context).textTheme.headline1.color),
-                  //
-                  // ),
 
 
 

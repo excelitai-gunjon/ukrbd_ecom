@@ -1,20 +1,14 @@
 
-
-
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:ecom_ukrbd/data/model/response/profile/profile_model.dart';
 import 'package:ecom_ukrbd/provider/auth_provider_ukrbd.dart';
-import 'package:ecom_ukrbd/provider/bottom_navigation_bar_provider.dart';
 import 'package:ecom_ukrbd/provider/profile_provider_ukrbd.dart';
-import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ecom_ukrbd/utill/dimensions.dart';
 import 'package:ecom_ukrbd/utill/images.dart';
 import 'package:ecom_ukrbd/view/basewidget/button/custom_button.dart';
 import 'package:ecom_ukrbd/view/basewidget/not_loggedin_widget_ukrbd.dart';
 import 'package:ecom_ukrbd/view/basewidget/textfield/custom_textfield.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:http/http.dart'as http;
@@ -376,7 +370,7 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                 )
               ],
             ),
-          ):NotLoggedInWidgetUkrbd(),
+          ):NotLoggedInWidgetUkrbd(isCheckOut: false,),
         );
       },
     );

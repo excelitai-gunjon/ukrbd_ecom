@@ -1,10 +1,10 @@
 import 'package:ecom_ukrbd/provider/bottom_navigation_bar_provider.dart';
+import 'package:ecom_ukrbd/provider/cart_provider_ukrbd.dart';
+import 'package:ecom_ukrbd/view/screen/checkout/checkout_screen_ukrbd.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/body/login_model.dart';
 import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/auth_provider.dart';
-// import 'package:ecom_ukrbd/provider/cart_provider.dart';
-// import 'package:ecom_ukrbd/provider/profile_provider.dart';
 import 'package:ecom_ukrbd/provider/splash_provider.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/custom_themes.dart';
@@ -12,21 +12,19 @@ import 'package:ecom_ukrbd/utill/dimensions.dart';
 import 'package:ecom_ukrbd/view/basewidget/button/custom_button.dart';
 import 'package:ecom_ukrbd/view/basewidget/textfield/custom_password_textfield.dart';
 import 'package:ecom_ukrbd/view/basewidget/textfield/custom_textfield.dart';
-import 'package:ecom_ukrbd/view/screen/auth/forget_password_screen.dart';
-import 'package:ecom_ukrbd/view/screen/auth/widget/mobile_verify_screen.dart';
-import 'package:ecom_ukrbd/view/screen/auth/widget/social_login_widget.dart';
-import 'package:ecom_ukrbd/view/screen/dashboard/dashboard_screen.dart';
 import 'package:provider/provider.dart';
 
-import '../../profile/profile_screen_ukrbd.dart';
-import 'otp_verification_screen.dart';
-
 class SignInWidgetUkrbd extends StatefulWidget {
+
+  final bool isCheckOut;
+  SignInWidgetUkrbd({this.isCheckOut});
+
   @override
   _SignInWidgetUkrbdState createState() => _SignInWidgetUkrbdState();
 }
 
 class _SignInWidgetUkrbdState extends State<SignInWidgetUkrbd> {
+
   TextEditingController _emailController;
   TextEditingController _passwordController;
   GlobalKey<FormState> _formKeyLogin;
@@ -53,6 +51,7 @@ class _SignInWidgetUkrbdState extends State<SignInWidgetUkrbd> {
   LoginModel loginBody = LoginModel();
 
   void loginUser() async {
+
     if (_formKeyLogin.currentState.validate()) {
       _formKeyLogin.currentState.save();
 
@@ -79,14 +78,16 @@ class _SignInWidgetUkrbdState extends State<SignInWidgetUkrbd> {
 
         loginBody.email = _email;
         loginBody.password = _password;
-        //await Provider.of<AuthProvider>(context,listen: false).login(_loginModel, (){},context)
 
         await Provider.of<AuthProvider>(context, listen: false).login(loginBody, route,context).then((value) async{
-          // value==201?
-          // Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileScreenUkrbd(isLogedIn: true,)))
-          //     :null;
+
           if(value==201){
-            await Provider.of<BottomNavigationBarProvider>(context, listen: false).onItemTapped(2, false, context);
+            if(widget.isCheckOut){
+              final subTotal=Provider.of<CartProviderUkrbd>(context,listen: false).subTotal;
+              Navigator.of(context).push(MaterialPageRoute(builder: (_) => CheckoutUkrbd(cartSubTotal: subTotal.toString(),)));
+            }else{
+              await Provider.of<BottomNavigationBarProvider>(context, listen: false).onItemTapped(2, false, context);
+            }
           }else{
             null;
           }
@@ -114,8 +115,7 @@ class _SignInWidgetUkrbdState extends State<SignInWidgetUkrbd> {
         }
       }
       else{
-        // await Provider.of<ProfileProvider>(context, listen: false).getUserInfo(context);
-        // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => DashBoardScreen()), (route) => false);
+
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(errorMessage), backgroundColor: Colors.red));
@@ -199,35 +199,6 @@ class _SignInWidgetUkrbdState extends State<SignInWidgetUkrbd> {
             SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT),
 
 
-
-            // SocialLoginWidget(),
-            // SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT),
-            //
-            // Center(child: Text(getTranslated('OR', context),
-            //     style: titilliumRegular.copyWith(fontSize: Dimensions.FONT_SIZE_DEFAULT))),
-            //
-            //
-            //
-            // GestureDetector(
-            //   onTap: () {
-            //     if (!Provider.of<AuthProvider>(context, listen: false).isLoading) {
-            //
-            //       Provider.of<CartProvider>(context, listen: false).getCartData();
-            //
-            //       // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => DashBoardScreen()),
-            //       //         (route) => false);
-            //     }
-            //   },
-            //   child: Container(
-            //     margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_AUTH, right: Dimensions.MARGIN_SIZE_AUTH,
-            //         top: Dimensions.MARGIN_SIZE_AUTH_SMALL),
-            //     width: double.infinity, height: 40, alignment: Alignment.center,
-            //     decoration: BoxDecoration(
-            //       color: Colors.transparent, borderRadius: BorderRadius.circular(6),),
-            //     child: Text(getTranslated('CONTINUE_AS_GUEST', context),
-            //         style: titleHeader.copyWith(color: ColorResources.getPrimary(context))),
-            //   ),
-            // ),
           ],
         ),
       ),

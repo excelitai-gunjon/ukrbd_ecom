@@ -1,17 +1,12 @@
-import 'dart:io';
 
 import 'package:dio/dio.dart';
-
 import 'package:flutter/material.dart';
-import 'package:ecom_ukrbd/data/datasource/remote/dio/dio_client.dart';
 import 'package:ecom_ukrbd/data/datasource/remote/dio/ukrbd_dio_client.dart';
 import 'package:ecom_ukrbd/data/datasource/remote/exception/api_error_handler.dart';
 import 'package:ecom_ukrbd/data/model/body/login_model.dart';
 import 'package:ecom_ukrbd/data/model/body/merchant_register_model.dart';
-import 'package:ecom_ukrbd/data/model/body/register_model.dart';
 import 'package:ecom_ukrbd/data/model/body/register_model_ukrbd.dart';
 import 'package:ecom_ukrbd/data/model/response/base/api_response.dart';
-import 'package:ecom_ukrbd/data/model/response/social_login_model.dart';
 import 'package:ecom_ukrbd/utill/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,19 +14,6 @@ class AuthRepoUkrbd {
   final DioClientUkrbd dioClient;
   final SharedPreferences sharedPreferences;
   AuthRepoUkrbd({@required this.dioClient, @required this.sharedPreferences});
-
-  //
-  // Future<ApiResponse> socialLogin(SocialLoginModel socialLogin) async {
-  //   try {
-  //     Response response = await dioClient.post(
-  //       AppConstants.SOCIAL_LOGIN_URI,
-  //       data: socialLogin.toJson(),
-  //     );
-  //     return ApiResponse.withSuccess(response);
-  //   } catch (e) {
-  //     return ApiResponse.withError(ApiErrorHandler.getMessage(e));
-  //   }
-  // }
 
 
 
@@ -78,6 +60,7 @@ class AuthRepoUkrbd {
     try {
       Response response = await dioClient.post(
         AppConstants.LOGOUT_URI,
+
       );
       await removeUserToken();
       return ApiResponse.withSuccess(response);
