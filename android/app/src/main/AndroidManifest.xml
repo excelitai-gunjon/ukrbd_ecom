@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ecom_ukrbd">
    <application
-        android:label="ecom_ukrbd"
+        android:label="Ukrbd"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

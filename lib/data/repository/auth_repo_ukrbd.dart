@@ -69,35 +69,6 @@ class AuthRepoUkrbd {
     }
   }
 
-  // Future<ApiResponse> updateToken() async {
-  //   try {
-  //     String _deviceToken = await _getDeviceToken();
-  //     FirebaseMessaging.instance.subscribeToTopic(AppConstants.TOPIC);
-  //     Response response = await dioClient.post(
-  //       AppConstants.TOKEN_URI,
-  //       data: {"_method": "put", "cm_firebase_token": _deviceToken},
-  //     );
-  //     return ApiResponse.withSuccess(response);
-  //   } catch (e) {
-  //     return ApiResponse.withError(ApiErrorHandler.getMessage(e));
-  //   }
-  // }
-
-  // Future<String> _getDeviceToken() async {
-  //   String _deviceToken;
-  //   if(Platform.isIOS) {
-  //     _deviceToken = await FirebaseMessaging.instance.getAPNSToken();
-  //   }else {
-  //     _deviceToken = await FirebaseMessaging.instance.getToken();
-  //   }
-  //
-  //   if (_deviceToken != null) {
-  //     print('--------Device Token---------- '+_deviceToken);
-  //   }
-  //   return _deviceToken;
-  // }
-
-  // for  user token
   Future<void> saveUserToken(String token) async {
     dioClient.updateHeader(token, null);
 

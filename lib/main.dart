@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:ecom_ukrbd/provider/all_category_wise_product_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/provider/auth_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/provider/bottom_navigation_bar_provider.dart';
+import 'package:ecom_ukrbd/provider/order_place_provider.dart';
 import 'package:ecom_ukrbd/provider/product_details_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/provider/profile_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/view/screen/cart/cart_screen_ukrbd.dart';
@@ -55,6 +56,7 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (context) => di.sl<ProfileProviderUkrbd>()),
       ChangeNotifierProvider(create: (context) => di.sl<ProductDetailsProviderUkrbd>()),
       ChangeNotifierProvider(create: (context) => di.sl<AllCategoryWiseProductProviderUkrbd>()),
+      ChangeNotifierProvider(create: (context) => di.sl<OrderPlaceProvider>()),
 
       ///
       ChangeNotifierProvider(create: (context) => di.sl<OnBoardingProvider>()),

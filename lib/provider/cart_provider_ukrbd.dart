@@ -67,7 +67,8 @@ class CartProviderUkrbd with ChangeNotifier{
 
   void addToCart(Products productModel,int count,BuildContext context){
 
-    _subTotal= int.tryParse(productModel.price??"0")*count+_subTotal;
+    // _subTotal= int.tryParse(productModel.price??"0")*count+_subTotal;
+    _subTotal= double.parse(productModel.price??"0").toInt()*count+_subTotal;
     _totalItem=_totalItem+count;
     _cartList.contains(productModel)?
 

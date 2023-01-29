@@ -15,8 +15,6 @@ import 'package:ecom_ukrbd/utill/dimensions.dart';
 import 'package:ecom_ukrbd/view/basewidget/button/custom_button.dart';
 import 'package:ecom_ukrbd/view/basewidget/textfield/custom_password_textfield.dart';
 import 'package:ecom_ukrbd/view/basewidget/textfield/custom_textfield.dart';
-import 'package:ecom_ukrbd/view/screen/auth/widget/social_login_widget.dart';
-import 'package:ecom_ukrbd/view/screen/dashboard/dashboard_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'code_picker_widget.dart';

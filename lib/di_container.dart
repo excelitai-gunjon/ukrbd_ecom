@@ -8,6 +8,7 @@ import 'package:ecom_ukrbd/data/repository/banner_repo_ukrbd.dart';
 import 'package:ecom_ukrbd/data/repository/category_repo_ukrbd.dart';
 import 'package:ecom_ukrbd/data/repository/category_wise_product_repo.dart';
 import 'package:ecom_ukrbd/data/repository/onboarding_repo.dart';
+import 'package:ecom_ukrbd/data/repository/order_place_repo.dart';
 import 'package:ecom_ukrbd/data/repository/product_details_repo_ukrbd.dart';
 import 'package:ecom_ukrbd/data/repository/profile_repo_ukrbd.dart';
 import 'package:ecom_ukrbd/data/repository/splash_repo.dart';
@@ -24,6 +25,7 @@ import 'package:ecom_ukrbd/provider/category_wise_product_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/provider/facebook_login_provider.dart';
 import 'package:ecom_ukrbd/provider/google_sign_in_provider.dart';
 import 'package:ecom_ukrbd/provider/onboarding_provider.dart';
+import 'package:ecom_ukrbd/provider/order_place_provider.dart';
 import 'package:ecom_ukrbd/provider/product_details_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/provider/profile_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/provider/splash_provider.dart';
@@ -56,11 +58,13 @@ Future<void> init() async {
   sl.registerLazySingleton(() => OnBoardingRepo());
   sl.registerLazySingleton(() => AuthRepo(dioClient: sl(), sharedPreferences: sl()));
   sl.registerLazySingleton(() => SplashRepo(sharedPreferences: sl(), dioClient: sl()));
+  sl.registerLazySingleton(() => OrderPlaceRepo(sharedPreferences: sl(), dioClient: sl()));
 
   // Provider
   ///ukrbd  CategoryProviderUkrbd
 
   sl.registerFactory(() => CategoryProviderUkrbd(categoryRepo: sl()));
+  sl.registerFactory(() => OrderPlaceProvider(orderPlaceRepo: sl()));
   sl.registerFactory(() => AllCategoryWiseProductProviderUkrbd(allCategoryWiseProductRepoUkrbd: sl()));
   sl.registerFactory(() => CategoryWiseProductProviderUkrbd(categoryWiseProductRepoUkrbd: sl()));
   sl.registerFactory(() => SubCategoryWiseProductProviderUkrbd(subCategoryWiseProductRepoUkrbd: sl()));

@@ -3,7 +3,6 @@ import 'package:ecom_ukrbd/data/model/response/language_model.dart';
 class AppConstants {
   static const String APP_NAME = 'Ukrbd';
   static const String APP_VERSION = '12.0';
-  static const String BASE_URL = 'https://6valley.6amtech.com';
   /// for ukrbd
   static const String UKRBD_BASE_URL = 'http://ukrbd.com';
   static const String REGISTER_UKRBD = '/api/customer/register';
@@ -55,6 +54,7 @@ class AppConstants {
 
   /// ukrbd
   static const String MAIN_BANNER_URI_UKRBD = '/api/sliders';
+  static const String ORDER_PLACE_URI_URI = '/api/checkout';
 
 
 
