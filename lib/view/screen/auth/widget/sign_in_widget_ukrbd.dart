@@ -86,7 +86,7 @@ class _SignInWidgetUkrbdState extends State<SignInWidgetUkrbd> {
               final subTotal=Provider.of<CartProviderUkrbd>(context,listen: false).subTotal;
               Navigator.of(context).push(MaterialPageRoute(builder: (_) => CheckoutUkrbd(cartSubTotal: subTotal.toString(),)));
             }else{
-              await Provider.of<BottomNavigationBarProvider>(context, listen: false).onItemTapped(2, false, context);
+              await Provider.of<BottomNavigationBarProvider>(context, listen: false).onItemTapped(1, false, context);
             }
           }else{
             null;

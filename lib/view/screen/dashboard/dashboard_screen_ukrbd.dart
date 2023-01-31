@@ -33,9 +33,6 @@ class _DashBoardScreenUkrbdState extends State<DashBoardScreenUkrbd> {
 
     _screens = [
       HomePageUkrbd(),
-      // OrderScreen(isBacButtonExist: false),
-      OrderScreenUkrbd(),
-      // AuthScreenUkrbd(),
       ProfileScreenUkrbd(),
       CartScreenUkrbd(),
     ];
@@ -127,14 +124,14 @@ class _DashBoardScreenUkrbdState extends State<DashBoardScreenUkrbd> {
     List<BottomNavigationBarItem> _list = [];
     if(!isSingleVendor){
       _list.add(_barItem(Images.home_image, getTranslated('home', context), 0));
-      _list.add(_barItem(Images.shopping_image, getTranslated('orders', context), 1));
-      _list.add(_barItem(Images.profile_icon_image, getTranslated('PROFILE', context), 2));
-      _list.add(_barItem(Images.cart_image, getTranslated('CART', context), 3));
+      // _list.add(_barItem(Images.shopping_image, getTranslated('orders', context), 1));
+      _list.add(_barItem(Images.profile_icon_image, getTranslated('PROFILE', context), 1));
+      _list.add(_barItem(Images.cart_image, getTranslated('CART', context), 2));
     }else{
       _list.add(_barItem(Images.home_image, getTranslated('home', context), 0));
-      _list.add(_barItem(Images.shopping_image, getTranslated('orders', context), 1));
-      _list.add(_barItem(Images.profile_icon_image, getTranslated('PROFILE', context), 2));
-      _list.add(_barItem(Images.cart_image, getTranslated('CART', context), 3));
+      // _list.add(_barItem(Images.shopping_image, getTranslated('orders', context), 1));
+      _list.add(_barItem(Images.profile_icon_image, getTranslated('PROFILE', context), 1));
+      _list.add(_barItem(Images.cart_image, getTranslated('CART', context), 2));
     }
 
     return _list;

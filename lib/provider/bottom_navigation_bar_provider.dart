@@ -89,14 +89,15 @@ class BottomNavigationBarProvider extends ChangeNotifier {
         label: getTranslated('home', context),
       ),
 
-        BottomNavigationBarItem(
-          icon: Image.asset(
-            Images.shopping_image,
-            color: ColorResources.BOTTOMNAVIGATIONBARITEMCOLOR,
-            height: 25, width: 25,
-          ),
-          label: getTranslated('orders', context),
-        ),
+        // BottomNavigationBarItem(
+        //   icon: Image.asset(
+        //     Images.shopping_image,
+        //     color: ColorResources.BOTTOMNAVIGATIONBARITEMCOLOR,
+        //     height: 25, width: 25,
+        //   ),
+        //   label: getTranslated('orders', context),
+        // ),
+
         BottomNavigationBarItem(
           icon: Image.asset(
             Images.profile_icon_image,
@@ -106,6 +107,8 @@ class BottomNavigationBarProvider extends ChangeNotifier {
           ),
           label: getTranslated('PROFILE', context),
         ),
+
+
         BottomNavigationBarItem(
           icon: Consumer<CartProviderUkrbd>(
             builder: (context,cartProviderUkrbd,child){
@@ -141,8 +144,6 @@ class BottomNavigationBarProvider extends ChangeNotifier {
           label: getTranslated('CART', context),
         ),
 
-
-
       ],
      
     );
@@ -154,13 +155,13 @@ class BottomNavigationBarProvider extends ChangeNotifier {
     if (index == 0 ) {
       return    HomePageUkrbd();
     }
-    if (index == 1 ) {
-      return  OrderScreenUkrbd();
-    }
-    if (index == 2) {
+    // if (index == 1 ) {
+    //   return  OrderScreenUkrbd();
+    // }
+    if (index == 1) {
       return  ProfileScreenUkrbd();
     }
-    if (index == 3) {
+    if (index == 2) {
       return   CartScreenUkrbd();
     }
   }

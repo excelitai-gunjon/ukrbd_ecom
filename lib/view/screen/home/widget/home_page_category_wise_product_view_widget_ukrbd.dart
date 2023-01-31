@@ -47,21 +47,16 @@ class CategoryWiseProductViewWidget extends StatelessWidget {
 
         Padding(
           padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
-          child: Column(
-              children: [
-                // categoryWiseProductList.length!=0?
-                Container(
-                  height: MediaQuery.of(context).size.width/1.20,
-                  child: categoryWiseProductList.length>0?ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: (categoryWiseProductList.length<8?categoryWiseProductList.length:8) ,
-                      itemBuilder: (ctx,index){
-                        return Container(width: (MediaQuery.of(context).size.width/2.06)-10,
-                            child: ProductWidgetUkrbd(productModel: categoryWiseProductList[index]));
-                      }
-                      ):ProductShimmer(isHomePage: true ,isEnabled: true),
-                ),
-              ]
+          child: Container(
+            height: MediaQuery.of(context).size.width*.6,
+            child: categoryWiseProductList.length>0?ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: (categoryWiseProductList.length<8?categoryWiseProductList.length:8) ,
+                itemBuilder: (ctx,index){
+                  return Container(width: (MediaQuery.of(context).size.width*.4),
+                      child: ProductWidgetUkrbd(productModel: categoryWiseProductList[index]));
+                }
+                ):ProductShimmer(isHomePage: true ,isEnabled: true),
           ),
         ),
       ],

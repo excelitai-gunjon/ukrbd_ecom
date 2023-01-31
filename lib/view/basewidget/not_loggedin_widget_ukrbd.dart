@@ -5,7 +5,6 @@ import 'package:ecom_ukrbd/utill/custom_themes.dart';
 import 'package:ecom_ukrbd/utill/dimensions.dart';
 import 'package:ecom_ukrbd/utill/images.dart';
 import 'package:ecom_ukrbd/view/basewidget/button/custom_button.dart';
-import 'package:ecom_ukrbd/view/screen/auth/auth_screen.dart';
 import 'package:ecom_ukrbd/view/screen/auth/auth_screen_ukrbd.dart';
 import 'package:provider/provider.dart';
 

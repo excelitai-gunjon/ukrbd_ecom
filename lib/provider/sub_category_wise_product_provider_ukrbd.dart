@@ -16,6 +16,8 @@ class SubCategoryWiseProductProviderUkrbd with ChangeNotifier{
 
   SubCategoryWiseProductProviderUkrbd({@required this.subCategoryWiseProductRepoUkrbd});
 
+  bool _isLoading=false;
+
   int _categorySelectedIndex;
   List<Products> _subCategoryWiseProductList=[];
   SubCategoryWiseProductModel _subCategoryWiseProduct;
@@ -23,19 +25,28 @@ class SubCategoryWiseProductProviderUkrbd with ChangeNotifier{
 
   List<Products> get subCategoryWiseProductList => _subCategoryWiseProductList;
   int get categorySelectedIndex => _categorySelectedIndex;
+  bool get isLoading=>_isLoading;
 
   Future<void> getSubCategoryWiseProductList(bool reload, BuildContext context,String categoryId) async {
+
+    _isLoading=true;
+    notifyListeners();
 
     if (_subCategoryWiseProductList.length == 0 || reload) {
       ApiResponse apiResponse = await subCategoryWiseProductRepoUkrbd.getSubCategoryWiseProductList(categoryId);
       if (apiResponse.response != null && apiResponse.response.statusCode == 200) {
+        _isLoading=false;
+        notifyListeners();
         _subCategoryWiseProductList.clear();
         // apiResponse.response.data.forEach((category) => _categoryList.add(Category.fromJson(category)));
         _subCategoryWiseProduct = SubCategoryWiseProductModel.fromJson(apiResponse.response.data);
         _subCategoryWiseProductList=_subCategoryWiseProduct.products;
         _categorySelectedIndex = 0;
+        notifyListeners();
       } else {
-        ApiChecker.checkApi(context, apiResponse);
+        _isLoading=false;
+        notifyListeners();
+        // ApiChecker.checkApi(context, apiResponse);
       }
       notifyListeners();
     }

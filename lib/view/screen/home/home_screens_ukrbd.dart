@@ -210,7 +210,7 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                                       borderRadius: BorderRadius.all(Radius.circular(5)),
                                       child: FadeInImage.assetNetwork(
                                         placeholder: "assets/banner/banner3.jpeg", fit: BoxFit.cover,
-                                        image: 'http://ukrbd.com/images/website/banner3.jpg',
+                                        image: "",//'http://ukrbd.com/images/website/banner3.jpg',
                                         height: 200,
                                         width: size.width,
                                         imageErrorBuilder: (c, o, s) => Image.asset("assets/banner/banner3.jpeg", fit: BoxFit.contain),
@@ -462,7 +462,7 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                                       borderRadius: BorderRadius.all(Radius.circular(5)),
                                       child: FadeInImage.assetNetwork(
                                         placeholder: "assets/banner/banner3.jpeg", fit: BoxFit.cover,
-                                        image: 'http://ukrbd.com/images/website/banner3.jpg',
+                                        image: "",//'http://ukrbd.com/images/website/banner3.jpg',
                                         height: 200,
                                         width: size.width,
                                         imageErrorBuilder: (c, o, s) => Image.asset("assets/banner/banner3.jpeg", fit: BoxFit.contain),

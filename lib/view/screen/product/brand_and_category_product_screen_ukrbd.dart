@@ -36,8 +36,7 @@ class BrandAndCategoryProductScreenUkrbd extends StatefulWidget {
       _BrandAndCategoryProductScreenUkrbdState();
 }
 
-class _BrandAndCategoryProductScreenUkrbdState
-    extends State<BrandAndCategoryProductScreenUkrbd> {
+class _BrandAndCategoryProductScreenUkrbdState extends State<BrandAndCategoryProductScreenUkrbd> {
 
 
   _load(BuildContext context, bool reload) async {
@@ -46,13 +45,24 @@ class _BrandAndCategoryProductScreenUkrbdState
         ? await Provider.of<SubCategoryWiseProductProviderUkrbd>(context, listen: false).getSubCategoryWiseProductList(reload, context, widget.id)
         : await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductList(reload, context, widget.id);
   }
+  @override
+  void initState() {
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _load(context, true);
+    }
+
+    );
+
+    // TODO: implement initState
+    super.initState();
+  }
 
 
 //CategoryWiseProductProviderUkrbd
 
   @override
   Widget build(BuildContext context) {
-    _load(context, true);
     //Provider.of<ProductProvider>(context, listen: false).initBrandOrCategoryProductList(isBrand, id, context);
     return !widget.isSubcategory
         ? WillPopScope(
@@ -229,10 +239,8 @@ class _BrandAndCategoryProductScreenUkrbdState
                             (context, subCategoryWiseProductProviderUkrbd, child) {
                           print(
                               "product list :::::::::::::::${subCategoryWiseProductProviderUkrbd.subCategoryWiseProductList.length}");
-                          return subCategoryWiseProductProviderUkrbd
-                              .subCategoryWiseProductList.length >
-                              0
-                              ? Expanded(
+                          return !subCategoryWiseProductProviderUkrbd.isLoading
+                              ? subCategoryWiseProductProviderUkrbd.subCategoryWiseProductList.length != 0?Expanded(
                             child: StaggeredGridView.countBuilder(
                               padding: EdgeInsets.symmetric(
                                   horizontal: Dimensions.PADDING_SIZE_SMALL),
@@ -250,15 +258,13 @@ class _BrandAndCategoryProductScreenUkrbdState
                                 // return null;
                               },
                             ),
-                          )
+                          ):Expanded(child: Center(child: Text("No Data"),))
                               :
 
                           // Expanded(child: Center(child: productProvider.hasData ?
                           Expanded(
                               child: Center(
-                                child: subCategoryWiseProductProviderUkrbd
-                                    .subCategoryWiseProductList.length ==
-                                    0
+                                child: subCategoryWiseProductProviderUkrbd.subCategoryWiseProductList.length == 0
                                     ? ProductShimmer(
                                     isHomePage: false,
                                     isEnabled:true,
