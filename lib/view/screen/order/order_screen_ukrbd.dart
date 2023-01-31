@@ -59,45 +59,45 @@ class _OrderScreenUkrbdState extends State<OrderScreenUkrbd> with SingleTickerPr
               ],
             ),
           ),
-      SizedBox(
-        width: 800,
-        child: TabBar(
-          unselectedLabelColor: Colors.black,
-          labelColor: Theme.of(context).primaryColor,
-          indicatorColor: Theme.of(context).primaryColor,
-          tabs: [
-            Tab(
-              icon: Text("vendor 1"),
-            ),
-            Tab(
-              icon: Text("vendor 2"),
-            ),
-            Tab(
-              icon: Text("vendor 3"),
-            ),
-            Tab(
-              icon: Text("vendor 4"),
-            ),
-            Tab(
-              icon: Text("vendor 5"),
-            ),
-          ],
-          controller: _tabController,
-          indicatorSize: TabBarIndicatorSize.tab,
-        ),
-      ),
-      Expanded(
-        child: TabBarView(
-          children: [
-            OrderInfoWidget(),
-            OrderInfoWidget(),
-            OrderInfoWidget(),
-            OrderInfoWidget(),
-            OrderInfoWidget(),
-          ],
-          controller: _tabController,
-        ),
-      ),
+      // SizedBox(
+      //   width: 800,
+      //   child: TabBar(
+      //     unselectedLabelColor: Colors.black,
+      //     labelColor: Theme.of(context).primaryColor,
+      //     indicatorColor: Theme.of(context).primaryColor,
+      //     tabs: [
+      //       Tab(
+      //         icon: Text("vendor 1"),
+      //       ),
+      //       Tab(
+      //         icon: Text("vendor 2"),
+      //       ),
+      //       Tab(
+      //         icon: Text("vendor 3"),
+      //       ),
+      //       Tab(
+      //         icon: Text("vendor 4"),
+      //       ),
+      //       Tab(
+      //         icon: Text("vendor 5"),
+      //       ),
+      //     ],
+      //     controller: _tabController,
+      //     indicatorSize: TabBarIndicatorSize.tab,
+      //   ),
+      // ),
+      // Expanded(
+      //   child: TabBarView(
+      //     children: [
+      //       OrderInfoWidget(),
+      //       OrderInfoWidget(),
+      //       OrderInfoWidget(),
+      //       OrderInfoWidget(),
+      //       OrderInfoWidget(),
+      //     ],
+      //     controller: _tabController,
+      //   ),
+      // ),
         ],
       ),
     );

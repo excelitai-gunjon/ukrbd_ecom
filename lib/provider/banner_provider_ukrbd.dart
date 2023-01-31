@@ -37,7 +37,7 @@ class BannerProviderUkrbd extends ChangeNotifier {
         _currentIndex = 0;
         notifyListeners();
       } else {
-        ApiChecker.checkApi(context, apiResponse);
+        // ApiChecker.checkApi(context, apiResponse);
       }
     }
   }

@@ -58,7 +58,6 @@ class _DashBoardScreenUkrbdState extends State<DashBoardScreenUkrbd> {
           child: Scaffold(
             key: _scaffoldKey,
             bottomNavigationBar: bottomNavigationBarProvider.bottomNavigationBar(context, true),
-
             backgroundColor: ColorResources.getHomeBg(context),
             resizeToAvoidBottomInset: false,
             body: bottomNavigationBarProvider.getWidget(bottomNavigationBarProvider.selectedIndex),

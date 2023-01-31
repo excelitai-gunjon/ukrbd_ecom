@@ -112,8 +112,7 @@ class _SplashScreenState extends State<SplashScreen> {
               }else {
                 if (!Provider.of<AuthProvider>(context, listen: false).isLoading) {
                   // Provider.of<CartProvider>(context, listen: false).getCartData();
-                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => DashBoardScreenUkrbd()),
-                          (route) => false);
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => DashBoardScreenUkrbd()), (route) => false);
                 }
                 //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => AuthScreen()));
               }

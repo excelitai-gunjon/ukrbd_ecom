@@ -1,4 +1,7 @@
 
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:ecom_ukrbd/data/model/response/profile/profile_model.dart';
 import 'package:ecom_ukrbd/provider/auth_provider_ukrbd.dart';
@@ -9,6 +12,7 @@ import 'package:ecom_ukrbd/utill/images.dart';
 import 'package:ecom_ukrbd/view/basewidget/button/custom_button.dart';
 import 'package:ecom_ukrbd/view/basewidget/not_loggedin_widget_ukrbd.dart';
 import 'package:ecom_ukrbd/view/basewidget/textfield/custom_textfield.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:http/http.dart'as http;
@@ -80,6 +84,26 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
     await Provider.of<ProfileProviderUkrbd>(context,listen: false).getUserProfile(context);
   }
 
+  File image;
+
+
+  final _picker = ImagePicker();
+  // Implementing the image picker
+  Future<void> _profileImage() async {
+    File file;
+    final XFile pickedImage =
+    await _picker.pickImage(source: ImageSource.gallery,
+        maxHeight: 300,
+        maxWidth: 300,
+        imageQuality: 20);
+    if (pickedImage != null) {
+      setState(() {
+        image = File(pickedImage.path);
+      });
+
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -99,12 +123,6 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
         }
 
         return Scaffold(
-
-          // bottomNavigationBar:
-          // bottomNavigationBarProvider.bottomNavigationBar(context, false),
-          //
-          // backgroundColor: ColorResources.getHomeBg(context),
-          // resizeToAvoidBottomInset: false,
 
           body: authProviderUkrbd.getUserToken().length>0?
 
@@ -137,30 +155,73 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                         SizedBox(
                           height: 20,
                         ),
-                        // IconButton(onPressed: (){
-                        //  // Navigator.pop(context);
-                        //
-                        // }, icon: Icon(Icons.arrow_back,color: Colors.white,),
-                        // ),
 
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 16.0),
+                              padding: EdgeInsets.only(left: 16.0),
                               child: Row(
                                 children: [
-                                  ClipRRect(borderRadius: BorderRadius.circular(50),
-                                    child:FadeInImage.assetNetwork(
-                                      placeholder: Images.placeholder, width: 50,
-                                      height: 50, fit: BoxFit.cover,
-                                      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtLFlEKjQHLInSZGzlfwIAnCrqCOF3chDGhR6ZKfSw&s',
-                                      imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder,
-                                          width: 50, height: 50, fit: BoxFit.cover),
+                                  !profileProviderUkrbd.isLoading?Stack(
+                                    clipBehavior: Clip.none,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(50),
+                                        child:image!= null ?
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(100),
+                                          child: Image.file(image,
+                                            fit: BoxFit.cover,
+                                            width: 65,
+                                            height: 65,
+                                          ),
+                                        ):FadeInImage.assetNetwork(
+                                          placeholder: Images.placeholder,
+                                          width: 65,
+                                          height: 65,
+                                          fit: BoxFit.cover,
+                                          image: 'https://ukrbd.com/images/user_image/${profileProviderUkrbd.user.image??""}',
+                                          imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, width: 65, height: 65, fit: BoxFit.cover),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        bottom: -5,
+                                        right: -5,
+                                        child: Align(
+                                          child: SizedBox(
+                                              width: 20,
+                                              height: 20,
+                                              child: CircleAvatar(
+                                                  backgroundColor: Colors.deepOrangeAccent,
+                                                  radius: 30,
+                                                  child: InkWell(
+                                                    onTap: (){
+                                                      _profileImage();
+                                                    },
+                                                    child: Icon(
+                                                      Icons.edit_outlined,
+                                                      size: 13,
+                                                      color: Colors.white,
+                                                    ),
+                                                  )
+                                              )
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ):SizedBox(
+                                    height: 40,
+                                    width: 40,
+                                    child: Center(
+                                      child: CircularProgressIndicator(
+                                        color: Theme.of(context).primaryColor,
+                                      ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: EdgeInsets.all(8.0),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
@@ -174,7 +235,6 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                               ),
                             ),
                             ClipRRect(
-
                               borderRadius: BorderRadius.circular(5),
                               child: InkWell(
                                 onTap: (){
@@ -196,9 +256,9 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                                 ):SizedBox(
                                   height: 30,
                                   width: 90,
-                                  child: Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
+                                  // child: Center(
+                                  //   child: CircularProgressIndicator(),
+                                  // ),
                                 ),
                               ),
                             )
@@ -222,14 +282,6 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                                   ],
                                 ),
                               ),
-                              // Tab(
-                              //   child: Column(
-                              //     children: [
-                              //       Text("0"),
-                              //       Text("My Wish List",style: TextStyle(fontSize: 10),),
-                              //     ],
-                              //   ),
-                              // ),
                               Tab(
                                 child: Column(
                                   children: [
@@ -272,6 +324,7 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                                   focusNode: _nameFocus,
                                   nextNode: _mobileFocus,
                                 ),
+                                SizedBox(height: 10,),
                                 Text('Mobile Number',style: TextStyle(color: Colors.black45,fontSize: 13),),
                                 CustomTextField(
                                   hintText: mobileHint,
@@ -280,13 +333,7 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                                   nextNode: _addressFocus,
                                   textInputType: TextInputType.phone,
                                 ),
-                                // Text('Image',style: TextStyle(color: Colors.black45,fontSize: 18),),
-                                // CustomTextField(
-                                //   hintText: '01XXXXXXXXX',
-                                //   controller: _nameController,
-                                //   focusNode: _nameFocus,
-                                //   nextNode: _mobileFocus,
-                                // ),
+                                SizedBox(height: 10,),
                                 Text('Address',style: TextStyle(color: Colors.black45,fontSize: 13),),
                                 CustomTextField(
                                   hintText: addressHint,
@@ -326,15 +373,34 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                                         _user..customerMobile=_mobileController.text.isNotEmpty?_mobileController.text.trim():mobileHint;
                                         _user..customerAddress=_addressController.text.isNotEmpty?_addressController.text.trim():addressHint;
 
-                                        print(_user.toJson().toString());
 
-                                        await profileProviderUkrbd.updateUserProfile(_user, null, token,context).then((value) {
-                                          if(value==201){
-                                            _load(context, true);
-                                          }
-                                          return null;
-                                        });
+                                        FormData formData;
+                                        if(image!=null){
+                                          formData = FormData.fromMap({
+                                            "name" : _nameController.text.isNotEmpty?_nameController.text.trim():nameHint,
+                                            "mobile" : _mobileController.text.isNotEmpty?_mobileController.text.trim():mobileHint,
+                                            "customer_address" : _addressController.text.isNotEmpty?_addressController.text.trim():addressHint,
+                                            'image': await MultipartFile.fromFile(image.path, filename:image.path.split('/').last)
+                                          });
 
+                                          await profileProviderUkrbd.updateUserProfileWithImage(context,formData).then((value) {
+                                            if(value==201){
+                                              //_load(context, true);
+                                            }
+                                            return null;
+                                          });
+
+                                        }else{
+                                          print(_user.toJson().toString());
+                                          await profileProviderUkrbd.updateUserProfile(_user, null, token,context).then((value) {
+                                            if(value==201){
+                                              _load(context, true);
+                                            }
+                                            return null;
+                                          });
+
+
+                                        }
 
 
                                       }, child: Text("Update Profile"),

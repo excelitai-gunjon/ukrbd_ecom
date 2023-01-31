@@ -126,7 +126,8 @@ class _BrandAndCategoryProductScreenUkrbdState
                               ? Expanded(
                             child: StaggeredGridView.countBuilder(
                               padding: EdgeInsets.symmetric(
-                                  horizontal: Dimensions.PADDING_SIZE_SMALL),
+                                  horizontal: Dimensions.PADDING_SIZE_SMALL,
+                              ),
                               physics: BouncingScrollPhysics(),
                               crossAxisCount: 2,
                               itemCount: (categoryWiseProductsList.length) ,

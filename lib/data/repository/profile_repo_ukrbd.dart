@@ -30,20 +30,6 @@ class ProfileRepoUkrbd {
   }
 
   Future<int> updateProfile(User userInfoModel, File file, String token,BuildContext context) async {
-    // try {
-    //   Response response = await dioClient.post(
-    //     AppConstants.PROFILE_UPDATE_URI,
-    //     data: {
-    //       'customer_name':userInfoModel.customerName,
-    //       'customer_mobile':userInfoModel.customerMobile,
-    //       'customer_address':userInfoModel.customerAddress,
-    //     },
-    //
-    //   );
-    //   return ApiResponse.withSuccess(response);
-    // } catch (e) {
-    //   return ApiResponse.withError(ApiErrorHandler.getMessage(e));
-    // }
 
     var headers = {
       'Accept': 'application/json',
@@ -84,6 +70,16 @@ class ProfileRepoUkrbd {
 
   }
 
+
+  Future<ApiResponse> updateProfileWithImage(FormData formData) async {
+    // userModel..image=await MultipartFile.fromFile(file.path, filename:file.path.split('/').last);
+    try {
+      final response = await dioClient.post(AppConstants.PROFILE_UPDATE_URI,data: formData);
+      return ApiResponse.withSuccess(response);
+    } catch (e) {
+      return ApiResponse.withError(ApiErrorHandler.getMessage(e));
+    }
+  }
 
   // Future<http.StreamedResponse> updateProfile(User userInfoModel, File file, String token) async {
   //   http.MultipartRequest request = http.('POST', Uri.parse('${AppConstants.UKRBD_BASE_URL}${AppConstants.PROFILE_UPDATE_URI}'));

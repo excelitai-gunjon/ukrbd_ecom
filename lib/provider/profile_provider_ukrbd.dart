@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:ecom_ukrbd/data/model/response/profile/profile_model.dart';
 import 'package:ecom_ukrbd/data/repository/profile_repo_ukrbd.dart';
 import 'package:flutter/material.dart';
@@ -55,6 +56,36 @@ class ProfileProviderUkrbd extends ChangeNotifier {
       // callback(false, '', '' , errorMessage);
       notifyListeners();
       // ApiChecker.checkApi(context, apiResponse);
+    }
+    notifyListeners();
+  }
+
+  Future<int> updateUserProfileWithImage(BuildContext context,FormData formData) async {
+
+    _isLoading=true;
+    notifyListeners();
+    ApiResponse apiResponse = await profileRepo.updateProfileWithImage(formData);
+    if (apiResponse.response != null && apiResponse.response.statusCode == 201) {
+      _isLoading=false;
+      _profileModel = ProfileModel.fromJson(apiResponse.response.data);
+      _user=_profileModel.user;
+      notifyListeners();
+      return apiResponse.response.statusCode;
+    } else {
+      _isLoading = false;
+      String errorMessage;
+      if (apiResponse.error is String) {
+        print(apiResponse.error.toString());
+        errorMessage = apiResponse.error.toString();
+      } else {
+        ErrorResponse errorResponse = apiResponse.error;
+        print(errorResponse.errors[0].message);
+        errorMessage = errorResponse.errors[0].message;
+      }
+      // callback(false, '', '' , errorMessage);
+      notifyListeners();
+      // ApiChecker.checkApi(context, apiResponse);
+      return apiResponse.response.statusCode;
     }
     notifyListeners();
   }

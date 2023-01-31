@@ -6,21 +6,13 @@ import 'package:ecom_ukrbd/provider/order_place_provider.dart';
 import 'package:ecom_ukrbd/provider/profile_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/view/basewidget/not_loggedin_widget_ukrbd.dart';
 import 'package:flutter/material.dart';
-import 'package:ecom_ukrbd/data/model/body/register_model.dart';
-import 'package:ecom_ukrbd/helper/email_checker.dart';
-import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/auth_provider.dart';
 import 'package:ecom_ukrbd/provider/splash_provider.dart';
 import 'package:ecom_ukrbd/utill/dimensions.dart';
 import 'package:ecom_ukrbd/view/basewidget/button/custom_button.dart';
-import 'package:ecom_ukrbd/view/basewidget/textfield/custom_password_textfield.dart';
 import 'package:ecom_ukrbd/view/basewidget/textfield/custom_textfield.dart';
-import 'package:ecom_ukrbd/view/screen/auth/widget/code_picker_widget.dart';
-import 'package:ecom_ukrbd/view/screen/checkout/widget/DeliveryDetails.dart';
 import 'package:provider/provider.dart';
-
 import '../../../provider/bottom_navigation_bar_provider.dart';
-// import 'package:ecom_ukrbd/view/screen/checkout/DeliveryDetails.dart';
 
 class CheckoutUkrbd extends StatefulWidget {
   static const String routeName = "/checkoutUkrbd";
@@ -286,8 +278,7 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
                       child: Text("Address"),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT,
-                          top: Dimensions.MARGIN_SIZE_SMALL),
+                      margin: EdgeInsets.only(left: Dimensions.MARGIN_SIZE_DEFAULT, right: Dimensions.MARGIN_SIZE_DEFAULT, top: Dimensions.MARGIN_SIZE_SMALL),
                       child: CustomTextField(
                         hintText: address,//getTranslated('ENTER_YOUR_EMAIL', context),
                         focusNode: _addressFocus,

@@ -1,11 +1,8 @@
-
 import 'dart:math';
-
 import 'package:ecom_ukrbd/data/model/response/Subcategories.dart';
 import 'package:ecom_ukrbd/provider/bottom_navigation_bar_provider.dart';
 import 'package:ecom_ukrbd/view/screen/home/widget/category_widget_ukrbd.dart';
 import 'package:flutter/material.dart';
-import 'package:ecom_ukrbd/localization/language_constrants.dart';
 import 'package:ecom_ukrbd/provider/category_provider_ukrbd.dart';
 import 'package:ecom_ukrbd/utill/color_resources.dart';
 import 'package:ecom_ukrbd/utill/dimensions.dart';
@@ -38,7 +35,7 @@ class SubCategoryScreenUkrbd extends StatelessWidget {
             elevation: 0.2,
             foregroundColor: Colors.black,
             backgroundColor: Theme.of(context).highlightColor,
-            title: Text(getTranslated('CATEGORY', context),
+            title: Text(subcategories.length != 0?"SubCategories":"Categories",
             ),
           ),
 
@@ -216,7 +213,7 @@ class SubCategoryScreenUkrbd extends StatelessWidget {
 
                         },
                       ),
-                    ): Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor)));
+                    ): Center(child: Text("No Data"));
                   },
                 )),
                 SizedBox(height: 10,),

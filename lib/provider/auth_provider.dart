@@ -219,7 +219,7 @@ class AuthProvider with ChangeNotifier {
     if (apiResponse.response != null && apiResponse.response.statusCode == 200) {
 
     } else {
-      ApiChecker.checkApi(context, apiResponse);
+      // ApiChecker.checkApi(context, apiResponse);
     }
   }
 

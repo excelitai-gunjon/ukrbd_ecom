@@ -39,30 +39,7 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
 
     await Provider.of<CategoryProviderUkrbd>(context, listen: false).getCategoryList(reload, context);
     await Provider.of<AllCategoryWiseProductProviderUkrbd>(context, listen: false).getAllCategoryWiseProductList(context);
-    // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "82");
-    // // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "81");
-    // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "66");
-    // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "65");
-    // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "63");
-    // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "58");
-    // // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "56");
-    // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "52");
-    // // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "59");
-    // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "74");
-    // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "79");
-    // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "75");
-    // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "78");
-    // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "80");
-    // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "76");
-    // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "55");
-    // await Provider.of<CategoryWiseProductProviderUkrbd>(context, listen: false).getCategoryWiseProductListForHomePage(reload, context, "71");
 
-    print("......................... load home page data .........................");
-    print("......................... load home page data .........................");
-    print("......................... load home page data .........................");
-    print("......................... load home page data .........................");
-    print("......................... load home page data .........................");
-    print("......................... load home page data .........................");
     print("......................... load home page data .........................");
     print("......................... load home page data .........................");
 
@@ -232,11 +209,11 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.all(Radius.circular(5)),
                                       child: FadeInImage.assetNetwork(
-                                        placeholder: Images.placeholder, fit: BoxFit.cover,
+                                        placeholder: "assets/banner/banner3.jpeg", fit: BoxFit.cover,
                                         image: 'http://ukrbd.com/images/website/banner3.jpg',
                                         height: 200,
                                         width: size.width,
-                                        imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, fit: BoxFit.contain),
+                                        imageErrorBuilder: (c, o, s) => Image.asset("assets/banner/banner3.jpeg", fit: BoxFit.contain),
                                       ),
                                     ),
                                   ),
@@ -479,14 +456,16 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                                   padding: const EdgeInsets.symmetric(horizontal: 2.0),
                                   child: Container(
                                     width: MediaQuery.of(context).size.width,
-                                    height: MediaQuery.of(context).size.width/4.1,
+                                    height: MediaQuery.of(context).size.width/3,
                                     decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(5))),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.all(Radius.circular(5)),
                                       child: FadeInImage.assetNetwork(
-                                        placeholder: Images.placeholder, fit: BoxFit.cover,
+                                        placeholder: "assets/banner/banner3.jpeg", fit: BoxFit.cover,
                                         image: 'http://ukrbd.com/images/website/banner3.jpg',
-                                        imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, fit: BoxFit.cover),
+                                        height: 200,
+                                        width: size.width,
+                                        imageErrorBuilder: (c, o, s) => Image.asset("assets/banner/banner3.jpeg", fit: BoxFit.contain),
                                       ),
                                     ),
                                   ),
