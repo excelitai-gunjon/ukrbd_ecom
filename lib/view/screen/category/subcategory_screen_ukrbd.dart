@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:ecom_ukrbd/data/model/response/Subcategories.dart';
 import 'package:ecom_ukrbd/provider/bottom_navigation_bar_provider.dart';
+import 'package:ecom_ukrbd/view/basewidget/no_internet_screen.dart';
 import 'package:ecom_ukrbd/view/screen/home/widget/category_widget_ukrbd.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/provider/category_provider_ukrbd.dart';
@@ -213,7 +214,7 @@ class SubCategoryScreenUkrbd extends StatelessWidget {
 
                         },
                       ),
-                    ): Center(child: Text("No Data"));
+                    ): NoInternetOrDataScreen(isNoInternet: false);
                   },
                 )),
                 SizedBox(height: 10,),

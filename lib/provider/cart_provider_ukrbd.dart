@@ -30,20 +30,21 @@ class CartProviderUkrbd with ChangeNotifier{
   void plus(int index,Products productData){
     _itemCound[index]++;
     _totalItem=_totalItem+1;
-    _subTotal= int.tryParse(productData.price??"0")+_subTotal;
+    // _subTotal= int.tryParse(productData.price??"0")+_subTotal;
+    _subTotal= double.parse(productData.price??"0").toInt()+_subTotal;
     notifyListeners();
   }
 
   void minus(int index,Products productData){
     _itemCound[index]--;
     _totalItem=_totalItem-1;
-    _subTotal= _subTotal-int.tryParse(productData.price??"0");
+    _subTotal= _subTotal-double.parse(productData.price??"0").toInt();
     notifyListeners();
   }
 
   void deleteCartItem(Products productData){
     _totalItem=_totalItem-1;
-    _subTotal= _subTotal-int.tryParse(productData.price??"0");
+    _subTotal= _subTotal-double.parse(productData.price??"0").toInt();
     // Data productModelData =_cartList.;
     _cartList.removeWhere((element) => element==productData);
     notifyListeners();
@@ -51,7 +52,7 @@ class CartProviderUkrbd with ChangeNotifier{
 
   void deleteOneCartItem(int index,Products productData){
     _totalItem=_totalItem-_itemCound[index];
-    _subTotal= _subTotal-_itemCound[index]*int.tryParse(productData.price??"0");
+    _subTotal= _subTotal-_itemCound[index]*double.parse(productData.price??"0").toInt();
     _cartList.removeWhere((element) => element==productData);
     notifyListeners();
   }

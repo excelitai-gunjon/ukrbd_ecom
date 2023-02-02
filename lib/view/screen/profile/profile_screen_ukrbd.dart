@@ -140,7 +140,7 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                           end: Alignment.topRight,
                           colors: [
                             // Colors,
-                            Color(0xff4caf50),
+                            Colors.deepOrangeAccent,
                             Color(0xffffeb3b),//Color(0xff4caf50)), ColorSwatch(primary value: Color(0xffffeb3b)
                             // Color(0xff4caf50),
                             // Colors.white
@@ -225,8 +225,8 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        profileProviderUkrbd.isLoading==false?Text("${profileProviderUkrbd.user.customerName??''}",style: TextStyle(color: Colors.white),):Shimmer.fromColors(child: Text(""), baseColor: Colors.grey, highlightColor: Colors.black38),
-                                        profileProviderUkrbd.isLoading==false?Text("${profileProviderUkrbd.user.customerMobile??''}",style: TextStyle(color: Colors.white),):Shimmer.fromColors(child: Text(""), baseColor: Colors.grey, highlightColor: Colors.black38),
+                                        profileProviderUkrbd.isLoading==false?Text("${profileProviderUkrbd.user.customerName??''}",style: TextStyle(color: Colors.white,fontSize: 14),):Shimmer.fromColors(child: Text(""), baseColor: Colors.grey, highlightColor: Colors.black38),
+                                        profileProviderUkrbd.isLoading==false?Text("${profileProviderUkrbd.user.customerMobile??''}",style: TextStyle(color: Colors.white,fontSize: 14),):Shimmer.fromColors(child: Text(""), baseColor: Colors.grey, highlightColor: Colors.black38),
                                         // Text("${profileProviderUkrbd.user.customerMobile??''}",style: TextStyle(color: Colors.white),),
                                       ],
                                     ),
@@ -278,7 +278,7 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                                 child: Column(
                                   children: [
                                     Text(""),
-                                    Text("My Profile",style: TextStyle(fontSize: 10),),
+                                    Text("My Profile",style: TextStyle(fontSize: 14),),
                                   ],
                                 ),
                               ),
@@ -287,7 +287,7 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                                   children: [
                                     profileProviderUkrbd.isLoading==false?Text("৳ ${profileProviderUkrbd.user.amount??""}",style: TextStyle(color: Colors.white),):Shimmer.fromColors(child: Text(""), baseColor: Colors.grey, highlightColor: Colors.black38),
                                     // Text("৳ ${profileProviderUkrbd.user.amount??0}"),
-                                    Text("Withdraw",style: TextStyle(fontSize: 10),),
+                                    Text("Withdraw",style: TextStyle(fontSize: 14),),
                                   ],
                                 ),
                               ),
@@ -317,7 +317,7 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 //SizedBox(height: 100,),
-                                Text('Name',style: TextStyle(color: Colors.black45,fontSize: 13),),
+                                Text('Name',style: TextStyle(color: Colors.black45,fontSize: 16),),
                                 CustomTextField(
                                   hintText: nameHint,
                                   controller: _nameController,
@@ -325,7 +325,7 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                                   nextNode: _mobileFocus,
                                 ),
                                 SizedBox(height: 10,),
-                                Text('Mobile Number',style: TextStyle(color: Colors.black45,fontSize: 13),),
+                                Text('Mobile Number',style: TextStyle(color: Colors.black45,fontSize: 16),),
                                 CustomTextField(
                                   hintText: mobileHint,
                                   controller: _mobileController,
@@ -334,7 +334,7 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                                   textInputType: TextInputType.phone,
                                 ),
                                 SizedBox(height: 10,),
-                                Text('Address',style: TextStyle(color: Colors.black45,fontSize: 13),),
+                                Text('Address',style: TextStyle(color: Colors.black45,fontSize: 16),),
                                 CustomTextField(
                                   hintText: addressHint,
                                   controller: _addressController,

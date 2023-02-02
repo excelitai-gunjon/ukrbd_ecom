@@ -258,7 +258,7 @@ class _BrandAndCategoryProductScreenUkrbdState extends State<BrandAndCategoryPro
                                 // return null;
                               },
                             ),
-                          ):Expanded(child: Center(child: Text("No Data"),))
+                          ):Expanded(child: NoInternetOrDataScreen(isNoInternet: false),)
                               :
 
                           // Expanded(child: Center(child: productProvider.hasData ?

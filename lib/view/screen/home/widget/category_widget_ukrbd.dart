@@ -99,7 +99,7 @@ class _CategorySubcategoryWidgetUkrbdState extends State<CategorySubcategoryWidg
                               textAlign: TextAlign.start,
                               maxLines: 3,
                               overflow: TextOverflow.visible,
-                              style: titilliumRegular.copyWith(fontSize: 12,
+                              style: titilliumRegular.copyWith(fontSize: 12,fontWeight: FontWeight.bold,
                                   color: ColorResources.getTextTitle(context)),
                             ),
                           ),
