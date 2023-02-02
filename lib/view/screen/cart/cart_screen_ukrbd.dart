@@ -207,27 +207,30 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                 children: [
                                   Container(
                                     height: size.width * (35 / 360),
-                                    width: size.width * (70 / 360),
-                                    color: Theme.of(context).primaryColor,
+                                    width: size.width * (90 / 360),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Theme.of(context).primaryColor,
+                                    ),
                                     child: Stack(
                                       clipBehavior: Clip.none,
                                       children: [
-                                        Positioned(
-                                          left: size.width * (-17.5 / 360),
-                                          top: 0,
-                                          bottom: 0,
+                                        Align(
+                                          alignment: Alignment.centerLeft,
+                                          // left: size.w
+                                          // idth * (-17.5 / 360),
+                                          // top: 0,
+                                          // bottom: 0,
+                                          // width: MediaQuery.of(context).size.width,
                                           child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(50),
+                                            borderRadius: BorderRadius.circular(50),
                                             child: GestureDetector(
                                               onTap: () {
                                                 if (itemCount >= 2) {
-                                                  cartProviderUkrbd.minus(
-                                                      index, product);
+                                                  cartProviderUkrbd.minus(index, product);
                                                 }
                                                 if (itemCount == 1) {
-                                                  cartProviderUkrbd
-                                                      .deleteCartItem(product);
+                                                  cartProviderUkrbd.deleteCartItem(product);
                                                 }
                                               },
                                               child: Container(
@@ -238,9 +241,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                                 decoration: BoxDecoration(
                                                     color: Colors.white,
                                                     boxShadow: [
-                                                      BoxShadow(
-                                                        color: Colors
-                                                            .deepPurpleAccent,
+                                                      BoxShadow(color: Colors.deepPurpleAccent,
                                                         spreadRadius: 2,
                                                         offset: Offset(0, 0),
                                                       ),
@@ -248,26 +249,24 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                                 child: Center(
                                                     child: Icon(
                                                   FontAwesomeIcons.minus,
-                                                  size: size.width *
-                                                      (Dimensions
-                                                              .FONT_SIZE_DEFAULT /
-                                                          360),
-                                                )),
+                                                  size: size.width * (Dimensions.FONT_SIZE_DEFAULT / 360),
+                                                 ),
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                        Positioned(
-                                          right: size.width * (-17.5 / 360),
-                                          top: 0,
-                                          bottom: 0,
+                                        Align(
+                                          alignment: Alignment.centerRight,
+                                          // right: size.width * (-17.5 / 360),
+                                          // top: 0,
+                                          // bottom: 0,
+                                          // width: MediaQuery.of(context).size.width,
                                           child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(50),
+                                            borderRadius: BorderRadius.circular(50),
                                             child: GestureDetector(
                                               onTap: () {
-                                                cartProviderUkrbd.plus(
-                                                    index, product);
+                                                cartProviderUkrbd.plus(index, product);
                                               },
                                               child: Container(
                                                 height: size.width * (35 / 360),
@@ -276,8 +275,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                                     color: Colors.white,
                                                     boxShadow: [
                                                       BoxShadow(
-                                                        color: Colors
-                                                            .deepPurpleAccent,
+                                                        color: Colors.deepPurpleAccent,
                                                         spreadRadius: 2,
                                                         offset: Offset(0, 0),
                                                       ),
@@ -285,10 +283,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                                 child: Center(
                                                   child: Icon(
                                                     FontAwesomeIcons.plus,
-                                                    size: size.width *
-                                                        (Dimensions
-                                                                .FONT_SIZE_DEFAULT /
-                                                            360),
+                                                    size: size.width * (Dimensions.FONT_SIZE_DEFAULT / 360),
                                                   ),
                                                 ),
                                               ),
@@ -297,8 +292,8 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                         ),
                                         Align(
                                             alignment: Alignment.center,
-                                            child: Text(
-                                                "${cartProviderUkrbd.itemCount[index]}")),
+                                            child: Text("${cartProviderUkrbd.itemCount[index]}"),
+                                        ),
                                       ],
                                     ),
                                   )
@@ -314,17 +309,6 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
               SizedBox(
                 height: size.width * (16 / 360),
               ),
-
-              // Container(
-              //   width: size.width,
-              //   //height: 100,
-              //   decoration: DottedDecoration(
-              //     shape: Shape.line,
-              //     linePosition: LinePosition.top,
-              //     color: Colors.grey,
-              //     strokeWidth: 2
-              //   ),
-              // ),
 
               Consumer<CartProviderUkrbd>(
                 builder: (context, cartProviderUkrbd, child) {
@@ -468,9 +452,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
           builder: (context, cartProviderUkrbd, child) {
             return cartProviderUkrbd.cartList.length > 0
                 ? Container(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: size.width * (16 / 360),
-                        vertical: size.width * (5 / 360)),
+                    padding: EdgeInsets.symmetric(horizontal: size.width * (16 / 360), vertical: size.width * (5 / 360)),
                     color: Theme.of(context).primaryColor.withOpacity(.08),
                     height: size.width * (90 / 360),
                     child: Column(
@@ -484,12 +466,8 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                 //style: DefaultTextStyle.of(context).style,
                                 children: [
                                   TextSpan(
-                                    text:
-                                        'Continue Shopping ',
-                                    style: TextStyle(
-                                        color: Colors.black54,
-                                        fontSize: size.width *
-                                            (Dimensions.FONT_SIZE_SMALL / 360)),
+                                    text: 'Continue Shopping ',
+                                    style: TextStyle(color: Colors.black54, fontSize: size.width * (Dimensions.FONT_SIZE_SMALL / 360)),
                                   ),
                                 ],
                               ),
@@ -501,8 +479,7 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                             Navigator.of(context).push(MaterialPageRoute(builder: (_) => CheckoutUkrbd(cartSubTotal: cartProviderUkrbd.subTotal.toString(),)));
                           },
                           child: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: size.width * (15 / 360)),
+                            padding: EdgeInsets.symmetric(horizontal: size.width * (15 / 360)),
                             height: size.width * (45 / 360),
                             width: size.width,
                             decoration: BoxDecoration(
@@ -562,10 +539,11 @@ class _CartScreenUkrbdState extends State<CartScreenUkrbd> {
                                         child: Text("Checkout",
                                             style: TextStyle(
                                                 color: Colors.black54,
-                                                fontSize: size.width *
-                                                    (Dimensions
-                                                            .FONT_SIZE_LARGE /
-                                                        360)))))
+                                                fontSize: size.width * (Dimensions.FONT_SIZE_LARGE / 360)
+                                            )
+                                        )
+                                    )
+                                )
                               ],
                             ),
                           ),

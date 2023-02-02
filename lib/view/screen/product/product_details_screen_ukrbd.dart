@@ -9,7 +9,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:provider/provider.dart';
-
 import '../../../provider/bottom_navigation_bar_provider.dart';
 
 class ProductDetailsScreenUkrbd extends StatefulWidget {
@@ -238,16 +237,21 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                     children: [
                       Container(
                         height: size.width*(35/360),
-                        width: size.width*(75/360),
+                        width: size.width*(95/360),
                         //  width: size.width*(75/360),
-                        color: Theme.of(context).primaryColor,
+                        // color: Theme.of(context).primaryColor,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: Theme.of(context).primaryColor,
+                        ),
                         child: Stack(
                           clipBehavior: Clip.none,
                           children: [
-                            Positioned(
-                              left: size.width*(-17.5/360),
-                              top: 0,
-                              bottom: 0,
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              // left: size.width*(-17.5/360),
+                              // top: 0,
+                              // bottom: 0,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(50),
                                 child: GestureDetector(
@@ -280,10 +284,11 @@ class _ProductDetailsScreenUkrbdState extends State<ProductDetailsScreenUkrbd> w
                                 ),
                               ),
                             ),
-                            Positioned(
-                              right: size.width*(-17.5/360),
-                              top: 0,
-                              bottom: 0,
+                            Align(
+                              alignment: Alignment.centerRight,
+                              // right: size.width*(-17.5/360),
+                              // top: 0,
+                              // bottom: 0,
                               child: InkWell(
                                 onTap: (){
                                   setState(() {

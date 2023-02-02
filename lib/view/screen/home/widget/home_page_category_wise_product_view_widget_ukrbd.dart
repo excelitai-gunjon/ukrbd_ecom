@@ -48,7 +48,7 @@ class CategoryWiseProductViewWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
           child: Container(
-            height: MediaQuery.of(context).size.width*.6,
+            height: MediaQuery.of(context).size.width*.7,
             child: categoryWiseProductList.length>0?ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: (categoryWiseProductList.length<8?categoryWiseProductList.length:8) ,

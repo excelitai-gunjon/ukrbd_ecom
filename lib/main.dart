@@ -71,8 +71,6 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  //final int orderId;
-  //MyApp();
 
   static final navigatorKey = new GlobalKey<NavigatorState>();
 
@@ -99,17 +97,12 @@ class MyApp extends StatelessWidget {
       routes: {
         SplashScreen.routeName:(context)=>SplashScreen(),
         DashBoard.routeName: (context) => DashBoard(),
-        //DashBoardScreenUkrbd.routeName: (context) => DashBoardScreenUkrbd(),
-        // SearchScreen.routeName: (context) => SearchScreen(),
         BrandAndCategoryProductScreenUkrbd.routeName: (context) => BrandAndCategoryProductScreenUkrbd(),
         ProductDetailsScreenUkrbd.routeName: (context) => ProductDetailsScreenUkrbd(),
         CartScreenUkrbd.routeName: (context) => CartScreenUkrbd(),
         CheckoutUkrbd.routeName: (context) => CheckoutUkrbd(),
       },
       supportedLocales: _locals,
-      // home: orderId == null ? SplashScreen() : OrderDetailsScreen(orderModel: null,
-      //   orderId: orderId, orderType: 'default_type',isNotification: true),
-      // home: HomePage(),
     );
   }
 }
