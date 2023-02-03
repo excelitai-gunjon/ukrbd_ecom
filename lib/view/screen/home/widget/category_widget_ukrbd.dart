@@ -73,15 +73,25 @@ class _CategorySubcategoryWidgetUkrbdState extends State<CategorySubcategoryWidg
                   children: [
                     Align(
                       alignment: Alignment.centerRight,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(10)),
-                        child: FadeInImage.assetNetwork(
-                          height: MediaQuery.of(context).size.width*.5,
-                          width: MediaQuery.of(context).size.width*.28,
-                          fit: BoxFit.contain,
-                          placeholder: Images.placeholder,
-                          image: "https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}",
-                          imageErrorBuilder: (c, o, s) => Image.asset("${widget.categoryImage}", fit: BoxFit.cover,),
+                      child: Container(
+                        height: MediaQuery.of(context).size.width*.24,
+                        width: MediaQuery.of(context).size.width*.24,
+                        // color: Colors.deepOrangeAccent,
+                        child: Center(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+
+                                child: Image.network("https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}",
+                                  height: MediaQuery.of(context).size.width*.24,
+                                  width: MediaQuery.of(context).size.width*.24,
+                                  fit: BoxFit.fill,),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
