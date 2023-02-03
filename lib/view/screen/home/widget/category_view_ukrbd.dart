@@ -47,7 +47,7 @@ class _CategoryViewUkrbdState extends State<CategoryViewUkrbd> {
                   Navigator.push(context, MaterialPageRoute(builder: (_) => AllCategoryScreenUkrbd()));
 
                 },
-                child: CategorySubcategoryWidgetUkrbd(category: categoryProvider.categoryList[index],categoryImage: CategoryImageModel.categoryImageList[index],colorCode: CategoryCardColorModel.categoryCardColorList[index],isHome: true,),
+                child: CategorySubcategoryWidgetUkrbd(category: categoryProvider.categoryList[index],categoryCardImage: CategoryCardBackgroundImage.categoryCardBackgroundImageList[index],colorCode: CategoryCardColorModel.categoryCardColorList[index],isHome: true,),
               );
 
             },
@@ -80,17 +80,49 @@ class CategoryImageModel{
 
 }
 
+class CategoryCardBackgroundImage{
+
+  static List<String> categoryCardBackgroundImageList=[
+    "assets/card_background/back1.jpeg",
+    "assets/card_background/back2.jpeg",
+    "assets/card_background/back3.jpeg",
+    "assets/card_background/back4.jpeg",
+    "assets/card_background/back5.jpeg",
+    "assets/card_background/back7.jpeg",
+    "assets/card_background/back8.jpeg",
+    "assets/card_background/back9.jpeg",
+    "assets/card_background/back10.jpeg",
+    "assets/card_background/back11.jpeg",
+    "assets/card_background/back12.jpeg",
+    "assets/card_background/back13.jpeg",
+    "assets/card_background/back14.jpeg",
+    "assets/card_background/back15.jpeg",
+    "assets/card_background/back16.jpeg",
+    "assets/card_background/back17.jpeg",
+
+  ];
+
+}
+
 class CategoryCardColorModel{
 
   static List<int> categoryCardColorList=[
-    0xffEDEFEA,
-    0xffF0E2D9,
-    0xffFFE8CC,
-    0xffF4EAF3,
-    0xffD5E5DA,
-    0xffF4DCDC,
-    0xffEDEFEA,
-    0xffF0E2D9,
+    // 0xffEDEFEA,
+    // 0xffF0E2D9,
+    // 0xffFFE8CC,
+    // 0xffF4EAF3,
+    // 0xffD5E5DA,
+    // 0xffF4DCDC,
+    // 0xffEDEFEA,
+    // 0xffF0E2D9,
+    0xff8EA7E9,
+    0xffD9ACF5,
+    0xffFF9F9F,
+    0xff90A17D,
+    0xff7D6E83,
+    0xff7D9D9C,
+    0xffAC7D88,
+    0xffAF7AB3,
   ];
 
 }

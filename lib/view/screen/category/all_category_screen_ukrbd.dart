@@ -67,7 +67,7 @@ class AllCategoryScreenUkrbd extends StatelessWidget {
                               Navigator.push(context, MaterialPageRoute(builder: (_) => AllCategoryScreenUkrbd()));
 
                             },
-                            child: CategorySubcategoryWidgetUkrbd(category: categoryProvider.categoryList[index],categoryImage: getRandomElement(CategoryImageModel.categoryImageList),colorCode: getRandomElement(CategoryCardColorModel.categoryCardColorList),isHome: false,),
+                            child: CategorySubcategoryWidgetUkrbd(category: categoryProvider.categoryList[index],categoryCardImage: getRandomElement(CategoryImageModel.categoryImageList),colorCode: getRandomElement(CategoryCardColorModel.categoryCardColorList),isHome: false,),
                           );
 
                         },
@@ -217,14 +217,22 @@ class CategoryImageModel{
 class CategoryCardColorModel{
 
   static List<int> categoryCardColorList=[
-    0xffEDEFEA,
-    0xffF0E2D9,
-    0xffFFE8CC,
-    0xffF4EAF3,
-    0xffD5E5DA,
-    0xffF4DCDC,
-    0xffEDEFEA,
-    0xffF0E2D9,
+    // 0xffEDEFEA,
+    // 0xffF0E2D9,
+    // 0xffFFE8CC,
+    // 0xffF4EAF3,
+    // 0xffD5E5DA,
+    // 0xffF4DCDC,
+    // 0xffEDEFEA,
+    // 0xffF0E2D9,
+    0xff8EA7E9,
+    0xffD9ACF5,
+    0xffFF9F9F,
+    0xff90A17D,
+    0xff7D6E83,
+    0xff7D9D9C,
+    0xffAC7D88,
+    0xffAF7AB3,
   ];
 
 }

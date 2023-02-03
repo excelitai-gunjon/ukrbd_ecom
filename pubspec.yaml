@@ -96,6 +96,7 @@ flutter:
     - assets/language/
     - assets/banner/
     - assets/category/
+    - assets/card_background/
 
   fonts:
     - family: Ubuntu
