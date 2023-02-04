@@ -44,6 +44,7 @@ class Images {
   static const String no_data = 'assets/images/no_data.png';
   static const String bag = 'assets/images/bag.png';
   static const String placeholder = 'assets/images/placeholder_1x1.png';
+  static const String placeholder_image = 'assets/images/placeholder_1x1.png';
   static const String about_us = 'assets/images/about_us.png';
   static const String contact_us = 'assets/images/contact_us.png';
   static const String login = 'assets/images/login.png';

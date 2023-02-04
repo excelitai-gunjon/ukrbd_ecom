@@ -47,7 +47,7 @@ class _CategoryViewUkrbdState extends State<CategoryViewUkrbd> {
                   Navigator.push(context, MaterialPageRoute(builder: (_) => AllCategoryScreenUkrbd()));
 
                 },
-                child: CategorySubcategoryWidgetUkrbd(category: categoryProvider.categoryList[index],categoryCardImage: CategoryCardBackgroundImage.categoryCardBackgroundImageList[index],colorCode: CategoryCardColorModel.categoryCardColorList[index],isHome: true,),
+                child: CategorySubcategoryWidgetUkrbd(category: categoryProvider.categoryList[index],categoryImage: CategoryImageModel.categoryImageList[index],colorCode: CategoryCardColorModel.categoryCardColorList[index],isHome: true,),
               );
 
             },
@@ -80,29 +80,29 @@ class CategoryImageModel{
 
 }
 
-class CategoryCardBackgroundImage{
-
-  static List<String> categoryCardBackgroundImageList=[
-    "assets/card_background/back1.jpeg",
-    "assets/card_background/back2.jpeg",
-    "assets/card_background/back3.jpeg",
-    "assets/card_background/back4.jpeg",
-    "assets/card_background/back5.jpeg",
-    "assets/card_background/back7.jpeg",
-    "assets/card_background/back8.jpeg",
-    "assets/card_background/back9.jpeg",
-    "assets/card_background/back10.jpeg",
-    "assets/card_background/back11.jpeg",
-    "assets/card_background/back12.jpeg",
-    "assets/card_background/back13.jpeg",
-    "assets/card_background/back14.jpeg",
-    "assets/card_background/back15.jpeg",
-    "assets/card_background/back16.jpeg",
-    "assets/card_background/back17.jpeg",
-
-  ];
-
-}
+// class CategoryCardBackgroundImage{
+//
+//   static List<String> categoryCardBackgroundImageList=[
+//     "assets/card_background/back1.jpeg",
+//     "assets/card_background/back2.jpeg",
+//     "assets/card_background/back3.jpeg",
+//     "assets/card_background/back4.jpeg",
+//     "assets/card_background/back5.jpeg",
+//     "assets/card_background/back7.jpeg",
+//     "assets/card_background/back8.jpeg",
+//     "assets/card_background/back9.jpeg",
+//     "assets/card_background/back10.jpeg",
+//     "assets/card_background/back11.jpeg",
+//     "assets/card_background/back12.jpeg",
+//     "assets/card_background/back13.jpeg",
+//     "assets/card_background/back14.jpeg",
+//     "assets/card_background/back15.jpeg",
+//     "assets/card_background/back16.jpeg",
+//     "assets/card_background/back17.jpeg",
+//
+//   ];
+//
+// }
 
 class CategoryCardColorModel{
 

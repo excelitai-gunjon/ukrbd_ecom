@@ -206,7 +206,7 @@ class SubCategoryScreenUkrbd extends StatelessWidget {
                             },
                             child: CategorySubcategoryWidgetUkrbd(
                               subCategory: subcategories[index],
-                              categoryCardImage: getRandomElement(CategoryImageModel.categoryImageList),
+                              categoryImage: getRandomElement(CategoryImageModel.categoryImageList),
                               colorCode: getRandomElement(CategoryCardColorModel.categoryCardColorList),
                               isHome: false,
                             ),

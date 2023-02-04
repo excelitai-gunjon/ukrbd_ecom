@@ -67,7 +67,7 @@ class AllCategoryScreenUkrbd extends StatelessWidget {
                               Navigator.push(context, MaterialPageRoute(builder: (_) => AllCategoryScreenUkrbd()));
 
                             },
-                            child: CategorySubcategoryWidgetUkrbd(category: categoryProvider.categoryList[index],categoryCardImage: getRandomElement(CategoryImageModel.categoryImageList),colorCode: getRandomElement(CategoryCardColorModel.categoryCardColorList),isHome: false,),
+                            child: CategorySubcategoryWidgetUkrbd(category: categoryProvider.categoryList[index],categoryImage: getRandomElement(CategoryImageModel.categoryImageList),colorCode: getRandomElement(CategoryCardColorModel.categoryCardColorList),isHome: false,),
                           );
 
                         },

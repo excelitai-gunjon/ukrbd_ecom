@@ -10,10 +10,10 @@ import '../../../../data/model/response/categories_ukrbd.dart';
 class CategorySubcategoryWidgetUkrbd extends StatefulWidget {
   final Categories category;
   final Subcategories subCategory;
-  final String categoryCardImage;
+  final String categoryImage;
   final int colorCode;
   final bool isHome;
-   CategorySubcategoryWidgetUkrbd({Key key, @required this.category,this.categoryCardImage,this.colorCode,this.subCategory,this.isHome}) : super(key: key);
+  CategorySubcategoryWidgetUkrbd({Key key, @required this.category,this.categoryImage,this.colorCode,this.subCategory,this.isHome}) : super(key: key);
 
   @override
   State<CategorySubcategoryWidgetUkrbd> createState() => _CategorySubcategoryWidgetUkrbdState();
@@ -22,25 +22,17 @@ class CategorySubcategoryWidgetUkrbd extends StatefulWidget {
 class _CategorySubcategoryWidgetUkrbdState extends State<CategorySubcategoryWidgetUkrbd> {
   @override
   Widget build(BuildContext context) {
-    print("https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}");
-    print("https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}");
-    print("https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}");
-    print("https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}");
-    print("https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}");
-    print("https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}");
-    print("https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}");
-    print("https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}");
     return InkWell(
       onTap: (){
-          widget.subCategory!=null?
-          Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreenUkrbd(
-            isBrand: false,
-            id: widget.subCategory.id.toString(),
-            name: widget.subCategory.subCategory,
-            isSubcategory: true,
-            isHome: false,
-          ))):
-          Navigator.push(context, MaterialPageRoute(builder: (_) => SubCategoryScreenUkrbd(subcategories: widget.category.subcategories,)));
+        widget.subCategory!=null?
+        Navigator.push(context, MaterialPageRoute(builder: (_) => BrandAndCategoryProductScreenUkrbd(
+          isBrand: false,
+          id: widget.subCategory.id.toString(),
+          name: widget.subCategory.subCategory,
+          isSubcategory: true,
+          isHome: false,
+        ))):
+        Navigator.push(context, MaterialPageRoute(builder: (_) => SubCategoryScreenUkrbd(subcategories: widget.category.subcategories,)));
         // }
       },
       child: Padding(
@@ -51,13 +43,9 @@ class _CategorySubcategoryWidgetUkrbdState extends State<CategorySubcategoryWidg
               // height: MediaQuery.of(context).size.width/5,
               // width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("${widget.categoryCardImage}"),
-                  fit: BoxFit.cover
-                ),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
+                    color: Colors.grey.withOpacity(0.3),
                     spreadRadius: 0,
                     blurRadius: 1,
                     offset: Offset(0,2),
@@ -68,18 +56,39 @@ class _CategorySubcategoryWidgetUkrbdState extends State<CategorySubcategoryWidg
                 // borderRadius: BorderRadius.circular(Dimensions.PADDING_SIZE_EXTRA_SMALL),
                 borderRadius: BorderRadius.circular(10),
                 // color: Theme.of(context).highlightColor,
-                // color: Color(widget.colorCode).withOpacity(0.5),
+                color: Color(widget.colorCode).withOpacity(.5),
               ),
               child: ClipRRect(
                 // borderRadius: BorderRadius.circular(Dimensions.PADDING_SIZE_SMALL),
                 borderRadius: BorderRadius.circular(Dimensions.PADDING_SIZE_EXTRA_SMALL),
                 child:
+                // FadeInImage.assetNetwork(
+                //   fit: BoxFit.cover,
+                //   placeholder: Images.placeholder,
+                //   image: category.image!=null?'${Provider.of<SplashProvider>(context,listen: false).baseUrls.categoryImageUrl}'
+                //       '/${category.image}':null,
+                //   imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, fit: BoxFit.cover,),
+                // ),
                 Stack(
                   children: [
                     Align(
+                      alignment: Alignment.centerRight,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(10)),
+                        child: FadeInImage.assetNetwork(
+                          height: MediaQuery.of(context).size.width*.5,
+                          width: MediaQuery.of(context).size.width*.28,
+                          fit: BoxFit.fill,
+                          placeholder: Images.placeholder_image,
+                          image: "https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}",
+                          imageErrorBuilder: (c, o, s) => Image.asset("${Images.placeholder_image}", fit: BoxFit.fill,),
+                        ),
+                      ),
+                    ),
+                    Align(
                       alignment: Alignment.centerLeft,
                       child: Padding(
-                        padding:  EdgeInsets.only(left: 10.0,bottom: 20),
+                        padding:  EdgeInsets.only(left: 10.0),
                         child: Container(
                           height: MediaQuery.of(context).size.width*.4,
                           width: MediaQuery.of(context).size.width*.18,
@@ -95,34 +104,6 @@ class _CategorySubcategoryWidgetUkrbdState extends State<CategorySubcategoryWidg
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Container(
-                        height: MediaQuery.of(context).size.width*.25,
-                        width: MediaQuery.of(context).size.width*.25,
-                        decoration: BoxDecoration(
-                            // color: Colors.deepOrangeAccent,
-                          image: DecorationImage(
-                            // alignment: Alignment.,
-                            image: NetworkImage("https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}"),
-                            // image: NetworkImage("https://ukrbd.com/images/slider_images/1633419538.jpg"),
-                            fit: BoxFit.fill
-                          )
-                        ),
-                        // child: Align(
-                        //   alignment: Alignment.topCenter,
-                        //   child: ClipRRect(
-                        //     borderRadius: BorderRadius.circular(10),
-                        //
-                        //     child: Image.network("https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}",
-                        //       // height: MediaQuery.of(context).size.width*.4,
-                        //       // width: MediaQuery.of(context).size.width*.4,
-                        //       fit: BoxFit.fill,
-                        //     ),
-                        //   ),
-                        // ),
                       ),
                     ),
                   ],

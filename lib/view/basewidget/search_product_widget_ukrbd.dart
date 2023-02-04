@@ -20,10 +20,11 @@ class SearchProductWidgetUkrbd extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        Navigator.push(context, PageRouteBuilder(
-          transitionDuration: Duration(milliseconds: 1000),
-          pageBuilder: (context, anim1, anim2) => ProductDetailsScreenUkrbd(productId: productModel.id.toString(),),
-        ));
+        // Navigator.push(context, PageRouteBuilder(
+        //   transitionDuration: Duration(milliseconds: 1000),
+        //   pageBuilder: (context, anim1, anim2) => ProductDetailsScreenUkrbd(productId: productModel.id.toString(),),
+        // ));
+        Navigator.push(context, MaterialPageRoute(builder: (_)=>ProductDetailsScreenUkrbd(productId: productModel.id.toString(),)));
 
       },
       child:   Container(

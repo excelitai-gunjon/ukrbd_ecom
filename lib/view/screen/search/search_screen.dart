@@ -158,8 +158,8 @@ class DataSearch extends SearchDelegate<Products> {
         ? recentSearches
         : products
             .where((products) => products.productName
-                .toLowerCase()
-                .contains(query.toLowerCase()))
+            .toLowerCase()
+            .contains(query.toLowerCase()))
             .toList();
 
     return ListView.builder(
@@ -172,6 +172,7 @@ class DataSearch extends SearchDelegate<Products> {
           return SearchProductWidgetUkrbd(
             productModel: product,
           );
-        });
+        }
+        );
   }
 }

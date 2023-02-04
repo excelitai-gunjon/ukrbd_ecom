@@ -140,9 +140,11 @@ class _ProfileScreenUkrbdState extends State<ProfileScreenUkrbd> with SingleTick
                           end: Alignment.topRight,
                           colors: [
                             // Colors,
-                            Colors.deepOrangeAccent,
-                            Color(0xffffeb3b),//Color(0xff4caf50)), ColorSwatch(primary value: Color(0xffffeb3b)
-                            // Color(0xff4caf50),
+                            // Colors.deepOrangeAccent,
+                            // Color(0xffffeb3b).withOpacity(0.5),//Color(0xff4caf50)), ColorSwatch(primary value: Color(0xffffeb3b)
+                            // Color(0xffefd671),
+                            Color(0xffefd671),
+                            Color(0xffefd671),
                             // Colors.white
                           ],
                         )
