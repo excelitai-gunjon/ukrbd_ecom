@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecom_ukrbd/view/screen/product/product_details_screen_ukrbd.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/response/ukrbd/produuct_model.dart';
@@ -50,21 +51,31 @@ class ProductWidgetUkrbd extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-                child: FadeInImage.assetNetwork(
-                  placeholder: Images.placeholder, fit: BoxFit.contain,
-              //   height: MediaQuery.of(context).size.width/2.45,
-
-                  // image: '${Provider.of<SplashProvider>(context, listen: false).baseUrls.productThumbnailUrl}/${productModel.thumbnail}',
-                  image: "https://ukrbd.com/images/products/${productModel.productimages.length>0?productModel.productimages[0].image:""}",
-                  imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder_1x1,
-                      fit: BoxFit.contain,
-
-                      // height: MediaQuery.of(context).size.width/2.45,
-
-                  ),
-
-
+                child: CachedNetworkImage(
+                  // height: MediaQuery.of(context).size.width*.25,
+                  // width: MediaQuery.of(context).size.width*.25,
+                  imageUrl: "https://ukrbd.com/images/products/${productModel.productimages.length>0?productModel.productimages[0].image:""}",
+                  fit: BoxFit.fill,
+                  progressIndicatorBuilder: (context, url, downloadProgress) {
+                    return Image.asset("${Images.placeholder_image}", fit: BoxFit.fill,);
+                  },
+                  errorWidget: (context, url, error) =>const Icon(Icons.error),
                 ),
+              //   FadeInImage.assetNetwork(
+              //     placeholder: Images.placeholder, fit: BoxFit.contain,
+              // //   height: MediaQuery.of(context).size.width/2.45,
+              //
+              //     // image: '${Provider.of<SplashProvider>(context, listen: false).baseUrls.productThumbnailUrl}/${productModel.thumbnail}',
+              //     image: "https://ukrbd.com/images/products/${productModel.productimages.length>0?productModel.productimages[0].image:""}",
+              //     imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder_1x1,
+              //         fit: BoxFit.contain,
+              //
+              //         // height: MediaQuery.of(context).size.width/2.45,
+              //
+              //     ),
+              //
+              //
+              //   ),
               ),
             ),
 

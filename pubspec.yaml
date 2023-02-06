@@ -71,6 +71,7 @@ dependencies:
   font_awesome_flutter: ^10.3.0
   dropdown_button2: ^1.9.2
   flutter_launcher_icons:
+  cached_network_image: ^3.2.1
 #  dotted_decoration: ^2.0.0
 
 

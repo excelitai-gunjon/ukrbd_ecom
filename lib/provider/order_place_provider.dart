@@ -3,7 +3,11 @@ import 'package:ecom_ukrbd/data/model/body/order_place_model.dart';
 import 'package:ecom_ukrbd/data/model/response/base/api_response.dart';
 import 'package:ecom_ukrbd/data/model/response/base/error_response.dart';
 import 'package:ecom_ukrbd/data/repository/order_place_repo.dart';
+import 'package:ecom_ukrbd/provider/bottom_navigation_bar_provider.dart';
+import 'package:ecom_ukrbd/provider/cart_provider_ukrbd.dart';
+import 'package:ecom_ukrbd/view/screen/dashboard/dashboard_screen_ukrbd.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class OrderPlaceProvider with ChangeNotifier {
   final OrderPlaceRepo orderPlaceRepo;
@@ -21,12 +25,21 @@ class OrderPlaceProvider with ChangeNotifier {
     notifyListeners();
     ApiResponse apiResponse = await orderPlaceRepo.orderPlace(orderPlaceModel);
     if (apiResponse.response != null && apiResponse.response.statusCode == 200) {
+
+
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        backgroundColor: Colors.teal,
+        duration: Duration(seconds: 1),
+        content: Text(apiResponse.response.data.toString()),
+      ));
+
+
+      // Duration(seconds: 2 );
       _isLoading = false;
       notifyListeners();
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text(apiResponse.response.data.toString()),
-        backgroundColor: Colors.teal,
-      ));
+      Provider.of<CartProviderUkrbd>(context,listen: false).deleteCart();
+      // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => DashBoardScreenUkrbd()));
+      Provider.of<BottomNavigationBarProvider>(context, listen: false).onItemTapped(0, false, context);
       notifyListeners();
       return apiResponse.response.statusCode;
     } else {

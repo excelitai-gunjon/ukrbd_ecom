@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecom_ukrbd/data/model/response/Subcategories.dart';
 import 'package:ecom_ukrbd/view/screen/category/subcategory_screen_ukrbd.dart';
 import 'package:ecom_ukrbd/view/screen/product/brand_and_category_product_screen_ukrbd.dart';
@@ -75,14 +76,24 @@ class _CategorySubcategoryWidgetUkrbdState extends State<CategorySubcategoryWidg
                       alignment: Alignment.centerRight,
                       child: ClipRRect(
                         borderRadius: BorderRadius.only(bottomRight: Radius.circular(10)),
-                        child: FadeInImage.assetNetwork(
-                          height: MediaQuery.of(context).size.width*.5,
-                          width: MediaQuery.of(context).size.width*.28,
+                        child: CachedNetworkImage(
+                          height: MediaQuery.of(context).size.width*.25,
+                          width: MediaQuery.of(context).size.width*.25,
+                          imageUrl: "https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}",
                           fit: BoxFit.fill,
-                          placeholder: Images.placeholder_image,
-                          image: "https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}",
-                          imageErrorBuilder: (c, o, s) => Image.asset("${Images.placeholder_image}", fit: BoxFit.fill,),
+                          progressIndicatorBuilder: (context, url, downloadProgress) {
+                            return Image.asset("${Images.placeholder_image}", fit: BoxFit.fill,);
+                          },
+                          errorWidget: (context, url, error) =>const Icon(Icons.error),
                         ),
+                        // FadeInImage.assetNetwork(
+                        //   height: MediaQuery.of(context).size.width*.5,
+                        //   width: MediaQuery.of(context).size.width*.28,
+                        //   fit: BoxFit.fill,
+                        //   placeholder: Images.placeholder_image,
+                        //   image: "https://ukrbd.com/images/${widget.subCategory==null?"category_image/${widget.category.image}":"subcategory_image/${widget.subCategory.image}"}",
+                        //   imageErrorBuilder: (c, o, s) => Image.asset("${Images.placeholder_image}", fit: BoxFit.fill,),
+                        // ),,
                       ),
                     ),
                     Align(

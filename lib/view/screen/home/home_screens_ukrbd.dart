@@ -28,9 +28,6 @@ class HomePageUkrbd extends StatefulWidget {
 class _HomePageUkrbdState extends State<HomePageUkrbd> {
 
 
-
-
-
   final ScrollController _scrollController = ScrollController();
 
   Future<void> _loadData(BuildContext context, bool reload)async{
@@ -45,12 +42,7 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
 
   }
 
-  void passData(int index, String title) {
-    index = index;
-    title = title;
-  }
 
-  bool singleVendor = false;
   @override
   void initState() {
     super.initState();
@@ -72,8 +64,7 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
     final size= MediaQuery.of(context).size;
 
 
-    List<String> types =[getTranslated('new_arrival', context),getTranslated('top_product', context), getTranslated('best_selling', context),  getTranslated('discounted_product', context)];
-    return Consumer<AllCategoryWiseProductProviderUkrbd>(
+     return Consumer<AllCategoryWiseProductProviderUkrbd>(
       builder: (context,allCategoryWiseProductProviderUkrbd,child){
         return Scaffold(
           // backgroundColor: ColorResources.getHomeBg(context),
@@ -155,22 +146,11 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                           ),
                         ),
                       ),
-                      //  child:Column(
-                      //   children: [
-                      //     BannersViewUkrbd(),
-                      //   ],
-                      // )
+
                       SliverToBoxAdapter(
                         child: Padding(
                           padding: EdgeInsets.fromLTRB(Dimensions.HOME_PAGE_PADDING,
                               Dimensions.PADDING_SIZE_SMALL, Dimensions.PADDING_SIZE_DEFAULT, Dimensions.PADDING_SIZE_SMALL  ),
-
-
-                          //  child:Column(
-                          //   children: [
-                          //     BannersViewUkrbd(),
-                          //   ],
-                          // )
 
                           ///
                           child: Column(
@@ -435,18 +415,6 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                               ),
 
 
-                              // SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
-                              //
-                              // // CategoryWiseProductViewWidget(id: "81",title: "Comforter",),
-                              // allCategoryWiseProductProviderUkrbd.comforterList.length>0?
-                              // CategoryWiseProductViewWidget(categoryWiseProductList: allCategoryWiseProductProviderUkrbd.comforterList,id: "81",title: "Comforter",):SizedBox(
-                              //   height: 90,
-                              //   width: double.infinity,
-                              //   child: Center(
-                              //     child: CircularProgressIndicator(color: Theme.of(context).primaryColor,),
-                              //   ),
-                              // ),
-
 
                               SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
@@ -486,17 +454,6 @@ class _HomePageUkrbdState extends State<HomePageUkrbd> {
                     ],
                   ),
 
-                  // Provider.of<SplashProvider>(context, listen: false).configModel.announcement.status == '1'?
-                  // Positioned(top: MediaQuery.of(context).size.height-128,
-                  //   left: 0,right: 0,
-                  //   child: Consumer<SplashProvider>(
-                  //     builder: (context, announcement, _){
-                  //       return (announcement.configModel.announcement.announcement != null && announcement.onOff)?
-                  //       AnnouncementScreen(announcement: announcement.configModel.announcement):SizedBox();
-                  //     },
-                  //
-                  //   ),
-                  // ):SizedBox(),
                 ],
               ),
             ),

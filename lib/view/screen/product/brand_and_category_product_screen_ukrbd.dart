@@ -1,3 +1,4 @@
+
 import 'package:ecom_ukrbd/provider/bottom_navigation_bar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom_ukrbd/data/model/response/ukrbd/produuct_model.dart';
@@ -68,9 +69,9 @@ class _BrandAndCategoryProductScreenUkrbdState extends State<BrandAndCategoryPro
         ? WillPopScope(
             onWillPop: () {
               if(!widget.isHome){
-                Provider.of<CategoryWiseProductProviderUkrbd>(context,
-                    listen: false)
-                    .clear();
+                // Provider.of<CategoryWiseProductProviderUkrbd>(context,
+                //     listen: false)
+                //     .clear();
                 Navigator.of(context).pop();
               }else{
                 Navigator.of(context).pop();
@@ -105,22 +106,6 @@ class _BrandAndCategoryProductScreenUkrbdState extends State<BrandAndCategoryPro
                           );
                         }),
 
-                        // widget.isBrand ? Container(height: 100,
-                        //   padding: EdgeInsets.all(Dimensions.PADDING_SIZE_LARGE),
-                        //   margin: EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
-                        //   color: Theme.of(context).highlightColor,
-                        //   child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                        //     FadeInImage.assetNetwork(
-                        //       placeholder: Images.placeholder, width: 80, height: 80, fit: BoxFit.cover,
-                        //       image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls.brandImageUrl}/${widget.image}',
-                        //       imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, width: 80, height: 80, fit: BoxFit.cover),
-                        //     ),
-                        //     SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
-                        //
-                        //
-                        //     Text(widget.name, style: titilliumSemiBold.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE)),
-                        //   ]),
-                        // ) : SizedBox.shrink(),
 
                         SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
 
@@ -162,9 +147,9 @@ class _BrandAndCategoryProductScreenUkrbdState extends State<BrandAndCategoryPro
                           // Expanded(child: Center(child: productProvider.hasData ?
                           Expanded(
                               child: Center(
-                                child: categoryWiseProductsList.length == 0
-                                    ? ProductShimmer(isHomePage: false, isEnabled: categoryWiseProductsList.length == 0)
-                                    : NoInternetOrDataScreen(isNoInternet: false),
+                                child: categoryWiseProductProviderUkrbd.isloading
+                                    ? ProductShimmer(isHomePage: false, isEnabled: categoryWiseProductProviderUkrbd.isloading)
+                                    : categoryWiseProductsList.length == 0?NoInternetOrDataScreen(isNoInternet: false):Text(""),
                               )
                           );
                         }),
@@ -214,23 +199,6 @@ class _BrandAndCategoryProductScreenUkrbdState extends State<BrandAndCategoryPro
                           );
                         }),
 
-                        // widget.isBrand ? Container(height: 100,
-                        //   padding: EdgeInsets.all(Dimensions.PADDING_SIZE_LARGE),
-                        //   margin: EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
-                        //   color: Theme.of(context).highlightColor,
-                        //   child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                        //     FadeInImage.assetNetwork(
-                        //       placeholder: Images.placeholder, width: 80, height: 80, fit: BoxFit.cover,
-                        //       image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls.brandImageUrl}/${widget.image}',
-                        //       imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, width: 80, height: 80, fit: BoxFit.cover),
-                        //     ),
-                        //     SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
-                        //
-                        //
-                        //     Text(widget.name, style: titilliumSemiBold.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE)),
-                        //   ]),
-                        // ) : SizedBox.shrink(),
-
                         SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
 
                         // Products
@@ -270,7 +238,8 @@ class _BrandAndCategoryProductScreenUkrbdState extends State<BrandAndCategoryPro
                                     isEnabled:true,
                                 )
                                     : NoInternetOrDataScreen(isNoInternet: false),
-                              ));
+                              )
+                          );
                         }),
                       ]),
                 );

@@ -144,10 +144,10 @@ class _CheckoutUkrbdState extends State<CheckoutUkrbd> {
       orderPlaceModel.carts = productIdList.toString();
       orderPlaceModel.cartsQuantity = productQList.toString();
       await Provider.of<OrderPlaceProvider>(context, listen: false).orderPlace(orderPlaceModel, context).then((value) {
-        if(value==200){
-          Provider.of<CartProviderUkrbd>(context,listen: false).deleteCart();
-          Provider.of<BottomNavigationBarProvider>(context, listen: false).onItemTapped(0, false, context);
-        }
+        // if(value==200){
+        //   Provider.of<CartProviderUkrbd>(context,listen: false).deleteCart();
+        //   Provider.of<BottomNavigationBarProvider>(context, listen: false).onItemTapped(0, false, context);
+        // }
       });
 
     } else {
